@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/styles/MainStyle.css">
+    <link href="http://fonts.cdnfonts.com/css/din-pro-cond" rel="stylesheet">
+    <title>ChatBot App</title>
+</head>
+
+<body>
+    <!-- MAIN CHAT WINDOW -->
+    <div class="main-window" id="mainWindow">
+        <div class="header">
+            <!-- DIV for the games -->
+            <button class="chat-games" id="chatGames">Games</button>
+
+            <!-- DIV for the quizzes -->
+            <button class="chat-quizzes" id="chatQuizzes">Quizzes</button>
+
+            <!-- DIV for chat-bot NAME -->
+            <div class="chat-Name" id="chatName">Haralampiye<br>SEDC Chat Bot</div>
+
+            <!-- BUTTON for the minimize -->
+            <button class="chat-minimize" id="chatMinimize"></button>
+
+            <!-- DIV for the logo-avatar -->
+            <div class="img-logo" id="imgLogo"></div>
+
+            <div class="chat-window">
+                <div class="chat" id="chatWindow">
+                    <div class="chat-history" id="chatHistory"></div>
+                    <div class="main-chat-buttons-div" id="mainButtonsDiv"></div>
+                    <div class="chat-buttons-div" id="buttonsDiv"></div>
+                    <div id="loader">
+                        <div class="loader-bubble">
+                            <div class="typing">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="chat-recommended-div" id="recommendedDiv">Recommendations:
+                    <div class="slideDiv" id="recommendedSlide"></div>
+                    <hr class="chat-hr">
+                </div>
+
+                <div class="chat-searchInput-div" id="searchInput">
+                    <input type="text" placeholder="Type something..." id="input">
+                    <button class="chat-inputButton" id="inputButton"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="chat-maximize" id="chatMaximize"></button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <div id="popUp" class="popUp"></div>
+        </div>
+    </div>
+
+
+    <script src="./src/scripts/DataService.js"></script>
+    <script src="./src/scripts/ButtonsService.js"></script>
+    <script src="./src/scripts/UiService.js"></script>
+    <script src="./src/scripts/AnimationService.js"></script>
+    <script src="./src/scripts/SearchInputService.js"></script>
+    <script src="./src/scripts/ApplyAndPriceService.js"></script>
+    <script src="./src/scripts/MainScript.js"></script>
+</body>
+
+</html>
