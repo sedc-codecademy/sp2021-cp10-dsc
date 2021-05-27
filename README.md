@@ -32,4 +32,4 @@ List of ready features:
 The project is currently in progress and should be completed by the end of June 2021
 
 ## License 🔒
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/sedc-codecademy/sp2021-cp10-dsc/blob/main/LICENSE)
