@@ -36,26 +36,6 @@ const UiService = {
         });
     },
 
-    //Prints a user input and random bot message in chat history(Depending on the input)
-    replySearchMessage: function (searchInput, infoProperty) {
-        ButtonsService.mainButtonsDiv.innerHTML = "";
-
-        this.chatHistory.innerHTML += `
-        <div chatBotName>
-        <span class="chatUserYou">You</span>
-        <div class="chatBubblesUser">${searchInput}</div>
-        </div>`;
-        this.toggleLoader();
-        UiService.sleep().then(() => {
-            this.chatHistory.innerHTML += `
-            <div>
-            <span class="chatBotName">Haralampiye</span>
-            <div class="chatBubblesBot">${infoProperty}</div>
-            </div>`;
-            chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
-        });
-    },
-
     //Print the actual required INFO name and message
     replyInfoMessage: function (infoName, infoMessage) {
         ButtonsService.buttonsDiv.innerHTML = "";
@@ -128,7 +108,7 @@ const UiService = {
             UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
         } else if (choice === "No") {
             UiService.replyMessages(choice, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-            AnimationsService.recommendedBtnsAnimations();
+            UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
         }
     },
 

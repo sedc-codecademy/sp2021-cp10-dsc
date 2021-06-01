@@ -8,6 +8,8 @@ const ButtonsService = {
     getMainButtons: function (data) {
         this.buttonsDiv.innerHTML = "";
 
+        AnimationsService.changeImageHead('haralampiye');
+
         if(this.mainButtonsDiv.innerHTML !== ""){
             return;
         }
@@ -23,11 +25,7 @@ const ButtonsService = {
         AnimationsService.headerAnimation();
 
         this.mainButtonsDiv.innerHTML = "";
-        if(searchString !== undefined){
-            UiService.replyMessages(searchString, DataService.cachedReplyMessages.ShortTalk.MainButtonReplies);
-        }else{
-            UiService.replyMessages(branch, DataService.cachedReplyMessages.ShortTalk.MainButtonReplies);
-        }
+        UiService.replyMessages(searchString === undefined ? branch : searchString, DataService.cachedReplyMessages.ShortTalk.MainButtonReplies);
 
         switch (branch) {
             case 'Testing':
@@ -56,6 +54,8 @@ const ButtonsService = {
     getDataButtons: function (buttonId, branchName, searchString) {
         this.buttonsDiv.innerHTML = "";
 
+        AnimationsService.changeImageHead(buttonId);
+
         let data = DataService.cachedData[branchName];
         let check = false;
         data.forEach(element => { if (element.nameId === buttonId) { check = true; } });
@@ -73,11 +73,7 @@ const ButtonsService = {
         for (const element of data) {
             if (element.nameId === buttonId) {
                 if (element.studyPrograms !== undefined) {
-                    if(searchString !== undefined){
-                        UiService.replyMessages(searchString, element.reply);
-                    }else{
-                        UiService.replyMessages(element.name, element.reply);
-                    }
+                    UiService.replyMessages(searchString === undefined ? element.name : searchString, element.reply);
                     UiService.sleep().then(() => { ButtonsService.getButtons(element.studyPrograms, branchName); });
                 }
                 else {
@@ -91,6 +87,8 @@ const ButtonsService = {
     //Prints the buttons for Object info
     getInfoButtons: function (element, branchName) {
         this.buttonsDiv.innerHTML = "";
+
+        AnimationsService.changeImageHead(element.name);
 
         for (const button of element.infoProperties) {
             this.buttonsDiv.innerHTML += `<button id = "${button}" class="chatBotBtns" onclick="UiService.printAcademyInfo('${button}','${element.nameId}', '${branchName}')">${button}</button>`;

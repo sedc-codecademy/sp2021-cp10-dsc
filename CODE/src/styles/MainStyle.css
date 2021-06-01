@@ -51,6 +51,26 @@ body {
     z-index: 1;
 }
 
+/* .defaultAvatar {
+    background-image: url(../img-avatars/HARALAMPIYE.png);
+}
+
+.codeAvatar {
+    background-image: url(../img-avatars/CODE.png);
+}
+
+.networksAvatar {
+    background-image: url(../img-avatars/CODE.png);
+}
+
+.designAvatar {
+    background-image: url(../img-avatars/CODE.png);
+}
+
+.qaAvatar {
+    background-image: url(../img-avatars/CODE.png);
+} */
+
 .chat-Name {
     position: absolute;
     margin: 0.625rem 0 0 9.375rem;

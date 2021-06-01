@@ -50,5 +50,42 @@ const AnimationsService = {
         this.recommendedSlide.addEventListener("animationiteration", () => {
             ButtonsService.recommendationsButtons();
         })
+    },
+
+    //Changes the bot personality depending on the chosen academy
+    changeImageHead: function(academy){
+        switch (academy) {
+            case 'programming':
+            case 'Web Development':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/CODE.png)";
+                break;
+            case 'computerNetworks':
+            case 'CloudOps Network Engineer':
+            case 'Security Specialist':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/Networks.png)";
+                break;
+            case 'design':
+            case 'Graphic Designer':
+            case 'Web Designer':
+            case 'Game Designer':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DESIGN.png)";
+                break;
+            case 'softwareTesting':
+            case 'Software Tester':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/QA.png)";
+                break;
+            // case 'dataScience':
+                // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
+            //     break;
+            // case 'digitalMarketing':
+                // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
+            //     break;
+            // case 'iThink':
+                // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
+            //     break;
+            case 'haralampiye':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/HARALAMPIYE.png)";
+                break;
+        }
     }
 };//PROPERTIES: The image div, Games button, Quizzes button, Name div, Recommended buttons slide, Chat div, Main div
