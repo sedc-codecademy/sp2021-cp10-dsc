@@ -5,8 +5,8 @@ const UiService = {
     //Prints the very first message for the user
     firstMessage: function () {
         this.chatHistory.innerHTML = `
-        <div class="greetingMessage">Welcome to the</div>
-         <div class="greetingMessage">Seavus Education Chat Bot!</div>
+        <div class="greetingMessage">Welcome to the<br>
+         Seavus Education Chat Bot!</div>
          <div class="greetingMessageQue">How can we help you?</div>
          <hr class="chat-js-hr">
         `;

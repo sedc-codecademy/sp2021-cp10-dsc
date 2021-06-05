@@ -33,8 +33,6 @@ body {
     visibility: visible;
 }
 
-/* END */
-
 .header {
     width: 24.75rem;
     height: 6.25rem;
@@ -52,26 +50,6 @@ body {
     position: absolute;
     z-index: 1;
 }
-
-/* .defaultAvatar {
-    background-image: url(../img-avatars/HARALAMPIYE.png);
-}
-
-.codeAvatar {
-    background-image: url(../img-avatars/CODE.png);
-}
-
-.networksAvatar {
-    background-image: url(../img-avatars/CODE.png);
-}
-
-.designAvatar {
-    background-image: url(../img-avatars/CODE.png);
-}
-
-.qaAvatar {
-    background-image: url(../img-avatars/CODE.png);
-} */
 
 .chat-Name {
     position: absolute;
@@ -622,5 +600,9 @@ button:hover{
    align-content: center;
    width: 97%;
    height: 99%;
+<<<<<<< HEAD
    padding-bottom: 5%;
+=======
+   padding-bottom: 10%;
+>>>>>>> 5b3f9173cf707e92c6de6466250905708ce5b1ae
 }
