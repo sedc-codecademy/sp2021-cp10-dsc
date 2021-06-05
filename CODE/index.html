@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/styles/MainStyle.css">
+    <!-- <link rel="stylesheet" href="./src/styles/MainStyle.css"> -->
+    <link rel="stylesheet" media='screen and (min-width: 751px)' href='./src/styles/MainStyle.css' />
+    <link rel="stylesheet" media='screen and (max-width: 750px)' href='./src/styles/MobileStyle.css' />
     <link href="http://fonts.cdnfonts.com/css/din-pro-cond" rel="stylesheet">
     <title>ChatBot App</title>
 </head>
@@ -27,35 +29,35 @@
 
             <!-- DIV for the logo-avatar -->
             <div class="img-logo defaultAvatar" id="imgLogo"></div>
-
-            <div class="chat-window">
-                <div class="chat" id="chatWindow">
-                    <div class="chat-history" id="chatHistory"></div>
-                    <div class="main-chat-buttons-div" id="mainButtonsDiv"></div>
-                    <div class="chat-buttons-div" id="buttonsDiv"></div>
-                    <div id="loader">
-                        <div class="loader-bubble">
-                            <div class="typing">
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                                <div class="dot"></div>
-                            </div>
+        </div>
+        <div class="chat-window">
+            <div class="chat" id="chatWindow">
+                <div class="chat-history" id="chatHistory"></div>
+                <div class="main-chat-buttons-div" id="mainButtonsDiv"></div>
+                <div class="chat-buttons-div" id="buttonsDiv"></div>
+                <div id="loader">
+                    <div class="loader-bubble">
+                        <div class="typing">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
                         </div>
-
                     </div>
-                </div>
 
-                <div class="chat-recommended-div" id="recommendedDiv">Recommendations:
-                    <div class="slideDiv" id="recommendedSlide"></div>
-                    <hr class="chat-hr">
-                </div>
-
-                <div class="chat-searchInput-div" id="searchInput">
-                    <input type="text" placeholder="Type something..." id="input">
-                    <button class="chat-inputButton" id="inputButton"></button>
                 </div>
             </div>
+
+            <div class="chat-recommended-div" id="recommendedDiv">Recommendations:
+                <div class="slideDiv" id="recommendedSlide"></div>
+                <hr class="chat-hr">
+            </div>
+
+            <div class="chat-searchInput-div" id="searchInput">
+                <input type="text" placeholder="Type something..." id="input">
+                <button class="chat-inputButton" id="inputButton"></button>
+            </div>
         </div>
+
     </div>
 
     <button class="chat-maximize" id="chatMaximize"></button>
