@@ -21,6 +21,10 @@ const AnimationsService = {
             this.chatName.style.opacity = "1";
         });
 
+        if(screen.width < 751){
+            return;
+        }
+
         this.chatGames.classList.add("games-quizzesAnimation");
         this.avatarImgDiv.addEventListener("animationend", () => {
             this.chatGames.classList.remove("chat-games");
@@ -39,7 +43,7 @@ const AnimationsService = {
 
     //Animates the recommendations slide
     recommendedBtnsAnimations: function () {
-        this.chatWindow.style.height = "28.75rem";
+        screen.width < 751 ? AnimationsService.chatWindow.style.height = "82%" : AnimationsService.chatWindow.style.height = "28.75rem";
         UiService.chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
         ButtonsService.recommendationsButtons();
