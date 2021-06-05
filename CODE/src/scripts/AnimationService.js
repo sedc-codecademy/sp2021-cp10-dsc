@@ -9,7 +9,18 @@ const AnimationsService = {
 
     //Animates the header - Image, Name, Icons
     headerAnimation: function () {
-        this.avatarImgDiv.classList.add("avatarAnimation");
+        if(screen.width < 725){
+            this.avatarImgDiv.classList.add("avatarAnimation");
+
+            this.avatarImgDiv.style.marginTop = "0rem";
+            this.avatarImgDiv.style.marginLeft = "1.25rem";
+
+            this.chatName.classList.add("fadeIn-avatarName");
+            this.chatName.addEventListener("animationend", () => {
+                this.chatName.style.opacity = "1";
+            });
+        }else{
+            this.avatarImgDiv.classList.add("avatarAnimation");
 
         this.avatarImgDiv.addEventListener("animationend", () => {
             this.avatarImgDiv.style.marginTop = "-1.25rem";
@@ -20,10 +31,6 @@ const AnimationsService = {
         this.chatName.addEventListener("animationend", () => {
             this.chatName.style.opacity = "1";
         });
-
-        if(screen.width < 751){
-            return;
-        }
 
         this.chatGames.classList.add("games-quizzesAnimation");
         this.avatarImgDiv.addEventListener("animationend", () => {
@@ -39,6 +46,7 @@ const AnimationsService = {
             this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
 
         });
+        }
     },
 
     //Animates the recommendations slide
