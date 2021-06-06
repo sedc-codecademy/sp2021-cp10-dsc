@@ -9,7 +9,7 @@ const AnimationsService = {
 
     //Animates the header - Image, Name, Icons
     headerAnimation: function () {
-        if(screen.width < 725){
+        if(window.innerWidth < 725){
             this.avatarImgDiv.classList.add("avatarAnimation");
 
             this.avatarImgDiv.style.marginTop = "0rem";

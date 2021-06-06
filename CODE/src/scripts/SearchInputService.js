@@ -23,7 +23,7 @@ const SearchInputService = {
 
     SearchInputLogic : function(){
         UiService.recommendedDiv.style.display = "none";
-        AnimationsService.chatWindow.style.height = "35.625rem";
+        screen.width < 751 ? AnimationsService.chatWindow.style.height = "96%" : AnimationsService.chatWindow.style.height = "35.625rem";
         AnimationsService.changeImageHead('haralampiye');
         AnimationsService.headerAnimation();
         if(SearchInputService.input.value === "") return;
