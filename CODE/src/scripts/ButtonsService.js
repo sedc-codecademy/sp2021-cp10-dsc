@@ -159,7 +159,7 @@ const ButtonsService = {
     //Catch the event of the recommendation slide button click
     findRecommendationButtonChoice: function (elementId, branchName, studyProgramName) {
         UiService.recommendedDiv.style.display = "none";
-        screen.width < 751 ? AnimationsService.chatWindow.style.height = "96%" : AnimationsService.chatWindow.style.height = "35.625rem";
+        screen.width < 751 ? AnimationsService.chatWindow.style.height = "96%" : AnimationsService.chatWindow.style.height = "82%";
         let data = DataService.cachedData[branchName];
 
         for (let element of data) {
