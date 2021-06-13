@@ -91,7 +91,7 @@ const UiService = {
                     this.replyInfoMessage(neededInfo, test[neededInfo.toLowerCase().replace(/\s/g, "")]);
                     UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
                     break;
-                }else if(neededInfo === "Apply"){
+                } else if (neededInfo === "Apply") {
                     UiService.replyInfoMessage(neededInfo, ["Thank you for your interest!"]);
                     ApplyAndPriceService.getApplyForm("Testing");
                     UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
@@ -125,5 +125,35 @@ const UiService = {
     //Pauses everything for some time
     sleep: function () {
         return new Promise(resolve => setTimeout(resolve, 2000));
+    },
+
+    // Toggles between 2 view ports
+    toggleDisplayView: function (view1, view2) {
+        view1.style.display = "none";
+        view2.style.display = "block";
+    },
+
+    // Changes the quizzes/games icon
+    changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
+        if (gameOrQuizFlag) {
+            item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="25rem">`;
+            this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
+        } else {
+            if (item.id === "chatQuizzes") {
+                item.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+            } else {
+                item.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
+            };
+            this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
+        };
+    },
+
+    // Changes flag value
+    changeFlag: function (flag) {
+        if (flag) {
+            return false;
+        };
+        return true;
     }
+
 };//PROPERTIES: Chat history div, Recommended slide div

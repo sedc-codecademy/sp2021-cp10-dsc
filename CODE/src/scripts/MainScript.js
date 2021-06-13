@@ -36,14 +36,22 @@ chatMaximize.addEventListener("click", () => {
 
 //Modal close on button
 ApplyAndPriceService.closeModalButton.addEventListener("click", () => {
-    ApplyAndPriceService.myModal.style.display="none";
+    ApplyAndPriceService.myModal.style.display = "none";
 });
 
 //Modal close on side
 window.addEventListener("click", (event) => {
-    if(event.target == ApplyAndPriceService.myModal) {
-        ApplyAndPriceService.myModal.style.display="none";
+    if (event.target == ApplyAndPriceService.myModal) {
+        ApplyAndPriceService.myModal.style.display = "none";
     }
+    if (event.target === GamesService.myModalGame) {
+        GamesService.myModalGame.style.display = "none";
+    }
+});
+
+//GameModal close on button
+GamesService.closeModalGame.addEventListener("click", () => {
+    GamesService.myModalGame.style.display = "none";
 });
 
 DataService.getDataAsync();
@@ -51,3 +59,9 @@ DataService.getDataAsync();
 UiService.firstMessage();
 
 SearchInputService.getSearchInput();
+
+QuizzesService.printQuizzesMenu();
+
+QuizzesService.getAllQuizzes();
+
+GamesService.printGamesMenu();
