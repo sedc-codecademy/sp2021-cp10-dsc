@@ -130,7 +130,7 @@ const UiService = {
     // Toggles between 2 view ports
     toggleDisplayView: function (view1, view2) {
         view1.style.display = "none";
-        view2.style.display = "block";
+        view2.style.display = "flex";
     },
 
     // Changes the quizzes/games icon
