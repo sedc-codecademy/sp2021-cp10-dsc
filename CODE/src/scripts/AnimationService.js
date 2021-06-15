@@ -51,7 +51,7 @@ const AnimationsService = {
 
     //Animates the recommendations slide
     recommendedBtnsAnimations: function () {
-        screen.width < 751 ? AnimationsService.chatWindow.style.height = "82%" : AnimationsService.chatWindow.style.height = "68%";
+        // screen.width < 751 ? AnimationsService.chatWindow.style.height = "82%" : AnimationsService.chatWindow.style.height = "68%";
         UiService.chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
         ButtonsService.recommendationsButtons();
