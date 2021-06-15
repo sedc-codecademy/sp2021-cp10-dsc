@@ -191,17 +191,28 @@ body {
 }
 
 /* STYLES FOR USER INPUT */
+#searchInputWraper {
+    width: 100%;
+}
+
 .chat-searchInput-div {
     background-color: var(--light-blue);
     position: absolute;
     bottom: 0rem;
     margin: 1.25rem 0.938rem;
-    width: 90%;
+    width: 91%;
     height: 3.125rem;
     border-radius: 0.625rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media screen and (orientation: landscape) {
+    .chat-searchInput-div {
+        width: 95%;
+        /* align-self: center; */
+    }
 }
 
 #input {
