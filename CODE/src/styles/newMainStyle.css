@@ -32,7 +32,7 @@ body {
   border-bottom-right-radius: 1.563rem;
   transition: all 1s ease-out;
   visibility: visible;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: fixed;
   right: 2%;
   bottom: 1%;
@@ -118,12 +118,75 @@ body {
   position: relative;
 }
 
+@media screen and (max-height: 672px ) {
+  .chat-window {
+    height: 68%;
+  }
+}
+
+@media screen and (max-height: 633px ) {
+  .chat-window {
+    height: 66%;
+  }
+}
+
+@media screen and (max-height: 594px ) {
+  .chat-window {
+    height: 64%;
+  }
+}
+
+@media screen and (max-height: 555px ) {
+  .chat-window {
+    height: 62%;
+  }
+}
+
+@media screen and (max-height: 516px ) {
+  .chat-window {
+    height: 60%;
+  }
+}
+
+@media screen and (max-height: 477px ) {
+  .chat-window {
+    height: 55%;
+  }
+}
+
+@media screen and (max-height: 438px ) {
+  .chat-window {
+    height: 50%;
+  }
+}
+
+@media screen and (max-height: 399px ) {
+  .chat-window {
+    height: 45%;
+  }
+}
+
+@media screen and (max-height: 360px ) {
+  .chat-window {
+    height: 40%;
+  }
+}
+
+@media screen and (max-height: 359px ) {
+  .chat-window {
+    height: 40%;
+  }
+  .main-window {
+    height: 290px;
+  }
+}
+
 .chat {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: solid 1px red;
+  /* border: solid 1px red; */
   /* padding-bottom: 15%; */
 }
 
@@ -269,7 +332,7 @@ body {
 }
 
 #searchInputWraper {
-  height: 80px;
+  height: 90px;
   /* min-height: 6.25rem;
     min-width: 24.75rem; */
   border-bottom-left-radius: 1.563rem;
@@ -280,7 +343,7 @@ body {
   background-color: white;
   position: absolute;
   bottom: 0;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 /* STYLES FOR THE BUTTONS */

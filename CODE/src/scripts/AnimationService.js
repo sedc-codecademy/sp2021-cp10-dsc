@@ -62,6 +62,7 @@ const AnimationsService = {
         this.recommendedSlide.addEventListener("animationiteration", () => {
             ButtonsService.recommendationsButtons();
         })
+        UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Changes the bot personality depending on the chosen academy
