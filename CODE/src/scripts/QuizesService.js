@@ -24,7 +24,7 @@ const QuizzesService = {
                         <button id="graphicDesignQuiz" class="btn" >Graphic Design Quiz</button>
                         <button id="softwareTestingQuiz" class="btn" >Software Testing Quiz</button>`
                     ;
-            }, 1040);
+            }, 1060);
         });
     },
 

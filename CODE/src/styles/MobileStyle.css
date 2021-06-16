@@ -532,6 +532,10 @@ button:active{
     font-weight: bold;
 }
 
+#closeGame {
+    display: none;
+}
+
 .close:hover,
 .close:focus {
     color: rgb(226, 111, 111);

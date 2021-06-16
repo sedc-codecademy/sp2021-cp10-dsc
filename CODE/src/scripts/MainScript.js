@@ -23,7 +23,7 @@ chatMaximize.addEventListener("click", () => {
     if (!isChatBotOpened) {
         chatMaximize.classList.remove("jello-horizontal");
         setTimeout(() => {
-            mainWindow.style.height = "46.25rem";
+            window.innerWidth < 821 ? mainWindow.style.height = "100%": mainWindow.style.height = "80%";
             mainWindow.style.transition = "0.5s ease-in-out";
             mainWindow.style.visibility = "visible";
         }, 500);

@@ -30,7 +30,7 @@ const GamesService = {
                 <hr class="chat-js-hr">
                 <button id="kidsGames" onclick="GamesService.startGame('6')">Kids Coding Games</button>
                 `;
-            }, 1040);
+            }, 1060);
         });
     },
 
