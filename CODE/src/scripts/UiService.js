@@ -164,7 +164,7 @@ const UiService = {
         return true;
     },
 
-    //Resets chat-window if called from another viewport
+    // Resets chat-window if called from another viewport
     resetChatWindow: function(){
         this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
         AnimationsService.chatWindow.style.overflowX = "hidden";
@@ -172,6 +172,18 @@ const UiService = {
         GamesService.areGamesOpen = false;
         AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
         QuizzesService.areQuizzesOpen = false;
+    },
+
+    // Stops user from clicking buttons too fast
+    disableGamesAndQuizzesButtons: function (flag){
+        if(flag) {
+            AnimationsService.chatQuizzes.disabled = true;
+            AnimationsService.chatGames.disabled = true;
+        }
+        else {
+            AnimationsService.chatQuizzes.disabled = false;
+            AnimationsService.chatGames.disabled = false;
+        }
     }
 
 };//PROPERTIES: Chat history div, Recommended slide div

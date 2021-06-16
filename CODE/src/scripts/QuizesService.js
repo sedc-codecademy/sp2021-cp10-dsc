@@ -7,6 +7,7 @@ const QuizzesService = {
     //Prints buttons for all the quizzes
     printQuizzesMenu: async function () {
         AnimationsService.chatQuizzes.addEventListener('click', function () {
+            UiService.disableGamesAndQuizzesButtons(true);
             QuizzesService.areQuizzesOpen = UiService.changeFlag(QuizzesService.areQuizzesOpen);
 
             AnimationsService.headerAnimation();
@@ -24,7 +25,8 @@ const QuizzesService = {
                         <button id="graphicDesignQuiz" class="btn" >Graphic Design Quiz</button>
                         <button id="softwareTestingQuiz" class="btn" >Software Testing Quiz</button>`
                     ;
-            }, 1060);
+                UiService.disableGamesAndQuizzesButtons(false);
+            }, 1100);
         });
     },
 

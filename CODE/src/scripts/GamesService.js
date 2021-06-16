@@ -9,6 +9,7 @@ const GamesService = {
     printGamesMenu: function () {
 
         AnimationsService.chatGames.addEventListener('click', function () {
+            UiService.disableGamesAndQuizzesButtons(true);
             GamesService.areGamesOpen = UiService.changeFlag(GamesService.areGamesOpen);
 
             AnimationsService.headerAnimation();
@@ -30,7 +31,8 @@ const GamesService = {
                 <hr class="chat-js-hr">
                 <button id="kidsGames" onclick="GamesService.startGame('6')">Kids Coding Games</button>
                 `;
-            }, 1060);
+                UiService.disableGamesAndQuizzesButtons(false);
+            }, 1100);
         });
     },
 
