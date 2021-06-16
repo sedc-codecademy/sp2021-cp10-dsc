@@ -54,6 +54,12 @@ GamesService.closeModalGame.addEventListener("click", () => {
     GamesService.myModalGame.style.display = "none";
 });
 
+//Chat Window scroll into view on screen resize
+window.addEventListener("resize", () => {
+    ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+    UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+})
+
 DataService.getDataAsync();
 
 UiService.firstMessage();
