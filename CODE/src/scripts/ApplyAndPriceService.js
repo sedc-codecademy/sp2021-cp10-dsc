@@ -19,7 +19,9 @@ const ApplyAndPriceService = {
             this.applicationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd1YbaZKEYnKHaxDaoJMtAHNiyTceSi6I-K7KkeR3kaRk0pFw/viewform";
         }
 
+        QuizzesService.popUpGamesAndQuizzes.style.display = "none";
         ApplyAndPriceService.myModal.style.display = "block";
+        ApplyAndPriceService.popUp.style.display = "block";
         ApplyAndPriceService.popUp.innerHTML = "";
 
         ApplyAndPriceService.popUp.innerHTML +=

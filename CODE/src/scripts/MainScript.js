@@ -62,6 +62,6 @@ SearchInputService.getSearchInput();
 
 QuizzesService.printQuizzesMenu();
 
-// QuizzesService.getAllQuizzes();
+QuizzesService.getAllQuizzes();
 
 GamesService.printGamesMenu();

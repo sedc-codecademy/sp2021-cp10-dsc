@@ -131,12 +131,20 @@ const UiService = {
     toggleDisplayView: function (view1, view2) {
         view1.style.display = "none";
         view2.style.display = "flex";
+        view2.style.overflowX = "hidden";
     },
 
     // Changes the quizzes/games icon
     changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
         if (gameOrQuizFlag) {
             item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="25rem">`;
+            if(item.id === "chatQuizzes"){
+                GamesService.areGamesOpen = false;
+                AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
+            }else{
+                QuizzesService.areQuizzesOpen = false;
+                AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+            }
             this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
         } else {
             if (item.id === "chatQuizzes") {
@@ -154,6 +162,16 @@ const UiService = {
             return false;
         };
         return true;
+    },
+
+    //Resets chat-window if called from another viewport
+    resetChatWindow: function(){
+        this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        AnimationsService.chatWindow.style.overflowX = "hidden";
+        AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
+        GamesService.areGamesOpen = false;
+        AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+        QuizzesService.areQuizzesOpen = false;
     }
 
 };//PROPERTIES: Chat history div, Recommended slide div
