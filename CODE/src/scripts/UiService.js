@@ -137,18 +137,18 @@ const UiService = {
     // Changes the quizzes/games icon
     changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
         if (gameOrQuizFlag) {
-            item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="22rem">`;
+            item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
             if(item.id === "chatQuizzes"){
                 GamesService.areGamesOpen = false;
                 AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
             }else{
                 QuizzesService.areQuizzesOpen = false;
-                AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+                AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
             }
             this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
         } else {
             if (item.id === "chatQuizzes") {
-                item.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+                item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
             } else {
                 item.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
             };
@@ -170,7 +170,7 @@ const UiService = {
         AnimationsService.chatWindow.style.overflowX = "hidden";
         AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
         GamesService.areGamesOpen = false;
-        AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+        AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
         QuizzesService.areQuizzesOpen = false;
     },
 

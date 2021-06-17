@@ -45,14 +45,13 @@ const AnimationsService = {
             this.chatQuizzes.addEventListener("animationend", () => {
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
-                this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+                this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
             });
         }
     },
 
     //Animates the recommendations slide
     recommendedBtnsAnimations: function () {
-        // screen.width < 751 ? AnimationsService.chatWindow.style.height = "82%" : AnimationsService.chatWindow.style.height = "68%";
         UiService.chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
         ButtonsService.recommendationsButtons();
@@ -121,7 +120,7 @@ const AnimationsService = {
 
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
-                this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+                this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
 
                 this.avatarImgDiv.style.marginTop = "-1.25rem";
                 this.avatarImgDiv.style.marginLeft = "1.25rem";
