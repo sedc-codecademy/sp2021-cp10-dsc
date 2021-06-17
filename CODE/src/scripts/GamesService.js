@@ -7,16 +7,20 @@ const GamesService = {
 
     //Prints buttons for all the games
     printGamesMenu: function () {
-
         AnimationsService.chatGames.addEventListener('click', function () {
             UiService.disableGamesAndQuizzesButtons(true);
             GamesService.areGamesOpen = UiService.changeFlag(GamesService.areGamesOpen);
 
-            AnimationsService.headerAnimation();
-            setTimeout(() => {
+            if(!AnimationsService.isChatInitialized){
+                AnimationsService.headerAnimation();
+                AnimationsService.chatGames.addEventListener("animationend", function(){
+                    UiService.changeQuizzesGamesIconAndFunctionality(GamesService.areGamesOpen, AnimationsService.chatGames, QuizzesService.gamesAndQuizzesWindow);
+                });
+            }else{
                 UiService.changeQuizzesGamesIconAndFunctionality(GamesService.areGamesOpen, AnimationsService.chatGames, QuizzesService.gamesAndQuizzesWindow);
+            }
 
-                QuizzesService.gamesAndQuizzesWindow.innerHTML = "";
+            QuizzesService.gamesAndQuizzesWindow.innerHTML = "";
 
                 QuizzesService.gamesAndQuizzesWindow.innerHTML += `<p id="gamesMessage">Choose a Game</p>
                 <hr class="chat-js-hr">`;
@@ -32,7 +36,6 @@ const GamesService = {
                 <button id="kidsGames" onclick="GamesService.startGame('6')">Kids Coding Games</button>
                 `;
                 UiService.disableGamesAndQuizzesButtons(false);
-            }, 1100);
         });
     },
 

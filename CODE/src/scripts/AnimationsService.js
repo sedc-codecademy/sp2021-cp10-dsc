@@ -21,33 +21,32 @@ const AnimationsService = {
             this.chatName.addEventListener("animationend", () => {
                 this.chatName.style.opacity = "1";
             });
-        }else{
+        }else {
             this.avatarImgDiv.classList.add("avatarAnimation");
 
-        this.avatarImgDiv.addEventListener("animationend", () => {
-            this.avatarImgDiv.style.marginTop = "-1.25rem";
-            this.avatarImgDiv.style.marginLeft = "1.25rem";
-        });
+            this.avatarImgDiv.addEventListener("animationend", () => {
+                this.avatarImgDiv.style.marginTop = "-1.25rem";
+                this.avatarImgDiv.style.marginLeft = "1.25rem";
+            });
 
-        this.chatName.classList.add("fadeIn-avatarName");
-        this.chatName.addEventListener("animationend", () => {
-            this.chatName.style.opacity = "1";
-        });
+            this.chatName.classList.add("fadeIn-avatarName");
+            this.chatName.addEventListener("animationend", () => {
+                this.chatName.style.opacity = "1";
+            });
 
-        this.chatGames.classList.add("games-quizzesAnimation");
-        this.avatarImgDiv.addEventListener("animationend", () => {
-            this.chatGames.classList.remove("chat-games");
-            this.chatGames.classList.add("chat-games-icon");
-            this.chatGames.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
-        });
+            this.chatGames.classList.add("games-quizzesAnimation");
+            this.chatGames.addEventListener("animationend", () => {
+                this.chatGames.classList.remove("chat-games");
+                this.chatGames.classList.add("chat-games-icon");
+                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
+            });
 
-        this.chatQuizzes.classList.add("games-quizzesAnimation");
-        this.chatQuizzes.addEventListener("animationend", () => {
-            this.chatQuizzes.classList.remove("chat-quizzes");
-            this.chatQuizzes.classList.add("chat-quizzes-icon");
-            this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
-
-        });
+            this.chatQuizzes.classList.add("games-quizzesAnimation");
+            this.chatQuizzes.addEventListener("animationend", () => {
+                this.chatQuizzes.classList.remove("chat-quizzes");
+                this.chatQuizzes.classList.add("chat-quizzes-icon");
+                this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.png" height="25rem">`;
+            });
         }
     },
 

@@ -10,23 +10,27 @@ const QuizzesService = {
             UiService.disableGamesAndQuizzesButtons(true);
             QuizzesService.areQuizzesOpen = UiService.changeFlag(QuizzesService.areQuizzesOpen);
 
-            AnimationsService.headerAnimation();
-            setTimeout(() => {
+            if(!AnimationsService.isChatInitialized){
+                AnimationsService.headerAnimation();
+                AnimationsService.chatQuizzes.addEventListener("animationend", function(){
+                    UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
+                });
+            }else{
                 UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
+            }
 
-                QuizzesService.gamesAndQuizzesWindow.innerHTML = "";
+            QuizzesService.gamesAndQuizzesWindow.innerHTML = "";
 
-                QuizzesService.gamesAndQuizzesWindow.innerHTML += `<p id="quizesMessage">Choose a Quiz</p> <hr class="chat-js-hr">`;
+            QuizzesService.gamesAndQuizzesWindow.innerHTML += `<p id="quizesMessage">Choose a Quiz</p> <hr class="chat-js-hr">`;
 
-                QuizzesService.gamesAndQuizzesWindow.innerHTML +=
-                    `<button id="webDevelopmentQuiz" class="btn">Web Development Quiz</button>
-                        <button id="webDesignQuiz" class="btn" >Web Design Quiz</button>
-                        <button id="gameDesignQuiz" class="btn" >Game Design Quiz</button>
-                        <button id="graphicDesignQuiz" class="btn" >Graphic Design Quiz</button>
-                        <button id="softwareTestingQuiz" class="btn" >Software Testing Quiz</button>`
-                    ;
-                UiService.disableGamesAndQuizzesButtons(false);
-            }, 1100);
+            QuizzesService.gamesAndQuizzesWindow.innerHTML +=
+                `<button id="webDevelopmentQuiz" class="btn">Web Development Quiz</button>
+                    <button id="webDesignQuiz" class="btn" >Web Design Quiz</button>
+                    <button id="gameDesignQuiz" class="btn" >Game Design Quiz</button>
+                    <button id="graphicDesignQuiz" class="btn" >Graphic Design Quiz</button>
+                    <button id="softwareTestingQuiz" class="btn" >Software Testing Quiz</button>`
+                ;
+            UiService.disableGamesAndQuizzesButtons(false);
         });
         QuizzesService.getAllQuizzes();
     },
