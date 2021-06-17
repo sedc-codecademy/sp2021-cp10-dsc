@@ -10,12 +10,12 @@ const QuizzesService = {
             UiService.disableGamesAndQuizzesButtons(true);
             QuizzesService.areQuizzesOpen = UiService.changeFlag(QuizzesService.areQuizzesOpen);
 
-            if(!AnimationsService.isChatInitialized){
+            if (!AnimationsService.isChatInitialized) {
                 AnimationsService.headerAnimation();
-                AnimationsService.chatQuizzes.addEventListener("animationend", function(){
+                AnimationsService.chatQuizzes.addEventListener("animationend", function () {
                     UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
                 });
-            }else{
+            } else {
                 UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
             }
 
@@ -24,11 +24,21 @@ const QuizzesService = {
             QuizzesService.gamesAndQuizzesWindow.innerHTML += `<p id="quizesMessage">Choose a Quiz</p> <hr class="chat-js-hr">`;
 
             QuizzesService.gamesAndQuizzesWindow.innerHTML +=
-                `<button id="webDevelopmentQuiz" class="btn">Web Development Quiz</button>
-                    <button id="webDesignQuiz" class="btn" >Web Design Quiz</button>
-                    <button id="gameDesignQuiz" class="btn" >Game Design Quiz</button>
-                    <button id="graphicDesignQuiz" class="btn" >Graphic Design Quiz</button>
-                    <button id="softwareTestingQuiz" class="btn" >Software Testing Quiz</button>`
+                `
+                <div id="twoRowBtnDiv" class="twoRowBtnFlex">
+
+                <button id="webDevelopmentQuiz" class="btnCard"><div class="btnCardName">Web Development</div><div class="btnCardDescription">Description</div></button>
+
+                <button id="webDesignQuiz" class="btnCard"><div class="btnCardName">Web Design</div><div class="btnCardDescription">Description</div></button>
+
+                <button id="gameDesignQuiz" class="btnCard"><div class="btnCardName">Game Design</div><div class="btnCardDescription">Description</div></button>
+
+                <button id="graphicDesignQuiz" class="btnCard"><div class="btnCardName">Graphic Design</div><div class="btnCardDescription">Description</div></button>
+
+                <button id="softwareTestingQuiz" class="btnCard"><div class="btnCardName">Software Testing</div><div class="btnCardDescription">Description</div></button>
+
+                </div>
+                `
                 ;
             UiService.disableGamesAndQuizzesButtons(false);
         });
@@ -39,7 +49,7 @@ const QuizzesService = {
     getAllQuizzes: function () {
 
         QuizzesService.gamesAndQuizzesWindow.addEventListener('click', function (event) {
-            if (event.target.matches(".btn")) {
+            if (event.target.matches(".btnCard")) {
                 let quizName = event.target.id;
                 ApplyAndPriceService.myModal.style.display = "block";
                 ApplyAndPriceService.popUp.style.display = "none";

@@ -1,9 +1,10 @@
 /* STYLES FOR THE WHOLE DOCUMENT */
+
 *, ::after, ::before {
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -119,61 +120,70 @@ body {
   position: relative;
 }
 
-@media screen and (max-height: 672px ) {
+.twoRowBtnFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 5%;
+  height: 80%;
+  width: 100%;
+}
+
+@media screen and (max-height: 672px) {
   .chat-window {
     height: 68%;
   }
 }
 
-@media screen and (max-height: 633px ) {
+@media screen and (max-height: 633px) {
   .chat-window {
     height: 66%;
   }
 }
 
-@media screen and (max-height: 594px ) {
+@media screen and (max-height: 594px) {
   .chat-window {
     height: 64%;
   }
 }
 
-@media screen and (max-height: 555px ) {
+@media screen and (max-height: 555px) {
   .chat-window {
     height: 62%;
   }
 }
 
-@media screen and (max-height: 516px ) {
+@media screen and (max-height: 516px) {
   .chat-window {
     height: 60%;
   }
 }
 
-@media screen and (max-height: 477px ) {
+@media screen and (max-height: 477px) {
   .chat-window {
     height: 55%;
   }
 }
 
-@media screen and (max-height: 438px ) {
+@media screen and (max-height: 438px) {
   .chat-window {
     height: 50%;
   }
 }
 
-@media screen and (max-height: 399px ) {
+@media screen and (max-height: 399px) {
   .chat-window {
     height: 45%;
   }
 }
 
-@media screen and (max-height: 360px ) {
+@media screen and (max-height: 360px) {
   .chat-window {
     height: 40%;
   }
 }
 
-@media screen and (max-height: 359px ) {
+@media screen and (max-height: 359px) {
   .chat-window {
     height: 40%;
   }
@@ -250,45 +260,45 @@ body {
 /* STYLES FOR GAMES ICON */
 
 .chat-games {
-    width: 5rem;
-    height: 2.188rem;
-    background-color: var(--dark-blue);
-    position: absolute;
-    margin: 1.25rem 0 0 3.563rem;
-    border-radius: 0.625rem;
-    border: 0.063rem solid var(--light-blue);
-    color: var(--light-blue);
+  width: 5rem;
+  height: 2.188rem;
+  background-color: var(--dark-blue);
+  position: absolute;
+  margin: 1.25rem 0 0 3.563rem;
+  border-radius: 0.625rem;
+  border: 0.063rem solid var(--light-blue);
+  color: var(--light-blue);
 }
 
 .chat-games-icon {
-    position: absolute;
-    width: 2.25rem;
-    height: 1.875rem;
-    margin: 0.938rem 0 0 16.563rem;
-    border: none;
-    background: transparent;
+  position: absolute;
+  width: 2.25rem;
+  height: 1.875rem;
+  margin: 0.938rem 0 0 16.563rem;
+  border: none;
+  background: transparent;
 }
 
 /* STYLES FOR QUIZZES ICON */
 
 .chat-quizzes {
-    width: 5rem;
-    height: 2.188rem;
-    background-color: #002c5f;
-    position: absolute;
-    margin: 1.25rem 0 0 16.25rem;
-    border-radius: 0.625rem;
-    border: 0.063rem solid var(--light-blue);
-    color: var(--light-blue);
+  width: 5rem;
+  height: 2.188rem;
+  background-color: #002c5f;
+  position: absolute;
+  margin: 1.25rem 0 0 16.25rem;
+  border-radius: 0.625rem;
+  border: 0.063rem solid var(--light-blue);
+  color: var(--light-blue);
 }
 
 .chat-quizzes-icon {
-    position: absolute;
-    margin: 1.063rem 0 0 18.75rem;
-    width: 2.75rem;
-    height: 1.875rem;
-    border: none;
-    background: transparent;
+  position: absolute;
+  margin: 1.063rem 0 0 18.75rem;
+  width: 2.75rem;
+  height: 1.875rem;
+  border: none;
+  background: transparent;
 }
 
 /* STYLES FOR USER INPUT */
@@ -432,6 +442,43 @@ body {
   font-size: 0.9rem;
 }
 
+.btnCard {
+  width: 40%;
+  height: 6rem;
+  border-radius: 0.625rem;
+  border: none;
+  /* border-top: 0.313rem solid var(--dark-blue); */
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: var(--dark-blue);
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btnCardName {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background-color: #99bddd;
+  font-weight: bold;
+  padding: 0.5rem 0.8rem;
+  font-size: 15px;
+  text-align: left;
+  float: left;
+  width: 100%;
+  border-top-left-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
+}
+
+.btnCardDescription {
+  color: gray;
+  overflow-y: auto;
+  font-size: 12px;
+  padding: 0.5rem 0.8rem 0.2rem 0.8rem;
+  width: 100%;
+  text-align: left;
+}
+
 button:hover {
   cursor: pointer;
   transform: scale(1.08);
@@ -444,6 +491,7 @@ button:hover {
 .games-quizzesAnimation {
   animation: games-quizzesKeyFrame 1s ease-in-out 1;
 }
+
 @keyframes games-quizzesKeyFrame {
   from {
     opacity: 0;
@@ -458,6 +506,7 @@ button:hover {
 .avatarAnimation {
   animation: avatarKeyFrame 1s ease-in-out 1;
 }
+
 @keyframes avatarKeyFrame {
   0% {
     transform: translate(0rem, 0rem);
@@ -471,9 +520,11 @@ button:hover {
 }
 
 /* AVATAR NAME */
+
 .fadeIn-avatarName {
   animation: fadeInAvatarNameKeyFrame 1s ease-in-out 0.5s 1;
 }
+
 @keyframes fadeInAvatarNameKeyFrame {
   from {
     opacity: 0;
@@ -484,6 +535,7 @@ button:hover {
 }
 
 /* LOADER ANIMATION */
+
 .typing .dot {
   animation: mercuryTypingAnimation 1.5s infinite ease-in-out;
   background-color: #78b6fd;
@@ -494,18 +546,23 @@ button:hover {
   width: 0.438rem;
   display: inline-block;
 }
+
 .typing .dot:nth-child(1) {
   animation-delay: 200ms;
 }
+
 .typing .dot:nth-child(2) {
   animation-delay: 300ms;
 }
+
 .typing .dot:nth-child(3) {
   animation-delay: 400ms;
 }
+
 .typing .dot:last-child {
   margin-right: 0;
 }
+
 @keyframes mercuryTypingAnimation {
   0% {
     transform: translateY(0rem);
@@ -522,12 +579,15 @@ button:hover {
 }
 
 /* RECOMMENDED SLIDER */
+
 .slider {
   animation: sliderKeyFrame linear 8s infinite;
 }
+
 .slider:hover {
   animation-play-state: paused;
 }
+
 @keyframes sliderKeyFrame {
   0% {
     transform: translate(-25rem, 0rem);
@@ -548,9 +608,11 @@ button:hover {
 }
 
 /* ANIMATION FOR BUBBLE WOBBLE */
+
 .jello-horizontal {
   animation: jello-horizontal 4s linear infinite 1s;
 }
+
 @keyframes jello-horizontal {
   0% {
     transform: scale3d(1, 1, 1);
@@ -625,17 +687,18 @@ button:hover {
 }
 
 /* LOADER STYLE */
+
 #loader {
-    display: none;
+  display: none;
 }
 
 .loader-bubble {
-    background-color: var(--light-blue);
-    padding: 0.75rem 1.375rem;
-    border-radius: 1.25rem;
-    border-bottom-left-radius: 0.125rem;
-    display: inline-block;
-    margin-left: 0.938rem;
+  background-color: var(--light-blue);
+  padding: 0.75rem 1.375rem;
+  border-radius: 1.25rem;
+  border-bottom-left-radius: 0.125rem;
+  display: inline-block;
+  margin-left: 0.938rem;
 }
 
 .typing {
@@ -667,18 +730,18 @@ button:hover {
 /* POPUP MODAL STYLES */
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 5%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 5%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -700,278 +763,210 @@ button:hover {
 }
 
 .close:hover, .close:focus {
-    color: rgb(226, 111, 111);
-    text-decoration: none;
-    cursor: pointer;
+  color: rgb(226, 111, 111);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .popUp {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 97%;
-    height: 99%;
-    padding-bottom: 10%;
-    overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 97%;
+  height: 99%;
+  padding-bottom: 10%;
+  overflow-y: auto;
 }
 
 /* QUIZZES STYLES */
+
 #quizesMessage {
-    width: 14rem;
-    padding-top: 3rem;
-    margin: 0 auto 2rem auto;
-    color: var(--dark-blue);
-    font-family: 'DIN Pro Bold', sans-serif;
-    font-size: 1.563rem;
-    text-align: center;
-}
-
-#webDevelopmentQuiz {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #a97060;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #a97060;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#webDesignQuiz {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #7f60a9;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #7f60a9;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#gameDesignQuiz {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #60a9a9;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #60a9a9;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#graphicDesignQuiz {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #a9608b;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #a9608b;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#softwareTestingQuiz {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #8ba960;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #8ba960;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+  width: 14rem;
+  padding-top: 3rem;
+  margin: 0 auto 2rem auto;
+  color: var(--dark-blue);
+  font-family: 'DIN Pro Bold', sans-serif;
+  font-size: 1.563rem;
+  text-align: center;
 }
 
 .chat-window {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quizQuestion {
-    padding: 0.313rem;
+  padding: 0.313rem;
 }
 
 .quiz-hr {
-    background-color: #c5cfe900;
-    margin: 0 auto 0.938rem auto;
-    padding: 0.094rem;
-    border: none;
+  background-color: #c5cfe900;
+  margin: 0 auto 0.938rem auto;
+  padding: 0.094rem;
+  border: none;
 }
 
 #questionsForm {
-    display: none;
-    padding-left: 0.938rem;
-    overflow-y: auto;
-    overflow-x: hidden;
+  display: none;
+  padding-left: 0.938rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .form-check:hover {
-    background-color: #c5cfe9;
-    border-radius: 5px;
+  background-color: #c5cfe9;
+  border-radius: 5px;
 }
 
 #submitBtn {
-    width: 6rem;
-    height: 1.875rem;
-    border-radius: 0.313rem;
-    border: none;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: var(--dark-blue);
-    color: #ffffff;
-    font-family: 'DIN Pro Light', sans-serif;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
+  width: 6rem;
+  height: 1.875rem;
+  border-radius: 0.313rem;
+  border: none;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: var(--dark-blue);
+  color: #ffffff;
+  font-family: 'DIN Pro Light', sans-serif;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 #submitBtn:hover {
-    cursor: pointer;
-    transform: scale(1.08);
+  cursor: pointer;
+  transform: scale(1.08);
 }
 
 #quizResult {
-    font-size: 1.3rem;
-    margin-top: 10rem;
+  font-size: 1.3rem;
+  margin-top: 10rem;
 }
 
 #quizSpan {
-    font-size: 1.563rem;
-    font-weight: bold;
+  font-size: 1.563rem;
+  font-weight: bold;
 }
 
 /* GAMES STYLES */
 
 #gamesMessage {
-    width: 14rem;
-    padding-top: 3rem;
-    margin: 0 auto 2rem auto;
-    color: var(--dark-blue);
-    font-family: 'DIN Pro Bold', sans-serif;
-    font-size: 1.563rem;
-    text-align: center;
+  width: 14rem;
+  padding-top: 3rem;
+  margin: 0 auto 2rem auto;
+  color: var(--dark-blue);
+  font-family: 'DIN Pro Bold', sans-serif;
+  font-size: 1.563rem;
+  text-align: center;
 }
 
 #clashOfCode {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #7f60a9;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #7f60a9;
-    margin-left: auto;
-    margin-right: auto;
+  width: 12rem;
+  height: 3.125rem;
+  border-radius: 0.625rem;
+  border: none;
+  border-top: 0.313rem solid #7f60a9;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: #7f60a9;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #cssDinner {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #a9608b;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #a9608b;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+  width: 12rem;
+  height: 3.125rem;
+  border-radius: 0.625rem;
+  border: none;
+  border-top: 0.313rem solid #a9608b;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: #a9608b;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #flexboxFroggy {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #8ba960;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #758f52;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+  width: 12rem;
+  height: 3.125rem;
+  border-radius: 0.625rem;
+  border: none;
+  border-top: 0.313rem solid #8ba960;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: #758f52;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #vimAdventures {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #60a9a9;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #60a9a9;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+  width: 12rem;
+  height: 3.125rem;
+  border-radius: 0.625rem;
+  border: none;
+  border-top: 0.313rem solid #60a9a9;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: #60a9a9;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #elevatorSaga {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #a97060;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #8d5d50;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+  width: 12rem;
+  height: 3.125rem;
+  border-radius: 0.625rem;
+  border: none;
+  border-top: 0.313rem solid #a97060;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: #8d5d50;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #kidsGames {
-    width: 12rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
-    border-top: 0.313rem solid #ebd13e;
-    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-    background-color: #ffffff;
-    color: #72651c;
-    margin-left: auto;
-    margin-right: auto;
+  width: 12rem;
+  height: 3.125rem;
+  border-radius: 0.625rem;
+  border: none;
+  border-top: 0.313rem solid #ebd13e;
+  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  background-color: #ffffff;
+  color: #72651c;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .modal-games {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 5%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 5%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content-games {
-    background-color: #ebebeb;
-    border-radius: 0.625rem;
-    margin: auto;
-    padding: 2%;
-    border: 1px solid (var(--dark-blue));
-    width: 90%;
-    height: 80%;
-    overflow: hidden;
+  background-color: #ebebeb;
+  border-radius: 0.625rem;
+  margin: auto;
+  padding: 2%;
+  border: 1px solid (var(--dark-blue));
+  width: 90%;
+  height: 80%;
+  overflow: hidden;
 }
