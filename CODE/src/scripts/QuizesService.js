@@ -27,15 +27,15 @@ const QuizzesService = {
                 `
                 <div id="twoRowBtnDiv" class="twoRowBtnFlex">
 
-                <button id="webDevelopmentQuiz" class="btnCard"><div class="btnCardName">Web Development</div><div class="btnCardDescription">Description</div></button>
+                <button id="webDevelopmentQuiz" class="btnCard btn"><div class="btnCardName btn" id="webDevelopmentQuiz">Web Development</div><div class="btnCardDescription btn" id="webDevelopmentQuiz">Description</div></button>
 
-                <button id="webDesignQuiz" class="btnCard"><div class="btnCardName">Web Design</div><div class="btnCardDescription">Description</div></button>
+                <button id="webDesignQuiz" class="btnCard btn"><div class="btnCardName btn" id="webDesignQuiz">Web Design</div><div class="btnCardDescription btn" id="webDesignQuiz">Description</div></button>
 
-                <button id="gameDesignQuiz" class="btnCard"><div class="btnCardName">Game Design</div><div class="btnCardDescription">Description</div></button>
+                <button id="gameDesignQuiz" class="btnCard btn"><div class="btnCardName btn" id="gameDesignQuiz">Game Design</div><div class="btnCardDescription btn" id="gameDesignQuiz">Description</div></button>
 
-                <button id="graphicDesignQuiz" class="btnCard"><div class="btnCardName">Graphic Design</div><div class="btnCardDescription">Description</div></button>
+                <button id="graphicDesignQuiz" class="btnCard btn"><div class="btnCardName btn" id="graphicDesignQuiz">Graphic Design</div><div class="btnCardDescription btn" id="graphicDesignQuiz">Description</div></button>
 
-                <button id="softwareTestingQuiz" class="btnCard"><div class="btnCardName">Software Testing</div><div class="btnCardDescription">Description</div></button>
+                <button id="softwareTestingQuiz" class="btnCard btn"><div class="btnCardName btn" id="softwareTestingQuiz">Software Testing</div><div class="btnCardDescription btn" id="softwareTestingQuiz">Description</div></button>
 
                 </div>
                 `
@@ -49,7 +49,7 @@ const QuizzesService = {
     getAllQuizzes: function () {
 
         QuizzesService.gamesAndQuizzesWindow.addEventListener('click', function (event) {
-            if (event.target.matches(".btnCard")) {
+            if (event.target.matches(".btn")) {
                 let quizName = event.target.id;
                 ApplyAndPriceService.myModal.style.display = "block";
                 ApplyAndPriceService.popUp.style.display = "none";

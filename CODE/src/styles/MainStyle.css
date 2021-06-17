@@ -76,7 +76,7 @@ body {
 }
 
 .chat-minimize {
-  margin: 1.125rem 0 0 21.875rem;
+  margin: 1.25rem 0 0 21.875rem;
   background-image: url(../img-avatars/minimize.png);
   background-size: cover;
   position: absolute;
@@ -125,7 +125,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding-top: 5%;
-  height: 80%;
+  padding-bottom: 10%;
+  height: 85%;
   width: 100%;
 }
 
@@ -274,7 +275,7 @@ body {
   position: absolute;
   width: 2.25rem;
   height: 1.875rem;
-  margin: 0.938rem 0 0 16.563rem;
+  margin: 1.4rem 0 0 17rem;
   border: none;
   background: transparent;
 }
@@ -294,7 +295,7 @@ body {
 
 .chat-quizzes-icon {
   position: absolute;
-  margin: 1.063rem 0 0 18.75rem;
+  margin: 1.35rem 0 0 19.20rem;
   width: 2.75rem;
   height: 1.875rem;
   border: none;
@@ -457,8 +458,8 @@ body {
 }
 
 .btnCardName {
-  color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #ffffff;
+  text-shadow: -0.5px -0.5px 0 var(--dark-blue), 0.5px -0.5px 0 var(--dark-blue), -0.5px 0.5px 0 var(--dark-blue), 0.5px 0.5px 0 var(--dark-blue);
   background-color: #99bddd;
   font-weight: bold;
   padding: 0.5rem 0.8rem;
