@@ -56,6 +56,7 @@ GamesService.closeModalGame.addEventListener("click", () => {
 
 //Chat Window scroll into view on screen resize
 window.addEventListener("resize", () => {
+    AnimationsService.onResizeGamesAndQuizzes();
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 })
@@ -67,7 +68,5 @@ UiService.firstMessage();
 SearchInputService.getSearchInput();
 
 QuizzesService.printQuizzesMenu();
-
-QuizzesService.getAllQuizzes();
 
 GamesService.printGamesMenu();

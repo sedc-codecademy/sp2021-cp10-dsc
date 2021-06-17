@@ -28,6 +28,7 @@ const QuizzesService = {
                 UiService.disableGamesAndQuizzesButtons(false);
             }, 1100);
         });
+        QuizzesService.getAllQuizzes();
     },
 
     //Get one quiz from json, by id
