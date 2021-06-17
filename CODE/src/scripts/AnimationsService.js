@@ -38,7 +38,7 @@ const AnimationsService = {
             this.chatGames.addEventListener("animationend", () => {
                 this.chatGames.classList.remove("chat-games");
                 this.chatGames.classList.add("chat-games-icon");
-                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
+                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
             });
 
             this.chatQuizzes.classList.add("games-quizzesAnimation");
@@ -117,7 +117,7 @@ const AnimationsService = {
 
                 this.chatGames.classList.remove("chat-games");
                 this.chatGames.classList.add("chat-games-icon");
-                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.png" height="25rem">`;
+                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
 
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
