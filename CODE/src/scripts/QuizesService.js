@@ -1,7 +1,7 @@
 const QuizzesService = {
     form: document.querySelector("#questionsForm"),
     gamesAndQuizzesWindow: document.getElementById("gamesAndQuizzesWindow"),
-    popUpGamesAndQuizzes: document.getElementById("popUpGamesAndQuizzes"),
+    popUpQuizzes: document.getElementById("popUpQuizzes"),
     areQuizzesOpen: false,
 
     //Prints buttons for all the quizzes
@@ -51,10 +51,7 @@ const QuizzesService = {
         QuizzesService.gamesAndQuizzesWindow.addEventListener('click', function (event) {
             if (event.target.matches(".btn")) {
                 let quizName = event.target.id;
-                ApplyAndPriceService.myModal.style.display = "block";
-                ApplyAndPriceService.popUp.style.display = "none";
-                QuizzesService.popUpGamesAndQuizzes.style.display = "block";
-                QuizzesService.form.style.display = "block";
+                UiService.displayModalWindow("quizzes");
 
                 DataService.fetchQuizzes()
                     .then(() => {

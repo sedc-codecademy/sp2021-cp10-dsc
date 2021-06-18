@@ -1,6 +1,7 @@
 const UiService = {
     chatHistory: document.getElementById("chatHistory"),
     recommendedDiv: document.getElementById("recommendedDiv"),
+    modalContent: document.getElementById("modalContent"),
 
     //Prints the very first message for the user
     firstMessage: function () {
@@ -183,6 +184,35 @@ const UiService = {
         else {
             AnimationsService.chatQuizzes.disabled = false;
             AnimationsService.chatGames.disabled = false;
+        }
+    },
+
+    //Changes modal style to block and sets height and width
+    displayModalWindow: function(flag){
+        ApplyAndPriceService.myModal.style.display = "block";
+        switch (flag) {
+            case "games":
+                this.modalContent.style.height = "80%";
+                this.modalContent.style.width = "90%";
+                QuizzesService.popUpQuizzes.style.display = "none";
+                QuizzesService.form.style.display = "none";
+                ApplyAndPriceService.popUp.style.display = "block";
+                break;
+            case "quizzes":
+                this.modalContent.style.height = "70%";
+                this.modalContent.style.width = "35%";
+                ApplyAndPriceService.popUp.style.display = "none";
+                QuizzesService.popUpQuizzes.style.display = "block";
+                QuizzesService.form.style.display = "block";
+                break;
+            case "apply":
+            case "price":
+                this.modalContent.style.height = "70%";
+                this.modalContent.style.width = "35%";
+                QuizzesService.popUpQuizzes.style.display = "none";
+                QuizzesService.form.style.display = "none";
+                ApplyAndPriceService.popUp.style.display = "block";
+                break;
         }
     }
 

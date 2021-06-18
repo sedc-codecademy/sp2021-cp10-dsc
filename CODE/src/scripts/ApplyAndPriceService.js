@@ -19,27 +19,22 @@ const ApplyAndPriceService = {
             this.applicationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd1YbaZKEYnKHaxDaoJMtAHNiyTceSi6I-K7KkeR3kaRk0pFw/viewform";
         }
 
-        QuizzesService.popUpGamesAndQuizzes.style.display = "none";
-        ApplyAndPriceService.myModal.style.display = "block";
-        ApplyAndPriceService.popUp.style.display = "block";
-        ApplyAndPriceService.popUp.innerHTML = "";
+        UiService.displayModalWindow("apply");
 
-        ApplyAndPriceService.popUp.innerHTML +=
+        ApplyAndPriceService.popUp.innerHTML =
         `<iframe src="${ApplyAndPriceService.applicationUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
     },
 
     //Gets  the needed price table
-    getPriceTable : function(branch, elementName){
+    getPriceTable : function(branch){
         if(branch === "Academies"){
             ApplyAndPriceService.priceUrl = "https://dejan-stojkoski.github.io/AcademiesPrices//";
         }else if(branch === "Courses"){
             ApplyAndPriceService.priceUrl = "https://dejan-stojkoski.github.io/CoursesPrices/";
         }
 
-        ApplyAndPriceService.myModal.style.display = "block";
-        ApplyAndPriceService.popUp.innerHTML = "";
-
-        ApplyAndPriceService.popUp.innerHTML +=
+        UiService.displayModalWindow("price");
+        ApplyAndPriceService.popUp.innerHTML =
         `<iframe src="${ApplyAndPriceService.priceUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
     }
 };

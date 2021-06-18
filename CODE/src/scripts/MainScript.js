@@ -44,14 +44,6 @@ window.addEventListener("click", (event) => {
     if (event.target == ApplyAndPriceService.myModal) {
         ApplyAndPriceService.myModal.style.display = "none";
     }
-    if (event.target === GamesService.myModalGame) {
-        GamesService.myModalGame.style.display = "none";
-    }
-});
-
-//GameModal close on button
-GamesService.closeModalGame.addEventListener("click", () => {
-    GamesService.myModalGame.style.display = "none";
 });
 
 //Chat Window scroll into view on screen resize
