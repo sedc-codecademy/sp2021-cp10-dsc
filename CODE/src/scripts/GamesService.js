@@ -27,13 +27,20 @@ const GamesService = {
 
                 QuizzesService.gamesAndQuizzesWindow.innerHTML +=
                     `
-                <button id="clashOfCode" onclick="GamesService.startGame('1')">Clash of Code</button>
-                <button id="cssDinner" onclick="GamesService.startGame('2')">CSS Dinner</button>
-                <button id="flexboxFroggy" onclick="GamesService.startGame('3')">FlexBox Froggy</button>
-                <button id="vimAdventures" onclick="GamesService.startGame('4')">VIM Adventures</button>
-                <button id="elevatorSaga" onclick="GamesService.startGame('5')">Elevator Saga</button>
-                <hr class="chat-js-hr">
-                <button id="kidsGames" onclick="GamesService.startGame('6')">Kids Coding Games</button>
+                    <div id="twoRowBtnDiv" class="twoRowBtnFlex">
+
+                <button id="clashOfCode" class="btnCard btn" onclick="GamesService.startGame('1')"><div class="btnCardName btn">Clash of Code</div><div class="btnCardDescription btn">Description</div></button>
+
+                <button id="cssDinner" class="btnCard btn" onclick="GamesService.startGame('2')"><div class="btnCardName btn">CSS Dinner</div><div class="btnCardDescription btn">Description</div></button>
+
+                <button id="flexboxFroggy" class="btnCard btn" onclick="GamesService.startGame('3')"><div class="btnCardName btn">FlexBox Froggy</div><div class="btnCardDescription btn">Description</div></button>
+
+                <button id="vimAdventures" class="btnCard btn" onclick="GamesService.startGame('4')"><div class="btnCardName btn">VIM Adventures</div><div class="btnCardDescription btn">Description</div></button>
+
+                <button id="elevatorSaga" class="btnCard btn" onclick="GamesService.startGame('5')"><div class="btnCardName btn">Elevator Saga</div><div class="btnCardDescription btn">Description</div></button>
+
+                <button id="kidsGames" class="btnCard btn" onclick="GamesService.startGame('6')"><div class="btnCardName btn">Kids Coding Games</div><div class="btnCardDescription btn">Description</div></button>
+                </div>
                 `;
                 UiService.disableGamesAndQuizzesButtons(false);
         });

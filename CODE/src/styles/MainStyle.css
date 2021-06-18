@@ -444,7 +444,7 @@ body {
 }
 
 .btnCard {
-  width: 40%;
+  width: 45%;
   height: 6rem;
   border-radius: 0.625rem;
   border: none;
@@ -452,6 +452,7 @@ body {
   box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
   background-color: #ffffff;
   color: var(--dark-blue);
+  border: 1.5px solid #99bddd;
   margin-bottom: 5%;
   display: flex;
   flex-direction: column;
@@ -861,89 +862,6 @@ button:hover {
   font-family: 'DIN Pro Bold', sans-serif;
   font-size: 1.563rem;
   text-align: center;
-}
-
-#clashOfCode {
-  width: 12rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
-  border-top: 0.313rem solid #7f60a9;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #7f60a9;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#cssDinner {
-  width: 12rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
-  border-top: 0.313rem solid #a9608b;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #a9608b;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#flexboxFroggy {
-  width: 12rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
-  border-top: 0.313rem solid #8ba960;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #758f52;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#vimAdventures {
-  width: 12rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
-  border-top: 0.313rem solid #60a9a9;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #60a9a9;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#elevatorSaga {
-  width: 12rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
-  border-top: 0.313rem solid #a97060;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #8d5d50;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#kidsGames {
-  width: 12rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
-  border-top: 0.313rem solid #ebd13e;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #72651c;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .modal-games {
