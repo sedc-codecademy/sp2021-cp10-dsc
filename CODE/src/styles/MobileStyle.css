@@ -71,7 +71,7 @@ body {
 }
 
 .chat-minimize {
-    background-image: url(../img-avatars/minimize.png);
+    background-image: url(../img-avatars/minimize.svg);
     background-size: cover;
     position: absolute;
     top: 0;
@@ -218,6 +218,7 @@ body {
 #input {
     background-color: var(--light-blue);
     border: none;
+    margin-top: 1rem;
     margin-left: 0.625rem;
     width: 18.75rem;
     height: 2.625rem;
@@ -232,8 +233,8 @@ body {
 .chat-inputButton {
     background-image: url(../img-avatars/mic.svg);
     background-size: cover;
-    width: 1.863rem;
-    height: 1.563rem;
+    width: 1.9rem;
+    height: 1.8rem;
     border: none;
     background-color: var(--light-blue);
     color: var(--dark-blue);
@@ -291,6 +292,19 @@ body {
     color: #8ba960;
     margin: 0.313rem;
 }
+
+/* Contact Us style button */
+.contactUs{
+    width: 7.5rem;
+    height: 3.125rem;
+    border-radius: 0.625rem;
+    border: none;
+    border-top: 0.313rem solid #d378c4;
+    box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+    background-color: #ffffff;
+    color: #d378c4;
+    margin: 0.313rem;
+  }
 
 .chat-buttons-div {
     display: flex;
@@ -557,3 +571,55 @@ button:active{
         padding-bottom: 0;
      }
 }
+
+/* Contact Us FORM Style */
+
+input[type=text],textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    font-family: "DIN Pro Light", sans-serif
+  }
+
+  input[type=submit] {
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto ;
+  }
+  input[type=email]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    font-family: "DIN Pro Light", sans-serif
+  }
+
+  .container {
+    border-radius: 5px;
+    padding: 20px;
+    height: 100%;
+    overflow: scroll;
+  }
+  .formHeader{
+    padding-bottom: 12%;
+    font-size: 150%;
+    text-align: center;
+  }
+  .submit{
+    display: flex;
+    justify-self: center;
+    padding-bottom: 8%;
+  }

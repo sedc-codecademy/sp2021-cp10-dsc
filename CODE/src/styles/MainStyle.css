@@ -320,6 +320,7 @@ body {
 #input {
   background-color: var(--light-blue);
   border: none;
+  margin-top: 1rem;
   margin-left: 0.625rem;
   width: 18.75rem;
   height: 2.625rem;
