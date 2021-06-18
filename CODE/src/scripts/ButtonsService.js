@@ -18,6 +18,8 @@ const ButtonsService = {
             this.mainButtonsDiv.innerHTML += `<button id="${button}" class="${button}" onclick="ButtonsService.mainButtonsLogic('${button}')">${button}</button>`;
             buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
         }
+        this.mainButtonsDiv.innerHTML += `<button class="contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Main buttons event logic and function call
