@@ -824,7 +824,140 @@
             ]
          }
       ],
-      "Contact Us": []
+      "Contact Us": [
+         {
+            "id": 0,
+            "name": "Business Courses",
+            "nameId": "businessCourses",
+            "reply": [
+               "So you want to further improve your business - tech skills? We've got some stuff that'll give you thrills!",
+               "If business - tech courses is what you need, then we've got you covered indeed!",
+               "If it's your business - tech skills you want to improve, then our courses with get you into the groove!"
+            ],
+            "studyPrograms": [
+               {
+                  "name": "Agile Basics",
+                  "nameId": "agileBasics",
+                  "overview": "Agile is an attempt to make the process of software development better and more effective, and it’s seen increasing popularity and success.",
+                  "moreinfo": "https://courses.sedc.mk/product/agile-basics/",
+                  "timeline": "Classes: 15 \n\nStart Date: 19.04.2021 \nEnd Date: 23.04.2021 \n\nTime: 16:30 - 19 45 Every Day (Monday-Friday)",
+                  "targetaudience": "Anyone interested in AGILE framework.",
+                  "reply": [
+                     "I see that you're after those agility points! Well we've just the thing to move those business joints!",
+                     "With us you'll get some new agile skills, that you'll be able to run a hundred hills!",
+                     "Study agile and become very bendable! Your career will find it very recommendable!"
+                  ],
+                  "infoProperties": [
+                     "Overview",
+                     "Timeline",
+                     "Target Audience",
+                     "Apply",
+                     "Price"
+                  ]
+               },
+               {
+                  "name": "Agile SCRUM Master Training",
+                  "nameId": "agileScrumMasterTraining",
+                  "overview": "This 4 days course will teach you how to employ Scrum to increase value, improve productivity and optimize the total cost of ownership of software products and also will give you basis to become certified Scrum Master.",
+                  "moreinfo": "https://courses.sedc.mk/product/agile-scrum-master-training/",
+                  "timeline": "Classes: 20 \n\nStart Date: 15.03.2021 \nEnd Date: 19.03.2021 \n\nTime: 16:30 - 19:45 Every Day (Monday-Friday)",
+                  "targetaudience": "Anyone interested in AGILE framework, future SCRUM Masters, Product Owners or SCRUM team members",
+                  "reply": [
+                     "You are Agile I'll give you that! But are you a Master? Well you'll have to prove that!",
+                     "Get acquainted with SCRUM and give your competition a good run!",
+                     "Want to increase your business worth? Learn SCRUM and give your CV some added girth!"
+                  ],
+                  "infoProperties": [
+                     "Overview",
+                     "Timeline",
+                     "Target Audience",
+                     "Apply",
+                     "Price"
+                  ]
+               },
+               {
+                  "name": "Business Analysis",
+                  "nameId": "businessAnalysis",
+                  "overview": "Interacting with and gathering requirements from front office users (trading, sales, desk heads, etc.) with relevant Business domain knowledge. Translating these business requirements into clear specify-by-example requirements for IT with Business Domain Knowledge in it.",
+                  "moreinfo": "https://courses.sedc.mk/product/business-analysis-online/",
+                  "timeline": "Classes: 20 \n\nStart Date: 10.05.2021 \nEnd Date: 13.05.2021 \n\nTime: 16:45 - 20:45 Every Day (Monday-Thursday)",
+                  "targetaudience": "Business employees engaged in forming requirements for software development.",
+                  "reply": [
+                     "Ever ordered randomly off a French restaurant's menu and got something you instantly regretted? Me too! But then I learned that I don't have to speak French to order what I want!",
+                     "In every day business to tech communication a new skill requirement is on the rise and thats the employee's skill to analyze!",
+                     "Follow our advice and learn how to analyze! You'll love it and your career will likewise"
+                  ],
+                  "infoProperties": [
+                     "Overview",
+                     "Timeline",
+                     "Target Audience",
+                     "Apply",
+                     "Price"
+                  ]
+               },
+               {
+                  "name": "Microsoft Office",
+                  "nameId": "microsoftOffice",
+                  "overview": "This course will provide a solid foundation in Microsoft Word, PowerPoint, Excel and Outlook, where beginners would have the opportunity to learn the basic skills for these programs.",
+                  "moreinfo": "https://courses.sedc.mk/product/289/",
+                  "timeline": "Classes: 30 \n\nStart Date: 05.04.2021 \nEnd Date: 28.04.2021 \n\nTime: 17:30 - 20:00 Monday, Wednesday & every second Friday",
+                  "targetaudience": "This course is designed for those who wish to acquire skills using Microsoft Office applications. This Qualification is helpful for any Office job, such as Admin Assistant, Administrator, or Office Manager.",
+                  "reply": [
+                     "Did you ever get to that point where Outlook looked like your teenage room? Learn how to set it up properly and you won't even need that broom!",
+                     "Want to have a better PowerPoint than Greg from sales? With this course you'll leave him bitting his nails! I'm still better than you Greg!",
+                     "Having the required Office skills may look like a dull task, but it's a question that the interviewers most frequently ask!"
+                  ],
+                  "infoProperties": [
+                     "Overview",
+                     "Timeline",
+                     "Target Audience",
+                     "Apply",
+                     "Price"
+                  ]
+               },
+               {
+                  "name": "MS Excel Advanced",
+                  "nameId": "msExcelAdvanced",
+                  "overview": "This course is designed for the participants who want to perform accurate and rapid calculations with results ranging from simple calculation to complex financial analyses.",
+                  "moreinfo": "https://courses.sedc.mk/product/ms-excel-advanced/",
+                  "timeline": "Classes: 27 \n\nStart Date: 02.03.2021 \nEnd Date: 30.03.2021 \n\nTime: 17:30 - 19:30 Tuesday & Thursday",
+                  "targetaudience": "Anyone interested in expanding their knowledge in working with tables and analyzing data.",
+                  "reply": [
+                     "There's no better way to excel at spreadsheets than learning some Advanced MS Excel! Did you see what I did there with the... Aaahh you got it!",
+                     "If it's complicated spreadsheets that haunt your dreams, then let us show you it's easier than it seems!",
+                     "Having great excel skills is a must, if you want the competition to eat your dust!"
+                  ],
+                  "infoProperties": [
+                     "Overview",
+                     "Timeline",
+                     "Target Audience",
+                     "Apply",
+                     "Price"
+                  ]
+               },
+               {
+                  "name": "PMP Project Management Professional",
+                  "nameId": "pmpProjectManagementProfessional",
+                  "overview": "This course provides Project Managers with the knowledge and skills needed to master the PMBOK® Guide Fifth Edition and attain the Project Management Professional (PMP®) certification.",
+                  "moreinfo": "https://courses.sedc.mk/product/pmp-project-management-professional/",
+                  "timeline": "Classes: 35 \n\nStart Date: 10.05.2021 \nEnd Date: 18.05.2021 \n\nTime: 16:45 - 20:45 (Monday-Friday)",
+                  "targetaudience": "This course is intended to enhance a student’s project experience with global terminology and the proven framework for leading and directing project teams and in delivering project results within the constraints of schedule, budget and resources.",
+                  "reply": [
+                     "Need some extra experience points to level up your managing skill? We gt your experience boost right here!",
+                     "If managing is the skill you choose, you'll learn a lot on this management learning cruise!",
+                     "If you feel that management is your domain, then learn to be the strongest link in the chain!"
+                  ],
+                  "infoProperties": [
+                     "Overview",
+                     "Timeline",
+                     "Target Audience",
+                     "Apply",
+                     "Price"
+                  ]
+               }
+            ]
+         }
+      ]
    },
    "ReplyMessages": {
       "Jokes": {
