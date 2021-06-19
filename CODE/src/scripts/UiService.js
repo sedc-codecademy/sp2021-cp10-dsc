@@ -207,6 +207,7 @@ const UiService = {
                 break;
             case "apply":
             case "price":
+            case "contact":
                 this.modalContent.style.height = "70%";
                 this.modalContent.style.width = "35%";
                 QuizzesService.popUpQuizzes.style.display = "none";

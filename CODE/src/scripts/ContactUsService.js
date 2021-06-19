@@ -1,10 +1,9 @@
 const ContactUsForm = {
     printContactUsForm: function () {
-        ApplyAndPriceService.myModal.style.display = "block";
-        ApplyAndPriceService.popUp.innerHTML = "";
+        // ApplyAndPriceService.myModal.style.display = "block";
+        UiService.displayModalWindow("contact");
 
-        ApplyAndPriceService.popUp.innerHTML += `
-        
+        ApplyAndPriceService.popUp.innerHTML = `
         <div class="container">
             <h1 class="formHeader">Contact our sales team!</h1>
             <form action="https://formsubmit.co/nikola.veselinovski@gmail.com" method="POST">
