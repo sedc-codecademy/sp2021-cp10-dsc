@@ -51,6 +51,10 @@ window.addEventListener("resize", () => {
     AnimationsService.onResizeGamesAndQuizzes();
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+
+    if(window.innerWidth < 821){
+        UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+    }
 })
 
 DataService.getDataAsync();
