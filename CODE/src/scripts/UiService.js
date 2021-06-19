@@ -200,20 +200,28 @@ const UiService = {
         }
 
         this.modalContent.style.height = "70%";
-        this.modalContent.style.width = "35%";
+        this.modalContent.style.width = "90%";
         QuizzesService.form.style.display = "none";
         QuizzesService.popUpQuizzes.style.display = "none";
         ApplyAndPriceService.popUp.style.display = "block";
         ApplyAndPriceService.popUp.style.overflowY = "hidden";
+        this.modalContent.style.paddingBottom = "2%";
+        ApplyAndPriceService.popUp.style.paddingBottom = "0%"
 
         switch (flag) {
+            case "price":
+            case "apply":
+            ApplyAndPriceService.popUp.style.paddingBottom = "5%"
+                break;
             case "games":
-                this.modalContent.style.height = "90%";
-                this.modalContent.style.width = "80%";
-                ApplyAndPriceService.popUp.style.paddingBottom = "20%";
+                this.modalContent.style.height = "80%";
+                this.modalContent.style.width = "90%";
+                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                this.modalContent.style.paddingBottom = "7%";
                 break;
             case "quizzes":
                 ApplyAndPriceService.popUp.style.display = "none";
+                this.modalContent.style.width = "45%";
                 QuizzesService.popUpQuizzes.style.display = "block";
                 QuizzesService.form.style.display = "block";
                 QuizzesService.form.scrollIntoView({ block: 'start', behavior: 'smooth' });

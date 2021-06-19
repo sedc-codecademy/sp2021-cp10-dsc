@@ -433,6 +433,7 @@ body {
 .chatBotBtns {
   display: inline-block;
   height: 2.5rem;
+  min-width: 5rem;
   border-radius: 0.313rem;
   border: none;
   border-top: 0.125rem solid var(--dark-blue);
@@ -469,6 +470,10 @@ body {
   flex-direction: column;
 }
 
+.gamesCardBorderColor {
+  border: 1.5px solid #9D1662;
+}
+
 .btnCardName {
   color: #ffffff;
   text-shadow: -0.5px -0.5px 0 var(--dark-blue), 0.5px -0.5px 0 var(--dark-blue), -0.5px 0.5px 0 var(--dark-blue), 0.5px 0.5px 0 var(--dark-blue);
@@ -481,6 +486,10 @@ body {
   width: 100%;
   border-top-left-radius: 0.625rem;
   border-top-right-radius: 0.625rem;
+}
+
+.gamesCardColor {
+  background-color: #9D1662;
 }
 
 .btnCardDescription {
@@ -759,7 +768,7 @@ button:hover {
 
 .modal-content {
   background-color: #ebebeb;
-  border-radius: 2%;
+  border-radius: 0.938rem;
   margin: auto;
   padding: 2%;
   border: 1px solid (var(--dark-blue));
@@ -787,7 +796,7 @@ button:hover {
   align-content: center;
   width: 97%;
   height: 99%;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   overflow-y: auto;
 }
 

@@ -26,17 +26,17 @@ const GamesService = {
                     `
                     <div id="twoRowBtnDiv" class="twoRowBtnFlex">
 
-                <button id="clashOfCode" class="btnCard" onclick="GamesService.startGame('1')"><div class="btnCardName">Clash of Code</div><div class="btnCardDescription">Description</div></button>
+                <button id="clashOfCode" class="btnCard gamesCardBorderColor" onclick="GamesService.startGame('1')"><div class="btnCardName gamesCardColor">Clash of Code</div><div class="btnCardDescription">Description</div></button>
 
-                <button id="cssDinner" class="btnCard" onclick="GamesService.startGame('2')"><div class="btnCardName">CSS Dinner</div><div class="btnCardDescription">Description</div></button>
+                <button id="cssDinner" class="btnCard gamesCardBorderColor" onclick="GamesService.startGame('2')"><div class="btnCardName gamesCardColor">CSS Dinner</div><div class="btnCardDescription">Description</div></button>
 
-                <button id="flexboxFroggy" class="btnCard" onclick="GamesService.startGame('3')"><div class="btnCardName">FlexBox Froggy</div><div class="btnCardDescription">Description</div></button>
+                <button id="flexboxFroggy" class="btnCard gamesCardBorderColor" onclick="GamesService.startGame('3')"><div class="btnCardName gamesCardColor">FlexBox Froggy</div><div class="btnCardDescription">Description</div></button>
 
-                <button id="vimAdventures" class="btnCard" onclick="GamesService.startGame('4')"><div class="btnCardName">VIM Adventures</div><div class="btnCardDescription">Description</div></button>
+                <button id="vimAdventures" class="btnCard gamesCardBorderColor" onclick="GamesService.startGame('4')"><div class="btnCardName gamesCardColor">VIM Adventures</div><div class="btnCardDescription">Description</div></button>
 
-                <button id="elevatorSaga" class="btnCard" onclick="GamesService.startGame('5')"><div class="btnCardName">Elevator Saga</div><div class="btnCardDescription">Description</div></button>
+                <button id="elevatorSaga" class="btnCard gamesCardBorderColor" onclick="GamesService.startGame('5')"><div class="btnCardName gamesCardColor">Elevator Saga</div><div class="btnCardDescription">Description</div></button>
 
-                <button id="kidsGames" class="btnCard" onclick="GamesService.startGame('6')"><div class="btnCardName">Kids Coding Games</div><div class="btnCardDescription">Description</div></button>
+                <button id="kidsGames" class="btnCard gamesCardBorderColor" onclick="GamesService.startGame('6')"><div class="btnCardName gamesCardColor">Kids Coding Games</div><div class="btnCardDescription">Description</div></button>
                 </div>
                 `;
                 UiService.disableGamesAndQuizzesButtons(false);
@@ -70,6 +70,6 @@ const GamesService = {
 
         UiService.displayModalWindow("games");
 
-        ApplyAndPriceService.popUp.innerHTML = `<iframe src= ${url} scrolling="no" seamless="seamless" marginheight="0" marginwidth="0" frameBorder="0" width="100%" height="130%" ></iframe>`;
+        ApplyAndPriceService.popUp.innerHTML = `<iframe src= ${url} scrolling="no" seamless="seamless" marginheight="0" marginwidth="0" frameBorder="0" width="100%" height="230%" ></iframe>`;
     }
 };
