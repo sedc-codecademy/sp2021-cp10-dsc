@@ -139,10 +139,10 @@ const UiService = {
     changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
         if (gameOrQuizFlag) {
             item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
-            if(item.id === "chatQuizzes"){
+            if (item.id === "chatQuizzes") {
                 GamesService.areGamesOpen = false;
                 AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-            }else{
+            } else {
                 QuizzesService.areQuizzesOpen = false;
                 AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
             }
@@ -166,7 +166,7 @@ const UiService = {
     },
 
     // Resets chat-window if called from another viewport
-    resetChatWindow: function(){
+    resetChatWindow: function () {
         this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
         AnimationsService.chatWindow.style.overflowX = "hidden";
         AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
@@ -176,8 +176,8 @@ const UiService = {
     },
 
     // Stops user from clicking buttons too fast
-    disableGamesAndQuizzesButtons: function (flag){
-        if(flag) {
+    disableGamesAndQuizzesButtons: function (flag) {
+        if (flag) {
             AnimationsService.chatQuizzes.disabled = true;
             AnimationsService.chatGames.disabled = true;
         }
@@ -188,31 +188,38 @@ const UiService = {
     },
 
     //Changes modal style to block and sets height and width
-    displayModalWindow: function(flag){
+    displayModalWindow: function (flag) {
         ApplyAndPriceService.myModal.style.display = "block";
+        if (window.innerWidth < 821) {
+            this.modalContent.style.height = "100%";
+            this.modalContent.style.width = "100%";
+            QuizzesService.popUpQuizzes.style.display = "none";
+            QuizzesService.form.style.display = "none";
+            ApplyAndPriceService.popUp.style.display = "block";
+            return;
+        }
+
+        this.modalContent.style.height = "70%";
+        this.modalContent.style.width = "35%";
+        QuizzesService.form.style.display = "none";
+        QuizzesService.popUpQuizzes.style.display = "none";
+        ApplyAndPriceService.popUp.style.display = "block";
+        ApplyAndPriceService.popUp.style.overflowY = "hidden";
+
         switch (flag) {
             case "games":
-                this.modalContent.style.height = "80%";
-                this.modalContent.style.width = "90%";
-                QuizzesService.popUpQuizzes.style.display = "none";
-                QuizzesService.form.style.display = "none";
-                ApplyAndPriceService.popUp.style.display = "block";
+                this.modalContent.style.height = "90%";
+                this.modalContent.style.width = "80%";
+                ApplyAndPriceService.popUp.style.paddingBottom = "20%";
                 break;
             case "quizzes":
-                this.modalContent.style.height = "70%";
-                this.modalContent.style.width = "35%";
                 ApplyAndPriceService.popUp.style.display = "none";
                 QuizzesService.popUpQuizzes.style.display = "block";
                 QuizzesService.form.style.display = "block";
+                QuizzesService.form.scrollIntoView({ block: 'start', behavior: 'smooth' });
                 break;
-            case "apply":
-            case "price":
             case "contact":
-                this.modalContent.style.height = "70%";
-                this.modalContent.style.width = "35%";
-                QuizzesService.popUpQuizzes.style.display = "none";
-                QuizzesService.form.style.display = "none";
-                ApplyAndPriceService.popUp.style.display = "block";
+                ApplyAndPriceService.popUp.style.overflowY = "auto";
                 break;
         }
     }
