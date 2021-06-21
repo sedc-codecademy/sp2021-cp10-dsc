@@ -80,20 +80,20 @@ const QuizzesService = {
             <div class="quizQuestion">
                 <p><b>${i + 1}. ${questions[i].question}</b></p>
                 <div class="form-check">
-                    <input type="radio" class="radio" name="q${i + 1}" value="A">
-                    <label class="form-check-label">${questions[i].answer2}</label>
+                    <input type="radio" class="radio" name="q${i + 1}" value="A" id="first${i}">
+                    <label for="first${i}" class="form-check-label">${questions[i].answer2}</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="radio" name="q${i + 1}" value="B">
-                    <label class="form-check-label">${questions[i].answer2}</label>
+                    <input type="radio" class="radio" name="q${i + 1}" value="B" id="second${i}">
+                    <label for="second${i}" class="form-check-label">${questions[i].answer2}</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="radio" name="q${i + 1}" value="C">
-                    <label class="form-check-label">${questions[i].answer3}</label>
+                    <input type="radio" class="radio" name="q${i + 1}" value="C" id="third${i}">
+                    <label for="third${i}" class="form-check-label">${questions[i].answer3}</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="radio" name="q${i + 1}" value="D">
-                    <label class="form-check-label">${questions[i].answer4}</label>
+                    <input type="radio" class="radio" name="q${i + 1}" value="D" id="fourth${i}">
+                    <label for="fourth${i}" class="form-check-label">${questions[i].answer4}</label>
                 </div>
             </div>
             <hr class="quiz-hr">`;
