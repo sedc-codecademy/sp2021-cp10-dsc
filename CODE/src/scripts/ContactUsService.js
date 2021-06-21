@@ -3,8 +3,8 @@ const ContactUsForm = {
     printContactUsForm: function () {
         UiService.displayModalWindow("contact");
 
-        ApplyAndPriceService.popUp.innerHTML =
-        `<div class="container">
+        ApplyAndPriceService.popUp.innerHTML = `
+        <div class="container" id="contactUsForm">
             <h1 class="formHeader">Contact our sales team!</h1>
             <form action="https://formsubmit.co/nikola.veselinovski@gmail.com" method="POST">
                 <label>First Name</label>

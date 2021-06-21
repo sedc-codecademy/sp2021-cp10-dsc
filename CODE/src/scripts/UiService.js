@@ -201,12 +201,13 @@ const UiService = {
 
         this.modalContent.style.height = "70%";
         this.modalContent.style.width = "40%";
+        this.modalContent.style.paddingBottom = "2%";
         QuizzesService.form.style.display = "none";
         QuizzesService.popUpQuizzes.style.display = "none";
         ApplyAndPriceService.popUp.style.display = "block";
         ApplyAndPriceService.popUp.style.overflowY = "hidden";
-        this.modalContent.style.paddingBottom = "2%";
         ApplyAndPriceService.popUp.style.paddingBottom = "0%";
+        ApplyAndPriceService.closeModalButton.style.marginTop = "-6%";
 
         switch (flag) {
             case "price":
@@ -218,6 +219,7 @@ const UiService = {
                 this.modalContent.style.width = "90%";
                 ApplyAndPriceService.popUp.style.overflowY = "auto";
                 this.modalContent.style.paddingBottom = "7%";
+                ApplyAndPriceService.closeModalButton.style.marginTop = "-2.5%";
                 break;
             case "quizzes":
                 ApplyAndPriceService.popUp.style.display = "none";
