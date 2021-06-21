@@ -200,7 +200,7 @@ const UiService = {
         }
 
         this.modalContent.style.height = "70%";
-        this.modalContent.style.width = "90%";
+        this.modalContent.style.width = "40%";
         QuizzesService.form.style.display = "none";
         QuizzesService.popUpQuizzes.style.display = "none";
         ApplyAndPriceService.popUp.style.display = "block";
