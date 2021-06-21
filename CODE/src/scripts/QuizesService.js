@@ -27,6 +27,9 @@ const QuizzesService = {
                 <button id="gameDesignQuiz" class="btnCard btn"><div class="btnCardName btn" id="gameDesignQuiz">Game Design</div><div class="btnCardDescription btn" id="gameDesignQuiz">Description</div></button>
                 <button id="graphicDesignQuiz" class="btnCard btn"><div class="btnCardName btn" id="graphicDesignQuiz">Graphic Design</div><div class="btnCardDescription btn" id="graphicDesignQuiz">Description</div></button>
                 <button id="softwareTestingQuiz" class="btnCard btn"><div class="btnCardName btn" id="softwareTestingQuiz">Software Testing</div><div class="btnCardDescription btn" id="softwareTestingQuiz">Description</div></button>
+                <button id="dataScience" class="btnCard btn"><div class="btnCardName btn" id="dataScience">Data Science</div><div class="btnCardDescription btn" id="dataScience">Description</div></button>
+                <button id="digitalMarketing" class="btnCard btn"><div class="btnCardName btn" id="digitalMarketing">Digital Marketing</div><div class="btnCardDescription btn" id="digitalMarketing">Description</div></button>
+                <button id="computerNetworkingQuiz" class="btnCard btn"><div class="btnCardName btn" id="computerNetworkingQuiz">Computer Networks</div><div class="btnCardDescription btn" id="computerNetworkingQuiz">Description</div></button>
                 </div>`;
             UiService.disableGamesAndQuizzesButtons(false);
         });
@@ -69,6 +72,7 @@ const QuizzesService = {
 
     //Renders chosen random questions in pop-up window
     renderQuestions: function (questions) {
+        QuizzesService.form.innerHTML = "";
         let inner = '';
 
         for (let i = 0; i < questions.length; i++) {
@@ -101,16 +105,9 @@ const QuizzesService = {
 
     //Checks which question's answers are correct
     checkRightAnswers: function (questions) {
-        return new Promise((resolve, reject) => {
             if (!questions || questions.length === 0) {
-                reject(this.somethingWentWrong());
+                this.somethingWentWrong();
             }
-
-            let correctAnswers = [];
-            for (let i = 0; i < questions.length; i++) {
-                correctAnswers.push(questions[i].correctAnswer);
-            }
-            resolve(correctAnswers);
 
             QuizzesService.form.addEventListener('submit', e => {
                 e.preventDefault();
@@ -124,14 +121,13 @@ const QuizzesService = {
 
                 let score = 0;
                 userAnswers.forEach((answer, i) => {
-                    if (answer === correctAnswers[i]) {
+                    if (answer === questions[i].correctAnswer) {
                         score += 6.66666;
                     }
                 });
 
                 QuizzesService.form.innerHTML = `<p id="quizResult">You got <span id="quizSpan" >${Math.ceil(score)}%</span> of the questions right!</p>`;
             });
-        });
     },
 
     //Prints a message if something is wrong with the quiz

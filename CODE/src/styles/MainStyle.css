@@ -134,7 +134,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 5% 0 10% 0;
+  padding: 2% 0 10% 0;
   height: 85%;
   width: 100%;
 }
@@ -490,7 +490,7 @@ body {
   box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
   background-color: var(--white);
   color: var(--dark-blue);
-  margin-bottom: 5%;
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
 }
@@ -846,7 +846,7 @@ button:hover {
 
 .somethingWentWrongMessage{
   width: 14rem;
-  margin: 50% auto 0 auto;
+  margin: 20% auto 0 auto;
   color: #9D1662;
   font-family: 'DIN Pro Bold', sans-serif;
   font-size: 1.563rem;
@@ -890,7 +890,7 @@ button:hover {
 
 #quizResult {
   font-size: 1.3rem;
-  margin-top: 10rem;
+  margin: 25% 28%;
 }
 
 #quizSpan {
@@ -899,7 +899,6 @@ button:hover {
 }
 
 /* GAMES STYLES */
-
 #gamesMessage {
   width: 14rem;
   padding-top: 1rem;
@@ -910,6 +909,7 @@ button:hover {
   text-align: center;
 }
 
+/* CONTACT-FORM STYLES */
 input[type=text], textarea {
   width: 100%;
   padding: 12px;
