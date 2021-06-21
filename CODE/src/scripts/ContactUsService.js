@@ -1,10 +1,10 @@
 const ContactUsForm = {
+    //Displays a SEDC contact email form
     printContactUsForm: function () {
-        // ApplyAndPriceService.myModal.style.display = "block";
         UiService.displayModalWindow("contact");
 
-        ApplyAndPriceService.popUp.innerHTML = `
-        <div class="container">
+        ApplyAndPriceService.popUp.innerHTML =
+        `<div class="container">
             <h1 class="formHeader">Contact our sales team!</h1>
             <form action="https://formsubmit.co/nikola.veselinovski@gmail.com" method="POST">
                 <label>First Name</label>
@@ -25,7 +25,6 @@ const ContactUsForm = {
                     <input type="submit" id="submit" value="Submit">
                 <div>
             </form>
-        </div>
-        `
+        </div>`;
     }
-}
+}//PROPERTIES:

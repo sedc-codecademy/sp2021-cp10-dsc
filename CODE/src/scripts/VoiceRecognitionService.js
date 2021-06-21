@@ -1,6 +1,7 @@
 const VoiceRecognitionService = {
     voiceRecognitionBtn: document.getElementById(""),
 
+    //Gets the voice input and returns a string
     voiceRecognition: function () {
         const recognition = new webkitSpeechRecognition();
 
@@ -18,4 +19,4 @@ const VoiceRecognitionService = {
             [0].transcript.trim();
         }
     }
-};
+};//PROPERTIES: Voice input button

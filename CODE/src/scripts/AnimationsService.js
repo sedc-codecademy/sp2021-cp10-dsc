@@ -5,7 +5,6 @@ const AnimationsService = {
     chatName : document.getElementById("chatName"),
     recommendedSlide: document.getElementById("recommendedSlide"),
     chatWindow: document.getElementById("chatWindow"),
-    mainWindow: document.getElementById("mainWindow"),
     isChatInitialized: false,
 
     //Animates the header - Image, Name, Icons
@@ -53,7 +52,6 @@ const AnimationsService = {
     //Animates the recommendations slide
     recommendedBtnsAnimations: function () {
         UiService.chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
-
         ButtonsService.recommendationsButtons();
 
         UiService.recommendedDiv.style.display = "block";
@@ -61,7 +59,7 @@ const AnimationsService = {
 
         this.recommendedSlide.addEventListener("animationiteration", () => {
             ButtonsService.recommendationsButtons();
-        })
+        });
         UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
@@ -127,4 +125,4 @@ const AnimationsService = {
             }
         }
     }
-};//PROPERTIES: The image div, Games button, Quizzes button, Name div, Recommended buttons slide, Chat div, Main div
+};//PROPERTIES: The image div, Games button, Quizzes button, Name div, Recommended buttons slide, Chat div, Bool if the chat is initialized

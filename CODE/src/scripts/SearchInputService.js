@@ -3,7 +3,7 @@ const SearchInputService = {
     inputButton : document.getElementById("inputButton"),
     inputString : "",
 
-    //Events for search input and logic behind it
+    //Events for search input - Click and Enter
     getSearchInput : function(){
         this.inputButton.addEventListener("click", function(){
             SearchInputService.inputButton.disabled = true;
@@ -21,16 +21,17 @@ const SearchInputService = {
         });
     },
 
+    //Search for a suitable response on the input
     SearchInputLogic : function(){
         if(AnimationsService.chatWindow.style.display === "none") UiService.resetChatWindow();
         UiService.recommendedDiv.style.display = "none";
-
         AnimationsService.changeImageHead('haralampiye');
         AnimationsService.headerAnimation();
         if(SearchInputService.input.value === "") return;
 
         SearchInputService.inputString = SearchInputService.input.value;
         input.value = "";
+
         let found = SearchInputService.searchThroughHighTier();
         if(found !== undefined){
             if(SearchInputService.searchThroughInfoProperties(found.item.infoProperties)){
@@ -41,25 +42,25 @@ const SearchInputService = {
             }
         }
         else{
-            let found = SearchInputService.searchThroughMidTier();
+            found = SearchInputService.searchThroughMidTier();
             if(found !== undefined){
                 ButtonsService.getDataButtons(found.item, found.branch, SearchInputService.inputString);
             }else{
-                let found = SearchInputService.searchThroughLowTier();
+                found = SearchInputService.searchThroughLowTier();
                 if(found !== undefined){
                     ButtonsService.mainButtonsLogic(found, SearchInputService.inputString);
                 }else{
-                    let found = SearchInputService.searchForGreeting();
+                    found = SearchInputService.searchForGreeting();
                     if(found !== undefined){
                         UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
                         UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
                     }else{
-                        let found = SearchInputService.searchForJoke();
+                        found = SearchInputService.searchForJoke();
                         if(found !== undefined){
                             UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.Jokes.jokesArray);
                             UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
                         }else{
-                            let found = SearchInputService.searchForBye();
+                            found = SearchInputService.searchForBye();
                             if(found !== undefined){
                                 UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
                                 UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
@@ -154,4 +155,4 @@ const SearchInputService = {
             return "joke";
         }
     }
-};
+};//PROPERTIES: Input field, Input button, Input value string

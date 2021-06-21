@@ -9,8 +9,7 @@ const UiService = {
         <div class="greetingMessage">Welcome to the<br>
          Seavus Education Chat Bot!</div>
          <div class="greetingMessageQue">How can we help you?</div>
-         <hr class="chat-js-hr">
-        `;
+         <hr class="chat-js-hr">`;
     },
 
     //Prints a user message and random bot message in chat history(Depending on the choice)
@@ -23,15 +22,15 @@ const UiService = {
 
         this.chatHistory.innerHTML += `
         <div chatBotName>
-        <span class="chatUserYou">You</span>
-        <div class="chatBubblesUser">${elementName}</div>
+            <span class="chatUserYou">You</span>
+            <div class="chatBubblesUser">${elementName}</div>
         </div>`;
         this.toggleLoader();
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-            <span class="chatBotName">Haralampiye</span>
-            <div class="chatBubblesBot">${item}</div>
+                <span class="chatBotName">Haralampiye</span>
+                <div class="chatBubblesBot">${item}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
         });
@@ -43,15 +42,15 @@ const UiService = {
 
         this.chatHistory.innerHTML += `
         <div >
-        <span class="chatUserYou">You</span>
-        <div class="chatBubblesUser">${infoName}</div>
+            <span class="chatUserYou">You</span>
+            <div class="chatBubblesUser">${infoName}</div>
         </div>`
         this.toggleLoader();
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-            <span class="chatBotName">Haralampiye</span>
-            <div class="chatBubblesBot">${infoMessage}</div>
+                <span class="chatBotName">Haralampiye</span>
+                <div class="chatBubblesBot">${infoMessage}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
         });
@@ -190,6 +189,7 @@ const UiService = {
     //Changes modal style to block and sets height and width
     displayModalWindow: function (flag) {
         ApplyAndPriceService.myModal.style.display = "block";
+
         if (window.innerWidth < 821) {
             this.modalContent.style.height = "100%";
             this.modalContent.style.width = "100%";
@@ -206,12 +206,12 @@ const UiService = {
         ApplyAndPriceService.popUp.style.display = "block";
         ApplyAndPriceService.popUp.style.overflowY = "hidden";
         this.modalContent.style.paddingBottom = "2%";
-        ApplyAndPriceService.popUp.style.paddingBottom = "0%"
+        ApplyAndPriceService.popUp.style.paddingBottom = "0%";
 
         switch (flag) {
             case "price":
             case "apply":
-            ApplyAndPriceService.popUp.style.paddingBottom = "5%"
+                ApplyAndPriceService.popUp.style.paddingBottom = "5%";
                 break;
             case "games":
                 this.modalContent.style.height = "80%";
@@ -231,5 +231,4 @@ const UiService = {
                 break;
         }
     }
-
-};//PROPERTIES: Chat history div, Recommended slide div
+};//PROPERTIES: Chat history div, Recommended slide div, Modal pop up wrapper div

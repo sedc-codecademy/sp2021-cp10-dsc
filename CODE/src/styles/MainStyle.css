@@ -818,6 +818,15 @@ button:hover {
   justify-content: center;
 }
 
+.somethingWentWrongMessage{
+  width: 14rem;
+  margin: 50% auto 0 auto;
+  color: #9D1662;
+  font-family: 'DIN Pro Bold', sans-serif;
+  font-size: 1.563rem;
+  text-align: center;
+}
+
 .quizQuestion {
   padding: 0.313rem;
 }

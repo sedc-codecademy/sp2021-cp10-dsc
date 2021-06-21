@@ -20,9 +20,7 @@ const ApplyAndPriceService = {
         }
 
         UiService.displayModalWindow("apply");
-
-        ApplyAndPriceService.popUp.innerHTML =
-        `<iframe src="${ApplyAndPriceService.applicationUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
+        ApplyAndPriceService.popUp.innerHTML = `<iframe src="${ApplyAndPriceService.applicationUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
     },
 
     //Gets  the needed price table
@@ -37,4 +35,4 @@ const ApplyAndPriceService = {
         ApplyAndPriceService.popUp.innerHTML =
         `<iframe src="${ApplyAndPriceService.priceUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
     }
-};
+};//PROPERTIES: The Modal div, Pop up from the modal, Close modal button, Application url, Price table url

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./src/styles/MainStyle.css"> -->
     <link rel="stylesheet" media='screen and (min-width: 821px)' href='./src/styles/MainStyle.css' />
     <link rel="stylesheet" media='screen and (max-width: 820px)' href='./src/styles/MobileStyle.css' />
     <link href="http://fonts.cdnfonts.com/css/din-pro-cond" rel="stylesheet">
@@ -14,29 +13,36 @@
 <body>
     <!-- MAIN CHAT WINDOW -->
     <div class="main-window" id="mainWindow">
+
+        <!-- HEADER -->
         <div class="header">
-            <!-- Button for the games -->
+            <!-- GAMES BUTTON -->
             <button class="chat-games" id="chatGames">Games</button>
-
-            <!-- Button for the quizzes -->
+            <!-- QUIZZES BUTTON -->
             <button class="chat-quizzes" id="chatQuizzes">Quizzes</button>
-
-            <!-- DIV for chat-bot NAME -->
+            <!-- AVATAR NAME -->
             <div class="chat-Name" id="chatName">Haralampiye<br>SEDC Chat Bot</div>
-
-            <!-- BUTTON for the minimize -->
+            <!-- MINIMIZE BUTTON -->
             <button class="chat-minimize" id="chatMinimize"></button>
-
-            <!-- DIV for the logo-avatar -->
+            <!-- AVATAR LOGO -->
             <div class="img-logo" id="imgLogo"></div>
         </div>
 
+        <!-- CHAT WINDOW -->
         <div class="chat-window">
+            <!-- GAMES AND QUIZZES WRAPPER -->
             <div class="chat" id="gamesAndQuizzesWindow" style="display: none;"></div>
+
+            <!-- TEXT-CHAT WRAPPER -->
             <div class="chat" id="chatWindow">
+                <!-- CHAT HISTORY -->
                 <div class="chat-history" id="chatHistory"></div>
+                <!-- MAIN BUTTONS -->
                 <div class="main-chat-buttons-div" id="mainButtonsDiv"></div>
+                <!-- OPTION BUTTONS -->
                 <div class="chat-buttons-div" id="buttonsDiv"></div>
+
+                <!-- LOADER -->
                 <div id="loader">
                     <div class="loader-bubble">
                         <div class="typing">
@@ -45,8 +51,9 @@
                             <div class="dot"></div>
                         </div>
                     </div>
-
                 </div>
+
+                <!-- RECOMMENDED SLIDE -->
                 <div>
                     <div class="chat-recommended-div" id="recommendedDiv">Recommendations:
                         <div class="slideDiv" id="recommendedSlide"></div>
@@ -56,18 +63,19 @@
             </div>
         </div>
 
+        <!-- SEARCH INPUT -->
         <div id="searchInputWraper">
             <div class="chat-searchInput-div" id="searchInput">
                 <input type="text" placeholder="Type something..." id="input">
                 <button class="chat-inputButton" id="inputButton"></button>
             </div>
         </div>
-
     </div>
 
+    <!-- MAXIMIZE BUTTON -->
     <button class="chat-maximize" id="chatMaximize"></button>
 
-    <!-- Modals -->
+    <!-- MODAL -->
     <div id="myModal" class="modal">
         <div class="modal-content" id="modalContent">
             <span class="close" id="close">&times;</span>
@@ -77,7 +85,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="./src/scripts/ContactUsService.js"></script>
     <script src="./src/scripts/DataService.js"></script>
