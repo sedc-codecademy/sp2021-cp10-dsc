@@ -18,34 +18,44 @@ body {
 :root {
   --dark-blue: #002c5f;
   --light-blue: #e9effe;
+  --bright-blue: #a1cfeb;
+  --white: #ffffff;
+  --gray-blue: #c5cfe9;
+  --shadow: #eceff3;
+  --btn-brown-red: #a97060;
+  --btn-purple: #7f60a9;
+  --btn-green: #8ba960;
+  --btn-pink: #d378c4;
+  --btn-card-blue: #99bddd;
+  --btn-card-purple: #9D1662;
+  --btn-card-shadow-dark-blue: #002c5f;
+  --btn-card-gray: #808080;
+  --typing-animation-dot-color1: #78b6fd;
+  --typing-animation-dot-color2: #002c5f;
+  --typing-animation-dot-color3: #002c5f8f;
+  --typing-animation-dot-color4: #002c5f;
+  --modal-bckg-white: #ebebeb;
+  --modal-close-hover-pink: #e26f6f;
+  --modal-quizz-hr-dark: #c5cfe900;
+  --modal-form-check-blue: #c5cfe9;
+  --modal-form-games-border-gray: #ccc;
+  --chat-maximize-border-purple: #7f60a9;
 }
 
 /* STYLES FOR THE CHAT WINDOW */
 
-/* **************************************************** */
-
-/* PROBLEM MAKER */
-
 .main-window {
   border-top: none;
-  border-top-left-radius: 1.563rem;
-  border-top-right-radius: 1.563rem;
-  border-bottom-left-radius: 1.563rem;
-  border-bottom-right-radius: 1.563rem;
+  border-radius: 1.563rem;
   transition: all 1s ease-out;
   visibility: visible;
-  /* border: 1px solid red; */
   position: fixed;
   right: 2%;
   bottom: 1%;
   width: 24.875rem;
-  /* height: 40vw; */
   height: 80%;
-  /* height: 46.25rem; */
   max-height: 40.25rem;
-  /* min-height: 90%; */
-  /* max-width: 24.875rem; */
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 .header {
@@ -70,8 +80,9 @@ body {
 
 .chat-Name {
   position: absolute;
-  margin: 0.625rem 0 0 9.375rem;
-  color: whitesmoke;
+  margin: 0.9rem 0 0 9.375rem;
+  color: var(--white);
+  text-align: center;
   opacity: 0;
 }
 
@@ -102,7 +113,7 @@ body {
 
 #chatMaximize {
   transition: all 1s ease-in-out;
-  border: 3px solid #7f60a9;
+  border: 3px solid var(--chat-maximize-border-purple);
   opacity: 0;
   display: block;
   visibility: hidden;
@@ -112,11 +123,9 @@ body {
 .chat-window {
   width: 100%;
   height: 75%;
-  /* border-radius: 1.563rem; */
-  border-top-left-radius: 1.563rem;
-  border-top-right-radius: 1.563rem;
-  background-color: white;
-  border-top: 0.375rem solid #a1cfeb;
+  border-radius: 1.563rem 1.563rem 0 0;
+  background-color: var(--white);
+  border-top: 0.375rem solid var(--bright-blue);
   margin-top: -7.5%;
   position: relative;
 }
@@ -125,11 +134,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-top: 5%;
-  padding-bottom: 10%;
+  padding: 5% 0 10% 0;
   height: 85%;
   width: 100%;
 }
+
+/* Media queries for chat window vertical responsiveness */
 
 @media screen and (max-height: 789px) {
   .chat-window {
@@ -219,8 +229,6 @@ body {
   flex-direction: column;
   width: 24.875rem;
   height: 100%;
-  /* border: solid 1px red; */
-  /* padding-bottom: 15%; */
 }
 
 .chat-history {
@@ -245,15 +253,14 @@ body {
 }
 
 .chat-hr {
-  background-color: #c5cfe9;
+  background-color: var(--gray-blue);
   border-radius: 0.125rem;
-  padding: 0.01%;
   border: none;
 }
 
 .chat-js-hr {
   width: 1.875rem;
-  background-color: #c5cfe9;
+  background-color: var(--gray-blue);
   border-radius: 0.125rem;
   margin: 0 auto 0.938rem auto;
   padding: 0.094rem;
@@ -264,7 +271,7 @@ body {
 
 .chat-recommended-div {
   width: 100%;
-  color: #0079c7;
+  color: var(--dark-blue);
   padding: 0 1.25rem;
   display: none;
   overflow: hidden;
@@ -286,9 +293,9 @@ body {
   position: absolute;
   margin: 1.25rem 0 0 3.563rem;
   border-radius: 0.625rem;
-  border: 0.1rem solid #ffffff;
-  border-top: 0.213rem solid #ffffff;
-  color: #ffffff;
+  border: 0.1rem solid var(--white);
+  border-top: 0.213rem solid var(--white);
+  color: var(--white);
 }
 
 .chat-games-icon {
@@ -309,9 +316,9 @@ body {
   position: absolute;
   margin: 1.25rem 0 0 16.25rem;
   border-radius: 0.625rem;
-  border: 0.1rem solid #ffffff;
-  border-top: 0.213rem solid #ffffff;
-  color: #ffffff;
+  border: 0.1rem solid var(--white);
+  border-top: 0.213rem solid var(--white);
+  color: var(--white);
 }
 
 .chat-quizzes-icon {
@@ -327,8 +334,7 @@ body {
 
 .chat-searchInput-div {
   background-color: var(--light-blue);
-  /* position: absolute; */
-  bottom: 0rem;
+  bottom: 0;
   margin: 1.25rem 0.938rem;
   width: 22.875rem;
   height: 3.125rem;
@@ -375,17 +381,10 @@ body {
 
 #searchInputWraper {
   height: 90px;
-  /* min-height: 6.25rem;
-    min-width: 24.75rem; */
-  border-bottom-left-radius: 1.563rem;
-  border-bottom-right-radius: 1.563rem;
-  /* position: fixed; */
-  /* bottom: 1%;
-    right: 2%; */
-  background-color: white;
+  border-radius: 0 0 1.563rem 1.563rem;
+  background-color: var(--white);
   position: absolute;
   bottom: 0;
-  /* border: 1px solid blue; */
 }
 
 /* STYLES FOR THE BUTTONS */
@@ -394,6 +393,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10%;
 }
 
 .Academies {
@@ -401,10 +401,10 @@ body {
   height: 3.125rem;
   border-radius: 0.625rem;
   border: none;
-  border-top: 0.313rem solid #a97060;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #a97060;
+  border-top: 0.313rem solid var(--btn-brown-red);
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
+  background-color: var(--white);
+  color: var(--btn-brown-red);
   margin: 0.313rem;
 }
 
@@ -413,10 +413,10 @@ body {
   height: 3.125rem;
   border-radius: 0.625rem;
   border: none;
-  border-top: 0.313rem solid #7f60a9;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #7f60a9;
+  border-top: 0.313rem solid var(--btn-purple);
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
+  background-color: var(--white);
+  color: var(--btn-purple);
   margin: 0.313rem;
 }
 
@@ -425,22 +425,24 @@ body {
   height: 3.125rem;
   border-radius: 0.625rem;
   border: none;
-  border-top: 0.313rem solid #8ba960;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #8ba960;
+  border-top: 0.313rem solid var(--btn-green);
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
+  background-color: var(--white);
+  color: var(--btn-green);
   margin: 0.313rem;
 }
+
 /* Contact Us style button */
-.contactUs{
+
+.contactUs {
   width: 7.5rem;
   height: 3.125rem;
   border-radius: 0.625rem;
   border: none;
-  border-top: 0.313rem solid #d378c4;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
-  color: #d378c4;
+  border-top: 0.313rem solid var(--btn-pink);
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
+  background-color: var(--white);
+  color: var(--btn-pink);
   margin: 0.313rem;
 }
 
@@ -459,9 +461,9 @@ body {
   border-radius: 0.313rem;
   border: none;
   border-top: 0.125rem solid var(--dark-blue);
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
   background-color: var(--light-blue);
-  color: #0d3768;
+  color: var(--dark-blue);
   margin: 0.313rem;
 }
 
@@ -471,9 +473,9 @@ body {
   width: 18.75rem;
   padding: 1%;
   border-radius: 0.313rem;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
   background-color: var(--light-blue);
-  border: 0.063rem solid #a1cfeb;
+  border: 0.063rem solid var(--gray-blue);
   color: var(--dark-blue);
   margin: 0.313rem;
   overflow: hidden;
@@ -483,10 +485,10 @@ body {
 .btnCard {
   width: 45%;
   height: 6rem;
-  border: 1.5px solid #99bddd;
+  border: 1.5px solid var(--btn-card-blue);
   border-radius: 0.625rem;
-  box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
-  background-color: #ffffff;
+  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
+  background-color: var(--white);
   color: var(--dark-blue);
   margin-bottom: 5%;
   display: flex;
@@ -494,29 +496,28 @@ body {
 }
 
 .gamesCardBorderColor {
-  border: 1.5px solid #9D1662;
+  border: 1.5px solid var(--btn-card-purple);
 }
 
 .btnCardName {
-  color: #ffffff;
-  text-shadow: -0.5px -0.5px 0 var(--dark-blue), 0.5px -0.5px 0 var(--dark-blue), -0.5px 0.5px 0 var(--dark-blue), 0.5px 0.5px 0 var(--dark-blue);
-  background-color: #99bddd;
+  color: var(--white);
+  text-shadow: -0.5px -0.5px 0 var(--btn-card-shadow-dark-blue), 0.5px -0.5px 0 var(--btn-card-shadow-dark-blue), -0.5px 0.5px 0 var(--btn-card-shadow-dark-blue), 0.5px 0.5px 0 var(--btn-card-shadow-dark-blue);
+  background-color: var(--btn-card-blue);
   font-weight: bold;
   padding: 0.5rem 0.8rem;
   font-size: 15px;
   text-align: left;
   float: left;
   width: 100%;
-  border-top-left-radius: 0.625rem;
-  border-top-right-radius: 0.625rem;
+  border-radius: 0.625rem 0.625rem 0 0;
 }
 
 .gamesCardColor {
-  background-color: #9D1662;
+  background-color: var(--btn-card-purple);
 }
 
 .btnCardDescription {
-  color: gray;
+  color: var(--btn-card-gray);
   overflow-y: auto;
   font-size: 12px;
   padding: 0.5rem 0.8rem 0.2rem 0.8rem;
@@ -583,7 +584,7 @@ button:hover {
 
 .typing .dot {
   animation: mercuryTypingAnimation 1.5s infinite ease-in-out;
-  background-color: #78b6fd;
+  background-color: var(--typing-animation-dot-color1);
   border-radius: 50%;
   height: 0.438rem;
   margin-right: 0.25rem;
@@ -611,15 +612,15 @@ button:hover {
 @keyframes mercuryTypingAnimation {
   0% {
     transform: translateY(0rem);
-    background-color: #002c5f;
+    background-color: var(--typing-animation-dot-color2);
   }
   28% {
     transform: translateY(-0.438rem);
-    background-color: #002c5f8f;
+    background-color: var(--typing-animation-dot-color3);
   }
   44% {
     transform: translateY(0rem);
-    background-color: var(--dark-blue);
+    background-color: var(--typing-animation-dot-color4);
   }
 }
 
@@ -695,10 +696,12 @@ button:hover {
   padding: 0.938rem;
   float: right;
   background-color: var(--light-blue);
-  border-radius: 0.938rem;
-  border-bottom-right-radius: 0rem;
+  border-radius: 0.938rem 0.938rem 0 0.938rem;
   clear: both;
   color: var(--dark-blue);
+  max-width: 80%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .chatUserYou {
@@ -715,11 +718,12 @@ button:hover {
   padding: 0.938rem;
   float: left;
   background-color: var(--dark-blue);
-  color: var(--light-blue);
-  border-radius: 0.938rem;
-  border-bottom-left-radius: 0rem;
+  color: var(--white);
+  border-radius: 0.938rem 0.938rem 0.938rem 0;
   clear: both;
   white-space: pre-wrap;
+  max-width: 80%;
+  word-wrap: break-word;
 }
 
 .chatBotName {
@@ -740,8 +744,7 @@ button:hover {
 .loader-bubble {
   background-color: var(--light-blue);
   padding: 0.75rem 1.375rem;
-  border-radius: 1.25rem;
-  border-bottom-left-radius: 0.125rem;
+  border-radius: 1.25rem 1.25rem 1.25rem 0.125rem;
   display: inline-block;
   margin-left: 0.938rem;
 }
@@ -784,13 +787,12 @@ button:hover {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* overflow-y: auto; */
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-  background-color: #ebebeb;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--modal-bckg-white);
   border-radius: 0.938rem;
   margin: auto;
   padding: 2%;
@@ -805,10 +807,11 @@ button:hover {
   margin-left: 100%;
   font-size: 28px;
   font-weight: bold;
+  margin-top: -6%;
 }
 
 .close:hover, .close:focus {
-  color: rgb(226, 111, 111);
+  color: var(--modal-close-hover-pink);
   text-decoration: none;
   cursor: pointer;
 }
@@ -817,7 +820,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 97%;
+  width: 100%;
   height: 99%;
   padding-bottom: 5%;
   overflow-y: auto;
@@ -846,7 +849,7 @@ button:hover {
 }
 
 .quiz-hr {
-  background-color: #c5cfe900;
+  background-color: var(--modal-quizz-hr-dark);
   margin: 0 auto 0.938rem auto;
   padding: 0.094rem;
   border: none;
@@ -860,7 +863,7 @@ button:hover {
 }
 
 .form-check:hover {
-  background-color: #c5cfe9;
+  background-color: var(--modal-form-check-blue);
   border-radius: 5px;
 }
 
@@ -898,10 +901,10 @@ button:hover {
   text-align: center;
 }
 
-input[type=text],textarea {
+input[type=text], textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--modal-form-games-border-gray);
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;
@@ -912,17 +915,18 @@ input[type=text],textarea {
 
 input[type=submit] {
   background-color: var(--dark-blue);
-  color: white;
+  color: var(--white);
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin: auto ;
+  margin: auto;
 }
-input[type=email]{
+
+input[type=email] {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--modal-form-games-border-gray);
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;
@@ -936,12 +940,14 @@ input[type=email]{
   padding: 20px;
   height: 100%;
 }
-.formHeader{
+
+.formHeader {
   padding-bottom: 12%;
   font-size: 150%;
   text-align: center;
 }
-.submit{
+
+.submit {
   display: flex;
   justify-self: center;
   padding-bottom: 8%;
