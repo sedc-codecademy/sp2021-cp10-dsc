@@ -102,6 +102,7 @@ body {
 
 #chatMaximize {
   transition: all 1s ease-in-out;
+  border: 3px solid #7f60a9;
   opacity: 0;
   display: block;
   visibility: hidden;
@@ -452,6 +453,7 @@ body {
   display: inline-block;
   height: 2.5rem;
   min-width: 5rem;
+  padding: 2%;
   border-radius: 0.313rem;
   border: none;
   border-top: 0.125rem solid var(--dark-blue);
@@ -465,6 +467,7 @@ body {
   display: inline-block;
   height: 3.438rem;
   width: 18.75rem;
+  padding: 1%;
   border-radius: 0.313rem;
   box-shadow: 0.188rem 0.188rem 0.313rem #eceff3;
   background-color: var(--light-blue);
