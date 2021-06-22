@@ -57,7 +57,11 @@ window.addEventListener("resize", () => {
     }
 })
 
+QuizzesService.form.addEventListener('submit', QuizzesService.checkRightAnswers);
+
 DataService.getDataAsync();
+
+DataService.fetchQuizzes();
 
 UiService.firstMessage();
 

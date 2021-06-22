@@ -877,15 +877,19 @@ button:hover {
 }
 
 #submitBtn {
-  border-radius: 0.313rem;
-  font-family: 'DIN Pro Light', sans-serif;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  margin: auto;
   display: flex;
-  justify-content: center;
 }
 
 #submitBtn:hover {
   cursor: pointer;
-  transform: scale(1.08);
+  transform: scale(1);
+  background-color: var(--btn-card-purple);
 }
 
 #quizResult {
