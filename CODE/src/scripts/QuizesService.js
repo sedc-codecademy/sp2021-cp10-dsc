@@ -20,26 +20,35 @@ const QuizzesService = {
                 UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
             }
 
-            QuizzesService.gamesAndQuizzesWindow.innerHTML = `<p id="quizesMessage">Choose a Quiz</p> <hr class="chat-js-hr">`;
+            let inner = `<p id="quizesMessage">Choose a Quiz</p> <hr class="chat-js-hr">`;
 
-            let inner = `<div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
+            inner += `<div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
 
             for (let quiz in DataService.cachedQuizzes) {
-                inner += `
-                    <button id="${quiz}" class="btnCard" onclick="QuizzesService.getQuiz('${quiz}')">
+                debugger;
+                inner +=
+                    `<button id="${quiz}" class="btnCard" onclick="QuizzesService.getQuiz('${quiz}')">
                         <div class="btnCardName">${QuizzesService.fixQuizName(quiz)}</div>
                         <div class="btnCardDescription">Description</div>
-                    </button>
-                `;
+                    </button>`;
             }
-            inner += `/<div>`
+            inner += `<div>`
             QuizzesService.gamesAndQuizzesWindow.innerHTML = inner;
             UiService.disableGamesAndQuizzesButtons(false);
         });
     },
 
+    //Fixes the name (json id)
     fixQuizName: function (input) {
-        input.replace("-", " ");
+        let name = "";
+        for(let char of input){
+            if(char === "-"){
+                name += " ";
+            }else{
+                name += char;
+            }
+        }
+        return name;
     },
 
     //Prints the chosen quiz from JSON
@@ -74,7 +83,6 @@ const QuizzesService = {
 
     //Renders chosen random questions in pop-up window
     renderQuestions: function (questions) {
-        console.log(questions);
         this.displayedQuestions = questions;
         QuizzesService.form.innerHTML = "";
 
