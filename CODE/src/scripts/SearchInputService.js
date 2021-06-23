@@ -52,23 +52,53 @@ const SearchInputService = {
                 if (found !== undefined) {
                     ButtonsService.mainButtonsLogic(found, SearchInputService.inputStringForUser);
                 } else {
-                    found = SearchInputService.searchForGreeting();
+                    found = SearchInputService.searchForContact();
                     if (found !== undefined) {
-                        UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
-                        UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                        UiService.replyMessages(SearchInputService.inputStringForUser, ["If you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!"]);
+                        UiService.sleep().then(() => { UiService.printContactButton(); });
                     } else {
-                        found = SearchInputService.searchForJoke();
+                        found = SearchInputService.searchForGreeting();
                         if (found !== undefined) {
-                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
-                            UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
+                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
+                            UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
                         } else {
-                            found = SearchInputService.searchForBye();
+                            found = SearchInputService.searchForFunny();
                             if (found !== undefined) {
-                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Funny.reply);
                                 UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
                             } else {
-                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
-                                UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                found = SearchInputService.searchForBye();
+                                if (found !== undefined) {
+                                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+                                    UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
+                                } else {
+                                    found = SearchInputService.searchForHowAreYou();
+                                    if (found !== undefined) {
+                                        UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
+                                        UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                    } else {
+                                        found = SearchInputService.searchForJoke();
+                                        if (found !== undefined) {
+                                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
+                                            UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
+                                        } else {
+                                            found = SearchInputService.searchForWhoAreYou();
+                                            if (found !== undefined) {
+                                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
+                                                UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                            } else {
+                                                found = SearchInputService.searchForWhatCanYouDo();
+                                                if (found !== undefined) {
+                                                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
+                                                    UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                                } else {
+                                                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
+                                                    UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -165,7 +195,7 @@ const SearchInputService = {
     searchForHowAreYou: function () {
         let howAreYous = ["how are you", "are you ok", "are you well", "how's it going", "hows it going", "what's up", "whats up", "wazzup"];
         for (let howAreYou of howAreYous) {
-            if (SearchInputService.inputString.toLowerCase().includes(goodbye.toLowerCase())) {
+            if (SearchInputService.inputString.toLowerCase().includes(howAreYou.toLowerCase())) {
                 return howAreYou;
             }
         }
@@ -190,12 +220,22 @@ const SearchInputService = {
     },
 
     //Checks if there is a reference to who the bot can do
-    searchForWhatCanYouDo: function(){
+    searchForWhatCanYouDo: function () {
         let whatCanYouDo = "what can you do";
-            if(SearchInputService.inputString.toLowerCase().includes("what") && SearchInputService.inputString.toLowerCase().includes("you") && SearchInputService.inputString.toLowerCase().includes("do")){
-                return whatCanYouDo;
-            } else if(SearchInputService.inputString.toLowerCase().includes("what") && SearchInputService.inputString.toLowerCase().includes("i") && SearchInputService.inputString.toLowerCase().includes("do")){
-                return whatCanYouDo;
+        if (SearchInputService.inputString.toLowerCase().includes("what") && SearchInputService.inputString.toLowerCase().includes("you") && SearchInputService.inputString.toLowerCase().includes("do")) {
+            return whatCanYouDo;
+        } else if (SearchInputService.inputString.toLowerCase().includes("what") && SearchInputService.inputString.toLowerCase().includes("i") && SearchInputService.inputString.toLowerCase().includes("do")) {
+            return whatCanYouDo;
+        }
+    },
+
+    searchForContact: function(){
+        let contactUs=["contact", "contact you", "talk with somebody", "person", "official", "someone", "somebody"];
+
+        for(let contact of contactUs){
+            if(SearchInputService.inputString.toLowerCase().includes(contact)){
+                return contact;
             }
         }
-};//PROPERTIES: Input field, Input button, Input value string
+    }
+};//PROPERTIES: Input field, Input button, Input value string, Input string that is shown to the user

@@ -232,5 +232,10 @@ const UiService = {
                 ApplyAndPriceService.popUp.style.overflowY = "auto";
                 break;
         }
+    },
+
+    printContactButton: function(){
+        ButtonsService.mainButtonsDiv.innerHTML += `<button class="contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     }
 };//PROPERTIES: Chat history div, Recommended slide div, Modal pop up wrapper div

@@ -11,6 +11,7 @@ const DataService = {
         DataService.cachedData = await data.Data;
         DataService.cachedReplyMessages = await data.ReplyMessages;
         ButtonsService.getMainButtons(data.Data);
+        console.log(data.ReplyMessages);
     },
 
     //Fetches all data from the Quizzes questions json

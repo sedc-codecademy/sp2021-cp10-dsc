@@ -14,7 +14,7 @@ const ButtonsService = {
         for (const button in data) {
             this.mainButtonsDiv.innerHTML += `<button id="${button}" class="${button}" onclick="ButtonsService.mainButtonsLogic('${button}')">${button}</button>`;
         }
-        this.mainButtonsDiv.innerHTML += `<button class="contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
+        UiService.printContactButton();
         buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
