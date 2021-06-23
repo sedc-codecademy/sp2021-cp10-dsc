@@ -1,5 +1,5 @@
 {
-	"webDevelopmentQuiz": [{
+	"Web-Development": [{
 			"id": "1",
 			"question": "What does HTML stand for?",
 			"answer1": "Hyperlinks and Text Markup Language",
@@ -273,7 +273,7 @@
 		}
 	],
 
-	"graphicDesignQuiz": [{
+	"Graphic-Design": [{
 			"id": "1",
 			"question": "The placement of graphics and text on a graphic design is known as:",
 			"answer1": "Organization",
@@ -537,7 +537,7 @@
 	],
 
 
-	"webDesignQuiz": [{
+	"Web-Design": [{
 			"id": "1",
 			"question": "Which language is used for creating Web Pages?",
 			"answer1": "PASCAL",
@@ -810,7 +810,7 @@
 	],
 
 
-	"gameDesignQuiz": [{
+	"Game-Design": [{
 			"id": "1",
 			"question": " Jason is playing a game in which players must maneuver around changing barriers and moving objects inside a maze. This is an example of which type of game?",
 			"answer1": "Role playing",
@@ -1082,7 +1082,7 @@
 		}
 	],
 
-	"digitalMarketing": [{
+	"Digital-Marketing": [{
 			"id": "1",
 			"question": "The most popular social networking site in the world is:",
 			"answer1": "Whatsapp",
@@ -1355,7 +1355,7 @@
 	],
 
 
-	"computerNetworkingQuiz": [{
+	"Computer-Networks": [{
 			"id": "1",
 			"question": "every computer looking to access the Internet would be known as?",
 			"answer1": "Client",
@@ -1628,7 +1628,7 @@
 	],
 
 
-	"softwareTestingQuiz": [{
+	"Software-Testing": [{
 			"id": "1",
 			"question": " We split testing into distinct stages primarily because:",
 			"answer1": " Each test stage has a different purpose",
@@ -1918,7 +1918,7 @@
 		}
 	],
 
-	"dataScience": [{
+	"Data-Science": [{
 			"id": "1",
 			"question": "Point out the correct statement:",
 			"answer1": "None of the mentioned",
