@@ -1017,7 +1017,7 @@
             "keywords": [],
             "reply": [
                "I'm the funniest bot you'll ever meet! Accept for R2D2... I love that little bot!",
-               "I'm as funny as the people who made me! Hm... That doesn't mean a lot actually... Oh well!",
+               "I'm as funny as the people who made me! Hm... That doesn't amount to much now does it... Oh well!",
                "So you like my jokes? Go ahead ask me another one, I know a 100!"
             ]
          },
@@ -1026,6 +1026,12 @@
             "reply": [
                "I'm a chat bot made by the very students of SEDC and I'm here to help navigate you through this wonderful website!",
                "I'm a chat bot made by the very students of SEDC and I'm here to help navigate you through this wonderful website!"
+            ]
+         },
+         "WhatCanYouDo": {
+            "keywords": [],
+            "reply": [
+               "I can help you by providing you with information about our academies and courses! You can also play a variety of games and take some quizzes if you feel brave enough!"
             ]
          },
          "NoComprende": {
