@@ -25,7 +25,6 @@ const QuizzesService = {
             inner += `<div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
 
             for (let quiz in DataService.cachedQuizzes) {
-                debugger;
                 inner +=
                     `<button id="${quiz}" class="btnCard" onclick="QuizzesService.getQuiz('${quiz}')">
                         <div class="btnCardName">${QuizzesService.fixQuizName(quiz)}</div>

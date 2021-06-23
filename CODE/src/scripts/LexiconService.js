@@ -162,5 +162,7 @@ const LexiconService = {
             inputString.toLowerCase().includes("ux")
         )
             keywordModifiedString += "Design Courses";
+
+            return keywordModifiedString;
     }
 }

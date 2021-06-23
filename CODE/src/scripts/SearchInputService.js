@@ -2,6 +2,7 @@ const SearchInputService = {
     input: document.getElementById("input"),
     inputButton: document.getElementById("inputButton"),
     inputString: "",
+    inputStringForUser: "",
 
     //Events for search input - Click and Enter
     getSearchInput: function () {
@@ -29,43 +30,44 @@ const SearchInputService = {
         AnimationsService.headerAnimation();
         if (SearchInputService.input.value === "") return;
 
-        SearchInputService.inputString = SearchInputService.input.value;
+        SearchInputService.inputStringForUser = SearchInputService.input.value;
+        SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.input.value);
         input.value = "";
 
         let found = SearchInputService.searchThroughHighTier();
         if (found !== undefined) {
             if (SearchInputService.searchThroughInfoProperties(found.item.infoProperties)) {
-                UiService.printAcademyInfo(SearchInputService.searchThroughInfoProperties(found.item.infoProperties), found.item.nameId, found.branch, SearchInputService.inputString);
+                UiService.printAcademyInfo(SearchInputService.searchThroughInfoProperties(found.item.infoProperties), found.item.nameId, found.branch, SearchInputService.inputStringForUser);
             } else {
-                UiService.replyMessages(SearchInputService.inputString, found.item.reply);
+                UiService.replyMessages(SearchInputService.inputStringForUser, found.item.reply);
                 UiService.sleep().then(() => { ButtonsService.getInfoButtons(found.item, found.branch); });
             }
         }
         else {
             found = SearchInputService.searchThroughMidTier();
             if (found !== undefined) {
-                ButtonsService.getDataButtons(found.item, found.branch, SearchInputService.inputString);
+                ButtonsService.getDataButtons(found.item, found.branch, SearchInputService.inputStringForUser);
             } else {
                 found = SearchInputService.searchThroughLowTier();
                 if (found !== undefined) {
-                    ButtonsService.mainButtonsLogic(found, SearchInputService.inputString);
+                    ButtonsService.mainButtonsLogic(found, SearchInputService.inputStringForUser);
                 } else {
                     found = SearchInputService.searchForGreeting();
                     if (found !== undefined) {
-                        UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
+                        UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
                         UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
                     } else {
                         found = SearchInputService.searchForJoke();
                         if (found !== undefined) {
-                            UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.Jokes.jokesArray);
+                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
                             UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
                         } else {
                             found = SearchInputService.searchForBye();
                             if (found !== undefined) {
-                                UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
                                 UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
                             } else {
-                                UiService.replyMessages(SearchInputService.inputString, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
+                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
                                 UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
                             }
                         }
