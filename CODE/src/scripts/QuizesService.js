@@ -31,7 +31,7 @@ const QuizzesService = {
                         <div class="btnCardDescription">Description</div>
                     </button>`;
             }
-            inner += `<div>`
+            inner += `</div>`
             QuizzesService.gamesAndQuizzesWindow.innerHTML = inner;
             UiService.disableGamesAndQuizzesButtons(false);
         });
