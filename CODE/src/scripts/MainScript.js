@@ -23,7 +23,7 @@ chatMaximize.addEventListener("click", () => {
     if (!isChatBotOpened) {
         chatMaximize.classList.remove("jello-horizontal");
         setTimeout(() => {
-            window.innerWidth < 821 ? mainWindow.style.height = "100%": mainWindow.style.height = "80%";
+            window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
             mainWindow.style.transition = "0.5s ease-in-out";
             mainWindow.style.visibility = "visible";
         }, 500);
@@ -52,10 +52,20 @@ window.addEventListener("resize", () => {
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
-    if(window.innerWidth < 821){
+    if (window.innerWidth < 821) {
         UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
     }
 })
+
+//Changes the voice button to a send button and reverse
+SearchInputService.input.addEventListener("input", function () {
+    VoiceRecognitionService.voiceRecognitionBtn.style.display = "none";
+    SearchInputService.inputButton.style.display = "block";
+    if (SearchInputService.input.value === "") {
+        SearchInputService.inputButton.style.display = "none";
+        VoiceRecognitionService.voiceRecognitionBtn.style.display = "block";
+    }
+});
 
 QuizzesService.form.addEventListener('submit', QuizzesService.checkRightAnswers);
 
@@ -70,3 +80,5 @@ SearchInputService.getSearchInput();
 QuizzesService.printQuizzesMenu();
 
 GamesService.printGamesMenu();
+
+VoiceRecognitionService.voiceRecognition();
