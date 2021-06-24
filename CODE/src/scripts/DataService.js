@@ -1,5 +1,5 @@
 const DataService = {
-    url: "https://raw.githubusercontent.com/sedc-codecademy/sp2021-cp10-dsc/main/JSON/DATA.json",
+    url: "https://raw.githubusercontent.com/sedc-codecademy/sp2021-cp10-dsc/development-js/JSON/DATA.json",
     cachedData: null,
     cachedReplyMessages: null,
     cachedQuizzes: null,
