@@ -81,4 +81,14 @@ QuizzesService.printQuizzesMenu();
 
 GamesService.printGamesMenu();
 
-VoiceRecognitionService.voiceRecognition();
+
+
+let ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf('firefox') > -1 && window.innerWidth < 820) {
+    VoiceRecognitionService.voiceRecognitionBtn.style.display = "none";
+    SearchInputService.inputButton.style.display = "block";
+    VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/send.svg)";
+    VoiceRecognitionService.voiceRecognitionBtn.addEventListener("click", SearchInputService.inputButton.click);
+} else {
+    VoiceRecognitionService.voiceRecognition();
+}

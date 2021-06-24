@@ -1,5 +1,6 @@
 const VoiceRecognitionService = {
     voiceRecognitionBtn: document.getElementById("voiceButton"),
+    voiceRecognitionLoader: document.getElementById("voiceRecognitionLoader"),
     clickCounter: 0,
 
     //Gets the voice input and returns a string
@@ -15,9 +16,13 @@ const VoiceRecognitionService = {
             VoiceRecognitionService.clickCounter++;
             if (VoiceRecognitionService.clickCounter % 2 === 1) {
                 recognition.start();
+                SearchInputService.input.disabled = true;
+                VoiceRecognitionService.voiceRecognitionLoader.style.display = "block";
                 VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/muted.svg)";
             } else {
                 recognition.stop();
+                VoiceRecognitionService.voiceRecognitionLoader.style.display = "none";
+                SearchInputService.input.disabled = false;
                 VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/mic.svg)";
             }
 
@@ -25,6 +30,7 @@ const VoiceRecognitionService = {
                 if (VoiceRecognitionService.clickCounter % 2 === 1) { VoiceRecognitionService.clickCounter--; }
 
                 VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/mic.svg)";
+                VoiceRecognitionService.voiceRecognitionLoader.style.display = "none";
             })
         }
         );
