@@ -3,6 +3,7 @@ let chatMinimize = document.getElementById("chatMinimize");
 let chatMaximize = document.getElementById("chatMaximize");
 let mainWindow = document.getElementById("mainWindow");
 let isChatBotOpened = true;
+let searchInputWraper = document.getElementById("searchInputWraper");
 
 //Minimize event
 chatMinimize.addEventListener("click", () => {
@@ -12,6 +13,7 @@ chatMinimize.addEventListener("click", () => {
         mainWindow.style.visibility = "hidden";
         chatMaximize.style.visibility = "visible";
         chatMaximize.style.transform = "translateY(0rem)";
+        searchInputWraper.style.opacity = 0;
         chatMaximize.style.opacity = 1;
         isChatBotOpened = false;
         chatMaximize.classList.add("jello-horizontal");
@@ -27,6 +29,9 @@ chatMaximize.addEventListener("click", () => {
             mainWindow.style.transition = "0.5s ease-in-out";
             mainWindow.style.visibility = "visible";
         }, 500);
+        setTimeout(() => {
+            searchInputWraper.style.opacity = 1;
+        }, 1000);
         chatMaximize.style.transform = "translateY(-137.5rem)";
         chatMaximize.style.visibility = "hidden";
         chatMaximize.style.opacity = 0;
