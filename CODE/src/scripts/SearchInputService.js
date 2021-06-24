@@ -37,7 +37,7 @@ const SearchInputService = {
         SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.inputStringForUser);
         input.value = "";
 
-        // Searches for a curse word and promotes looove
+        //Searches for a curse word and promotes looove
         let curseWord = SearchInputService.searchForCurseWords();
         if (curseWord !== undefined) {
             UiService.replyMessages("I love you!", ["I love you too!"]);

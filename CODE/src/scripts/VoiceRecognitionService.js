@@ -3,7 +3,7 @@ const VoiceRecognitionService = {
     voiceRecognitionLoader: document.getElementById("voiceRecognitionLoader"),
     clickCounter: 0,
 
-    //Gets the voice input and returns a string
+    //Gets the voice input and sends it to the search input and logic and events behind the buttons
     voiceRecognition: function () {
         const recognition = new webkitSpeechRecognition();
 
@@ -27,13 +27,12 @@ const VoiceRecognitionService = {
             }
 
             recognition.addEventListener("end", function () {
-                if (VoiceRecognitionService.clickCounter % 2 === 1) { VoiceRecognitionService.clickCounter--; }
+                if (VoiceRecognitionService.clickCounter % 2 === 1) VoiceRecognitionService.clickCounter--;
 
                 VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/mic.svg)";
                 VoiceRecognitionService.voiceRecognitionLoader.style.display = "none";
             })
-        }
-        );
+        });
 
         recognition.onresult = function (e) {
             ApplyAndPriceService.closeModalButton.click();
@@ -43,4 +42,4 @@ const VoiceRecognitionService = {
             SearchInputService.SearchInputLogic(transcriptUpperCase);
         }
     }
-};//PROPERTIES: Voice input button
+};//PROPERTIES: Voice input button, Voice button click counter, Voice recognition loader

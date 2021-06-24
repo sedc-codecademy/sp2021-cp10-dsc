@@ -234,6 +234,7 @@ const UiService = {
         }
     },
 
+    //Prints contact button form
     printContactButton: function(){
         ButtonsService.mainButtonsDiv.innerHTML += `<button class="contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
         buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });

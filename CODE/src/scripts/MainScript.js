@@ -1,4 +1,4 @@
-//ONLY CALLS FOR THE FUNCTIONS THAT NEEDS TO BE EXECUTED AT START AND HAVE THE MAXIMIZE AND MINIMIZE FEATURE
+//ONLY CALLS FOR THE FUNCTIONS THAT NEEDS TO BE EXECUTED AT START AND LISTEN FOR WINDOW EVENTS
 let chatMinimize = document.getElementById("chatMinimize");
 let chatMaximize = document.getElementById("chatMaximize");
 let mainWindow = document.getElementById("mainWindow");
@@ -67,6 +67,17 @@ SearchInputService.input.addEventListener("input", function () {
     }
 });
 
+// Check if the browser is firefox and disables voice input feature
+let ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf('firefox') > -1) {
+    VoiceRecognitionService.voiceRecognitionBtn.style.display = "none";
+    SearchInputService.inputButton.style.display = "block";
+    VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/send.svg)";
+    VoiceRecognitionService.voiceRecognitionBtn.addEventListener("click", SearchInputService.inputButton.click);
+} else {
+    VoiceRecognitionService.voiceRecognition();
+}
+
 QuizzesService.form.addEventListener('submit', QuizzesService.checkRightAnswers);
 
 DataService.getDataAsync();
@@ -80,15 +91,3 @@ SearchInputService.getSearchInput();
 QuizzesService.printQuizzesMenu();
 
 GamesService.printGamesMenu();
-
-
-
-let ua = navigator.userAgent.toLowerCase();
-if (ua.indexOf('firefox') > -1 && window.innerWidth < 820) {
-    VoiceRecognitionService.voiceRecognitionBtn.style.display = "none";
-    SearchInputService.inputButton.style.display = "block";
-    VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/send.svg)";
-    VoiceRecognitionService.voiceRecognitionBtn.addEventListener("click", SearchInputService.inputButton.click);
-} else {
-    VoiceRecognitionService.voiceRecognition();
-}
