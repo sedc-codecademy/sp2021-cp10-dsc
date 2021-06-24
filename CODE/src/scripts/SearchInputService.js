@@ -7,6 +7,8 @@ const SearchInputService = {
     //Events for search input - Click and Enter
     getSearchInput: function () {
         this.inputButton.addEventListener("click", function () {
+            SearchInputService.inputButton.style.display = "none";
+            VoiceRecognitionService.voiceRecognitionBtn.style.display = "block";
             SearchInputService.inputButton.disabled = true;
             SearchInputService.SearchInputLogic();
             UiService.sleep().then(() => {
@@ -23,15 +25,16 @@ const SearchInputService = {
     },
 
     //Search for a suitable response on the input
-    SearchInputLogic: function () {
+    SearchInputLogic: function (voiceRecognitionString) {
         if (AnimationsService.chatWindow.style.display === "none") UiService.resetChatWindow();
         UiService.recommendedDiv.style.display = "none";
         AnimationsService.changeImageHead('haralampiye');
         AnimationsService.headerAnimation();
-        if (SearchInputService.input.value === "") return;
+        if (SearchInputService.input.value === "" && voiceRecognitionString === undefined) return;
 
-        SearchInputService.inputStringForUser = SearchInputService.input.value;
-        SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.input.value);
+        voiceRecognitionString !== undefined ? SearchInputService.inputStringForUser = voiceRecognitionString : SearchInputService.inputStringForUser = SearchInputService.input.value;
+
+        SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.inputStringForUser);
         input.value = "";
 
         // Searches for a curse word and promotes looove
@@ -261,7 +264,7 @@ const SearchInputService = {
 
     // Searches for a curse word and promotes looove
     searchForCurseWords: function () {
-        let curseWords = ["hell", "idiot", "fuck", "suck", "cock"];
+        let curseWords = ["hell", "idiot", "fuck", "suck", "cock", "love you"];
 
         for (let curseWord of curseWords) {
             if (SearchInputService.inputString.toLowerCase().includes(curseWord)) {
