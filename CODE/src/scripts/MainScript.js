@@ -1,8 +1,9 @@
-//ONLY CALLS FOR THE FUNCTIONS THAT NEEDS TO BE EXECUTED AT START AND HAVE THE MAXIMIZE AND MINIMIZE FEATURE
+//ONLY CALLS FOR THE FUNCTIONS THAT NEEDS TO BE EXECUTED AT START AND LISTEN FOR WINDOW EVENTS
 let chatMinimize = document.getElementById("chatMinimize");
 let chatMaximize = document.getElementById("chatMaximize");
 let mainWindow = document.getElementById("mainWindow");
 let isChatBotOpened = true;
+let searchInputWraper = document.getElementById("searchInputWraper");
 
 //Minimize event
 chatMinimize.addEventListener("click", () => {
@@ -12,6 +13,7 @@ chatMinimize.addEventListener("click", () => {
         mainWindow.style.visibility = "hidden";
         chatMaximize.style.visibility = "visible";
         chatMaximize.style.transform = "translateY(0rem)";
+        searchInputWraper.style.opacity = 0;
         chatMaximize.style.opacity = 1;
         isChatBotOpened = false;
         chatMaximize.classList.add("jello-horizontal");
@@ -23,10 +25,13 @@ chatMaximize.addEventListener("click", () => {
     if (!isChatBotOpened) {
         chatMaximize.classList.remove("jello-horizontal");
         setTimeout(() => {
-            mainWindow.style.height = "46.25rem";
+            window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
             mainWindow.style.transition = "0.5s ease-in-out";
             mainWindow.style.visibility = "visible";
         }, 500);
+        setTimeout(() => {
+            searchInputWraper.style.opacity = 1;
+        }, 1000);
         chatMaximize.style.transform = "translateY(-137.5rem)";
         chatMaximize.style.visibility = "hidden";
         chatMaximize.style.opacity = 0;
@@ -36,18 +41,58 @@ chatMaximize.addEventListener("click", () => {
 
 //Modal close on button
 ApplyAndPriceService.closeModalButton.addEventListener("click", () => {
-    ApplyAndPriceService.myModal.style.display="none";
+    ApplyAndPriceService.myModal.style.display = "none";
 });
 
 //Modal close on side
 window.addEventListener("click", (event) => {
-    if(event.target == ApplyAndPriceService.myModal) {
-        ApplyAndPriceService.myModal.style.display="none";
+    if (event.target == ApplyAndPriceService.myModal) {
+        ApplyAndPriceService.myModal.style.display = "none";
     }
 });
 
+//Chat Window scroll into view on screen resize
+window.addEventListener("resize", () => {
+    AnimationsService.onResizeGamesAndQuizzes();
+    ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+    UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+
+    if (window.innerWidth < 821) {
+        UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+    }
+})
+
+//Changes the voice button to a send button and reverse
+SearchInputService.input.addEventListener("input", function () {
+    VoiceRecognitionService.voiceRecognitionBtn.style.display = "none";
+    SearchInputService.inputButton.style.display = "block";
+    if (SearchInputService.input.value === "") {
+        SearchInputService.inputButton.style.display = "none";
+        VoiceRecognitionService.voiceRecognitionBtn.style.display = "block";
+    }
+});
+
+// Check if the browser is firefox and disables voice input feature
+let ua = navigator.userAgent.toLowerCase();
+if (ua.indexOf('firefox') > -1) {
+    VoiceRecognitionService.voiceRecognitionBtn.style.display = "none";
+    SearchInputService.inputButton.style.display = "block";
+    VoiceRecognitionService.voiceRecognitionBtn.style.backgroundImage = "url(./src/img-avatars/send.svg)";
+    VoiceRecognitionService.voiceRecognitionBtn.addEventListener("click", SearchInputService.inputButton.click);
+} else {
+    VoiceRecognitionService.voiceRecognition();
+}
+
+QuizzesService.form.addEventListener('submit', QuizzesService.checkRightAnswers);
+
 DataService.getDataAsync();
+
+DataService.fetchQuizzes();
 
 UiService.firstMessage();
 
 SearchInputService.getSearchInput();
+
+QuizzesService.printQuizzesMenu();
+
+GamesService.printGamesMenu();

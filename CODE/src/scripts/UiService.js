@@ -1,15 +1,15 @@
 const UiService = {
     chatHistory: document.getElementById("chatHistory"),
     recommendedDiv: document.getElementById("recommendedDiv"),
+    modalContent: document.getElementById("modalContent"),
 
     //Prints the very first message for the user
     firstMessage: function () {
         this.chatHistory.innerHTML = `
-        <div class="greetingMessage">Welcome to the</div>
-         <div class="greetingMessage">Seavus Education Chat Bot!</div>
+        <div class="greetingMessage">Welcome to the<br>
+         Seavus Education Chat Bot!</div>
          <div class="greetingMessageQue">How can we help you?</div>
-         <hr class="chat-js-hr">
-        `;
+         <hr class="chat-js-hr">`;
     },
 
     //Prints a user message and random bot message in chat history(Depending on the choice)
@@ -22,15 +22,15 @@ const UiService = {
 
         this.chatHistory.innerHTML += `
         <div chatBotName>
-        <span class="chatUserYou">You</span>
-        <div class="chatBubblesUser">${elementName}</div>
+            <span class="chatUserYou">You</span>
+            <div class="chatBubblesUser">${elementName}</div>
         </div>`;
         this.toggleLoader();
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-            <span class="chatBotName">Haralampiye</span>
-            <div class="chatBubblesBot">${item}</div>
+                <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
+                <div class="chatBubblesBot">${item}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
         });
@@ -42,15 +42,15 @@ const UiService = {
 
         this.chatHistory.innerHTML += `
         <div >
-        <span class="chatUserYou">You</span>
-        <div class="chatBubblesUser">${infoName}</div>
+            <span class="chatUserYou">You</span>
+            <div class="chatBubblesUser">${infoName}</div>
         </div>`
         this.toggleLoader();
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-            <span class="chatBotName">Haralampiye</span>
-            <div class="chatBubblesBot">${infoMessage}</div>
+                <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
+                <div class="chatBubblesBot">${infoMessage}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
         });
@@ -91,7 +91,7 @@ const UiService = {
                     this.replyInfoMessage(neededInfo, test[neededInfo.toLowerCase().replace(/\s/g, "")]);
                     UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
                     break;
-                }else if(neededInfo === "Apply"){
+                } else if (neededInfo === "Apply") {
                     UiService.replyInfoMessage(neededInfo, ["Thank you for your interest!"]);
                     ApplyAndPriceService.getApplyForm("Testing");
                     UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
@@ -104,6 +104,7 @@ const UiService = {
     //Prints message for the answer in the user got everything he needed
     printConversationDone: function (choice) {
         if (choice === "Yes") {
+            AnimationsService.chatBotBubbleName = "Mickey";
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
             UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
         } else if (choice === "No") {
@@ -125,5 +126,118 @@ const UiService = {
     //Pauses everything for some time
     sleep: function () {
         return new Promise(resolve => setTimeout(resolve, 2000));
+    },
+
+    // Toggles between 2 view ports
+    toggleDisplayView: function (view1, view2) {
+        view1.style.display = "none";
+        view2.style.display = "flex";
+        view2.style.overflowX = "hidden";
+    },
+
+    // Changes the quizzes/games icon
+    changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
+        if (gameOrQuizFlag) {
+            item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
+            if (item.id === "chatQuizzes") {
+                GamesService.areGamesOpen = false;
+                AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+            } else {
+                QuizzesService.areQuizzesOpen = false;
+                AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+            }
+            this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
+        } else {
+            if (item.id === "chatQuizzes") {
+                item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+            } else {
+                item.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+            };
+            this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
+        };
+    },
+
+    // Changes flag value
+    changeFlag: function (flag) {
+        if (flag) {
+            return false;
+        };
+        return true;
+    },
+
+    // Resets chat-window if called from another viewport
+    resetChatWindow: function () {
+        this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        AnimationsService.chatWindow.style.overflowX = "hidden";
+        AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+        GamesService.areGamesOpen = false;
+        AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+        QuizzesService.areQuizzesOpen = false;
+    },
+
+    // Stops user from clicking buttons too fast
+    disableGamesAndQuizzesButtons: function (flag) {
+        if (flag) {
+            AnimationsService.chatQuizzes.disabled = true;
+            AnimationsService.chatGames.disabled = true;
+        }
+        else {
+            AnimationsService.chatQuizzes.disabled = false;
+            AnimationsService.chatGames.disabled = false;
+        }
+    },
+
+    //Changes modal style to block and sets height and width
+    displayModalWindow: function (flag) {
+        ApplyAndPriceService.myModal.style.display = "block";
+
+        if (window.innerWidth < 821) {
+            this.modalContent.style.height = "100%";
+            this.modalContent.style.width = "100%";
+            QuizzesService.popUpQuizzes.style.display = "none";
+            QuizzesService.form.style.display = "none";
+            ApplyAndPriceService.popUp.style.display = "block";
+            return;
+        }
+
+        this.modalContent.style.height = "70%";
+        this.modalContent.style.width = "40%";
+        this.modalContent.style.paddingBottom = "2%";
+        QuizzesService.form.style.display = "none";
+        QuizzesService.popUpQuizzes.style.display = "none";
+        ApplyAndPriceService.popUp.style.display = "block";
+        ApplyAndPriceService.popUp.style.overflowY = "hidden";
+        ApplyAndPriceService.popUp.style.paddingBottom = "0%";
+        ApplyAndPriceService.closeModalButton.style.marginTop = "-6%";
+
+        switch (flag) {
+            case "price":
+            case "apply":
+                ApplyAndPriceService.popUp.style.paddingBottom = "5%";
+                break;
+            case "games":
+                this.modalContent.style.height = "80%";
+                this.modalContent.style.width = "90%";
+                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                this.modalContent.style.paddingBottom = "7%";
+                ApplyAndPriceService.closeModalButton.style.marginTop = "-2.5%";
+                break;
+            case "quizzes":
+                ApplyAndPriceService.popUp.style.display = "none";
+                this.modalContent.style.width = "45%";
+                QuizzesService.popUpQuizzes.style.display = "block";
+                QuizzesService.form.style.display = "block";
+                QuizzesService.form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+                break;
+            case "contact":
+                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                break;
+        }
+    },
+
+    //Prints contact button form
+    printContactButton: function(){
+        ButtonsService.mainButtonsDiv.innerHTML += `<button class="contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     }
-};//PROPERTIES: Chat history div, Recommended slide div
+};//PROPERTIES: Chat history div, Recommended slide div, Modal pop up wrapper div

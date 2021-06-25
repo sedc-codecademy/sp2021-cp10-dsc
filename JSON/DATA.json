@@ -825,12 +825,6 @@
          }
       ]
    },
-
-
-
-
-
-
    "ReplyMessages": {
       "Jokes": {
          "jokesArray": [
@@ -1023,26 +1017,31 @@
             "keywords": [],
             "reply": [
                "I'm the funniest bot you'll ever meet! Accept for R2D2... I love that little bot!",
-               "I'm as funny as the people who made me! Hm... That doesn't mean a lot actually... Oh well!",
+               "I'm as funny as the people who made me! Hm... That doesn't amount to much now does it... Oh well!",
                "So you like my jokes? Go ahead ask me another one, I know a 100!"
             ]
          },
          "WhoAreYou": {
             "keywords": [],
             "reply": [
-               "I'm a chat bot made by the very students of SEDC and I'm here to help navigate you through this wonderful website!",
                "I'm a chat bot made by the very students of SEDC and I'm here to help navigate you through this wonderful website!"
+            ]
+         },
+         "WhatCanYouDo": {
+            "keywords": [],
+            "reply": [
+               "I can help you by providing you with information about our academies and courses! You can also play a variety of games and take some quizzes if you feel brave enough!"
             ]
          },
          "NoComprende": {
             "keywords": [],
             "reply": [
-               "I'm sorry but I don't understand you... Can you ask me a more basic question?",
-               "Well I know I'm smart... But not that smart! Try asking me something easier!",
-               "Well I tried to think of an answer but I lost my train of thought, could you ask me something easier? I have a very short attention span!",
-               "Well that flew waaay over my head! Can you rephrase that please?",
-               "Oh-Oh! Seems like that question is too tough for me! Can you make it easier for me? Pretty pleaaaaase!",
-               "Oh darn it... I lost you there... Can you ask me something easier or rephrase your question"
+               "I'm sorry but I don't understand you... Can you ask me a more basic question?\n\nIf you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
+               "Well I know I'm smart... But not that smart! Try asking me something easier!\n\nIf you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
+               "Well I tried to think of an answer but I lost my train of thought, could you ask me something easier? I have a very short attention span!\n\nIf you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
+               "Well that flew waaay over my head! Can you rephrase that please?\n\nIf you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
+               "Oh-Oh! Seems like that question is too tough for me! Can you make it easier for me? Pretty pleaaaaase!\n\nIf you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
+               "Oh darn it... I lost you there... Can you ask me something easier or rephrase your question\n\nIf you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!"
             ]
          }
       }

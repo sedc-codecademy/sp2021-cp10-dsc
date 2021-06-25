@@ -7,23 +7,20 @@ const ButtonsService = {
     //Prints main buttons(Academies, Courses, Testing)
     getMainButtons: function (data) {
         this.buttonsDiv.innerHTML = "";
-
         AnimationsService.changeImageHead('haralampiye');
 
-        if(this.mainButtonsDiv.innerHTML !== ""){
-            return;
-        }
+        if(this.mainButtonsDiv.innerHTML !== "") return;
 
         for (const button in data) {
             this.mainButtonsDiv.innerHTML += `<button id="${button}" class="${button}" onclick="ButtonsService.mainButtonsLogic('${button}')">${button}</button>`;
-            buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
         }
+        UiService.printContactButton();
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Main buttons event logic and function call
     mainButtonsLogic: function (branch, searchString) {
         AnimationsService.headerAnimation();
-
         this.mainButtonsDiv.innerHTML = "";
         UiService.replyMessages(searchString === undefined ? branch : searchString, DataService.cachedReplyMessages.ShortTalk.MainButtonReplies);
 
@@ -46,14 +43,13 @@ const ButtonsService = {
 
         for (const element of array) {
             this.buttonsDiv.innerHTML += `<button id="${element.nameId}" class="chatBotBtns" onclick="ButtonsService.getDataButtons('${element.nameId}', '${branchName}')">${element.name}</button>`;
-            buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
         }
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Logic for the buttons (Checks If the array holds the real data)
     getDataButtons: function (buttonId, branchName, searchString) {
         this.buttonsDiv.innerHTML = "";
-
         AnimationsService.changeImageHead(buttonId);
 
         let data = DataService.cachedData[branchName];
@@ -87,12 +83,12 @@ const ButtonsService = {
     //Prints the buttons for Object info
     getInfoButtons: function (element, branchName) {
         this.buttonsDiv.innerHTML = "";
-
         AnimationsService.changeImageHead(element.name);
 
         for (const button of element.infoProperties) {
             this.buttonsDiv.innerHTML += `<button id = "${button}" class="chatBotBtns" onclick="UiService.printAcademyInfo('${button}','${element.nameId}', '${branchName}')">${button}</button>`;
-            buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' })        }
+       }
+       buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' }) 
     },
 
     //Prints the buttons for testing objects
@@ -101,8 +97,8 @@ const ButtonsService = {
 
         for (const button of array) {
             this.buttonsDiv.innerHTML += `<button id = "${button.nameId}" class="chatBotBtns" onclick="ButtonsService.getInfoTestingButtons('${button.nameId}')">${button.name}</button>`;
-            buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
         }
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
     },
 
@@ -129,15 +125,13 @@ const ButtonsService = {
     //Pop the question if the user got everything he needed
     isConversationDoneButtons: function () {
         this.buttonsDiv.innerHTML = "";
-
         UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
 
         let answers = ["Yes", "No"];
-
         for (const answer of answers) {
             this.buttonsDiv.innerHTML += `<button id = "${answer}" class="chatBotBtns" onclick="UiService.printConversationDone('${answer}')">${answer}</button>`;
-            buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
         }
+        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Creates random buttons for the recommendations slide and fills an array with their indexes
@@ -159,7 +153,6 @@ const ButtonsService = {
     //Catch the event of the recommendation slide button click
     findRecommendationButtonChoice: function (elementId, branchName, studyProgramName) {
         UiService.recommendedDiv.style.display = "none";
-        AnimationsService.chatWindow.style.height = "35.625rem";
         let data = DataService.cachedData[branchName];
 
         for (let element of data) {
@@ -177,4 +170,4 @@ const ButtonsService = {
             }
         }
     }
-};//PROPERTIES: The buttons div, The main buttons div, Minimize button, Maximize button, Random elements for recommendations
+};//PROPERTIES: The buttons div, The main buttons div, Minimize button, Maximize button
