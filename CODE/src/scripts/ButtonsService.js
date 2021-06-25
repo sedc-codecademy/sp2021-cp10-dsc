@@ -163,7 +163,10 @@ const ButtonsService = {
                     for (let program of element.studyPrograms) {
                         if (program.name === studyProgramName) {
                             UiService.replyMessages(program.name, program.reply);
-                            UiService.sleep().then(() => { ButtonsService.getInfoButtons(program, branchName); });
+                            UiService.sleep().then(() => {
+                                ButtonsService.getInfoButtons(program, branchName);
+                                branchName === 'Academies' ? AnimationsService.changeImageHead(studyProgramName) : AnimationsService.changeImageHead('haralampiye');
+                            });
                         }
                     }
                 }
