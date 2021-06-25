@@ -29,7 +29,7 @@ const UiService = {
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-                <span class="chatBotName">Haralampiye</span>
+                <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
                 <div class="chatBubblesBot">${item}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
@@ -49,7 +49,7 @@ const UiService = {
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-                <span class="chatBotName">Haralampiye</span>
+                <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
                 <div class="chatBubblesBot">${infoMessage}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
@@ -104,6 +104,7 @@ const UiService = {
     //Prints message for the answer in the user got everything he needed
     printConversationDone: function (choice) {
         if (choice === "Yes") {
+            AnimationsService.chatBotBubbleName = "Mickey";
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
             UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
         } else if (choice === "No") {

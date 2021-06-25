@@ -6,6 +6,7 @@ const AnimationsService = {
     recommendedSlide: document.getElementById("recommendedSlide"),
     chatWindow: document.getElementById("chatWindow"),
     isChatInitialized: false,
+    chatBotBubbleName: "",
 
     //Animates the header - Image, Name, Icons
     headerAnimation: function () {
@@ -69,33 +70,54 @@ const AnimationsService = {
             case 'programming':
             case 'Web Development':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/CODE.png)";
+                AnimationsService.chatName.innerHTML = "Brian<br>Web Development";
+                AnimationsService.chatName.style.marginTop = "0.3rem";
+                AnimationsService.chatBotBubbleName = "Brian";
                 break;
             case 'computerNetworks':
             case 'CloudOps Network Engineer':
             case 'Security Specialist':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/Networks.png)";
+                AnimationsService.chatName.innerHTML = "Jimmy<br>Computer Networks";
+                AnimationsService.chatName.style.marginTop = "0.3rem";
+                AnimationsService.chatBotBubbleName = "Jimmy";
                 break;
             case 'design':
             case 'Graphic Designer':
             case 'Web Designer':
             case 'Game Designer':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DESIGN.png)";
+                AnimationsService.chatName.innerHTML = "Michelangelo<br>Design Academy";
+                AnimationsService.chatName.style.marginTop = "0.3rem";
+                AnimationsService.chatBotBubbleName = "Michelangelo";
                 break;
             case 'softwareTesting':
             case 'Software Tester':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/QA.png)";
+                AnimationsService.chatName.innerHTML = "Jenny<br>Software Testing";
+                AnimationsService.chatName.style.marginTop = "0.3rem";
+                AnimationsService.chatBotBubbleName = "Jenny";
                 break;
             // case 'dataScience':
                 // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
+                // AnimationsService.chatName.innerHTML = "Bradley<br>Data Science";
+                // AnimationsService.chatBotBubbleName = "Bradley";
             //     break;
             // case 'digitalMarketing':
                 // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
+                // AnimationsService.chatName.innerHTML = "Connor<br>Digital Marketing";
+                // AnimationsService.chatBotBubbleName = "Connor";
             //     break;
             // case 'iThink':
                 // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
+                // AnimationsService.chatName.innerHTML = "Benji<br>iThink Academy";
+                // AnimationsService.chatBotBubbleName = "Benji";
             //     break;
             case 'haralampiye':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/HARALAMPIYE.png)";
+                AnimationsService.chatName.innerHTML = "Mickey<br>SEDC Chat Bot";
+                AnimationsService.chatName.style.marginTop = "0.9rem";
+                AnimationsService.chatBotBubbleName = "Mickey";
                 break;
         }
     },

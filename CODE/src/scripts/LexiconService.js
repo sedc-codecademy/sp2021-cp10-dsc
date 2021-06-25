@@ -32,7 +32,6 @@ const LexiconService = {
             inputString.toLowerCase().includes("qualifications") ||
             inputString.toLowerCase().includes("qualification") ||
             inputString.toLowerCase().includes("job") ||
-            inputString.toLowerCase().includes("jobs") ||
             inputString.toLowerCase().includes("employment") ||
             inputString.toLowerCase().includes("work")
         )
@@ -41,7 +40,6 @@ const LexiconService = {
         // Checks whether input string has a reference to "Apply" and if so adds the corresponding keyword to the modified input string
         if (
             inputString.toLowerCase().includes("application") ||
-            inputString.toLowerCase().includes("enrollment") ||
             inputString.toLowerCase().includes("enroll") ||
             inputString.toLowerCase().includes("sign up") ||
             inputString.toLowerCase().includes("register")
@@ -58,7 +56,6 @@ const LexiconService = {
 
         // Checks whether input string has a reference to "Target Audience" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("for") ||
             inputString.toLowerCase().includes("who") ||
             inputString.toLowerCase().includes("age") ||
             inputString.toLowerCase().includes("for me") ||
@@ -70,6 +67,7 @@ const LexiconService = {
         if (
             inputString.toLowerCase().includes("development") ||
             inputString.toLowerCase().includes("developer") ||
+            inputString.toLowerCase().includes("developing") ||
             inputString.toLowerCase().includes("coding") ||
             inputString.toLowerCase().includes("web") ||
             inputString.toLowerCase().includes("site")
@@ -87,7 +85,7 @@ const LexiconService = {
 
         // Checks whether input string has a reference to "Design" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("designer") ||
+            inputString.toLowerCase().includes("design") ||
             inputString.toLowerCase().includes("graphic") ||
             inputString.toLowerCase().includes("ui") ||
             inputString.toLowerCase().includes("ux") ||
@@ -119,6 +117,7 @@ const LexiconService = {
         // Checks whether input string has a reference to "iThink Academy" and if so adds the corresponding keyword to the modified input string
         if (
             inputString.toLowerCase().includes("iThink") ||
+            inputString.toLowerCase().includes("i Think") ||
             inputString.toLowerCase().includes("child") ||
             inputString.toLowerCase().includes("kid")
         )

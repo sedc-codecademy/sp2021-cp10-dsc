@@ -40,6 +40,7 @@ body {
   --modal-form-check-blue: #c5cfe9;
   --modal-form-games-border-gray: #ccc;
   --chat-maximize-border-purple: #7f60a9;
+  --aricoma-gold: #A98E5B;
 }
 
 /* STYLES FOR THE CHAT WINDOW */
@@ -84,6 +85,8 @@ body {
   color: var(--white);
   text-align: center;
   opacity: 0;
+  word-wrap: break-word;
+  width: 105.5px;
 }
 
 .chat-minimize {
@@ -113,7 +116,7 @@ body {
 
 #chatMaximize {
   transition: all 1s ease-in-out;
-  border: 3px solid var(--chat-maximize-border-purple);
+  border: 3px solid var(--aricoma-gold);
   opacity: 0;
   display: block;
   visibility: hidden;
@@ -516,7 +519,7 @@ width: 15rem;
 .btnCard {
   width: 45%;
   height: 6rem;
-  border: 1.5px solid var(--btn-card-blue);
+  border: 1.5px solid var(--aricoma-gold);
   border-radius: 0.625rem;
   box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
   background-color: var(--white);
@@ -533,7 +536,7 @@ width: 15rem;
 .btnCardName {
   color: var(--white);
   text-shadow: -0.5px -0.5px 0 var(--btn-card-shadow-dark-blue), 0.5px -0.5px 0 var(--btn-card-shadow-dark-blue), -0.5px 0.5px 0 var(--btn-card-shadow-dark-blue), 0.5px 0.5px 0 var(--btn-card-shadow-dark-blue);
-  background-color: var(--btn-card-blue);
+  background-color: var(--aricoma-gold);
   font-weight: bold;
   padding: 0.5rem 0.8rem;
   font-size: 14.5px;

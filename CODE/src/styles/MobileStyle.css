@@ -37,6 +37,7 @@ body {
     --typing-animation-dot-color4: #002c5f;
     --modal-bckg-white: #ebebeb;
     --chat-maximize-border-purple: #7f60a9;
+    --aricoma-gold: #A98E5B;
 }
 
 /* STYLES FOR THE CHAT WINDOW */
@@ -112,6 +113,7 @@ body {
 #chatMaximize {
     transition: all 1s ease-in-out;
     opacity: 0;
+    border: 3px solid var(--aricoma-gold);
     display: block;
     visibility: hidden;
     transform: translateY(-2200px);
