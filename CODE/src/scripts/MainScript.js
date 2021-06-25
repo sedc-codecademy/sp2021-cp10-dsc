@@ -60,6 +60,16 @@ window.addEventListener("resize", () => {
     if (window.innerWidth < 821) {
         UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
     }
+
+    if(window.innerWidth < 821){
+        AnimationsService.chatName.style.marginTop = "0rem";
+    }else{
+        if(AnimationsService.chatName.innerText.includes("Mickey")){
+            AnimationsService.chatName.style.marginTop = "0.9rem";
+        }else{
+            AnimationsService.chatName.style.marginTop = "0.3rem";
+        }
+    }
 })
 
 //Changes the voice button to a send button and reverse
