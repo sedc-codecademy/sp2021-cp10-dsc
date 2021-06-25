@@ -6,7 +6,7 @@ const QuizzesService = {
     displayedQuestions: null,
 
     //Prints buttons for all the quizzes
-    printQuizzesMenu: async function () {
+    printQuizzesMenu: function () {
         AnimationsService.chatQuizzes.addEventListener('click', function () {
             UiService.disableGamesAndQuizzesButtons(true);
             QuizzesService.areQuizzesOpen = UiService.changeFlag(QuizzesService.areQuizzesOpen);
@@ -18,6 +18,11 @@ const QuizzesService = {
                 });
             } else {
                 UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
+            }
+
+            if(DataService.cachedQuizzes === null) {
+                UiService.disableGamesAndQuizzesButtons(false);
+                return;
             }
 
             let inner = `<p id="quizesMessage">Choose a Quiz</p> <hr class="chat-js-hr">`;

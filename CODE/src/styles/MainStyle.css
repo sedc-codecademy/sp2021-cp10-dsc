@@ -267,6 +267,27 @@ body {
   border: none;
 }
 
+.errorWrapper {
+  margin: auto;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorWrapper :first-child {
+width: 15rem;
+}
+
+.errorText {
+  font-size: 1.5rem;
+  padding-top: 5%;
+  font-weight: bolder;
+  text-align: center;
+  color: #f84d4d;
+}
+
 /* RECOMMENDED BUTTONS DIV */
 
 .chat-recommended-div {
