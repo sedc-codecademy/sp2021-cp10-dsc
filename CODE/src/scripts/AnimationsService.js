@@ -120,8 +120,8 @@ const AnimationsService = {
             //     break;
             case 'haralampiye':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/HARALAMPIYE.png)";
-                AnimationsService.chatName.innerHTML = "Mickey<br>SEDC Chat Bot";
-                AnimationsService.chatBotBubbleName = "Mickey";
+                AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
+                AnimationsService.chatBotBubbleName = "Haralampiye";
                 break;
         }
     },

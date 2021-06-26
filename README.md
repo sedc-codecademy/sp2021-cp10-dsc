@@ -1,4 +1,4 @@
-# SEDC ChatBot 🔖 VERSION: 1.0.0 🔖
+# SEDC ChatBot 🔖 VERSION: 2.0.0 🔖
 
 
 ## Table of contents 📑
@@ -8,9 +8,8 @@
 * [Status](#status)
 
 ## General info ℹ️
-* We are a team of students making a chat bot for our coding academy
+* We are a team of students making a chat bot for SEDC
 * This app uses its own JSON dummy servers
-* The main goal is for the bot to process keywords from the user questions and return data (messages), let the user play games and do quizzes
 
 ## Technologies 💻
 * Vanilla JS (ES6)
@@ -22,11 +21,12 @@ List of ready features:
 * The chat bot window accepts user interaction
 * The bot replies info for the chosen content
 * The bot gives suggestions to the user in the form of buttons
-
-## To-do list: 🚧
-* Fine tune the user interaction (search algorithm) to get more accurate results
-* Add Games and Quizzes to the chatbot
-* Make the Chatbot (chat window) responsive and mobile friendly
+* The bot includes quizzes related to SEDC
+* The bot features games
+* The bot can both accept and understand written and voice commands
+* The bot have both desktop and mobile versions
+* The bot provides contact with SEDC if needed
+* THIS BOT SPREADS LOVE, NOT HATE
 
 ## Status 🏇
 The project is currently in progress and should be completed by the end of June 2021
