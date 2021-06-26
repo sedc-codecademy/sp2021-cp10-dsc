@@ -75,7 +75,7 @@ window.addEventListener("resize", () => {
     if(window.innerWidth < 821){
         AnimationsService.chatName.style.marginTop = "0rem";
     }else{
-        if(AnimationsService.chatName.innerText.includes("Mickey")){
+        if(AnimationsService.chatName.innerText.includes("Haralampiye")){
             AnimationsService.chatName.style.marginTop = "0.9rem";
         }else{
             AnimationsService.chatName.style.marginTop = "0.3rem";
