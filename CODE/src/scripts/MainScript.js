@@ -2,6 +2,7 @@
 let chatMinimize = document.getElementById("chatMinimize");
 let chatMaximize = document.getElementById("chatMaximize");
 let mainWindow = document.getElementById("mainWindow");
+let maximizeSpeechBox= document.getElementById("maximizeSpeechBox");
 let isChatBotOpened = true;
 let searchInputWraper = document.getElementById("searchInputWraper");
 
@@ -17,6 +18,13 @@ chatMinimize.addEventListener("click", () => {
         chatMaximize.style.opacity = 1;
         isChatBotOpened = false;
         chatMaximize.classList.add("jello-horizontal");
+        setTimeout(() => {
+            maximizeSpeechBox.innerHTML = "I'll be here if you need me just click on my handsome face!"
+            maximizeSpeechBox.style.display = "flex";
+        }, 1500);
+        setTimeout(() => {
+            maximizeSpeechBox.style.display = "none";
+        }, 5500);
     }
 });
 
@@ -24,6 +32,7 @@ chatMinimize.addEventListener("click", () => {
 chatMaximize.addEventListener("click", () => {
     if (!isChatBotOpened) {
         chatMaximize.classList.remove("jello-horizontal");
+        maximizeSpeechBox.style.display = "none";
         setTimeout(() => {
             window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
             mainWindow.style.transition = "0.5s ease-in-out";

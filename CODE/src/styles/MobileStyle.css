@@ -110,6 +110,47 @@ body {
     display: none;
 }
 
+/* Speech bubble for maximize button */
+
+.maximizeSpeechBox {
+    width: 200px;
+    height: 80px;
+    margin: 50px auto;
+    /* border: 3px solid var(--aricoma-gold); */
+    border-radius: 6px;
+    padding: 5px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 0.9rem;
+    color: var(--dark-blue);
+    background-color: #ececec;
+    position: absolute;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 26px;
+    bottom: 120px;
+    box-shadow: 0.188rem 0.188rem 0rem rgb(180, 180, 180);
+    display: none;
+}
+
+.speechBox:before {
+    background-color: #ececec;
+    content: "\00a0";
+    height: 16px;
+    position: absolute;
+    top: 69px;
+    right: 5px;
+    transform: rotate( 29deg) skew( -20deg);
+    -moz-transform: rotate( 29deg) skew( -20deg);
+    -ms-transform: rotate( 29deg) skew( -20deg);
+    -o-transform: rotate( 29deg) skew( -20deg);
+    -webkit-transform: rotate( 29deg) skew( -20deg);
+    width: 20px;
+    box-shadow: 0.28rem 0.05rem 0rem rgb(180, 180, 180);
+}
+
 #chatMaximize {
     transition: all 1s ease-in-out;
     opacity: 0;

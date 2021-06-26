@@ -68,14 +68,19 @@
             <div class="chat-searchInput-div" id="searchInput">
                 <input type="text" placeholder="Type something..." id="input">
                 <button class="chat-inputButton" id="inputButton"></button>
-                <div id="voiceRecognitionLoader"><img height="35px" src="./src/img-avatars/recordingAnimation.svg" alt="voiceRecognitionLoader"></div>
+                <div id="voiceRecognitionLoader"><img height="35px" src="./src/img-avatars/recordingAnimation.svg"
+                        alt="voiceRecognitionLoader"></div>
                 <button class="chat-inputButton voice-inputButton" id="voiceButton"></button>
             </div>
         </div>
     </div>
 
     <!-- MAXIMIZE BUTTON -->
-    <button class="chat-maximize" id="chatMaximize"></button>
+    <div class="maximizeButtonDiv">
+        <div id="maximizeSpeechBox" class="maximizeSpeechBox speechBox"></div>
+        <div class="maximizeSpeechBoxShadow speechBoxShadow"></div>
+        <button class="chat-maximize" id="chatMaximize"></button>
+    </div>
 
     <!-- MODAL -->
     <div id="myModal" class="modal">
