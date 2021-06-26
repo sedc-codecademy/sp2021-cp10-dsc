@@ -104,7 +104,7 @@ const UiService = {
     //Prints message for the answer in the user got everything he needed
     printConversationDone: function (choice) {
         if (choice === "Yes") {
-            AnimationsService.chatBotBubbleName = "Mickey";
+            AnimationsService.chatBotBubbleName = "Haralampiye";
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
             UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
         } else if (choice === "No") {
