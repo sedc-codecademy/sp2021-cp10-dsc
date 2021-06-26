@@ -33,7 +33,7 @@ const QuizzesService = {
                 inner +=
                     `<button id="${quiz}" class="btnCard" onclick="QuizzesService.getQuiz('${quiz}')">
                         <div class="btnCardName">${QuizzesService.fixQuizName(quiz)}</div>
-                        <div class="btnCardDescription">Description</div>
+                        <div class="btnCardDescription">Try your hand at this quiz!</div>
                     </button>`;
             }
             inner += `</div>`
