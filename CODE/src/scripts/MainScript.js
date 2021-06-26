@@ -19,12 +19,14 @@ chatMinimize.addEventListener("click", () => {
         isChatBotOpened = false;
         chatMaximize.classList.add("jello-horizontal");
         setTimeout(() => {
-            maximizeSpeechBox.innerHTML = "I'll be here if you need me just click on my handsome face!"
-            maximizeSpeechBox.style.display = "flex";
+            if(!isChatBotOpened){
+                maximizeSpeechBox.innerHTML = "I'll be here if you need me just click on my handsome face!"
+                maximizeSpeechBox.style.display = "flex";
+                setTimeout(() => {
+                    maximizeSpeechBox.style.display = "none";
+                }, 4000);
+            }
         }, 1500);
-        setTimeout(() => {
-            maximizeSpeechBox.style.display = "none";
-        }, 5500);
     }
 });
 
