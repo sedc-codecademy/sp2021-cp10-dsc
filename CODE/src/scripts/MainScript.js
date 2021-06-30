@@ -2,12 +2,15 @@
 let chatMinimize = document.getElementById("chatMinimize");
 let chatMaximize = document.getElementById("chatMaximize");
 let mainWindow = document.getElementById("mainWindow");
-let isChatBotOpened = true;
+let maximizeSpeechBox = document.getElementById("maximizeSpeechBox");
 let searchInputWraper = document.getElementById("searchInputWraper");
+let isChatBotOpened = true;
+let firstTimePageLoaded = true;
 
 //Minimize event
 chatMinimize.addEventListener("click", () => {
     if (isChatBotOpened) {
+        chatMinimize.style.opacity = 0;
         mainWindow.style.height = 0;
         mainWindow.style.transition = "0.5s ease-in-out";
         mainWindow.style.visibility = "hidden";
@@ -17,19 +20,38 @@ chatMinimize.addEventListener("click", () => {
         chatMaximize.style.opacity = 1;
         isChatBotOpened = false;
         chatMaximize.classList.add("jello-horizontal");
+        setTimeout(() => {
+            if (!isChatBotOpened) {
+                if (firstTimePageLoaded) {
+                    maximizeSpeechBox.innerHTML = "Hey there partner! I'm the SEDC chatbot! Do you wanna talk?"
+                } else {
+                    maximizeSpeechBox.innerHTML = "I'll be here if you need me just click on my handsome face!"
+                }
+                firstTimePageLoaded = false;
+                maximizeSpeechBox.style.display = "flex";
+                setTimeout(() => {
+                    maximizeSpeechBox.style.display = "none";
+                }, 4000);
+            }
+        }, 1500);
+        UiService.HTMLScrollCheck();
     }
 });
 
 //Maximize event
 chatMaximize.addEventListener("click", () => {
     if (!isChatBotOpened) {
+        this.mainWindow.style.display = "block";
         chatMaximize.classList.remove("jello-horizontal");
+        maximizeSpeechBox.style.display = "none";
         setTimeout(() => {
             window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
+            UiService.HTMLScrollCheck();
             mainWindow.style.transition = "0.5s ease-in-out";
             mainWindow.style.visibility = "visible";
         }, 500);
         setTimeout(() => {
+            chatMinimize.style.opacity = 1;
             searchInputWraper.style.opacity = 1;
         }, 1000);
         chatMaximize.style.transform = "translateY(-137.5rem)";
@@ -47,7 +69,7 @@ ApplyAndPriceService.closeModalButton.addEventListener("click", () => {
 //Modal close on side
 window.addEventListener("click", (event) => {
     if (event.target == ApplyAndPriceService.myModal) {
-        ApplyAndPriceService.myModal.style.display = "none";
+        ApplyAndPriceService.closeModalButton.click();
     }
 });
 
@@ -57,16 +79,20 @@ window.addEventListener("resize", () => {
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
+    window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
+    UiService.HTMLScrollCheck();
+
     if (window.innerWidth < 821) {
         UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        ApplyAndPriceService.closeModalButton.click();
     }
 
-    if(window.innerWidth < 821){
+    if (window.innerWidth < 821) {
         AnimationsService.chatName.style.marginTop = "0rem";
-    }else{
-        if(AnimationsService.chatName.innerText.includes("Mickey")){
+    } else {
+        if (AnimationsService.chatName.innerText.includes("Haralampiye")) {
             AnimationsService.chatName.style.marginTop = "0.9rem";
-        }else{
+        } else {
             AnimationsService.chatName.style.marginTop = "0.3rem";
         }
     }
@@ -93,7 +119,11 @@ if (ua.indexOf('firefox') > -1) {
     VoiceRecognitionService.voiceRecognition();
 }
 
+//Quizzes form submit
 QuizzesService.form.addEventListener('submit', QuizzesService.checkRightAnswers);
+
+this.mainWindow.style.display = "none";
+window.addEventListener("load", chatMinimize.click());
 
 DataService.getDataAsync();
 

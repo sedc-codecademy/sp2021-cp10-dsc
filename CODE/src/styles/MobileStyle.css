@@ -1,4 +1,4 @@
-/* STYLES FOR THE WHOLE DOCUMENT */
+/* VARIABLES */
 
 *, ::after, ::before {
     font-size: 16px;
@@ -7,19 +7,11 @@
     box-sizing: border-box;
 }
 
-html {
-    height: 100%;
-    overflow: hidden;
-}
-
 body {
-    font-family: 'DIN Pro Light', sans-serif;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
+    font-family: "DIN Pro Light", sans-serif;
 }
 
+/* VARIABLES */
 :root {
     --dark-blue: #002c5f;
     --light-blue: #e9effe;
@@ -35,7 +27,8 @@ body {
     --typing-animation-dot-color2: #002c5f;
     --typing-animation-dot-color3: #002c5f8f;
     --typing-animation-dot-color4: #002c5f;
-    --modal-bckg-white: #ebebeb;
+    --modal-bckg-white: #ffffff;
+    --modal-form-games-border-gray: #ccc;
     --chat-maximize-border-purple: #7f60a9;
     --aricoma-gold: #A98E5B;
 }
@@ -45,7 +38,15 @@ body {
 .main-window {
     transition: all 1s ease-out;
     visibility: visible;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     height: 100%;
+    width: 100%;
+    z-index: 2;
 }
 
 .header {
@@ -55,7 +56,7 @@ body {
     z-index: -1;
 }
 
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-width: 900px) and (max-height: 600px) {
     .header {
         height: 35%;
     }
@@ -97,7 +98,7 @@ body {
 }
 
 .chat-maximize {
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 10%;
     background-image: url(../img-avatars/HARALAMPIYE.png);
@@ -117,6 +118,43 @@ body {
     display: block;
     visibility: hidden;
     transform: translateY(-2200px);
+}
+
+.maximizeSpeechBox {
+    width: 200px;
+    height: 80px;
+    margin: 50px auto;
+    border-radius: 6px;
+    padding: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--dark-blue);
+    background-color: #ececec;
+    position: fixed;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 3.5%;
+    bottom: 17%;
+    box-shadow: 0.188rem 0.188rem 1rem rgb(180, 180, 180);
+    display: none;
+}
+
+.speechBox:before {
+    background-color: #ececec;
+    content: "\00a0";
+    height: 16px;
+    position: absolute;
+    top: 69px;
+    right: 5px;
+    transform: rotate( 29deg) skew( -20deg);
+    -moz-transform: rotate( 29deg) skew( -20deg);
+    -ms-transform: rotate( 29deg) skew( -20deg);
+    -o-transform: rotate( 29deg) skew( -20deg);
+    -webkit-transform: rotate( 29deg) skew( -20deg);
+    width: 20px;
+    box-shadow: 0.28rem 0.05rem 1rem -1rem rgb(180, 180, 180);
 }
 
 .chat-window {
@@ -281,7 +319,7 @@ body {
 
 .chat-inputButton {
     display: none;
-    background-image: url(../img-avatars/mic.svg);
+    background-image: url(../img-avatars/send.svg);
     background-size: cover;
     width: 1.9rem;
     height: 1.8rem;
@@ -309,54 +347,34 @@ body {
     padding-top: 5%;
 }
 
-.Academies {
+.mainButtonsStyle {
     width: 7.5rem;
     height: 3.125rem;
     border-radius: 0.625rem;
     border: none;
-    border-top: 0.313rem solid var(--btn-brown-red);
     box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
     background-color: var(--white);
-    color: var(--btn-brown-red);
     margin: 0.313rem;
+}
+
+.Academies {
+    border-top: 0.313rem solid var(--btn-brown-red);
+    color: var(--btn-brown-red);
 }
 
 .Testing {
-    width: 7.5rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
     border-top: 0.313rem solid var(--btn-purple);
-    box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-    background-color: var(--white);
     color: var(--btn-purple);
-    margin: 0.313rem;
 }
 
 .Courses {
-    width: 7.5rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
     border-top: 0.313rem solid var(--btn-green);
-    box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-    background-color: var(--white);
     color: var(--btn-green);
-    margin: 0.313rem;
 }
 
-/* Contact Us style button */
-
 .contactUs {
-    width: 7.5rem;
-    height: 3.125rem;
-    border-radius: 0.625rem;
-    border: none;
     border-top: 0.313rem solid var(--btn-pink);
-    box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-    background-color: var(--white);
     color: var(--btn-pink);
-    margin: 0.313rem;
 }
 
 .chat-buttons-div {
@@ -591,14 +609,15 @@ button:active {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     padding-top: 0;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    /* Enable scroll if needed */
+    overflow-x: hidden;
+    z-index: 10;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }

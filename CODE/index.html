@@ -11,20 +11,16 @@
 </head>
 
 <body>
+
     <!-- MAIN CHAT WINDOW -->
     <div class="main-window" id="mainWindow">
 
         <!-- HEADER -->
         <div class="header">
-            <!-- GAMES BUTTON -->
             <button class="chat-games" title="Games" id="chatGames">Games</button>
-            <!-- QUIZZES BUTTON -->
             <button class="chat-quizzes" title="Quizzes" id="chatQuizzes">Quizzes</button>
-            <!-- AVATAR NAME -->
-            <div class="chat-Name" id="chatName">Haralampiye<br>SEDC Chat Bot</div>
-            <!-- MINIMIZE BUTTON -->
+            <div class="chat-Name" id="chatName"></div>
             <button class="chat-minimize" id="chatMinimize"></button>
-            <!-- AVATAR LOGO -->
             <div class="img-logo" id="imgLogo"></div>
         </div>
 
@@ -35,11 +31,8 @@
 
             <!-- TEXT-CHAT WRAPPER -->
             <div class="chat" id="chatWindow">
-                <!-- CHAT HISTORY -->
                 <div class="chat-history" id="chatHistory"></div>
-                <!-- MAIN BUTTONS -->
                 <div class="main-chat-buttons-div" id="mainButtonsDiv"></div>
-                <!-- OPTION BUTTONS -->
                 <div class="chat-buttons-div" id="buttonsDiv"></div>
 
                 <!-- LOADER -->
@@ -68,14 +61,19 @@
             <div class="chat-searchInput-div" id="searchInput">
                 <input type="text" placeholder="Type something..." id="input">
                 <button class="chat-inputButton" id="inputButton"></button>
-                <div id="voiceRecognitionLoader"><img height="35px" src="./src/img-avatars/recordingAnimation.svg" alt="voiceRecognitionLoader"></div>
+                <div id="voiceRecognitionLoader"><img height="35px"
+                        src="./src/img-avatars/recordingAnimation.svg" alt="voiceRecognitionLoader">
+                </div>
                 <button class="chat-inputButton voice-inputButton" id="voiceButton"></button>
             </div>
         </div>
     </div>
 
     <!-- MAXIMIZE BUTTON -->
-    <button class="chat-maximize" id="chatMaximize"></button>
+    <div class="maximizeButtonDiv">
+        <div id="maximizeSpeechBox" class="maximizeSpeechBox speechBox"></div>
+        <button class="chat-maximize" id="chatMaximize"></button>
+    </div>
 
     <!-- MODAL -->
     <div id="myModal" class="modal">

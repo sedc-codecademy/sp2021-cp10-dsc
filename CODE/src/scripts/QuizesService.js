@@ -29,11 +29,11 @@ const QuizzesService = {
 
             inner += `<div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
 
-            for (let quiz in DataService.cachedQuizzes) {
+            for (let quiz in DataService.cachedQuizzes.Quizzes) {
                 inner +=
                     `<button id="${quiz}" class="btnCard" onclick="QuizzesService.getQuiz('${quiz}')">
-                        <div class="btnCardName">${QuizzesService.fixQuizName(quiz)}</div>
-                        <div class="btnCardDescription">Description</div>
+                        <div class="btnCardName">${quiz.replace(/-/g, " ")}</div>
+                        <div class="btnCardDescription">${DataService.cachedQuizzes.Descriptions[quiz]}</div>
                     </button>`;
             }
             inner += `</div>`
@@ -42,22 +42,9 @@ const QuizzesService = {
         });
     },
 
-    //Fixes the name (json id)
-    fixQuizName: function (input) {
-        let name = "";
-        for(let char of input){
-            if(char === "-"){
-                name += " ";
-            }else{
-                name += char;
-            }
-        }
-        return name;
-    },
-
     //Prints the chosen quiz from JSON
     getQuiz: function (id) {
-        let data = DataService.cachedQuizzes[id];
+        let data = DataService.cachedQuizzes.Quizzes[id];
 
         UiService.displayModalWindow("quizzes");
         if (data === undefined) {
@@ -126,6 +113,7 @@ const QuizzesService = {
 
         const empty = (x) => x === "";
         if (userAnswers.some(empty)) {
+            QuizzesService.form.style.display = "flex";
             QuizzesService.form.innerHTML = '<p class="somethingWentWrongMessage">All the questions must be answered before you submit them! <br><br>Please try again!</p>';
             return;
         }
@@ -137,7 +125,8 @@ const QuizzesService = {
             }
         });
 
-        QuizzesService.form.innerHTML = `<p id="quizResult">You got <span id="quizSpan" >${Math.ceil(score)}%</span> of the questions right!</p>`;
+        QuizzesService.form.style.display = "flex";
+        QuizzesService.form.innerHTML = `<p class="somethingWentWrongMessage" id="quizResult">You got ${Math.ceil(score)}% of the questions right!</p>`;
     },
 
     //Prints a message if something is wrong with the quiz
