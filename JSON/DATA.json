@@ -14,6 +14,7 @@
                {
                   "name": "Web Development",
                   "nameId": "webDevelopment",
+                  "academyBtn": "Web Development",
                   "overview": "At the end of this 3 semesters study program you will develop an equivalent skill set and knowledge as an entry level web developer for the exciting and in-demand software development industry.",
                   "moreinfo": "https://www.sedc.mk/academy/academy-for-programing/web-developer/",
                   "timeline": "Duration: 12 months | 3 semesters \nClasses: 480 \n\nStart: November \nEnd: October/November \n\nLectures will be held twice a week and every 2nd Saturday.",
@@ -46,6 +47,7 @@
                {
                   "name": "CloudOps Network Engineer",
                   "nameId": "cloudOps",
+                  "academyBtn": "Network Engineer",
                   "overview": "During the studies we’ll learn about the techniques for architecting, deploying, and maintaining applications, including how to use Cloud as the infrastructure for existing and new services. A lot of practical activities will prepare you to achieve hands-on and real-world skills essential for the evolving IT market.",
                   "moreinfo": "https://www.sedc.mk/academy/academy-for-computer-networks/cloudops-network-engineer/",
                   "timeline": "Duration: 12 months | 3 semesters \nClasses: 830 \n\nStart: November \nEnd: November \n\nLectures: Every day (Monday – Friday) from 12:30 pm until 16:00 pm",
@@ -87,7 +89,7 @@
          },
          {
             "id": 2,
-            "name": "Design",
+            "name": "Design Academy",
             "nameId": "design",
             "reply": [
                "Fancy yourself a bachelor of art? Then this is where career should start!",
@@ -118,6 +120,7 @@
                {
                   "name": "Web Designer",
                   "nameId": "webDesigner",
+                  "academyBtn": "Web Design",
                   "overview": "Students will learn how to plan and design compelling and interactive websites, how to change and make an impact with HTML and CSS, PHP and jQuery. They will also learn technical software programs and accessibility standards, color, typography, and composition and will create their own dynamic portfolio.",
                   "moreinfo": "https://www.sedc.mk/academy/academy-for-design/web-design/",
                   "timeline": "Duration: 9 months | 2 semesters \nClasses: 540 \n\nStart: October \nEnd: June \n\nLectures: Every day (Monday – Friday) from 5:30 pm until 9:00 pm",
@@ -170,6 +173,7 @@
                {
                   "name": "Software Tester",
                   "nameId": "softwareTester",
+                  "academyBtn": "Software Testing",
                   "overview": "This curriculum is focused on the latest agile testing principles combined with traditional software testing concepts. In addition candidates are getting IT knowledge related to Agile, Scrum and Kanban, SQL, Operating systems and Diagrams such as UML, BPMN and Mind Maps which is crucial for a Software Tester.",
                   "moreinfo": "https://www.sedc.mk/academy/academy-for-software-testing/software-tester/",
                   "timeline": "Duration: 6 months | 2 semesters \nClasses: 210 \n\nStart: March \nEnd: August \n\nLectures will be held twice a week.",
@@ -202,6 +206,7 @@
                {
                   "name": "Data Scientist",
                   "nameId": "dataScientist",
+                  "academyBtn": "Data Science",
                   "overview": "Having in mind that a good Data Scientist means not only being fluent with the latest frameworks and tools, but also having an evolved intuition for data analysis, representations & modeling that are efficient, secure, maintainable & explainable, the study methodology has an ideal balance between these crucial components.",
                   "moreinfo": "https://www.sedc.mk/academy/academy-for-data-science/",
                   "timeline": "Duration: 8 months \nClasses: 252 \n\nStart: October \nEnd: August \n\nLectures will be held twice a week and every 2nd Friday.",
@@ -223,7 +228,7 @@
          },
          {
             "id": 5,
-            "name": "Digital Marketing",
+            "name": "Digital Marketing Academy",
             "nameId": "digitalMarketing",
             "reply": [
                "Ever seen those marketing wrecks? Then learn how to help companies like that get on the right track!",
@@ -234,6 +239,7 @@
                {
                   "name": "Digital Marketer",
                   "nameId": "digitalMarketer",
+                  "academyBtn": "Digital Marketing",
                   "overview": "At the end of the program you will develop the essential digital marketing skill set and open up new job opportunities in a large corporation or a small firm, or even go independent as a freelance digital marketer.",
                   "moreinfo": "https://www.sedc.mk/academy/academy-for-programing/web-developer/",
                   "timeline": "Duration: 6 months \nClasses: 180 \n\nStart: October \nEnd: April \n\nLectures will be held twice a week and every 2nd Friday.",
@@ -681,7 +687,7 @@
          },
          {
             "id": 2,
-            "name": "Digital Marketing",
+            "name": "Digital Marketing Course",
             "nameId": "digitalMarketing",
             "reply": [
                "If digital marketing is your aim, then these courses are a must, marketing's no child's game",
