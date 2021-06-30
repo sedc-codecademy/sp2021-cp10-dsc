@@ -69,7 +69,7 @@ const AnimationsService = {
         if(window.innerWidth < 821){
             AnimationsService.chatName.style.marginTop = "0rem";
         }else{
-            if(academy === 'haralampiye'){
+            if(academy === 'haralampiye' || academy === 'dataScience' || academy === undefined){
                 AnimationsService.chatName.style.marginTop = "0.9rem";
             }else{
                 AnimationsService.chatName.style.marginTop = "0.3rem";
@@ -103,21 +103,21 @@ const AnimationsService = {
                 AnimationsService.chatName.innerHTML = "Jenny<br>Software Testing";
                 AnimationsService.chatBotBubbleName = "Jenny";
                 break;
-            // case 'dataScience':
-                // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
-                // AnimationsService.chatName.innerHTML = "Bradley<br>Data Science";
-                // AnimationsService.chatBotBubbleName = "Bradley";
-            //     break;
-            // case 'digitalMarketing':
-                // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
-                // AnimationsService.chatName.innerHTML = "Connor<br>Digital Marketing";
-                // AnimationsService.chatBotBubbleName = "Connor";
-            //     break;
-            // case 'iThink':
-                // AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/.png)";
-                // AnimationsService.chatName.innerHTML = "Benji<br>iThink Academy";
-                // AnimationsService.chatBotBubbleName = "Benji";
-            //     break;
+            case 'dataScience':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DATASCIENCE.png)";
+                AnimationsService.chatName.innerHTML = "Carol<br>Data Science";
+                AnimationsService.chatBotBubbleName = "Carol";
+                break;
+            case 'digitalMarketing':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DIGITALMARKETING.png)";
+                AnimationsService.chatName.innerHTML = "Ginna<br>Digital Marketing";
+                AnimationsService.chatBotBubbleName = "Ginna";
+                break;
+            case 'iThink':
+                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/ITHINK.png)";
+                AnimationsService.chatName.innerHTML = "Benji<br>iThink Academy";
+                AnimationsService.chatBotBubbleName = "Benji";
+                break;
             case 'haralampiye':
                 AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/HARALAMPIYE.png)";
                 AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";

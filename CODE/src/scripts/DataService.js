@@ -1,5 +1,4 @@
 const DataService = {
-    url: "https://raw.githubusercontent.com/sedc-codecademy/sp2021-cp10-dsc/main/JSON/DATA.json",
     cachedData: null,
     cachedReplyMessages: null,
     cachedQuizzes: null,
@@ -7,12 +6,11 @@ const DataService = {
     //Fetch the data from JSON
     getDataAsync: async function () {
         try {
-            let response = await fetch(`${this.url}`);
+            let response = await fetch(`https://raw.githubusercontent.com/sedc-codecademy/sp2021-cp10-dsc/main/JSON/DATA.json`);
             let data = await response.json();
             DataService.cachedData = await data.Data;
             DataService.cachedReplyMessages = await data.ReplyMessages;
             ButtonsService.getMainButtons(data.Data);
-            console.log(data.ReplyMessages);
         } catch (error) {
             AnimationsService.chatWindow.innerHTML =
                 `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/errorEmo.png" alt="Error Img">
@@ -25,7 +23,7 @@ const DataService = {
     //Fetches all data from the Quizzes questions json
     fetchQuizzes: async function () {
         try {
-            let response = await fetch(`https://raw.githubusercontent.com/sedc-codecademy/sp2021-cp10-dsc/main/JSON/Quizzes.json`);
+            let response = await fetch(`https://raw.githubusercontent.com/borisovski-borche/sedc-cp9-cp10-combined/combined-folder-structure/public/DigitalCommunicator/JSON/Quizzes.json`);
             let data = await response.json();
             DataService.cachedQuizzes = await data;
         } catch (error) {
@@ -35,4 +33,4 @@ const DataService = {
             </div>`;
         }
     },
-};//PROPERTIES: URL for JSON dummy server, Cached Data, Cached ReplyMessages, Cached Quizzes
+};//PROPERTIES: Cached Data, Cached ReplyMessages, Cached Quizzes

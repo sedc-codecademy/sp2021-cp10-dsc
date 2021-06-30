@@ -38,76 +38,92 @@ const SearchInputService = {
         input.value = "";
 
         //Searches for a curse word and promotes looove
-        let curseWord = SearchInputService.searchForCurseWords();
-        if (curseWord !== undefined) {
+        if (SearchInputService.searchForCurseWords() !== undefined) {
             UiService.replyMessages("I love you!", ["I love you too!"]);
             UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
             return;
         }
 
         //Looks for study program
-        let found = SearchInputService.searchThroughHighTier();
-        if (found !== undefined) {
-            if (SearchInputService.searchThroughInfoProperties(found.item.infoProperties)) {
-                UiService.printAcademyInfo(SearchInputService.searchThroughInfoProperties(found.item.infoProperties), found.item.nameId, found.branch, SearchInputService.inputStringForUser);
-            } else {
-                UiService.replyMessages(SearchInputService.inputStringForUser, found.item.reply);
-                UiService.sleep().then(() => { ButtonsService.getInfoButtons(found.item, found.branch); });
+        let foundHigh = SearchInputService.searchThroughHighTier();
+        if (foundHigh.length === 1) {
+            if (SearchInputService.searchThroughInfoProperties(foundHigh[0].item.infoProperties).length === 1 && foundHigh[0].branch !== 'Testing') {
+                UiService.printAcademyInfo(SearchInputService.searchThroughInfoProperties(foundHigh[0].item.infoProperties)[0], foundHigh[0].item.nameId, foundHigh[0].branch, SearchInputService.inputStringForUser);
+            } else if(foundHigh[0].branch === 'Testing'){
+                if(SearchInputService.searchThroughInfoProperties(foundHigh[0].item.infoProperties).length === 1){
+                    UiService.printTestingInfo(SearchInputService.searchThroughInfoProperties(foundHigh[0].item.infoProperties)[0], foundHigh[0].item.nameId, SearchInputService.inputStringForUser);
+                }else{
+                    ButtonsService.getInfoTestingButtons(foundHigh[0].item, SearchInputService.inputStringForUser);
+                }
+            }
+            else {
+                UiService.replyMessages(SearchInputService.inputStringForUser, foundHigh[0].item.reply);
+                UiService.sleep().then(() => { ButtonsService.getInfoButtons(foundHigh[0].item, foundHigh[0].branch); });
             }
         }
         else {
             //Looks for Academy, Course or Test
-            found = SearchInputService.searchThroughMidTier();
-            if (found !== undefined) {
-                ButtonsService.getDataButtons(found.item, found.branch, SearchInputService.inputStringForUser);
-            } else {
+            let foundMid = SearchInputService.searchThroughMidTier();
+            let found = foundHigh.concat(foundMid);
+            if (foundMid.length !== 0) {
+                found.length === 1 ? ButtonsService.getDataButtons(found[0].item.nameId, found[0].branch, SearchInputService.inputStringForUser) : SearchInputService.moreOptionsFound(found);
+            }
+            else {
                 //Looks explicit search for Academies, Courses or Testing
                 found = SearchInputService.searchThroughLowTier();
                 if (found !== undefined) {
                     ButtonsService.mainButtonsLogic(found, SearchInputService.inputStringForUser);
-                } else {
+                }
+                else {
                     // Checks if the user is asking to speak to a real person
                     found = SearchInputService.searchForContact();
                     if (found !== undefined) {
                         UiService.replyMessages(SearchInputService.inputStringForUser, ["If you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!"]);
                         UiService.sleep().then(() => { UiService.printContactButton(); });
-                    } else {
+                    }
+                    else {
                         //Checks if there is a greet word
                         found = SearchInputService.searchForGreeting();
                         if (found !== undefined) {
                             UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
                             UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
-                        } else {
+                        }
+                        else {
                             //Checks if there is a reference to how funny the bot is
                             found = SearchInputService.searchForFunny();
                             if (found !== undefined) {
                                 UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Funny.reply);
                                 UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
-                            } else {
+                            }
+                            else {
                                 //Checks if there is a goodbye word
                                 found = SearchInputService.searchForBye();
                                 if (found !== undefined) {
                                     UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
                                     UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
-                                } else {
+                                }
+                                else {
                                     //Checks if there is a how are you sentence
                                     found = SearchInputService.searchForHowAreYou();
                                     if (found !== undefined) {
                                         UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
                                         UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
-                                    } else {
+                                    }
+                                    else {
                                         //Checks if you are asking for a joke
                                         found = SearchInputService.searchForJoke();
                                         if (found !== undefined) {
                                             UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
                                             UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
-                                        } else {
+                                        }
+                                        else {
                                             //Checks if there is a reference to who the bot is
                                             found = SearchInputService.searchForWhoAreYou();
                                             if (found !== undefined) {
                                                 UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
                                                 UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
-                                            } else {
+                                            }
+                                            else {
                                                 //Checks if there is a reference to who the bot can do
                                                 found = SearchInputService.searchForWhatCanYouDo();
                                                 if (found !== undefined) {
@@ -129,36 +145,45 @@ const SearchInputService = {
         }
     },
 
-    //Looks for study program
+    //Looks for study program or test
     searchThroughHighTier: function () {
+        let element;
+        let foundItems = [];
         for (let branch in DataService.cachedData) {
             for (let item of DataService.cachedData[branch]) {
                 if (item.studyPrograms !== undefined) {
                     for (let program of item.studyPrograms) {
                         if (SearchInputService.inputString.toLowerCase().includes(program.name.toLowerCase())) {
-                            return {
-                                item: program,
-                                branch: branch
-                            }
+                            element = { item: program, branch: branch }
+                            foundItems.push(element);
                         }
+                    }
+                }
+                else if (branch === "Testing") {
+                    if (SearchInputService.inputString.toLowerCase().includes(item.name.toLowerCase())) {
+                        element = { item: item, branch: branch }
+                        foundItems.push(element);
                     }
                 }
             }
         }
+        return foundItems;
     },
 
     //Looks for Academy, Course or Test
     searchThroughMidTier: function () {
+        let element;
+        let foundItems = [];
         for (let branch in DataService.cachedData) {
+            if (branch === 'Testing') continue;
             for (let item of DataService.cachedData[branch]) {
                 if (SearchInputService.inputString.toLowerCase().includes(item.name.toLowerCase())) {
-                    return {
-                        branch: branch,
-                        item: item.nameId
-                    }
+                    element = { item: item, branch: branch }
+                    foundItems.push(element);
                 }
             }
         }
+        return foundItems;
     },
 
     //Looks explicit search for Academies, Courses or Testing
@@ -172,15 +197,17 @@ const SearchInputService = {
 
     //Looks for info property of the study program
     searchThroughInfoProperties: function (elementProperties) {
-        let properties = elementProperties;
-        if (!properties) {
-            properties = ["Price", "Overview", "Timeline", "Job Opportunities", "Apply", "About", "Test Centers", "Target Audience"];
+        let foundItems = [];
+        if (elementProperties === undefined) {
+            elementProperties = ["Price", "Overview", "Timeline", "Job Opportunities", "Apply", "About", "Test Centers", "Target Audience"];
         }
-        for (let property of properties) {
+
+        for (let property of elementProperties) {
             if (SearchInputService.inputString.toLowerCase().includes(property.toLowerCase())) {
-                return property;
+                foundItems.push(property);
             }
         }
+        return foundItems;
     },
 
     //Checks if there is a greet word
@@ -230,6 +257,8 @@ const SearchInputService = {
             return funny;
         } else if (SearchInputService.inputString.toLowerCase().includes("you're") && SearchInputService.inputString.toLowerCase().includes("funny")) {
             return funny;
+        } else if (SearchInputService.inputString.toLowerCase().includes("that") && SearchInputService.inputString.toLowerCase().includes("funny")) {
+            return funny;
         }
     },
 
@@ -264,12 +293,31 @@ const SearchInputService = {
 
     // Searches for a curse word and promotes looove
     searchForCurseWords: function () {
-        let curseWords = ["idiot", "fuck", "suck", "cock", "love you", "f***"];
+        let curseWords = ["idiot", "fuck", "suck", "cock", "love you", "f***", "stupid", "dumb"];
 
         for (let curseWord of curseWords) {
             if (SearchInputService.inputString.toLowerCase().includes(curseWord)) {
                 return curseWord;
             }
         }
+    },
+
+    // Gathers all the possible answers and returns them to the user as buttons (options) to choose from
+    moreOptionsFound: function (foundItems) {
+        UiService.replyMessages(SearchInputService.inputStringForUser, ["Woooah, hold on there partner, you asked a couple of different things there! Which one did you mean or which one do you wanna talk about first?"]);
+
+        let buttons = [];
+        for (let i = 0; i < foundItems.length; i++) {
+            if (i === 5) break;
+            let button = ButtonsService.createMoreOptionsButtons(foundItems[i].item, foundItems[i].branch);
+            buttons.push(button);
+        }
+
+        let uniqueButtons = [...new Set(buttons)];
+        UiService.sleep().then(() => {
+            ButtonsService.buttonsDiv.innerHTML = "";
+            uniqueButtons.forEach(x => ButtonsService.buttonsDiv.innerHTML += x);
+            ButtonsService.buttonsDiv.scrollIntoView({ block: "end", behavior: "smooth" });
+        });
     }
 };//PROPERTIES: Input field, Input button, Input value string, Input string that is shown to the user

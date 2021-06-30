@@ -1,5 +1,5 @@
-/* STYLES FOR THE WHOLE DOCUMENT */
 
+/* STYLES FOR THE WHOLE DOCUMENT */
 *, ::after, ::before {
   font-size: 16px;
   margin: 0;
@@ -12,9 +12,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: url(../img-avatars/background.png);
 }
 
+/* VARIABLES */
 :root {
   --dark-blue: #002c5f;
   --light-blue: #e9effe;
@@ -34,7 +34,7 @@ body {
   --typing-animation-dot-color2: #002c5f;
   --typing-animation-dot-color3: #002c5f8f;
   --typing-animation-dot-color4: #002c5f;
-  --modal-bckg-white: #ebebeb;
+  --modal-bckg-white: #ffffff;
   --modal-close-hover-pink: #e26f6f;
   --modal-quizz-hr-dark: #c5cfe900;
   --modal-form-check-blue: #c5cfe9;
@@ -44,10 +44,9 @@ body {
 }
 
 /* STYLES FOR THE CHAT WINDOW */
-
 .main-window {
   border-top: none;
-  border-radius: 1.563rem;
+  border-radius: 15px;
   transition: all 1s ease-out;
   visibility: visible;
   position: fixed;
@@ -57,6 +56,7 @@ body {
   height: 80%;
   max-height: 40.25rem;
   background-color: var(--white);
+  border: 1px solid var(--dark-blue);
 }
 
 .header {
@@ -66,7 +66,7 @@ body {
   min-width: 24.75rem;
   background-color: var(--dark-blue);
   z-index: -1;
-  border-radius: 1.5625rem 1.5625rem 0.75rem 0.75rem;
+  border-radius: 15px 15px 0.75rem 0.75rem;
 }
 
 .img-logo {
@@ -123,28 +123,24 @@ body {
   transform: translateY(-2200px);
 }
 
-/* Speech bubble for maximize button */
-
 .maximizeSpeechBox {
   width: 200px;
   height: 80px;
   margin: 50px auto;
-  /* border: 3px solid var(--aricoma-gold); */
   border-radius: 6px;
   padding: 5px;
   text-align: center;
-  font-weight: 900;
   font-size: 0.9rem;
   color: var(--dark-blue);
   background-color: #ececec;
-  position: absolute;
+  position: fixed;
   word-wrap: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
   right: 87.5px;
   bottom: 120px;
-  box-shadow: 0.188rem 0.188rem 0rem rgb(180, 180, 180);
+  box-shadow: 0.188rem 0.188rem 1rem rgb(71, 71, 71);
   display: none;
 }
 
@@ -161,7 +157,7 @@ body {
   -o-transform: rotate( 29deg) skew( -20deg);
   -webkit-transform: rotate( 29deg) skew( -20deg);
   width: 20px;
-  box-shadow: 0.28rem 0.05rem 0rem rgb(180, 180, 180);
+  box-shadow: 0.28rem 0.05rem 1rem -1rem rgb(180, 180, 180);
 }
 
 .chat-window {
@@ -178,7 +174,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 2% 0 10% 0;
+  padding: 3% 0 10% 0;
   height: 85%;
   width: 100%;
 }
@@ -471,54 +467,34 @@ body {
   padding-top: 5%;
 }
 
-.Academies {
+.mainButtonsStyle {
   width: 7.5rem;
   height: 3.125rem;
   border-radius: 0.625rem;
   border: none;
-  border-top: 0.313rem solid var(--btn-brown-red);
   box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
   background-color: var(--white);
-  color: var(--btn-brown-red);
   margin: 0.313rem;
+}
+
+.Academies {
+  border-top: 0.313rem solid var(--btn-brown-red);
+  color: var(--btn-brown-red);
 }
 
 .Testing {
-  width: 7.5rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
   border-top: 0.313rem solid var(--btn-purple);
-  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-  background-color: var(--white);
   color: var(--btn-purple);
-  margin: 0.313rem;
 }
 
 .Courses {
-  width: 7.5rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
   border-top: 0.313rem solid var(--btn-green);
-  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-  background-color: var(--white);
   color: var(--btn-green);
-  margin: 0.313rem;
 }
 
-/* Contact Us style button */
-
 .contactUs {
-  width: 7.5rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: none;
   border-top: 0.313rem solid var(--btn-pink);
-  box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-  background-color: var(--white);
   color: var(--btn-pink);
-  margin: 0.313rem;
 }
 
 .chat-buttons-div {
@@ -855,25 +831,26 @@ button:hover {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   padding-top: 5%;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  backdrop-filter: blur(6px);
 }
 
 .modal-content {
   display: flex;
   flex-direction: column;
   background-color: var(--modal-bckg-white);
-  border-radius: 0.938rem;
+  border-radius: 15px;
   margin: auto;
   padding: 2%;
   border: 1px solid (var(--dark-blue));
-  width: 35%;
-  height: 70%;
+  width: 90%;
+  height: 90%;
   overflow: hidden;
 }
 
@@ -882,7 +859,7 @@ button:hover {
   margin-left: 100%;
   font-size: 28px;
   font-weight: bold;
-  margin-top: -6%;
+  margin-top: -2%;
 }
 
 .close:hover, .close:focus {
@@ -896,8 +873,7 @@ button:hover {
   justify-content: center;
   align-content: center;
   width: 100%;
-  height: 99%;
-  padding-bottom: 5%;
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -920,16 +896,18 @@ button:hover {
 }
 
 .somethingWentWrongMessage {
-  width: 14rem;
-  margin: 20% auto 0 auto;
+  width: 30rem;
+  margin: auto;
   color: #9D1662;
   font-family: 'DIN Pro Bold', sans-serif;
-  font-size: 1.563rem;
+  font-weight: bold;
+  font-size: 2.5rem;
   text-align: center;
 }
 
 .quizQuestion {
   padding: 0.313rem;
+  font-size: 20px;
 }
 
 .quiz-hr {
@@ -940,8 +918,11 @@ button:hover {
 }
 
 #questionsForm {
-  display: none;
-  padding-left: 0.938rem;
+  font-size: 16px;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -967,17 +948,29 @@ button:hover {
   background-color: var(--btn-card-purple);
 }
 
-#quizResult {
-  font-size: 1.3rem;
-  margin: 25% 28%;
-}
-
 #quizSpan {
   font-size: 1.563rem;
   font-weight: bold;
 }
 
 /* GAMES STYLES */
+
+.iframeContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.responsiveIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
 
 #gamesMessage {
   width: 14rem;
@@ -1032,7 +1025,7 @@ input[type=email] {
 }
 
 .formHeader {
-  padding-bottom: 12%;
+  padding-bottom: 2%;
   font-size: 150%;
   text-align: center;
 }
@@ -1040,5 +1033,5 @@ input[type=email] {
 .submit {
   display: flex;
   justify-self: center;
-  padding-bottom: 8%;
+  padding-bottom: 2%;
 }

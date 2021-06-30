@@ -1,5 +1,4 @@
 const LexiconService = {
-
     // Checks if input string contains alternatives to the keywords and returns new modified string with those keywords
     checkForKeywords: function (inputString) {
         let keywordModifiedString = inputString;
@@ -83,15 +82,15 @@ const LexiconService = {
         )
             keywordModifiedString += "Computer Networks";
 
-        // Checks whether input string has a reference to "Design" and if so adds the corresponding keyword to the modified input string
+        // Checks whether input string has a reference to "Design Academy" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("design") ||
+            // inputString.toLowerCase().includes("design") ||
             inputString.toLowerCase().includes("graphic") ||
             inputString.toLowerCase().includes("ui") ||
             inputString.toLowerCase().includes("ux") ||
             inputString.toLowerCase().includes("game")
         )
-            keywordModifiedString += "Design";
+            keywordModifiedString += "Design Academy";
 
         // Checks whether input string has a reference to "Software Testing" and if so adds the corresponding keyword to the modified input string
         if (
@@ -111,15 +110,22 @@ const LexiconService = {
             inputString.toLowerCase().includes("advert") ||
             inputString.toLowerCase().includes("seo") ||
             inputString.toLowerCase().includes("search engine")
-        )
-            keywordModifiedString += "Digital Marketing";
+        ) {
+            if (!inputString.toLowerCase().includes("digital marketing academy") &&
+                !inputString.toLowerCase().includes("digital marketing courses") &&
+                !inputString.toLowerCase().includes("digital marketing course")) {
+                keywordModifiedString += "Digital Marketing Academy";
+                keywordModifiedString += "Digital Marketing Courses";
+            }
+        }
 
         // Checks whether input string has a reference to "iThink Academy" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("iThink") ||
-            inputString.toLowerCase().includes("i Think") ||
+            inputString.toLowerCase().includes("ithink") ||
+            inputString.toLowerCase().includes("i think") ||
             inputString.toLowerCase().includes("child") ||
-            inputString.toLowerCase().includes("kid")
+            inputString.toLowerCase().includes("kid") ||
+            inputString.toLowerCase().includes("ithink")
         )
             keywordModifiedString += "iThink Academy";
 
@@ -142,7 +148,7 @@ const LexiconService = {
         // Checks whether input string has a reference to "HI-Tech" and if so adds the corresponding keyword to the modified input string
         if (
             inputString.toLowerCase().includes("hack") ||
-            inputString.toLowerCase().includes("it") ||
+            inputString.includes("IT") ||
             inputString.toLowerCase().includes("python") ||
             inputString.toLowerCase().includes("ccna") ||
             inputString.toLowerCase().includes("incident") ||
@@ -152,7 +158,7 @@ const LexiconService = {
 
         // Checks whether input string has a reference to "Design Courses" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("design") ||
+            // inputString.toLowerCase().includes("design") ||
             inputString.toLowerCase().includes("adobe") ||
             inputString.toLowerCase().includes("illustrator") ||
             inputString.toLowerCase().includes("photoshop") ||
@@ -162,6 +168,16 @@ const LexiconService = {
         )
             keywordModifiedString += "Design Courses";
 
-            return keywordModifiedString;
+        // Checks whether input string has a reference to "Design Courses" and "Design Academies" as parents
+        if (
+            inputString.toLowerCase().includes("design") &&
+            !inputString.toLowerCase().includes("design courses") &&
+            !inputString.toLowerCase().includes("design academy")
+        ) {
+            keywordModifiedString += "Design Courses";
+            keywordModifiedString += "Design Academy";
+        }
+
+        return keywordModifiedString;
     }
 }

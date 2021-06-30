@@ -84,15 +84,15 @@ const UiService = {
     },
 
     //Prints the INFO for the Testing object
-    printTestingInfo: function (neededInfo, elementId) {
+    printTestingInfo: function (neededInfo, elementId, inputString) {
         for (const test of DataService.cachedData.Testing) {
             if (test.nameId === elementId) {
                 if (test[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
-                    this.replyInfoMessage(neededInfo, test[neededInfo.toLowerCase().replace(/\s/g, "")]);
+                    this.replyInfoMessage(inputString === undefined ? neededInfo : inputString, test[neededInfo.toLowerCase().replace(/\s/g, "")]);
                     UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
                     break;
                 } else if (neededInfo === "Apply") {
-                    UiService.replyInfoMessage(neededInfo, ["Thank you for your interest!"]);
+                    UiService.replyInfoMessage(inputString === undefined ? neededInfo : inputString, ["Thank you for your interest!"]);
                     ApplyAndPriceService.getApplyForm("Testing");
                     UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
                     break;
@@ -139,19 +139,26 @@ const UiService = {
     changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
         if (gameOrQuizFlag) {
             item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
+            item.title = "Chat";
             if (item.id === "chatQuizzes") {
                 GamesService.areGamesOpen = false;
                 AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+                AnimationsService.chatGames.title = "Games";
+                item.title = "Chat";
             } else {
                 QuizzesService.areQuizzesOpen = false;
                 AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+                AnimationsService.chatQuizzes.title = "Quizzes";
+                item.title = "Chat";
             }
             this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
         } else {
             if (item.id === "chatQuizzes") {
                 item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+                item.title = "Quizzes";
             } else {
                 item.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+                item.title = "Games";
             };
             this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
         };
@@ -200,31 +207,17 @@ const UiService = {
             return;
         }
 
-        this.modalContent.style.height = "70%";
-        this.modalContent.style.width = "40%";
-        this.modalContent.style.paddingBottom = "2%";
         QuizzesService.form.style.display = "none";
         QuizzesService.popUpQuizzes.style.display = "none";
         ApplyAndPriceService.popUp.style.display = "block";
         ApplyAndPriceService.popUp.style.overflowY = "hidden";
-        ApplyAndPriceService.popUp.style.paddingBottom = "0%";
-        ApplyAndPriceService.closeModalButton.style.marginTop = "-6%";
 
         switch (flag) {
-            case "price":
-            case "apply":
-                ApplyAndPriceService.popUp.style.paddingBottom = "5%";
-                break;
             case "games":
-                this.modalContent.style.height = "80%";
-                this.modalContent.style.width = "90%";
                 ApplyAndPriceService.popUp.style.overflowY = "auto";
-                this.modalContent.style.paddingBottom = "7%";
-                ApplyAndPriceService.closeModalButton.style.marginTop = "-2.5%";
                 break;
             case "quizzes":
                 ApplyAndPriceService.popUp.style.display = "none";
-                this.modalContent.style.width = "45%";
                 QuizzesService.popUpQuizzes.style.display = "block";
                 QuizzesService.form.style.display = "block";
                 QuizzesService.form.scrollIntoView({ block: 'start', behavior: 'smooth' });
@@ -236,8 +229,13 @@ const UiService = {
     },
 
     //Prints contact button form
-    printContactButton: function(){
-        ButtonsService.mainButtonsDiv.innerHTML += `<button class="contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
+    printContactButton: function () {
+        ButtonsService.mainButtonsDiv.innerHTML += `<button class="mainButtonsStyle contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
         buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
-    }
+    },
+
+    //Enables/Disables HTML scroll depending on the case
+    HTMLScrollCheck: function () {
+        mainWindow.style.height === "100%" ? document.getElementsByTagName("html")[0].style.overflowY = "hidden" : document.getElementsByTagName("html")[0].style.overflowY = "auto";
+    },
 };//PROPERTIES: Chat history div, Recommended slide div, Modal pop up wrapper div
