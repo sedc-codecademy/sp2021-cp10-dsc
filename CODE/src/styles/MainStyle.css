@@ -9,9 +9,6 @@
 
 body {
   font-family: "DIN Pro Light", sans-serif;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 /* VARIABLES */
@@ -848,7 +845,7 @@ button:hover {
   border-radius: 15px;
   margin: auto;
   padding: 2%;
-  border: 1px solid (var(--dark-blue));
+  border: 1px solid var(--dark-blue);
   width: 90%;
   height: 90%;
   overflow: hidden;
