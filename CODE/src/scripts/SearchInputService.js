@@ -242,7 +242,7 @@ const SearchInputService = {
 
     //Checks if there is a how are you sentence
     searchForHowAreYou: function () {
-        let howAreYous = ["how are you", "are you ok", "are you well", "how's it going", "hows it going", "what's up", "whats up", "wazzup"];
+        let howAreYous = ["how are you", "how are we", "are you ok", "are you well", "how's it going", "hows it going", "what's up", "whats up", "wazzup"];
         for (let howAreYou of howAreYous) {
             if (SearchInputService.inputString.toLowerCase().includes(howAreYou.toLowerCase())) {
                 return howAreYou;
