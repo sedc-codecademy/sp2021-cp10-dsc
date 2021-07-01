@@ -56,7 +56,7 @@ The project is finished and can be implemented on a website!
  - https://vim-adventures.com/
  - http://play.elevatorsaga.com/
  - https://blockly.games/
-* The UI/UX design was done by Aleksandar Popovski - apopovski90@gmail.com
+* The UI/UX design was done by Aleksandar Popovski - apopovski90@gmail.com - https://www.aleksandarpopovski.com/
 * The avatar icons were done by Aleksandra Cakikj - aleksandra.cakikj@gmail.com
 
 ## License 🔒
