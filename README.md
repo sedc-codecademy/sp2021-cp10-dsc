@@ -57,7 +57,7 @@ The project is finished and can be implemented on a website!
  - http://play.elevatorsaga.com/
  - https://blockly.games/
 * The UI/UX design was done by Aleksandar Popovski - apopovski90@gmail.com - https://www.aleksandarpopovski.com/ - https://dribbble.com/popovskia - https://www.behance.net/popovskia
-* The avatar icons were done by Aleksandra Cakikj - aleksandra.cakikj@gmail.com
+* The avatar icons were done by Aleksandra Cakikj - aleksandra.cakikj@gmail.com - https://www.behance.net/AleksandraCakikj
 
 ## License 🔒
 [MIT](https://github.com/sedc-codecademy/sp2021-cp10-dsc/blob/main/LICENSE)
