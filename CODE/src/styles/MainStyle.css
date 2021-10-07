@@ -9,11 +9,12 @@
 
 body {
   font-family: "DIN Pro Light", sans-serif;
+  background-image: url(../img-avatars/SEDC\ BACKGROUND.PNG);
 }
 
 /* VARIABLES */
 :root {
-  --dark-blue: #002c5f;
+  --dark-blue: #172335;
   --light-blue: #e9effe;
   --bright-blue: #a1cfeb;
   --white: #ffffff;
@@ -25,12 +26,12 @@ body {
   --btn-pink: #d378c4;
   --btn-card-blue: #99bddd;
   --btn-card-purple: #9D1662;
-  --btn-card-shadow-dark-blue: #002c5f;
+  --btn-card-shadow-dark-blue: #172335;
   --btn-card-gray: #808080;
   --typing-animation-dot-color1: #78b6fd;
-  --typing-animation-dot-color2: #002c5f;
-  --typing-animation-dot-color3: #002c5f8f;
-  --typing-animation-dot-color4: #002c5f;
+  --typing-animation-dot-color2: #172335;
+  --typing-animation-dot-color3: #1723358f;
+  --typing-animation-dot-color4: #172335;
   --modal-bckg-white: #ffffff;
   --modal-close-hover-pink: #e26f6f;
   --modal-quizz-hr-dark: #c5cfe900;
