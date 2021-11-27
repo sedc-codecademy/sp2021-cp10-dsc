@@ -8,9 +8,9 @@ const DataService = {
         try {
             let response = await fetch(`https://raw.githubusercontent.com/sedc-codecademy/sp2021-cp10-dsc/main/JSON/DATA.json`);
             let data = await response.json();
-            DataService.cachedData = await data.Data;
+            DataService.cachedData = await data.Data.Academies[0].studyPrograms[0];
             DataService.cachedReplyMessages = await data.ReplyMessages;
-            ButtonsService.getMainButtons(data.Data);
+            ButtonsService.getInfoButtons(data.Data.Academies[0].studyPrograms[0]);
         } catch (error) {
             AnimationsService.chatWindow.innerHTML =
                 `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/errorEmo.png" alt="Error Img">

@@ -15,7 +15,6 @@ const UiService = {
     //Prints a user message and random bot message in chat history(Depending on the choice)
     replyMessages: function (elementName, elementMessages) {
         ButtonsService.buttonsDiv.innerHTML = "";
-        ButtonsService.mainButtonsDiv.innerHTML = "";
 
         const randomIndex = Math.floor(Math.random() * elementMessages.length);
         const item = elementMessages[randomIndex];
@@ -57,29 +56,20 @@ const UiService = {
     },
 
     //Prints the INFO for the Object
-    printAcademyInfo: function (neededInfo, elementId, branchName, searchInput) {
-        ButtonsService.mainButtonsDiv.innerHTML = "";
+    printAcademyInfo: function (neededInfo, searchInput) {
+        let = studyProgram = DataService.cachedData;
 
-        for (const academy of DataService.cachedData[branchName]) {
-            for (const studyProgram of academy.studyPrograms) {
-                if (elementId === studyProgram.nameId) {
-                    if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
-                        UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
-                        UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                        break;
-                    } else if (neededInfo === "Apply") {
-                        UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
-                        ApplyAndPriceService.getApplyForm(branchName, studyProgram.name);
-                        UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                        break;
-                    } else if (neededInfo === "Price") {
-                        UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Here is a preview of the prices!"]);
-                        ApplyAndPriceService.getPriceTable(branchName, studyProgram.name);
-                        UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                        break;
-                    }
-                }
-            }
+        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+        } else if (neededInfo === "Apply") {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
+            ApplyAndPriceService.getApplyForm(studyProgram.name);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+        } else if (neededInfo === "Price") {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Here is a preview of the prices!"]);
+            ApplyAndPriceService.getPriceTable(studyProgram.name);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         }
     },
 
@@ -106,10 +96,9 @@ const UiService = {
         if (choice === "Yes") {
             AnimationsService.chatBotBubbleName = "Haralampiye";
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
-            UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+            UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
         } else if (choice === "No") {
             UiService.replyMessages(choice, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-            UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
         }
     },
 
