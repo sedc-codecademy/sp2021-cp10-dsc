@@ -24,6 +24,7 @@ const SearchInputService = {
     });
   },
 
+<<<<<<< HEAD
   //Search for a suitable response on the input
   SearchInputLogic: function (voiceRecognitionString) {
     if (AnimationsService.chatWindow.style.display === "none")
@@ -36,6 +37,14 @@ const SearchInputService = {
       voiceRecognitionString === undefined
     )
       return;
+=======
+    //Search for a suitable response on the input
+    SearchInputLogic: function (voiceRecognitionString) {
+        if (AnimationsService.chatWindow.style.display === "none") UiService.resetChatWindow();
+        AnimationsService.changeImageHead('haralampiye');
+        AnimationsService.headerAnimation();
+        if (SearchInputService.input.value === "" && voiceRecognitionString === undefined) return;
+>>>>>>> 02f67e5adac24e4a94c0b4fbd13c67bde92adba7
 
     voiceRecognitionString !== undefined
       ? (SearchInputService.inputStringForUser = voiceRecognitionString)
@@ -202,6 +211,7 @@ const SearchInputService = {
                         //Checks if there is a reference to who the bot can do
                         found = SearchInputService.searchForWhatCanYouDo();
                         if (found !== undefined) {
+<<<<<<< HEAD
                           UiService.replyMessages(
                             SearchInputService.inputStringForUser,
                             DataService.cachedReplyMessages.ShortTalk
@@ -223,6 +233,61 @@ const SearchInputService = {
                               DataService.cachedData
                             );
                           });
+=======
+                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Hello.reply);
+                            UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                        }
+                        else {
+                            //Checks if there is a reference to how funny the bot is
+                            found = SearchInputService.searchForFunny();
+                            if (found !== undefined) {
+                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Funny.reply);
+                                UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+                            }
+                            else {
+                                //Checks if there is a goodbye word
+                                found = SearchInputService.searchForBye();
+                                if (found !== undefined) {
+                                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+                                    UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+                                }
+                                else {
+                                    //Checks if there is a how are you sentence
+                                    found = SearchInputService.searchForHowAreYou();
+                                    if (found !== undefined) {
+                                        UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
+                                        UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                    }
+                                    else {
+                                        //Checks if you are asking for a joke
+                                        found = SearchInputService.searchForJoke();
+                                        if (found !== undefined) {
+                                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
+                                            UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+                                        }
+                                        else {
+                                            //Checks if there is a reference to who the bot is
+                                            found = SearchInputService.searchForWhoAreYou();
+                                            if (found !== undefined) {
+                                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
+                                                UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                            }
+                                            else {
+                                                //Checks if there is a reference to who the bot can do
+                                                found = SearchInputService.searchForWhatCanYouDo();
+                                                if (found !== undefined) {
+                                                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
+                                                    UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                                } else {
+                                                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
+                                                    UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+>>>>>>> 02f67e5adac24e4a94c0b4fbd13c67bde92adba7
                         }
                       }
                     }

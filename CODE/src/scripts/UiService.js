@@ -1,6 +1,5 @@
 const UiService = {
     chatHistory: document.getElementById("chatHistory"),
-    recommendedDiv: document.getElementById("recommendedDiv"),
     modalContent: document.getElementById("modalContent"),
 
     //Prints the very first message for the user
@@ -227,4 +226,4 @@ const UiService = {
     HTMLScrollCheck: function () {
         mainWindow.style.height === "100%" ? document.getElementsByTagName("html")[0].style.overflowY = "hidden" : document.getElementsByTagName("html")[0].style.overflowY = "auto";
     },
-};//PROPERTIES: Chat history div, Recommended slide div, Modal pop up wrapper div
+};
