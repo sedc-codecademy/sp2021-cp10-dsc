@@ -27,7 +27,6 @@ const SearchInputService = {
     //Search for a suitable response on the input
     SearchInputLogic: function (voiceRecognitionString) {
         if (AnimationsService.chatWindow.style.display === "none") UiService.resetChatWindow();
-        UiService.recommendedDiv.style.display = "none";
         AnimationsService.changeImageHead('haralampiye');
         AnimationsService.headerAnimation();
         if (SearchInputService.input.value === "" && voiceRecognitionString === undefined) return;
@@ -93,14 +92,14 @@ const SearchInputService = {
                             found = SearchInputService.searchForFunny();
                             if (found !== undefined) {
                                 UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Funny.reply);
-                                UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
+                                UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                             }
                             else {
                                 //Checks if there is a goodbye word
                                 found = SearchInputService.searchForBye();
                                 if (found !== undefined) {
                                     UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-                                    UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
+                                    UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                                 }
                                 else {
                                     //Checks if there is a how are you sentence
@@ -114,7 +113,7 @@ const SearchInputService = {
                                         found = SearchInputService.searchForJoke();
                                         if (found !== undefined) {
                                             UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
-                                            UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
+                                            UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                                         }
                                         else {
                                             //Checks if there is a reference to who the bot is

@@ -3,7 +3,6 @@ const AnimationsService = {
     chatGames: document.getElementById("chatGames"),
     chatQuizzes: document.getElementById("chatQuizzes"),
     chatName : document.getElementById("chatName"),
-    recommendedSlide: document.getElementById("recommendedSlide"),
     chatWindow: document.getElementById("chatWindow"),
     isChatInitialized: false,
     chatBotBubbleName: "",
@@ -48,20 +47,6 @@ const AnimationsService = {
                 this.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
             });
         }
-    },
-
-    //Animates the recommendations slide
-    recommendedBtnsAnimations: function () {
-        UiService.chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
-        ButtonsService.recommendationsButtons();
-
-        UiService.recommendedDiv.style.display = "block";
-        AnimationsService.recommendedSlide.classList.add("slider");
-
-        this.recommendedSlide.addEventListener("animationiteration", () => {
-            ButtonsService.recommendationsButtons();
-        });
-        UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Changes the bot personality depending on the chosen academy
@@ -151,4 +136,4 @@ const AnimationsService = {
             }
         }
     }
-};//PROPERTIES: The image div, Games button, Quizzes button, Name div, Recommended buttons slide, Chat div, Bool if the chat is initialized
+};
