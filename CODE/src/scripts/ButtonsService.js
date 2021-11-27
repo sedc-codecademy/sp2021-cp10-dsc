@@ -101,6 +101,7 @@ const ButtonsService = {
 
     //Prints the buttons for Object info
     getInfoButtons: function (element, branchName) {
+      console.log(element);
       this.buttonsDiv.innerHTML = "";
       branchName === "Academies" ? AnimationsService.changeImageHead(element.name) : AnimationsService.changeImageHead("haralampiye");
 
