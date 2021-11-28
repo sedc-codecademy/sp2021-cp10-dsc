@@ -66,7 +66,7 @@ const UiService = {
             console.log(neededInfo, searchInput);
         } else if (neededInfo === "Apply") {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
-            ApplyAndPriceService.getApplyForm(studyProgram.name);
+            ApplyService.getApplyForm(studyProgram.name);
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         }
     },
@@ -165,34 +165,34 @@ const UiService = {
 
     //Changes modal style to block and sets height and width
     displayModalWindow: function (flag) {
-        ApplyAndPriceService.myModal.style.display = "block";
+        ApplyService.myModal.style.display = "block";
 
         if (window.innerWidth < 821) {
             this.modalContent.style.height = "100%";
             this.modalContent.style.width = "100%";
             QuizzesService.popUpQuizzes.style.display = "none";
             QuizzesService.form.style.display = "none";
-            ApplyAndPriceService.popUp.style.display = "block";
+            ApplyService.popUp.style.display = "block";
             return;
         }
 
         QuizzesService.form.style.display = "none";
         QuizzesService.popUpQuizzes.style.display = "none";
-        ApplyAndPriceService.popUp.style.display = "block";
-        ApplyAndPriceService.popUp.style.overflowY = "hidden";
+        ApplyService.popUp.style.display = "block";
+        ApplyService.popUp.style.overflowY = "hidden";
 
         switch (flag) {
             case "games":
-                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                ApplyService.popUp.style.overflowY = "auto";
                 break;
             case "quizzes":
-                ApplyAndPriceService.popUp.style.display = "none";
+                ApplyService.popUp.style.display = "none";
                 QuizzesService.popUpQuizzes.style.display = "block";
                 QuizzesService.form.style.display = "block";
                 QuizzesService.form.scrollIntoView({ block: 'start', behavior: 'smooth' });
                 break;
             case "contact":
-                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                ApplyService.popUp.style.overflowY = "auto";
                 break;
         }
     },

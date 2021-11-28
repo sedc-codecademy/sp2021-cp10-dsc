@@ -3,7 +3,7 @@ const ContactUsForm = {
   printContactUsForm: function () {
     UiService.displayModalWindow("contact");
 
-    ApplyAndPriceService.popUp.innerHTML = `
+    ApplyService.popUp.innerHTML = `
         <div class="container" id="contactUsForm">
             <h1 class="formHeader">Contact us!</h1>
             <form action="https://formsubmit.co/insertEmailAdressHere" method="POST">
@@ -26,8 +26,7 @@ const ContactUsForm = {
                 <div>
             </form>
         </div>`;
-    UiService.sleep().then(() => {
-      ButtonsService.isConversationDoneButtons();
+    UiService.sleep().then(() => {ButtonsService.isConversationDoneButtons();
     });
   },
 }; //PROPERTIES:

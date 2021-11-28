@@ -1,6 +1,7 @@
-
 /* STYLES FOR THE WHOLE DOCUMENT */
-*, ::after, ::before {
+*,
+::after,
+::before {
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -25,7 +26,7 @@ body {
   --btn-green: #8ba960;
   --btn-pink: #d378c4;
   --btn-card-blue: #99bddd;
-  --btn-card-purple: #9D1662;
+  --btn-card-purple: #9d1662;
   --btn-card-shadow-dark-blue: #172335;
   --btn-card-gray: #808080;
   --typing-animation-dot-color1: #78b6fd;
@@ -38,7 +39,7 @@ body {
   --modal-form-check-blue: #c5cfe9;
   --modal-form-games-border-gray: #ccc;
   --chat-maximize-border-purple: #7f60a9;
-  --aricoma-gold: #A98E5B;
+  --aricoma-gold: #a98e5b;
 }
 
 /* STYLES FOR THE CHAT WINDOW */
@@ -149,11 +150,11 @@ body {
   position: absolute;
   top: 69px;
   right: 5px;
-  transform: rotate( 29deg) skew( -20deg);
-  -moz-transform: rotate( 29deg) skew( -20deg);
-  -ms-transform: rotate( 29deg) skew( -20deg);
-  -o-transform: rotate( 29deg) skew( -20deg);
-  -webkit-transform: rotate( 29deg) skew( -20deg);
+  transform: rotate(29deg) skew(-20deg);
+  -moz-transform: rotate(29deg) skew(-20deg);
+  -ms-transform: rotate(29deg) skew(-20deg);
+  -o-transform: rotate(29deg) skew(-20deg);
+  -webkit-transform: rotate(29deg) skew(-20deg);
   width: 20px;
   box-shadow: 0.28rem 0.05rem 1rem -1rem rgb(180, 180, 180);
 }
@@ -365,7 +366,7 @@ body {
 
 .chat-quizzes-icon {
   position: absolute;
-  margin: 1.35rem 0 0 19.20rem;
+  margin: 1.35rem 0 0 19.2rem;
   width: 2.75rem;
   height: 1.875rem;
   border: none;
@@ -496,7 +497,10 @@ body {
 
 .btnCardName {
   color: var(--white);
-  text-shadow: -0.5px -0.5px 0 var(--btn-card-shadow-dark-blue), 0.5px -0.5px 0 var(--btn-card-shadow-dark-blue), -0.5px 0.5px 0 var(--btn-card-shadow-dark-blue), 0.5px 0.5px 0 var(--btn-card-shadow-dark-blue);
+  text-shadow: -0.5px -0.5px 0 var(--btn-card-shadow-dark-blue),
+    0.5px -0.5px 0 var(--btn-card-shadow-dark-blue),
+    -0.5px 0.5px 0 var(--btn-card-shadow-dark-blue),
+    0.5px 0.5px 0 var(--btn-card-shadow-dark-blue);
   background-color: var(--aricoma-gold);
   font-weight: bold;
   padding: 0.5rem 0.8rem;
@@ -777,7 +781,8 @@ button:hover {
   margin-top: -2%;
 }
 
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
   color: var(--modal-close-hover-pink);
   text-decoration: none;
   cursor: pointer;
@@ -799,7 +804,7 @@ button:hover {
   padding-top: 1rem;
   margin: 0 auto 2rem auto;
   color: var(--dark-blue);
-  font-family: 'DIN Pro Bold', sans-serif;
+  font-family: "DIN Pro Bold", sans-serif;
   font-size: 1.563rem;
   text-align: center;
 }
@@ -813,8 +818,8 @@ button:hover {
 .somethingWentWrongMessage {
   width: 30rem;
   margin: auto;
-  color: #9D1662;
-  font-family: 'DIN Pro Bold', sans-serif;
+  color: #9d1662;
+  font-family: "DIN Pro Bold", sans-serif;
   font-weight: bold;
   font-size: 2.5rem;
   text-align: center;
@@ -892,14 +897,15 @@ button:hover {
   padding-top: 1rem;
   margin: 0 auto 2rem auto;
   color: var(--dark-blue);
-  font-family: 'DIN Pro Bold', sans-serif;
+  font-family: "DIN Pro Bold", sans-serif;
   font-size: 1.563rem;
   text-align: center;
 }
 
 /* CONTACT-FORM STYLES */
 
-input[type=text], textarea {
+input[type="text"],
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--modal-form-games-border-gray);
@@ -908,10 +914,10 @@ input[type=text], textarea {
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
-  font-family: "DIN Pro Light", sans-serif
+  font-family: "DIN Pro Light", sans-serif;
 }
 
-input[type=submit] {
+input[type="submit"] {
   background-color: var(--dark-blue);
   color: var(--white);
   padding: 12px 20px;
@@ -921,7 +927,7 @@ input[type=submit] {
   margin: auto;
 }
 
-input[type=email] {
+input[type="email"] {
   width: 100%;
   padding: 12px;
   border: 1px solid var(--modal-form-games-border-gray);
@@ -930,7 +936,7 @@ input[type=email] {
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
-  font-family: "DIN Pro Light", sans-serif
+  font-family: "DIN Pro Light", sans-serif;
 }
 
 .container {
