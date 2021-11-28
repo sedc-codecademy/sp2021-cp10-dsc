@@ -236,24 +236,6 @@ body {
     text-align: center;
     color: #f84d4d;
 }
-
-/* RECOMMENDED BUTTONS DIV */
-
-.chat-recommended-div {
-    width: 100%;
-    color: var(--dark-blue);
-    padding: 0 1.25rem;
-    display: none;
-    overflow: hidden;
-}
-
-.slideDiv {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    margin-top: 3%;
-}
-
 /* STYLES FOR GAMES ICON */
 
 .chat-games {
@@ -356,62 +338,25 @@ body {
     background-color: var(--white);
     margin: 0.313rem;
 }
-
-.Academies {
-    border-top: 0.313rem solid var(--btn-brown-red);
-    color: var(--btn-brown-red);
-}
-
-.Testing {
-    border-top: 0.313rem solid var(--btn-purple);
-    color: var(--btn-purple);
-}
-
-.Courses {
-    border-top: 0.313rem solid var(--btn-green);
-    color: var(--btn-green);
-}
-
-.contactUs {
-    border-top: 0.313rem solid var(--btn-pink);
-    color: var(--btn-pink);
-}
-
 .chat-buttons-div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 0.625rem;
+    justify-content: space-evenly;
 }
 
 .chatBotBtns {
-    display: inline-block;
-    height: 2.5rem;
+    height: 3.5rem;
+    width: 9.5rem;
+    min-width: 5rem;
     padding: 2%;
     border-radius: 0.313rem;
     border: none;
-    min-width: 5rem;
-    border-top: 0.125rem solid var(--dark-blue);
+    border-top: 0.225rem solid var(--dark-blue);
     box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
     background-color: var(--light-blue);
     color: var(--dark-blue);
-    margin: 0.313rem;
-}
-
-.recommendedButtons {
-    display: inline-block;
-    height: 3.438rem;
-    width: 18.75rem;
-    padding: 1%;
-    border-radius: 0.313rem;
-    box-shadow: 0.188rem 0.188rem 0.313rem var(--shadow);
-    background-color: var(--light-blue);
-    border: 0.063rem solid var(--gray-blue);
-    ;
-    color: var(--dark-blue);
-    margin: 0.313rem;
-    overflow: hidden;
-    font-size: 0.9rem;
+    margin: 0.613rem;
+    margin-top: 1.5rem;
 }
 
 button:active {
@@ -492,31 +437,6 @@ button:active {
     44% {
         transform: translateY(0rem);
         background-color: var(--typing-animation-dot-color4);
-    }
-}
-
-/* RECOMMENDED SLIDER */
-
-.slider {
-    animation: sliderKeyFrame linear 8s infinite;
-}
-
-@keyframes sliderKeyFrame {
-    0% {
-        transform: translate(-25rem, 0rem);
-        z-index: 1;
-    }
-    30% {
-        transform: translate(0rem, 0rem);
-        z-index: 1;
-    }
-    70% {
-        transform: translate(0rem, 0rem);
-        z-index: 1;
-    }
-    100% {
-        transform: translate(25rem, 0rem);
-        z-index: 1;
     }
 }
 
