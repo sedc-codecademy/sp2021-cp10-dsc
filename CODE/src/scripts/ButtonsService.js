@@ -1,7 +1,5 @@
 const ButtonsService = {
   buttonsDiv: document.getElementById("buttonsDiv"),
-  chatMinimize: document.getElementById("chatMinimize"),
-  chatMaximize: document.getElementById("chatMaximize"),
 
   //Prints the buttons for Object info
   getInfoButtons: function (element) {

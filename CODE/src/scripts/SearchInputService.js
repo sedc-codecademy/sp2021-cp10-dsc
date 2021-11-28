@@ -28,7 +28,6 @@ const SearchInputService = {
   SearchInputLogic: function (voiceRecognitionString) {
     if (AnimationsService.chatWindow.style.display === "none")
       UiService.resetChatWindow();
-    AnimationsService.changeImageHead("haralampiye");
     AnimationsService.headerAnimation();
     if (
       SearchInputService.input.value === "" &&
@@ -38,12 +37,9 @@ const SearchInputService = {
 
     voiceRecognitionString !== undefined
       ? (SearchInputService.inputStringForUser = voiceRecognitionString)
-      : (SearchInputService.inputStringForUser =
-        SearchInputService.input.value);
+      : (SearchInputService.inputStringForUser = SearchInputService.input.value);
 
-    SearchInputService.inputString = LexiconService.checkForKeywords(
-      SearchInputService.inputStringForUser
-    );
+    SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.inputStringForUser);
     input.value = "";
 
     //Searches for a curse word and promotes looove
@@ -55,6 +51,7 @@ const SearchInputService = {
       return;
     }
 
+    //Searches for info
     let found = SearchInputService.searchThroughInfoProperties(DataService.cachedData.infoProperties);
     if (found.length !== 0) {
       UiService.printAcademyInfo(found[0], SearchInputService.inputStringForUser);
@@ -67,7 +64,7 @@ const SearchInputService = {
           "If you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
         ]);
         UiService.sleep().then(() => {
-          UiService.printContactButton();
+          ContactUsForm.printContactUsForm();
         });
       }
       else {
@@ -91,7 +88,7 @@ const SearchInputService = {
               DataService.cachedReplyMessages.ShortTalk.Funny.reply
             );
             UiService.sleep().then(() => {
-              AnimationsService.recommendedBtnsAnimations();
+              //add something not to end the conversation
             });
           }
           else {
@@ -103,7 +100,8 @@ const SearchInputService = {
                 DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
               );
               UiService.sleep().then(() => {
-                AnimationsService.recommendedBtnsAnimations();
+                //add something not to end the conversation
+
               });
             }
             else {
@@ -127,7 +125,8 @@ const SearchInputService = {
                     DataService.cachedReplyMessages.Jokes.jokesArray
                   );
                   UiService.sleep().then(() => {
-                    AnimationsService.recommendedBtnsAnimations();
+                    //add something not to end the conversation
+
                   });
                 }
                 else {
@@ -154,9 +153,7 @@ const SearchInputService = {
                           .reply
                       );
                       UiService.sleep().then(() => {
-                        ButtonsService.getInfoButtons(
-                          DataService.cachedData
-                        );
+                        ButtonsService.getInfoButtons(DataService.cachedData);
                       });
                     }
                     else {
@@ -169,54 +166,34 @@ const SearchInputService = {
                             .reply
                         );
                         UiService.sleep().then(() => {
-                          ButtonsService.getInfoButtons(
-                            DataService.cachedData
-                          );
+                          ButtonsService.getInfoButtons(DataService.cachedData);
                         });
                       }
                       else {
                         //Checks if there is a goodbye word
                         found = SearchInputService.searchForBye();
                         if (found !== undefined) {
-                          UiService.replyMessages(
-                            SearchInputService.inputStringForUser,
-                            DataService.cachedReplyMessages.ShortTalk
-                              .Goodbye.reply
-                          );
+                          UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
                           UiService.sleep().then(() => {
-                            ButtonsService.getInfoButtons(
-                              DataService.cachedData
-                            );
+                            ButtonsService.getInfoButtons(DataService.cachedData);
                           });
                         }
                         else {
                           //Checks if there is a how are you sentence
                           found = SearchInputService.searchForHowAreYou();
                           if (found !== undefined) {
-                            UiService.replyMessages(
-                              SearchInputService.inputStringForUser,
-                              DataService.cachedReplyMessages.ShortTalk
-                                .HowAreYou.reply
-                            );
+                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
                             UiService.sleep().then(() => {
-                              ButtonsService.getInfoButtons(
-                                DataService.cachedData
-                              );
+                              ButtonsService.getInfoButtons(DataService.cachedData);
                             });
                           }
                           else {
                             //Checks if you are asking for a joke
                             found = SearchInputService.searchForJoke();
                             if (found !== undefined) {
-                              UiService.replyMessages(
-                                SearchInputService.inputStringForUser,
-                                DataService.cachedReplyMessages.Jokes
-                                  .jokesArray
-                              );
+                              UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
                               UiService.sleep().then(() => {
-                                ButtonsService.getInfoButtons(
-                                  DataService.cachedData
-                                );
+                                ButtonsService.getInfoButtons(DataService.cachedData);
                               });
                             }
                             else {
@@ -224,11 +201,7 @@ const SearchInputService = {
                               //here
                               found = SearchInputService.searchForWhoAreYou();
                               if (found !== undefined) {
-                                UiService.replyMessages(
-                                  SearchInputService.inputStringForUser,
-                                  DataService.cachedReplyMessages.ShortTalk
-                                    .WhoAreYou.reply
-                                );
+                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
                                 UiService.sleep().then(() => {
                                   ButtonsService.getInfoButtons(
                                     DataService.cachedData
@@ -239,27 +212,15 @@ const SearchInputService = {
                                 //Checks if there is a reference to who the bot can do
                                 found = SearchInputService.searchForWhatCanYouDo();
                                 if (found !== undefined) {
-                                  UiService.replyMessages(
-                                    SearchInputService.inputStringForUser,
-                                    DataService.cachedReplyMessages
-                                      .ShortTalk.WhatCanYouDo.reply
-                                  );
+                                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
                                   UiService.sleep().then(() => {
-                                    ButtonsService.getInfoButtons(
-                                      DataService.cachedData
-                                    );
+                                    ButtonsService.getInfoButtons(DataService.cachedData);
                                   });
                                 }
                                 else {
-                                  UiService.replyMessages(
-                                    SearchInputService.inputStringForUser,
-                                    DataService.cachedReplyMessages
-                                      .ShortTalk.NoComprende.reply
-                                  );
+                                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
                                   UiService.sleep().then(() => {
-                                    ButtonsService.getInfoButtons(
-                                      DataService.cachedData
-                                    );
+                                    ButtonsService.getInfoButtons(DataService.cachedData);
                                   });
                                 }
                               }
