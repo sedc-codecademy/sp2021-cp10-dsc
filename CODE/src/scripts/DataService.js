@@ -10,7 +10,7 @@ const DataService = {
             let data = await response.json();
             DataService.cachedData = await data.Data.Academies[0].studyPrograms[0];
             DataService.cachedReplyMessages = await data.ReplyMessages;
-            ButtonsService.getInfoButtons(data.Data.Academies[0].studyPrograms[0]);
+            ButtonsService.getInfoButtons(await data.Data.Academies[0].studyPrograms[0]);
         } catch (error) {
             AnimationsService.chatWindow.innerHTML =
                 `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/errorEmo.png" alt="Error Img">
