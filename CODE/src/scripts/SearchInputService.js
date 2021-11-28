@@ -39,7 +39,7 @@ const SearchInputService = {
     voiceRecognitionString !== undefined
       ? (SearchInputService.inputStringForUser = voiceRecognitionString)
       : (SearchInputService.inputStringForUser =
-          SearchInputService.input.value);
+        SearchInputService.input.value);
 
     SearchInputService.inputString = LexiconService.checkForKeywords(
       SearchInputService.inputStringForUser
@@ -55,261 +55,212 @@ const SearchInputService = {
       return;
     }
 
-    //Looks for study program
-    let foundHigh = SearchInputService.searchThroughHighTier();
-    if (foundHigh.length === 1) {
-      if (
-        SearchInputService.searchThroughInfoProperties(
-          foundHigh[0].item.infoProperties
-        ).length === 1 &&
-        foundHigh[0].branch !== "Testing"
-      ) {
-        UiService.printAcademyInfo(
-          SearchInputService.searchThroughInfoProperties(
-            foundHigh[0].item.infoProperties
-          )[0],
-          foundHigh[0].item.nameId,
-          foundHigh[0].branch,
-          SearchInputService.inputStringForUser
-        );
-      } else if (foundHigh[0].branch === "Testing") {
-        if (
-          SearchInputService.searchThroughInfoProperties(
-            foundHigh[0].item.infoProperties
-          ).length === 1
-        ) {
-          UiService.printTestingInfo(
-            SearchInputService.searchThroughInfoProperties(
-              foundHigh[0].item.infoProperties
-            )[0],
-            foundHigh[0].item.nameId,
-            SearchInputService.inputStringForUser
-          );
-        } else {
-          ButtonsService.getInfoTestingButtons(
-            foundHigh[0].item,
-            SearchInputService.inputStringForUser
-          );
-        }
-      } else {
-        UiService.replyMessages(
-          SearchInputService.inputStringForUser,
-          foundHigh[0].item.reply
-        );
+    let found = SearchInputService.searchThroughInfoProperties(DataService.cachedData.infoProperties);
+    if (found.length !== 0) {
+      UiService.printAcademyInfo(found[0], SearchInputService.inputStringForUser);
+    }
+    else {
+      // Checks if the user is asking to speak to a real person
+      found = SearchInputService.searchForContact();
+      if (found !== undefined) {
+        UiService.replyMessages(SearchInputService.inputStringForUser, [
+          "If you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
+        ]);
         UiService.sleep().then(() => {
-          ButtonsService.getInfoButtons(foundHigh[0].item, foundHigh[0].branch);
+          UiService.printContactButton();
         });
       }
-    } else {
-      //Looks for Academy, Course or Test
-      let foundMid = SearchInputService.searchThroughMidTier();
-      let found = foundHigh.concat(foundMid);
-      if (foundMid.length !== 0) {
-        found.length === 1
-          ? ButtonsService.getDataButtons(
-              found[0].item.nameId,
-              found[0].branch,
-              SearchInputService.inputStringForUser
-            )
-          : SearchInputService.moreOptionsFound(found);
-      } else {
-        //Looks explicit search for Academies, Courses or Testing
-        found = SearchInputService.searchThroughLowTier();
+      else {
+        //Checks if there is a greet word
+        found = SearchInputService.searchForGreeting();
         if (found !== undefined) {
-          ButtonsService.mainButtonsLogic(
-            found,
-            SearchInputService.inputStringForUser
+          UiService.replyMessages(
+            SearchInputService.inputStringForUser,
+            DataService.cachedReplyMessages.ShortTalk.Hello.reply
           );
-        } else {
-          // Checks if the user is asking to speak to a real person
-          found = SearchInputService.searchForContact();
+          UiService.sleep().then(() => {
+            ButtonsService.getInfoButtons(DataService.cachedData);
+          });
+        }
+        else {
+          //Checks if there is a reference to how funny the bot is
+          found = SearchInputService.searchForFunny();
           if (found !== undefined) {
-            UiService.replyMessages(SearchInputService.inputStringForUser, [
-              "If you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
-            ]);
+            UiService.replyMessages(
+              SearchInputService.inputStringForUser,
+              DataService.cachedReplyMessages.ShortTalk.Funny.reply
+            );
             UiService.sleep().then(() => {
-              UiService.printContactButton();
+              AnimationsService.recommendedBtnsAnimations();
             });
-          } else {
-            //Checks if there is a greet word
-            found = SearchInputService.searchForGreeting();
+          }
+          else {
+            //Checks if there is a goodbye word
+            found = SearchInputService.searchForBye();
             if (found !== undefined) {
               UiService.replyMessages(
                 SearchInputService.inputStringForUser,
-                DataService.cachedReplyMessages.ShortTalk.Hello.reply
+                DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
               );
               UiService.sleep().then(() => {
-                ButtonsService.getInfoButtons(DataService.cachedData);
+                AnimationsService.recommendedBtnsAnimations();
               });
-            } else {
-              //Checks if there is a reference to how funny the bot is
-              found = SearchInputService.searchForFunny();
+            }
+            else {
+              //Checks if there is a how are you sentence
+              found = SearchInputService.searchForHowAreYou();
               if (found !== undefined) {
                 UiService.replyMessages(
                   SearchInputService.inputStringForUser,
-                  DataService.cachedReplyMessages.ShortTalk.Funny.reply
+                  DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply
                 );
                 UiService.sleep().then(() => {
-                  AnimationsService.recommendedBtnsAnimations();
+                  ButtonsService.getInfoButtons(DataService.cachedData);
                 });
-              } else {
-                //Checks if there is a goodbye word
-                found = SearchInputService.searchForBye();
+              }
+              else {
+                //Checks if you are asking for a joke
+                found = SearchInputService.searchForJoke();
                 if (found !== undefined) {
                   UiService.replyMessages(
                     SearchInputService.inputStringForUser,
-                    DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
+                    DataService.cachedReplyMessages.Jokes.jokesArray
                   );
                   UiService.sleep().then(() => {
                     AnimationsService.recommendedBtnsAnimations();
                   });
-                } else {
-                  //Checks if there is a how are you sentence
-                  found = SearchInputService.searchForHowAreYou();
+                }
+                else {
+                  //Checks if there is a reference to who the bot is
+                  found = SearchInputService.searchForWhoAreYou();
                   if (found !== undefined) {
                     UiService.replyMessages(
                       SearchInputService.inputStringForUser,
-                      DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply
+                      DataService.cachedReplyMessages.ShortTalk.WhoAreYou
+                        .reply
                     );
                     UiService.sleep().then(() => {
                       ButtonsService.getInfoButtons(DataService.cachedData);
                     });
-                  } else {
-                    //Checks if you are asking for a joke
-                    found = SearchInputService.searchForJoke();
+                  }
+                  else {
+                    //Checks if there is a reference to who the bot can do
+                    //here
+                    found = SearchInputService.searchForWhatCanYouDo();
                     if (found !== undefined) {
                       UiService.replyMessages(
                         SearchInputService.inputStringForUser,
-                        DataService.cachedReplyMessages.Jokes.jokesArray
+                        DataService.cachedReplyMessages.ShortTalk.Hello
+                          .reply
                       );
                       UiService.sleep().then(() => {
-                        AnimationsService.recommendedBtnsAnimations();
+                        ButtonsService.getInfoButtons(
+                          DataService.cachedData
+                        );
                       });
-                    } else {
-                      //Checks if there is a reference to who the bot is
-                      found = SearchInputService.searchForWhoAreYou();
+                    }
+                    else {
+                      //Checks if there is a reference to how funny the bot is
+                      found = SearchInputService.searchForFunny();
                       if (found !== undefined) {
                         UiService.replyMessages(
                           SearchInputService.inputStringForUser,
-                          DataService.cachedReplyMessages.ShortTalk.WhoAreYou
+                          DataService.cachedReplyMessages.ShortTalk.Funny
                             .reply
                         );
                         UiService.sleep().then(() => {
-                          ButtonsService.getInfoButtons(DataService.cachedData);
+                          ButtonsService.getInfoButtons(
+                            DataService.cachedData
+                          );
                         });
-                      } else {
-                        //Checks if there is a reference to who the bot can do
-                        found = SearchInputService.searchForWhatCanYouDo();
+                      }
+                      else {
+                        //Checks if there is a goodbye word
+                        found = SearchInputService.searchForBye();
                         if (found !== undefined) {
                           UiService.replyMessages(
                             SearchInputService.inputStringForUser,
-                            DataService.cachedReplyMessages.ShortTalk.Hello
-                              .reply
+                            DataService.cachedReplyMessages.ShortTalk
+                              .Goodbye.reply
                           );
                           UiService.sleep().then(() => {
                             ButtonsService.getInfoButtons(
                               DataService.cachedData
                             );
                           });
-                        } else {
-                          //Checks if there is a reference to how funny the bot is
-                          found = SearchInputService.searchForFunny();
+                        }
+                        else {
+                          //Checks if there is a how are you sentence
+                          found = SearchInputService.searchForHowAreYou();
                           if (found !== undefined) {
                             UiService.replyMessages(
                               SearchInputService.inputStringForUser,
-                              DataService.cachedReplyMessages.ShortTalk.Funny
-                                .reply
+                              DataService.cachedReplyMessages.ShortTalk
+                                .HowAreYou.reply
                             );
                             UiService.sleep().then(() => {
                               ButtonsService.getInfoButtons(
                                 DataService.cachedData
                               );
                             });
-                          } else {
-                            //Checks if there is a goodbye word
-                            found = SearchInputService.searchForBye();
+                          }
+                          else {
+                            //Checks if you are asking for a joke
+                            found = SearchInputService.searchForJoke();
                             if (found !== undefined) {
                               UiService.replyMessages(
                                 SearchInputService.inputStringForUser,
-                                DataService.cachedReplyMessages.ShortTalk
-                                  .Goodbye.reply
+                                DataService.cachedReplyMessages.Jokes
+                                  .jokesArray
                               );
                               UiService.sleep().then(() => {
                                 ButtonsService.getInfoButtons(
                                   DataService.cachedData
                                 );
                               });
-                            } else {
-                              //Checks if there is a how are you sentence
-                              found = SearchInputService.searchForHowAreYou();
+                            }
+                            else {
+                              //Checks if there is a reference to who the bot is
+                              //here
+                              found = SearchInputService.searchForWhoAreYou();
                               if (found !== undefined) {
                                 UiService.replyMessages(
                                   SearchInputService.inputStringForUser,
                                   DataService.cachedReplyMessages.ShortTalk
-                                    .HowAreYou.reply
+                                    .WhoAreYou.reply
                                 );
                                 UiService.sleep().then(() => {
                                   ButtonsService.getInfoButtons(
                                     DataService.cachedData
                                   );
                                 });
-                              } else {
-                                //Checks if you are asking for a joke
-                                found = SearchInputService.searchForJoke();
+                              }
+                              else {
+                                //Checks if there is a reference to who the bot can do
+                                found = SearchInputService.searchForWhatCanYouDo();
                                 if (found !== undefined) {
                                   UiService.replyMessages(
                                     SearchInputService.inputStringForUser,
-                                    DataService.cachedReplyMessages.Jokes
-                                      .jokesArray
+                                    DataService.cachedReplyMessages
+                                      .ShortTalk.WhatCanYouDo.reply
                                   );
                                   UiService.sleep().then(() => {
                                     ButtonsService.getInfoButtons(
                                       DataService.cachedData
                                     );
                                   });
-                                } else {
-                                  //Checks if there is a reference to who the bot is
-                                  found =
-                                    SearchInputService.searchForWhoAreYou();
-                                  if (found !== undefined) {
-                                    UiService.replyMessages(
-                                      SearchInputService.inputStringForUser,
-                                      DataService.cachedReplyMessages.ShortTalk
-                                        .WhoAreYou.reply
+                                }
+                                else {
+                                  UiService.replyMessages(
+                                    SearchInputService.inputStringForUser,
+                                    DataService.cachedReplyMessages
+                                      .ShortTalk.NoComprende.reply
+                                  );
+                                  UiService.sleep().then(() => {
+                                    ButtonsService.getInfoButtons(
+                                      DataService.cachedData
                                     );
-                                    UiService.sleep().then(() => {
-                                      ButtonsService.getInfoButtons(
-                                        DataService.cachedData
-                                      );
-                                    });
-                                  } else {
-                                    //Checks if there is a reference to who the bot can do
-                                    found =
-                                      SearchInputService.searchForWhatCanYouDo();
-                                    if (found !== undefined) {
-                                      UiService.replyMessages(
-                                        SearchInputService.inputStringForUser,
-                                        DataService.cachedReplyMessages
-                                          .ShortTalk.WhatCanYouDo.reply
-                                      );
-                                      UiService.sleep().then(() => {
-                                        ButtonsService.getInfoButtons(
-                                          DataService.cachedData
-                                        );
-                                      });
-                                    } else {
-                                      UiService.replyMessages(
-                                        SearchInputService.inputStringForUser,
-                                        DataService.cachedReplyMessages
-                                          .ShortTalk.NoComprende.reply
-                                      );
-                                      UiService.sleep().then(() => {
-                                        ButtonsService.getInfoButtons(
-                                          DataService.cachedData
-                                        );
-                                      });
-                                    }
-                                  }
+                                  });
                                 }
                               }
                             }
@@ -327,71 +278,6 @@ const SearchInputService = {
     }
   },
 
-  //Looks for study program or test
-  searchThroughHighTier: function () {
-    let element;
-    let foundItems = [];
-    for (let branch in DataService.cachedData) {
-      for (let item of DataService.cachedData[branch]) {
-        if (item.studyPrograms !== undefined) {
-          for (let program of item.studyPrograms) {
-            if (
-              SearchInputService.inputString
-                .toLowerCase()
-                .includes(program.name.toLowerCase())
-            ) {
-              element = { item: program, branch: branch };
-              foundItems.push(element);
-            }
-          }
-        } else if (branch === "Testing") {
-          if (
-            SearchInputService.inputString
-              .toLowerCase()
-              .includes(item.name.toLowerCase())
-          ) {
-            element = { item: item, branch: branch };
-            foundItems.push(element);
-          }
-        }
-      }
-    }
-    return foundItems;
-  },
-
-  //Looks for Academy, Course or Test
-  searchThroughMidTier: function () {
-    let element;
-    let foundItems = [];
-    for (let branch in DataService.cachedData) {
-      if (branch === "Testing") continue;
-      for (let item of DataService.cachedData[branch]) {
-        if (
-          SearchInputService.inputString
-            .toLowerCase()
-            .includes(item.name.toLowerCase())
-        ) {
-          element = { item: item, branch: branch };
-          foundItems.push(element);
-        }
-      }
-    }
-    return foundItems;
-  },
-
-  //Looks explicit search for Academies, Courses or Testing
-  searchThroughLowTier: function () {
-    for (let branch in DataService.cachedData) {
-      if (
-        SearchInputService.inputString
-          .toLowerCase()
-          .includes(branch.toLowerCase())
-      ) {
-        return branch;
-      }
-    }
-  },
-
   //Looks for info property of the study program
   searchThroughInfoProperties: function (elementProperties) {
     let foundItems = [];
@@ -401,10 +287,7 @@ const SearchInputService = {
         "Overview",
         "Timeline",
         "Job Opportunities",
-        "Apply",
-        "About",
-        "Test Centers",
-        "Target Audience",
+        "Apply"
       ];
     }
 
