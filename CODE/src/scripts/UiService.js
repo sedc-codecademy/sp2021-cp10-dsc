@@ -56,6 +56,7 @@ const UiService = {
 
     //Prints the INFO for the Object
     printAcademyInfo: function (neededInfo, searchInput) {
+        AnimationsService.headerAnimation();
         let = studyProgram = DataService.cachedData;
 
         if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
@@ -69,24 +70,6 @@ const UiService = {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Here is a preview of the prices!"]);
             ApplyAndPriceService.getPriceTable(studyProgram.name);
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-        }
-    },
-
-    //Prints the INFO for the Testing object
-    printTestingInfo: function (neededInfo, elementId, inputString) {
-        for (const test of DataService.cachedData.Testing) {
-            if (test.nameId === elementId) {
-                if (test[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
-                    this.replyInfoMessage(inputString === undefined ? neededInfo : inputString, test[neededInfo.toLowerCase().replace(/\s/g, "")]);
-                    UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                    break;
-                } else if (neededInfo === "Apply") {
-                    UiService.replyInfoMessage(inputString === undefined ? neededInfo : inputString, ["Thank you for your interest!"]);
-                    ApplyAndPriceService.getApplyForm("Testing");
-                    UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                    break;
-                }
-            }
         }
     },
 
@@ -214,12 +197,6 @@ const UiService = {
                 ApplyAndPriceService.popUp.style.overflowY = "auto";
                 break;
         }
-    },
-
-    //Prints contact button form
-    printContactButton: function () {
-        ButtonsService.mainButtonsDiv.innerHTML += `<button class="mainButtonsStyle contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
-        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Enables/Disables HTML scroll depending on the case
