@@ -66,10 +66,6 @@ const UiService = {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
             ApplyAndPriceService.getApplyForm(studyProgram.name);
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-        } else if (neededInfo === "Price") {
-            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Here is a preview of the prices!"]);
-            ApplyAndPriceService.getPriceTable(studyProgram.name);
-            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         }
     },
 
