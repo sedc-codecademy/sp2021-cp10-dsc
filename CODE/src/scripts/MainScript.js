@@ -62,14 +62,14 @@ chatMaximize.addEventListener("click", () => {
 });
 
 //Modal close on button
-ApplyAndPriceService.closeModalButton.addEventListener("click", () => {
-    ApplyAndPriceService.myModal.style.display = "none";
+ApplyService.closeModalButton.addEventListener("click", () => {
+    ApplyService.myModal.style.display = "none";
 });
 
 //Modal close on side
 window.addEventListener("click", (event) => {
-    if (event.target == ApplyAndPriceService.myModal) {
-        ApplyAndPriceService.closeModalButton.click();
+    if (event.target == ApplyService.myModal) {
+        ApplyService.closeModalButton.click();
     }
 });
 
@@ -83,7 +83,7 @@ window.addEventListener("resize", () => {
 
     if (window.innerWidth < 821) {
         UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
-        ApplyAndPriceService.closeModalButton.click();
+        ApplyService.closeModalButton.click();
     }
 
     if (window.innerWidth < 821) {

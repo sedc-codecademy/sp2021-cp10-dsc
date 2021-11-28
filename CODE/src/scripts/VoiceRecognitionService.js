@@ -35,7 +35,7 @@ const VoiceRecognitionService = {
         });
 
         recognition.onresult = function (e) {
-            ApplyAndPriceService.closeModalButton.click();
+            ApplyService.closeModalButton.click();
             const transcript = e.results[e.results.length - 1]
             [0].transcript.trim();
             const transcriptUpperCase = transcript.charAt(0).toUpperCase() + transcript.slice(1);
