@@ -58,10 +58,12 @@ const UiService = {
     printAcademyInfo: function (neededInfo, searchInput) {
         AnimationsService.headerAnimation();
         let = studyProgram = DataService.cachedData;
-
-        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
+        debugger;
+        console.log(neededInfo, searchInput);
+        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined || neededInfo === "Price") {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+            console.log(neededInfo, searchInput);
         } else if (neededInfo === "Apply") {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
             ApplyAndPriceService.getApplyForm(studyProgram.name);

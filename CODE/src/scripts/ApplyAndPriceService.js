@@ -10,13 +10,4 @@ const ApplyAndPriceService = {
         UiService.displayModalWindow("apply");
         ApplyAndPriceService.popUp.innerHTML = `<iframe src="${applicationUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
     },
-
-    //Gets  the needed price table
-    getPriceTable: function () {
-        let priceUrl = "https://dejan-stojkoski.github.io/AcademiesPrices//";
-
-        UiService.displayModalWindow("price");
-        ApplyAndPriceService.popUp.innerHTML =
-            `<iframe src="${priceUrl}" width="97%" height="100%" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
-    }
 };//PROPERTIES: The Modal div, Pop up from the modal, Close modal button, Application url, Price table url
