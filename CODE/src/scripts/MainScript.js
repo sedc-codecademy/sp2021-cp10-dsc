@@ -77,7 +77,6 @@ window.addEventListener("click", (event) => {
 window.addEventListener("resize", () => {
     AnimationsService.onResizeGamesAndQuizzes();
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
-    UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
     window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
     UiService.HTMLScrollCheck();
