@@ -50,6 +50,7 @@ const UiService = {
                 <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
                 <div class="chatBubblesBot">${infoMessage}</div>
             </div>`;
+<<<<<<< HEAD
       chatHistory.scrollIntoView({ block: "end", behavior: "smooth" });
     });
   },
@@ -138,6 +139,102 @@ const UiService = {
       item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
       item.title = "Chat";
       if (item.id === "chatQuizzes") {
+=======
+            chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
+        });
+    },
+
+    //Prints the INFO for the Object
+    printAcademyInfo: function (neededInfo, searchInput) {
+        AnimationsService.headerAnimation();
+        let = studyProgram = DataService.cachedData;
+
+        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+        } else if (neededInfo === "Apply") {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
+            ApplyAndPriceService.getApplyForm(studyProgram.name);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+        }
+    },
+
+    //Prints message for the answer in the user got everything he needed
+    printConversationDone: function (choice) {
+        if (choice === "Yes") {
+            AnimationsService.chatBotBubbleName = "Haralampiye";
+            this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
+            UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+        } else if (choice === "No") {
+            UiService.replyMessages(choice, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+        }
+    },
+
+    //Shows and hides the loader
+    toggleLoader: function () {
+        let loader = document.getElementById("loader");
+        loader.style.display = "block";
+        loader.scrollIntoView({ block: 'end', behavior: 'smooth' });
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 2000)
+    },
+
+    //Pauses everything for some time
+    sleep: function () {
+        return new Promise(resolve => setTimeout(resolve, 2000));
+    },
+
+    // Toggles between 2 view ports
+    toggleDisplayView: function (view1, view2) {
+        view1.style.display = "none";
+        view2.style.display = "flex";
+        view2.style.overflowX = "hidden";
+    },
+
+    // Changes the quizzes/games icon
+    changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
+        if (gameOrQuizFlag) {
+            item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
+            item.title = "Chat";
+            if (item.id === "chatQuizzes") {
+                GamesService.areGamesOpen = false;
+                AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+                AnimationsService.chatGames.title = "Games";
+                item.title = "Chat";
+            } else {
+                QuizzesService.areQuizzesOpen = false;
+                AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+                AnimationsService.chatQuizzes.title = "Quizzes";
+                item.title = "Chat";
+            }
+            this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
+        } else {
+            if (item.id === "chatQuizzes") {
+                item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+                item.title = "Quizzes";
+            } else {
+                item.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+                item.title = "Games";
+            };
+            this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
+        };
+    },
+
+    // Changes flag value
+    changeFlag: function (flag) {
+        if (flag) {
+            return false;
+        };
+        return true;
+    },
+
+    // Resets chat-window if called from another viewport
+    resetChatWindow: function () {
+        this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        AnimationsService.chatWindow.style.overflowX = "hidden";
+        AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
+>>>>>>> 924f947bfb7ed12085f37bc9d852d1b4d6268807
         GamesService.areGamesOpen = false;
         AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
         AnimationsService.chatGames.title = "Games";
