@@ -1,6 +1,9 @@
 const UiService = {
     chatHistory: document.getElementById("chatHistory"),
     modalContent: document.getElementById("modalContent"),
+    mainButtonsDiv: document.getElementById("mainButtonsDiv"),
+    waitingBell: document.getElementById("waitingBell"),
+    chatWindow: document.getElementById("chatWindow"),
 
     //Prints the very first message for the user
     firstMessage: function () {
@@ -75,9 +78,23 @@ const UiService = {
         if (choice === "Yes") {
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
             UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-        } else if (choice === "No") {
-            UiService.replyMessages(choice, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-        }
+        } 
+        else if (choice === "No") {
+            this.replyInfoMessage(choice, ["Ok amigo, I'll be here if you need me! \nJust ring the bell!"]);
+            setTimeout(() => {
+                this.mainButtonsDiv.innerHTML += `<img src="./src/img-avatars/chatBotBell.png" id="waitingBell" class="bell" height="50rem">`;
+                this.mainButtonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+                waitingBell.addEventListener("click", () => {
+                    waitingBell.classList.add("animateBell");
+                    setTimeout(() => {
+                        this.mainButtonsDiv.innerHTML = "";
+                        this.toggleLoader();
+                        UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); }
+                        );
+                    }, 2000)
+                });
+            }, 2000);
+        };
     },
 
     //Shows and hides the loader
