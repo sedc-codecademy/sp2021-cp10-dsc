@@ -358,10 +358,12 @@ body {
   background-color: var(--dark-blue);
   position: absolute;
   margin: 1.25rem 0 0 16.25rem;
-  border-radius: 0.625rem;
-  border: 0.1rem solid var(--white);
-  border-top: 0.213rem solid var(--white);
-  color: var(--white);
+  border: none;
+}
+
+.quizzesImg {
+  margin-left: 30%;
+  margin-top: -15%;
 }
 
 .chat-quizzes-icon {
