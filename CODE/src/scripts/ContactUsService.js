@@ -26,7 +26,7 @@ const ContactUsForm = {
                 <div>
             </form>
         </div>`;
-    UiService.sleep().then(() => {ButtonsService.isConversationDoneButtons();
+    UiService.sleep().then(() => {ButtonsService.isConversationDoneButtons(true);
     });
   },
 }; //PROPERTIES:
