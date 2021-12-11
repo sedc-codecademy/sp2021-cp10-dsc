@@ -13,7 +13,7 @@ const LexiconService = {
         // Checks whether input string has a reference to "Overview" and if so adds the corresponding keyword to the modified input string
         if (
             inputString.toLowerCase().includes("what is") ||
-            inputString.toLowerCase().includes("about") ||
+            //should have something like "about"
             inputString.toLowerCase().includes("what's")
         )
             keywordModifiedString += "Overview";
