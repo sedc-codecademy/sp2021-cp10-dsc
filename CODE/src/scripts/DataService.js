@@ -1,6 +1,6 @@
 const DataService = {
     cachedData: null,
-    cachedReplyMessages: null,
+    cachedReplyMessages: RepliesService.replies,
     cachedQuizzes: null,
 
     //Fetch the data from JSON
@@ -9,7 +9,6 @@ const DataService = {
             let response = await fetch(`https://dev.sedc.mk/wp-json/wp/v2/pages/4167?fbclid=IwAR0GF8p_JPAi40bfL22FNQUiTcR3q7W8e_nbn99VZhCI0cYx7cGyAeyZNKk`);
             let data = DataService.serializeData(await response.json());
             DataService.cachedData = await data;
-            DataService.cachedReplyMessages = await data.ReplyMessages;
             ButtonsService.getInfoButtons(data);
         } catch (error) {
             AnimationsService.chatWindow.innerHTML =

@@ -158,8 +158,6 @@ const UiService = {
     resetChatWindow: function () {
         this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
         AnimationsService.chatWindow.style.overflowX = "hidden";
-        AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-        GamesService.areGamesOpen = false;
         AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
         QuizzesService.areQuizzesOpen = false;
     },
