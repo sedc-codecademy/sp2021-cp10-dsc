@@ -88,8 +88,10 @@ const UiService = {
                     waitingBell.classList.add("animateBell");
                     setTimeout(() => {
                         this.mainButtonsDiv.innerHTML = "";
-                        this.toggleLoader();
-                        UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); }
+                        this.toggleLoader();                        
+                        UiService.sleep().then(() => { 
+                            UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
+                            ButtonsService.getInfoButtons(DataService.cachedData); }
                         );
                     }, 2000)
                 });
