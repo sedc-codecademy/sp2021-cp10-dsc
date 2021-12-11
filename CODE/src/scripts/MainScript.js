@@ -133,5 +133,3 @@ UiService.firstMessage();
 SearchInputService.getSearchInput();
 
 QuizzesService.printQuizzesMenu();
-
-GamesService.printGamesMenu();

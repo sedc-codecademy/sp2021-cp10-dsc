@@ -1,6 +1,5 @@
 const AnimationsService = {
     avatarImgDiv: document.getElementById("imgLogo"),
-    chatGames: document.getElementById("chatGames"),
     chatQuizzes: document.getElementById("chatQuizzes"),
     chatName: document.getElementById("chatName"),
     chatWindow: document.getElementById("chatWindow"),
@@ -32,13 +31,6 @@ const AnimationsService = {
                 this.chatName.style.opacity = "1";
             });
 
-            this.chatGames.classList.add("games-quizzesAnimation");
-            this.chatGames.addEventListener("animationend", () => {
-                this.chatGames.classList.remove("chat-games");
-                this.chatGames.classList.add("chat-games-icon");
-                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-            });
-
             this.chatQuizzes.classList.add("games-quizzesAnimation");
             this.chatQuizzes.addEventListener("animationend", () => {
                 this.chatQuizzes.classList.remove("chat-quizzes");
@@ -63,17 +55,11 @@ const AnimationsService = {
     onResizeGamesAndQuizzes: function () {
         if (this.isChatInitialized) {
             if (window.innerWidth < 821) {
-                this.chatGames.style.display = "none";
                 this.chatQuizzes.style.display = "none";
                 this.avatarImgDiv.style.marginTop = "0rem";
                 this.avatarImgDiv.style.marginLeft = "1.25rem";
             } else {
-                this.chatGames.style.display = "block";
                 this.chatQuizzes.style.display = "block";
-
-                this.chatGames.classList.remove("chat-games");
-                this.chatGames.classList.add("chat-games-icon");
-                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
 
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");

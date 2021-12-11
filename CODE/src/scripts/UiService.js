@@ -62,7 +62,6 @@ const UiService = {
         if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined || neededInfo === "Price") {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-            console.log(neededInfo, searchInput);
         } else if (neededInfo === "Apply") {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
             ApplyService.getApplyForm(studyProgram.name);
@@ -108,9 +107,6 @@ const UiService = {
             item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
             item.title = "Chat";
             if (item.id === "chatQuizzes") {
-                GamesService.areGamesOpen = false;
-                AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-                AnimationsService.chatGames.title = "Games";
                 item.title = "Chat";
             } else {
                 QuizzesService.areQuizzesOpen = false;
@@ -153,11 +149,11 @@ const UiService = {
     disableGamesAndQuizzesButtons: function (flag) {
         if (flag) {
             AnimationsService.chatQuizzes.disabled = true;
-            AnimationsService.chatGames.disabled = true;
+            // AnimationsService.chatGames.disabled = true;
         }
         else {
             AnimationsService.chatQuizzes.disabled = false;
-            AnimationsService.chatGames.disabled = false;
+            // AnimationsService.chatGames.disabled = false;
         }
     },
 

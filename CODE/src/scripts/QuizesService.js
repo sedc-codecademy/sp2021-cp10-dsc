@@ -20,7 +20,7 @@ const QuizzesService = {
                 UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
             }
 
-            if(DataService.cachedQuizzes === null) {
+            if (DataService.cachedQuizzes === null) {
                 UiService.disableGamesAndQuizzesButtons(false);
                 return;
             }
