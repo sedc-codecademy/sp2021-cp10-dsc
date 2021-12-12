@@ -55,11 +55,11 @@ const LexiconService = {
         )
             keywordModifiedString += "Apply";
 
-            if (
-                keywordModifiedString.toLowerCase().includes("price")
-            )
-                keywordModifiedString = "Price";
-                
+        if (
+            keywordModifiedString.toLowerCase().includes("price")
+        )
+            keywordModifiedString = "Price";
+
         return keywordModifiedString;
     }
 }

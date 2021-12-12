@@ -40,8 +40,8 @@ const AnimationsService = {
         }
     },
 
-    //Changes the bot personality depending on the chosen academy
-    changeImageHead: function () {
+    //Changes the bot image position when initialized
+    repositionImageHead: function () {
         if (window.innerWidth < 821) {
             AnimationsService.chatName.style.marginTop = "0rem";
         } else {
@@ -51,7 +51,7 @@ const AnimationsService = {
         AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
     },
 
-    //Functionality for window resize games and quizzes feature
+    //Functionality for window resize quizzes feature
     onResizeQuizzes: function () {
         if (this.isChatInitialized) {
             if (window.innerWidth < 821) {
