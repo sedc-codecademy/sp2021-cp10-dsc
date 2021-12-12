@@ -2,16 +2,18 @@
 
 
 ## Table of contents 📑
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [How to use](#howtouse)
-* [Features](#features)
-* [Status](#status)
-* [Credits](#credits)
+- [SEDC ChatBot 🔖 VERSION: 3.0.0 🔖](#sedc-chatbot--version-300-)
+  - [Table of contents 📑](#table-of-contents-)
+  - [General info ℹ️](#general-info-ℹ️)
+  - [Technologies 💻](#technologies-)
+  - [How to use 📘](#how-to-use-)
+  - [Features ✨](#features-)
+  - [Status 🏇](#status-)
+  - [Credits 🧾](#credits-)
+  - [License 🔒](#license-)
 
 ## General info ℹ️
 * We are a team of students making a chat bot for SEDC
-* This app uses its own JSON dummy servers
 
 ## Technologies 💻
 * Vanilla JS (ES6)
@@ -31,15 +33,13 @@ const ContactUsForm = {
         ApplyAndPriceService.popUp.innerHTML = `
         <div class="container" id="contactUsForm">
             <h1 class="formHeader">Contact us!</h1>
----->   <form action="https://formsubmit.co/insertEmailAdressHere" method="POST">
+---->   <form action="https://formsubmit.co/INSERT-EMAIL-ADDRESS-HERE" method="POST">
 ```
 ## Features ✨
 List of ready features:
 * The chat bot window accepts user interaction
 * The bot replies info for the chosen content
-* The bot gives suggestions to the user in the form of buttons
-* The bot includes quizzes related to SEDC
-* The bot features games
+* The bot includes quiz related to Web Development
 * The bot can both accept and understand written and voice commands (in English)
 * The bot has both desktop and mobile versions
 * The bot provides contact with SEDC if needed and sends a e-mail directly through and API from https://formsubmit.co
@@ -49,15 +49,8 @@ List of ready features:
 The project is finished and can be implemented on a website!
 
 ## Credits 🧾
-* The games in this project are iFrames of existing games on hosted on their own sites:
- - https://www.codingame.com/ide/puzzle/onboarding
- - https://flukeout.github.io/
- - http://flexboxfroggy.com/
- - https://vim-adventures.com/
- - http://play.elevatorsaga.com/
- - https://blockly.games/
-* The UI/UX design was done by Aleksandar Popovski - apopovski90@gmail.com - https://www.aleksandarpopovski.com/ - https://dribbble.com/popovskia - https://www.behance.net/popovskia
-* The avatar icons were done by Aleksandra Cakikj - aleksandra.cakikj@gmail.com - https://www.behance.net/AleksandraCakikj
+* The UI design was done by Aleksandar Popovski - apopovski90@gmail.com - https://www.aleksandarpopovski.com/ - https://dribbble.com/popovskia - https://www.behance.net/popovskia
+* The avatar icon was done by Aleksandra Cakikj - aleksandra.cakikj@gmail.com - https://www.behance.net/AleksandraCakikj
 
 ## License 🔒
 [MIT](https://github.com/sedc-codecademy/sp2021-cp10-dsc/blob/main/LICENSE)

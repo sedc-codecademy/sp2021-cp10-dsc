@@ -1,14 +1,14 @@
 const LexiconService = {
-    // Checks if input string contains alternatives to the keywords and returns new modified string with those keywords
+    // Checks if input string contains synonyms to the keywords and returns new modified string with those keywords
     checkForKeywords: function (inputString) {
-        let keywordModifiedString = inputString;
+        let modifiedInput = inputString;
 
         // Checks whether input string has a reference to "Price" and if so adds the corresponding keyword to the modified input string
         if (
             inputString.toLowerCase().includes("cost") ||
             inputString.toLowerCase().includes("how much")
         )
-            keywordModifiedString += "Price";
+            modifiedInput += "Price";
 
         // Checks whether input string has a reference to "Overview" and if so adds the corresponding keyword to the modified input string
         if (
@@ -21,7 +21,7 @@ const LexiconService = {
             inputString.toLowerCase().includes("site") ||
             inputString.toLowerCase().includes("what's")
         )
-            keywordModifiedString += "Overview";
+            modifiedInput += "Overview";
 
         // Checks whether input string has a reference to "Timeline" and if so adds the corresponding keyword to the modified input string
         if (
@@ -29,7 +29,7 @@ const LexiconService = {
             inputString.toLowerCase().includes("time") ||
             inputString.toLowerCase().includes("when")
         )
-            keywordModifiedString += "Timeline";
+            modifiedInput += "Timeline";
 
         // Checks whether input string has a reference to "Job Opportunities" and if so adds the corresponding keyword to the modified input string
         if (
@@ -44,7 +44,7 @@ const LexiconService = {
             inputString.toLowerCase().includes("lecturing") ||
             inputString.toLowerCase().includes("coaching")
         )
-            keywordModifiedString += "Trainers";
+            modifiedInput += "Trainers";
 
         // Checks whether input string has a reference to "Apply" and if so adds the corresponding keyword to the modified input string
         if (
@@ -53,13 +53,13 @@ const LexiconService = {
             inputString.toLowerCase().includes("sign up") ||
             inputString.toLowerCase().includes("register")
         )
-            keywordModifiedString += "Apply";
+            modifiedInput += "Apply";
 
         if (
-            keywordModifiedString.toLowerCase().includes("price")
+            modifiedInput.toLowerCase().includes("price")
         )
-            keywordModifiedString = "Price";
+            modifiedInput = "Price";
 
-        return keywordModifiedString;
+        return modifiedInput;
     }
 }

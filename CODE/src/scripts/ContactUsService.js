@@ -6,7 +6,7 @@ const ContactUsForm = {
     ApplyService.popUp.innerHTML = `
         <div class="container" id="contactUsForm">
             <h1 class="formHeader">Contact us!</h1>
-            <form action="https://formsubmit.co/insertEmailAdressHere" method="POST">
+            <form action="https://formsubmit.co/INSERT-EMAIL-ADRESS-HERE" method="POST">
                 <label>First Name</label>
                 <input type="text" id="fname" name="FirstName" placeholder="Your name.." required>
 
@@ -26,7 +26,8 @@ const ContactUsForm = {
                 <div>
             </form>
         </div>`;
-    UiService.sleep().then(() => {ButtonsService.isConversationDoneButtons(true);
+    UiService.sleep().then(() => {
+      ButtonsService.isConversationDoneButtons(true);
     });
   },
-}; //PROPERTIES:
+};
