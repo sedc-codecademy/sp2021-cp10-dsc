@@ -1,7 +1,7 @@
 const DataService = {
     cachedData: null,
     cachedReplyMessages: RepliesService.replies,
-    cachedQuizzes: null,
+    cachedQuizzes: QuizzesService.getQuizzesData(),
 
     //Fetch the data from JSON
     getDataAsync: async function () {
@@ -29,7 +29,7 @@ const DataService = {
             let data = await response.json();
             DataService.cachedQuizzes = await data;
         } catch (error) {
-            QuizzesService.gamesAndQuizzesWindow.innerHTML =
+            QuizzesService.QuizzesWindow.innerHTML =
                 `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/quizzesError.png" alt="Error Img">
                 <div class="errorText">"Oops, Something is wrong with my circuits I can't process the command"</br>Please try again later!</div>
             </div>`;

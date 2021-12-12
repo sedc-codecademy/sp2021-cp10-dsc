@@ -75,14 +75,14 @@ window.addEventListener("click", (event) => {
 
 //Chat Window scroll into view on screen resize
 window.addEventListener("resize", () => {
-    AnimationsService.onResizeGamesAndQuizzes();
+    AnimationsService.onResizeQuizzes();
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
     window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
     UiService.HTMLScrollCheck();
 
     if (window.innerWidth < 821) {
-        UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        UiService.toggleDisplayView(QuizzesService.QuizzesWindow, AnimationsService.chatWindow);
         ApplyService.closeModalButton.click();
     }
 
@@ -125,8 +125,6 @@ this.mainWindow.style.display = "none";
 window.addEventListener("load", chatMinimize.click());
 
 DataService.getDataAsync();
-
-DataService.fetchQuizzes();
 
 UiService.firstMessage();
 
