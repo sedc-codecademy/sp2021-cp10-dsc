@@ -4,7 +4,7 @@ const ButtonsService = {
   //Prints the buttons for Object info
   getInfoButtons: function (element) {
     this.buttonsDiv.innerHTML = "";
-    AnimationsService.changeImageHead("haralampiye");
+    AnimationsService.repositionImageHead("haralampiye");
 
     for (const button of element.infoProperties) {
       this.buttonsDiv.innerHTML += `<button id="${button}" class="chatBotBtns" onclick="UiService.printAcademyInfo('${button}')">${button}</button>`;

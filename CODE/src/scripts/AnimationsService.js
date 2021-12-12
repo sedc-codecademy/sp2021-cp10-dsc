@@ -31,7 +31,7 @@ const AnimationsService = {
                 this.chatName.style.opacity = "1";
             });
 
-            this.chatQuizzes.classList.add("games-quizzesAnimation");
+            this.chatQuizzes.classList.add("quizzesAnimation");
             this.chatQuizzes.addEventListener("animationend", () => {
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
@@ -40,8 +40,8 @@ const AnimationsService = {
         }
     },
 
-    //Changes the bot personality depending on the chosen academy
-    changeImageHead: function () {
+    //Changes the bot image position when initialized
+    repositionImageHead: function () {
         if (window.innerWidth < 821) {
             AnimationsService.chatName.style.marginTop = "0rem";
         } else {
@@ -51,8 +51,8 @@ const AnimationsService = {
         AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
     },
 
-    //Functionality for window resize games and quizzes feature
-    onResizeGamesAndQuizzes: function () {
+    //Functionality for window resize quizzes feature
+    onResizeQuizzes: function () {
         if (this.isChatInitialized) {
             if (window.innerWidth < 821) {
                 this.chatQuizzes.style.display = "none";

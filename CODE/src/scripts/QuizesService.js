@@ -1,6 +1,6 @@
 const QuizzesService = {
     form: document.querySelector("#questionsForm"),
-    gamesAndQuizzesWindow: document.getElementById("gamesAndQuizzesWindow"),
+    QuizzesWindow: document.getElementById("QuizzesWindow"),
     popUpQuizzes: document.getElementById("popUpQuizzes"),
     areQuizzesOpen: false,
     displayedQuestions: null,
@@ -8,20 +8,20 @@ const QuizzesService = {
     //Prints buttons for all the quizzes
     printQuizzesMenu: function () {
         AnimationsService.chatQuizzes.addEventListener('click', function () {
-            UiService.disableGamesAndQuizzesButtons(true);
+            UiService.disableQuizzesButtons(true);
             QuizzesService.areQuizzesOpen = UiService.changeFlag(QuizzesService.areQuizzesOpen);
 
             if (!AnimationsService.isChatInitialized) {
                 AnimationsService.headerAnimation();
                 AnimationsService.chatQuizzes.addEventListener("animationend", function () {
-                    UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
+                    UiService.changeQuizzesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
                 });
             } else {
-                UiService.changeQuizzesGamesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.gamesAndQuizzesWindow);
+                UiService.changeQuizzesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
             }
 
             if (DataService.cachedQuizzes === null) {
-                UiService.disableGamesAndQuizzesButtons(false);
+                UiService.disableQuizzesButtons(false);
                 return;
             }
 
@@ -37,8 +37,8 @@ const QuizzesService = {
                     </button>`;
             }
             inner += `</div>`
-            QuizzesService.gamesAndQuizzesWindow.innerHTML = inner;
-            UiService.disableGamesAndQuizzesButtons(false);
+            QuizzesService.QuizzesWindow.innerHTML = inner;
+            UiService.disableQuizzesButtons(false);
         });
     },
 
