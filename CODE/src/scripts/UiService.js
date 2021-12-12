@@ -79,7 +79,6 @@ const UiService = {
         }
         else if (choice === "No") {
             this.replyInfoMessage(choice, ["Ok amigo, I'll be here if you need me! \nJust ring the bell!"]);
-
             this.printBellButton();
         };
     },
