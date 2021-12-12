@@ -634,11 +634,11 @@ button:hover {
 
 /* GAMES & QUIZZES*/
 
-.games-quizzesAnimation {
-  animation: games-quizzesKeyFrame 1s ease-in-out 1;
+.quizzesAnimation {
+  animation: quizzesKeyFrame 1s ease-in-out 1;
 }
 
-@keyframes games-quizzesKeyFrame {
+@keyframes quizzesKeyFrame {
   from {
     opacity: 0;
   }

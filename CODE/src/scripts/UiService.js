@@ -120,9 +120,9 @@ const UiService = {
         view2.style.overflowX = "hidden";
     },
 
-    // Changes the quizzes/games icon
-    changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
-        if (gameOrQuizFlag) {
+    // Changes the quizzes icon
+    changeQuizzesIconAndFunctionality: function (QuizFlag, item, viewPort) {
+        if (QuizFlag) {
             item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
             item.title = "Chat";
             if (item.id === "chatQuizzes") {
@@ -134,14 +134,9 @@ const UiService = {
                 item.title = "Chat";
             }
             this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
-        } else {
-            if (item.id === "chatQuizzes") {
+        } else {    
                 item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
                 item.title = "Quizzes";
-            } else {
-                item.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-                item.title = "Games";
-            };
             this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
         };
     },
@@ -156,14 +151,14 @@ const UiService = {
 
     // Resets chat-window if called from another viewport
     resetChatWindow: function () {
-        this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        this.toggleDisplayView(QuizzesService.QuizzesWindow, AnimationsService.chatWindow);
         AnimationsService.chatWindow.style.overflowX = "hidden";
         AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
         QuizzesService.areQuizzesOpen = false;
     },
 
     // Stops user from clicking buttons too fast
-    disableGamesAndQuizzesButtons: function (flag) {
+    disableQuizzesButtons: function (flag) {
         if (flag) {
             AnimationsService.chatQuizzes.disabled = true;
             // AnimationsService.chatGames.disabled = true;

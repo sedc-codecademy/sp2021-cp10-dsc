@@ -31,7 +31,7 @@ const AnimationsService = {
                 this.chatName.style.opacity = "1";
             });
 
-            this.chatQuizzes.classList.add("games-quizzesAnimation");
+            this.chatQuizzes.classList.add("quizzesAnimation");
             this.chatQuizzes.addEventListener("animationend", () => {
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
@@ -52,7 +52,7 @@ const AnimationsService = {
     },
 
     //Functionality for window resize games and quizzes feature
-    onResizeGamesAndQuizzes: function () {
+    onResizeQuizzes: function () {
         if (this.isChatInitialized) {
             if (window.innerWidth < 821) {
                 this.chatQuizzes.style.display = "none";
