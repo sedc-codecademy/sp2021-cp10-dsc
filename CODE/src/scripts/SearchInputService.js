@@ -26,16 +26,15 @@ const SearchInputService = {
 
   //Search for a suitable response on the input
   SearchInputLogic: function (voiceRecognitionString) {
-    UiService.mainButtonsDiv.innerHTML = "";
+    UiService.helpersDiv.innerHTML = "";
 
-    if (AnimationsService.chatWindow.style.display === "none")
+    if (AnimationsService.chatWindow.style.display === "none") {
       UiService.resetChatWindow();
+    }
+
     AnimationsService.headerAnimation();
-    if (
-      SearchInputService.input.value === "" &&
-      voiceRecognitionString === undefined
-    )
-      return;
+
+    if (SearchInputService.input.value === "" && voiceRecognitionString === undefined) return;
 
     voiceRecognitionString !== undefined
       ? (SearchInputService.inputStringForUser = voiceRecognitionString)
@@ -82,154 +81,64 @@ const SearchInputService = {
           });
         }
         else {
-          //Checks if there is a reference to how funny the bot is
-          found = SearchInputService.searchForFunny();
+          //Checks if there is a goodbye word
+          found = SearchInputService.searchForBye();
           if (found !== undefined) {
-            UiService.replyMessages(
-              SearchInputService.inputStringForUser,
-              DataService.cachedReplyMessages.ShortTalk.Funny.reply
-            );
-            UiService.sleep().then(() => {
-              //add something not to end the conversation
-            });
+            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+            UiService.printBellButton();
           }
           else {
-            //Checks if there is a goodbye word
-            found = SearchInputService.searchForBye();
+            //Checks if there is a how are you sentence
+            found = SearchInputService.searchForHowAreYou();
             if (found !== undefined) {
-              UiService.replyMessages(
-                SearchInputService.inputStringForUser,
-                DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
-              );
-              UiService.sleep().then(() => {
-                //add something not to end the conversation
-
-              });
+              UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
+              UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
             }
             else {
-              //Checks if there is a how are you sentence
-              found = SearchInputService.searchForHowAreYou();
+              //Checks if there is a reference to who the bot is
+              found = SearchInputService.searchForWhoAreYou();
               if (found !== undefined) {
                 UiService.replyMessages(
                   SearchInputService.inputStringForUser,
-                  DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply
+                  DataService.cachedReplyMessages.ShortTalk.WhoAreYou
+                    .reply
                 );
                 UiService.sleep().then(() => {
                   ButtonsService.getInfoButtons(DataService.cachedData);
                 });
               }
               else {
-                //Checks if you are asking for a joke
-                found = SearchInputService.searchForJoke();
+                //Checks if there is a reference to who the bot can do
+                found = SearchInputService.searchForWhatCanYouDo();
                 if (found !== undefined) {
-                  UiService.replyMessages(
-                    SearchInputService.inputStringForUser,
-                    DataService.cachedReplyMessages.Jokes.jokesArray
-                  );
+                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
                   UiService.sleep().then(() => {
-                    //add something not to end the conversation
-
+                    ButtonsService.getInfoButtons(DataService.cachedData);
                   });
                 }
                 else {
-                  //Checks if there is a reference to who the bot is
-                  found = SearchInputService.searchForWhoAreYou();
+                  //Checks if there is a goodbye word
+                  found = SearchInputService.searchForBye();
                   if (found !== undefined) {
-                    UiService.replyMessages(
-                      SearchInputService.inputStringForUser,
-                      DataService.cachedReplyMessages.ShortTalk.WhoAreYou
-                        .reply
-                    );
+                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
                     UiService.sleep().then(() => {
                       ButtonsService.getInfoButtons(DataService.cachedData);
                     });
                   }
                   else {
-                    //Checks if there is a reference to who the bot can do
-                    //here
-                    found = SearchInputService.searchForWhatCanYouDo();
+                    //Checks if there is a how are you sentence
+                    found = SearchInputService.searchForHowAreYou();
                     if (found !== undefined) {
-                      UiService.replyMessages(
-                        SearchInputService.inputStringForUser,
-                        DataService.cachedReplyMessages.ShortTalk.Hello
-                          .reply
-                      );
+                      UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
                       UiService.sleep().then(() => {
                         ButtonsService.getInfoButtons(DataService.cachedData);
                       });
                     }
                     else {
-                      //Checks if there is a reference to how funny the bot is
-                      found = SearchInputService.searchForFunny();
-                      if (found !== undefined) {
-                        UiService.replyMessages(
-                          SearchInputService.inputStringForUser,
-                          DataService.cachedReplyMessages.ShortTalk.Funny
-                            .reply
-                        );
-                        UiService.sleep().then(() => {
-                          ButtonsService.getInfoButtons(DataService.cachedData);
-                        });
-                      }
-                      else {
-                        //Checks if there is a goodbye word
-                        found = SearchInputService.searchForBye();
-                        if (found !== undefined) {
-                          UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-                          UiService.sleep().then(() => {
-                            ButtonsService.getInfoButtons(DataService.cachedData);
-                          });
-                        }
-                        else {
-                          //Checks if there is a how are you sentence
-                          found = SearchInputService.searchForHowAreYou();
-                          if (found !== undefined) {
-                            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
-                            UiService.sleep().then(() => {
-                              ButtonsService.getInfoButtons(DataService.cachedData);
-                            });
-                          }
-                          else {
-                            //Checks if you are asking for a joke
-                            found = SearchInputService.searchForJoke();
-                            if (found !== undefined) {
-                              UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.Jokes.jokesArray);
-                              UiService.sleep().then(() => {
-                                ButtonsService.getInfoButtons(DataService.cachedData);
-                              });
-                            }
-                            else {
-                              //Checks if there is a reference to who the bot is
-                              //here
-                              found = SearchInputService.searchForWhoAreYou();
-                              if (found !== undefined) {
-                                UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
-                                UiService.sleep().then(() => {
-                                  ButtonsService.getInfoButtons(
-                                    DataService.cachedData
-                                  );
-                                });
-                              }
-                              else {
-                                //Checks if there is a reference to who the bot can do
-                                found = SearchInputService.searchForWhatCanYouDo();
-                                if (found !== undefined) {
-                                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
-                                  UiService.sleep().then(() => {
-                                    ButtonsService.getInfoButtons(DataService.cachedData);
-                                  });
-                                }
-                                else {
-                                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
-                                  UiService.sleep().then(() => {
-                                    ButtonsService.getInfoButtons(DataService.cachedData);
-                                  });
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
+                      UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
+                      UiService.sleep().then(() => {
+                        ButtonsService.getInfoButtons(DataService.cachedData);
+                      });
                     }
                   }
                 }
@@ -264,6 +173,25 @@ const SearchInputService = {
       }
     }
     return foundItems;
+  },
+
+  // Checks if the user is asking to speak to a real person
+  searchForContact: function () {
+    let contactUs = [
+      "contact",
+      "contact you",
+      "talk with somebody",
+      "person",
+      "official",
+      "someone",
+      "somebody",
+    ];
+
+    for (let contact of contactUs) {
+      if (SearchInputService.inputString.toLowerCase().includes(contact)) {
+        return contact;
+      }
+    }
   },
 
   //Checks if there is a greet word
@@ -303,20 +231,6 @@ const SearchInputService = {
     }
   },
 
-  //Checks if you are asking for a joke
-  searchForJoke: function () {
-    if (
-      SearchInputService.inputString
-        .toLowerCase()
-        .includes("joke".toLowerCase()) ||
-      SearchInputService.inputString
-        .toLowerCase()
-        .includes("funny".toLowerCase())
-    ) {
-      return "joke";
-    }
-  },
-
   //Checks if there is a how are you sentence
   searchForHowAreYou: function () {
     let howAreYous = [
@@ -341,40 +255,8 @@ const SearchInputService = {
     }
   },
 
-  //Checks if there is a reference to how funny the bot is
-  searchForFunny: function () {
-    let funny = "funny";
-    if (
-      SearchInputService.inputString.toLowerCase().includes("you are") &&
-      SearchInputService.inputString.toLowerCase().includes("funny")
-    ) {
-      return funny;
-    } else if (
-      SearchInputService.inputString.toLowerCase().includes("you're") &&
-      SearchInputService.inputString.toLowerCase().includes("funny")
-    ) {
-      return funny;
-    } else if (
-      SearchInputService.inputString.toLowerCase().includes("that") &&
-      SearchInputService.inputString.toLowerCase().includes("funny")
-    ) {
-      return funny;
-    }
-  },
-
-  //Checks if there is a reference to who the bot is
-  searchForWhoAreYou: function () {
-    let whoAreYou = "who are you";
-    if (
-      SearchInputService.inputString.toLowerCase().includes("who") &&
-      SearchInputService.inputString.toLowerCase().includes("you")
-    ) {
-      return whoAreYou;
-    }
-  },
-
   //Checks if there is a reference to who the bot can do
-  searchForWhatCanYouDo: function () {
+  searchForWhatCanYouDo: function () { //check
     let whatCanYouDo = "what can you do";
     if (
       SearchInputService.inputString.toLowerCase().includes("what") &&
@@ -391,22 +273,14 @@ const SearchInputService = {
     }
   },
 
-  // Checks if the user is asking to speak to a real person
-  searchForContact: function () {
-    let contactUs = [
-      "contact",
-      "contact you",
-      "talk with somebody",
-      "person",
-      "official",
-      "someone",
-      "somebody",
-    ];
-
-    for (let contact of contactUs) {
-      if (SearchInputService.inputString.toLowerCase().includes(contact)) {
-        return contact;
-      }
+  //Checks if there is a reference to who the bot is
+  searchForWhoAreYou: function () {
+    let whoAreYou = "who are you";
+    if (
+      SearchInputService.inputString.toLowerCase().includes("who") &&
+      SearchInputService.inputString.toLowerCase().includes("you")
+    ) {
+      return whoAreYou;
     }
   },
 
@@ -428,32 +302,5 @@ const SearchInputService = {
         return curseWord;
       }
     }
-  },
-
-  // Gathers all the possible answers and returns them to the user as buttons (options) to choose from
-  moreOptionsFound: function (foundItems) {
-    UiService.replyMessages(SearchInputService.inputStringForUser, [
-      "Woooah, hold on there partner, you asked a couple of different things there! Which one did you mean or which one do you wanna talk about first?",
-    ]);
-
-    let buttons = [];
-    for (let i = 0; i < foundItems.length; i++) {
-      if (i === 5) break;
-      let button = ButtonsService.createMoreOptionsButtons(
-        foundItems[i].item,
-        foundItems[i].branch
-      );
-      buttons.push(button);
-    }
-
-    let uniqueButtons = [...new Set(buttons)];
-    UiService.sleep().then(() => {
-      ButtonsService.buttonsDiv.innerHTML = "";
-      uniqueButtons.forEach((x) => (ButtonsService.buttonsDiv.innerHTML += x));
-      ButtonsService.buttonsDiv.scrollIntoView({
-        block: "end",
-        behavior: "smooth",
-      });
-    });
-  },
+  }
 }; //PROPERTIES: Input field, Input button, Input value string, Input string that is shown to the user

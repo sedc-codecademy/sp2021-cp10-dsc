@@ -4,19 +4,19 @@ const ButtonsService = {
   //Prints the buttons for Object info
   getInfoButtons: function (element) {
     this.buttonsDiv.innerHTML = "";
-    AnimationsService.repositionImageHead("haralampiye");
+    AnimationsService.repositionImageHead();
 
     for (const button of element.infoProperties) {
       this.buttonsDiv.innerHTML += `<button id="${button}" class="chatBotBtns" onclick="UiService.printAcademyInfo('${button}')">${button}</button>`;
     }
-    this.buttonsDiv.innerHTML += `<button class="mainButtonsStyle chatBotBtns" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
+    this.buttonsDiv.innerHTML += `<button class="chatBotBtns" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
     buttonsDiv.scrollIntoView({ block: "end", behavior: "smooth" });
   },
 
   //Pop the question if the user got everything he needed
   isConversationDoneButtons: function (contactUsFlag) {
     this.buttonsDiv.innerHTML = "";
-    contactUsFlag !== undefined ? null :  UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
+    contactUsFlag !== undefined ? null : UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
 
     let answers = ["Yes", "No"];
     for (const answer of answers) {
@@ -24,4 +24,4 @@ const ButtonsService = {
     }
     buttonsDiv.scrollIntoView({ block: "end", behavior: "smooth" });
   }
-}
+};//PROPERTIES: The buttons div

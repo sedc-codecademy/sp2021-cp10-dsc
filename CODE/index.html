@@ -11,9 +11,7 @@
 </head>
 
 <body>
-    <!-- MAIN CHAT WINDOW -->
     <div class="main-window" id="mainWindow">
-        <!-- HEADER -->
         <div class="header">
             <button class="chat-quizzes" title="Quizzes" id="chatQuizzes"> <img
                     src="src/img-avatars/quizzes-initial.svg" height="40" alt="Quizzes"> </button>
@@ -22,18 +20,14 @@
             <div class="img-logo" id="imgLogo"></div>
         </div>
 
-        <!-- CHAT WINDOW -->
         <div class="chat-window">
-            <!-- GAMES AND QUIZZES WRAPPER -->
             <div class="chat" id="QuizzesWindow" style="display: none"></div>
 
-            <!-- TEXT-CHAT WRAPPER -->
             <div class="chat" id="chatWindow">
                 <div class="chat-history" id="chatHistory"></div>
-                <div class="main-chat-buttons-div" id="mainButtonsDiv"></div>
+                <div class="helper-div" id="helpersDiv"></div>
                 <div class="chat-buttons-div" id="buttonsDiv"></div>
 
-                <!-- LOADER -->
                 <div id="loader">
                     <div class="loader-bubble">
                         <div class="typing">
@@ -46,7 +40,6 @@
             </div>
         </div>
 
-        <!-- SEARCH INPUT -->
         <div id="searchInputWraper">
             <div class="chat-searchInput-div" id="searchInput">
                 <input type="text" placeholder="Type something..." id="input">
@@ -60,13 +53,11 @@
     </div>
     </div>
 
-    <!-- MAXIMIZE BUTTON -->
     <div class="maximizeButtonDiv">
         <div id="maximizeSpeechBox" class="maximizeSpeechBox speechBox"></div>
         <button class="chat-maximize" id="chatMaximize"></button>
     </div>
 
-    <!-- MODAL -->
     <div id="myModal" class="modal">
         <div class="modal-content" id="modalContent">
             <span class="close" id="close">&times;</span>

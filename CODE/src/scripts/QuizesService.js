@@ -20,24 +20,17 @@ const QuizzesService = {
                 UiService.changeQuizzesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
             }
 
-            if (DataService.cachedQuizzes === null) {
-                UiService.disableQuizzesButtons(false);
-                return;
-            }
-
-            let inner = `<p id="quizesMessage">Take a Quiz</p> <hr class="chat-js-hr">`;
-
-            inner += `<div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
+            let quizzesInnerHTML = `<p id="quizzesMessage">Take a Quiz</p> <hr class="chat-js-hr"> <div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
 
             for (let quiz in DataService.cachedQuizzes.Quizzes) {
-                inner +=
+                quizzesInnerHTML +=
                     `<button id="${quiz}" class="btnCard" onclick="QuizzesService.getQuiz('${quiz}')">
                         <div class="btnCardName">${quiz.replace(/-/g, " ")}</div>
                         <div class="btnCardDescription">${DataService.cachedQuizzes.Descriptions[quiz]}</div>
                     </button>`;
             }
-            inner += `</div>`
-            QuizzesService.QuizzesWindow.innerHTML = inner;
+            quizzesInnerHTML += `</div>`
+            QuizzesService.QuizzesWindow.innerHTML = quizzesInnerHTML;
             UiService.disableQuizzesButtons(false);
         });
     },
@@ -77,9 +70,9 @@ const QuizzesService = {
         this.displayedQuestions = questions;
         QuizzesService.form.innerHTML = "";
 
-        let inner = '';
+        let quizzesInnerHTML = '';
         for (let i = 0; i < questions.length; i++) {
-            inner += `
+            quizzesInnerHTML += `
             <div class="quizQuestion">
                 <p><b>${i + 1}. ${questions[i].question}</b></p>
                 <div class="form-check">
@@ -101,8 +94,8 @@ const QuizzesService = {
             </div>
             <hr class="quiz-hr">`;
         }
-        inner += `<button type="submit" id="submitBtn">Submit</button>`;
-        QuizzesService.form.innerHTML = inner;
+        quizzesInnerHTML += `<button type="submit" id="submitBtn">Submit</button>`;
+        QuizzesService.form.innerHTML = quizzesInnerHTML;
     },
 
     //Checks which question's answers are correct
@@ -416,4 +409,4 @@ const QuizzesService = {
             }
         }
     }
-};//PROPERTIES: Form for the quizzes, Games and Quizzes main menu display, Pop up for the quizzes modal, Bool if the quizzes ate open, Displayed question array
+};//PROPERTIES: Form for the quizzes, Quizzes main menu display, Pop up for the quizzes modal, Bool if the quizzes ate open, Displayed question array

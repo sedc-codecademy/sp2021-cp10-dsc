@@ -1,8 +1,7 @@
 const UiService = {
     chatHistory: document.getElementById("chatHistory"),
     modalContent: document.getElementById("modalContent"),
-    mainButtonsDiv: document.getElementById("mainButtonsDiv"),
-    waitingBell: document.getElementById("waitingBell"),
+    helpersDiv: document.getElementById("helpersDiv"),
     chatWindow: document.getElementById("chatWindow"),
 
     //Prints the very first message for the user
@@ -60,14 +59,14 @@ const UiService = {
     //Prints the INFO for the Object
     printAcademyInfo: function (neededInfo, searchInput) {
         AnimationsService.headerAnimation();
-        let = studyProgram = DataService.cachedData;
+        let studyProgram = DataService.cachedData;
 
-        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined || neededInfo === "Price") {
+        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         } else if (neededInfo === "Apply") {
             UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
-            ApplyService.getApplyForm(studyProgram.name);
+            ApplyService.getApplyForm();
             UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         }
     },
@@ -77,27 +76,33 @@ const UiService = {
         if (choice === "Yes") {
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
             UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-        } 
+        }
         else if (choice === "No") {
             this.replyInfoMessage(choice, ["Ok amigo, I'll be here if you need me! \nJust ring the bell!"]);
-            setTimeout(() => {
-                this.mainButtonsDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" id="waitingBell" class="bell" height="50rem"></button>`;
-                this.mainButtonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
-                document.getElementById("waitingBellButton").addEventListener("click", () => {
-                    waitingBellButton.classList.add("animateBell");
-                    document.getElementById("waitingBellButton").disabled = true;
-                    setTimeout(() => {
-                        document.getElementById("waitingBellButton").disabled = false;
-                        this.mainButtonsDiv.innerHTML = "";
-                        this.toggleLoader();
-                        UiService.sleep().then(() => {
-                            UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
-                            ButtonsService.getInfoButtons(DataService.cachedData); }
-                        );
-                    }, 2000)
-                });
-            }, 2000);
+
+            this.printBellButton();
         };
+    },
+
+    //Print Bell Button
+    printBellButton: function () {
+        UiService.sleep().then(() => {
+            this.helpersDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" title="Ring me!!!" id="waitingBell" class="bell" height="50rem"></button>`;
+            this.helpersDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+            document.getElementById("waitingBellButton").addEventListener("click", () => {
+                waitingBellButton.classList.add("animateBell");
+                document.getElementById("waitingBellButton").disabled = true;
+                UiService.sleep().then(() => {
+                    document.getElementById("waitingBellButton").disabled = false;
+                    this.helpersDiv.innerHTML = "";
+                    this.toggleLoader();
+                    UiService.sleep().then(() => {
+                        UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
+                        ButtonsService.getInfoButtons(DataService.cachedData);
+                    });
+                });
+            });
+        });
     },
 
     //Shows and hides the loader
@@ -136,9 +141,9 @@ const UiService = {
                 item.title = "Chat";
             }
             this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
-        } else {    
-                item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
-                item.title = "Quizzes";
+        } else {
+            item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
+            item.title = "Quizzes";
             this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
         };
     },
@@ -163,11 +168,9 @@ const UiService = {
     disableQuizzesButtons: function (flag) {
         if (flag) {
             AnimationsService.chatQuizzes.disabled = true;
-            // AnimationsService.chatGames.disabled = true;
         }
         else {
             AnimationsService.chatQuizzes.disabled = false;
-            // AnimationsService.chatGames.disabled = false;
         }
     },
 
@@ -190,9 +193,6 @@ const UiService = {
         ApplyService.popUp.style.overflowY = "hidden";
 
         switch (flag) {
-            case "games":
-                ApplyService.popUp.style.overflowY = "auto";
-                break;
             case "quizzes":
                 ApplyService.popUp.style.display = "none";
                 QuizzesService.popUpQuizzes.style.display = "block";
@@ -209,4 +209,4 @@ const UiService = {
     HTMLScrollCheck: function () {
         mainWindow.style.height === "100%" ? document.getElementsByTagName("html")[0].style.overflowY = "hidden" : document.getElementsByTagName("html")[0].style.overflowY = "auto";
     },
-};
+};//PROPERTIES: Chat History, Modal, Helper Div, Chat Window

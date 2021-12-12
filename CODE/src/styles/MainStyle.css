@@ -416,7 +416,7 @@ body {
 
 /* STYLES FOR THE BUTTONS */
 
-.main-chat-buttons-div {
+.helper-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -905,7 +905,7 @@ button:hover {
 
 /* QUIZZES STYLES */
 
-#quizesMessage {
+#quizzesMessage {
   width: 14rem;
   padding-top: 1rem;
   margin: 0 auto 2rem auto;

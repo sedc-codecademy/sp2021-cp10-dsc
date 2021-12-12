@@ -3,27 +3,31 @@ const DataService = {
     cachedReplyMessages: RepliesService.replies,
     cachedQuizzes: QuizzesService.getQuizzesData(),
 
-    //Fetch the data from JSON
+    //Fetch the data from API
     getDataAsync: async function () {
         try {
-            UiService.mainButtonsDiv.innerHTML += `<div class="lds-dual-ring"></div>`;
+            UiService.helpersDiv.innerHTML += `<div class="lds-dual-ring"></div>`;
+
             let response = await fetch(`https://dev.sedc.mk/wp-json/wp/v2/pages/4167?fbclid=IwAR0GF8p_JPAi40bfL22FNQUiTcR3q7W8e_nbn99VZhCI0cYx7cGyAeyZNKk`);
             let data = DataService.serializeData(await response.json());
             DataService.cachedData = await data;
-            UiService.mainButtonsDiv.innerHTML = ``;
+
+            UiService.helpersDiv.innerHTML = ``;
+
             ButtonsService.getInfoButtons(data);
         } catch (error) {
-            UiService.mainButtonsDiv.innerHTML = ``;
-            AnimationsService.chatWindow.innerHTML =
-                `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/errorEmo.png" alt="Error Img">
-                <div class="errorText">"Oops, Something is wrong with my circuits I can't process the command"</br>Please try again later!</div>
-            </div>`;
-        }
+            UiService.helpersDiv.innerHTML = ``;
 
+            AnimationsService.chatWindow.innerHTML =
+                `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/errorImage.png" alt="Error Img">
+                    <div class="errorText">"Oops, Something is wrong with my circuits I can't process the command"</br>Please try again later!</div>
+                </div>`;
+        }
     },
 
+    //Serialize data from API
     serializeData: function (data) {
-        let serializedData = {
+        return {
             name: "Web Development",
             price: `The price of the academy is ${data.ACF.price}. However, there are some discounts for early registration and cash payment. Contact SEDC or go to the site to get more info about the discounts.`,
             overview: data.ACF.overview.split('\r')[0],
@@ -37,6 +41,5 @@ const DataService = {
                 "Price"
             ]
         }
-        return serializedData;
     }
 };//PROPERTIES: Cached Data, Cached ReplyMessages, Cached Quizzes
