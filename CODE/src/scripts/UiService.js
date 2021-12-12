@@ -87,7 +87,7 @@ const UiService = {
     //Print Bell Button
     printBellButton: function () {
         UiService.sleep().then(() => {
-            this.helpersDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" id="waitingBell" class="bell" height="50rem"></button>`;
+            this.helpersDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" title="Ring me!!!" id="waitingBell" class="bell" height="50rem"></button>`;
             this.helpersDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
             document.getElementById("waitingBellButton").addEventListener("click", () => {
                 waitingBellButton.classList.add("animateBell");
