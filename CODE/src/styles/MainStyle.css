@@ -536,6 +536,12 @@ button:hover {
   display:block;
 }
 
+#waitingBellButton{
+  padding-bottom: 2px;
+  border: none;
+  background: transparent;
+}
+
 .animateBell{
   -webkit-animation: ring 4s ease-in-out infinite;
   -webkit-transform-origin: 50% 4px;
