@@ -640,8 +640,14 @@ input[type=email] {
 }
 
 /* BELL STYLES */
+
 .bell{
     display:block;
+  }
+
+  #waitingBellButton{
+    border: none;
+    background: transparent;
   }
 
 .animateBell{

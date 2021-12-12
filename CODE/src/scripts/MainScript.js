@@ -126,8 +126,6 @@ window.addEventListener("load", chatMinimize.click());
 
 DataService.getDataAsync();
 
-DataService.fetchQuizzes();
-
 UiService.firstMessage();
 
 SearchInputService.getSearchInput();

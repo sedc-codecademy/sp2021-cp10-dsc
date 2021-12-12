@@ -1,7 +1,7 @@
 const DataService = {
     cachedData: null,
     cachedReplyMessages: RepliesService.replies,
-    cachedQuizzes: null,
+    cachedQuizzes: QuizzesService.getQuizzesData(),
 
     //Fetch the data from JSON
     getDataAsync: async function () {

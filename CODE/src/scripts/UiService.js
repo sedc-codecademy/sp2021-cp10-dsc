@@ -81,11 +81,13 @@ const UiService = {
         else if (choice === "No") {
             this.replyInfoMessage(choice, ["Ok amigo, I'll be here if you need me! \nJust ring the bell!"]);
             setTimeout(() => {
-                this.mainButtonsDiv.innerHTML += `<img src="./src/img-avatars/chatBotBell.png" id="waitingBell" class="bell" height="50rem">`;
+                this.mainButtonsDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" id="waitingBell" class="bell" height="50rem"></button>`;
                 this.mainButtonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
-                waitingBell.addEventListener("click", () => {
-                    waitingBell.classList.add("animateBell");
+                document.getElementById("waitingBellButton").addEventListener("click", () => {
+                    waitingBellButton.classList.add("animateBell");
+                    document.getElementById("waitingBellButton").disabled = true;
                     setTimeout(() => {
+                        document.getElementById("waitingBellButton").disabled = false;
                         this.mainButtonsDiv.innerHTML = "";
                         this.toggleLoader();
                         UiService.sleep().then(() => {
