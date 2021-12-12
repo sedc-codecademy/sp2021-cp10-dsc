@@ -1,21 +1,22 @@
 const UiService = {
     chatHistory: document.getElementById("chatHistory"),
-    recommendedDiv: document.getElementById("recommendedDiv"),
     modalContent: document.getElementById("modalContent"),
+    mainButtonsDiv: document.getElementById("mainButtonsDiv"),
+    waitingBell: document.getElementById("waitingBell"),
+    chatWindow: document.getElementById("chatWindow"),
 
     //Prints the very first message for the user
     firstMessage: function () {
         this.chatHistory.innerHTML = `
         <div class="greetingMessage">Welcome to the<br>
          Seavus Education Chat Bot!</div>
-         <div class="greetingMessageQue">How can we help you?</div>
+         <div class="greetingMessageQue">How can I help you?</div>
          <hr class="chat-js-hr">`;
     },
 
     //Prints a user message and random bot message in chat history(Depending on the choice)
     replyMessages: function (elementName, elementMessages) {
         ButtonsService.buttonsDiv.innerHTML = "";
-        ButtonsService.mainButtonsDiv.innerHTML = "";
 
         const randomIndex = Math.floor(Math.random() * elementMessages.length);
         const item = elementMessages[randomIndex];
@@ -29,7 +30,7 @@ const UiService = {
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-                <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
+                <span class="chatBotName">Haralampiye</span>
                 <div class="chatBubblesBot">${item}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
@@ -49,7 +50,7 @@ const UiService = {
         UiService.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
-                <span class="chatBotName">${AnimationsService.chatBotBubbleName}</span>
+                <span class="chatBotName">Haralampiye</span>
                 <div class="chatBubblesBot">${infoMessage}</div>
             </div>`;
             chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
@@ -57,60 +58,46 @@ const UiService = {
     },
 
     //Prints the INFO for the Object
-    printAcademyInfo: function (neededInfo, elementId, branchName, searchInput) {
-        ButtonsService.mainButtonsDiv.innerHTML = "";
+    printAcademyInfo: function (neededInfo, searchInput) {
+        AnimationsService.headerAnimation();
+        let = studyProgram = DataService.cachedData;
 
-        for (const academy of DataService.cachedData[branchName]) {
-            for (const studyProgram of academy.studyPrograms) {
-                if (elementId === studyProgram.nameId) {
-                    if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
-                        UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
-                        UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                        break;
-                    } else if (neededInfo === "Apply") {
-                        UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
-                        ApplyAndPriceService.getApplyForm(branchName, studyProgram.name);
-                        UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                        break;
-                    } else if (neededInfo === "Price") {
-                        UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Here is a preview of the prices!"]);
-                        ApplyAndPriceService.getPriceTable(branchName, studyProgram.name);
-                        UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                        break;
-                    }
-                }
-            }
-        }
-    },
-
-    //Prints the INFO for the Testing object
-    printTestingInfo: function (neededInfo, elementId, inputString) {
-        for (const test of DataService.cachedData.Testing) {
-            if (test.nameId === elementId) {
-                if (test[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
-                    this.replyInfoMessage(inputString === undefined ? neededInfo : inputString, test[neededInfo.toLowerCase().replace(/\s/g, "")]);
-                    UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                    break;
-                } else if (neededInfo === "Apply") {
-                    UiService.replyInfoMessage(inputString === undefined ? neededInfo : inputString, ["Thank you for your interest!"]);
-                    ApplyAndPriceService.getApplyForm("Testing");
-                    UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
-                    break;
-                }
-            }
+        if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined || neededInfo === "Price") {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+        } else if (neededInfo === "Apply") {
+            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
+            ApplyService.getApplyForm(studyProgram.name);
+            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         }
     },
 
     //Prints message for the answer in the user got everything he needed
     printConversationDone: function (choice) {
         if (choice === "Yes") {
-            AnimationsService.chatBotBubbleName = "Haralampiye";
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
-            UiService.sleep().then(() => { ButtonsService.getMainButtons(DataService.cachedData); });
-        } else if (choice === "No") {
-            UiService.replyMessages(choice, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-            UiService.sleep().then(() => { AnimationsService.recommendedBtnsAnimations(); });
-        }
+            UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+        } 
+        else if (choice === "No") {
+            this.replyInfoMessage(choice, ["Ok amigo, I'll be here if you need me! \nJust ring the bell!"]);
+            setTimeout(() => {
+                this.mainButtonsDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" id="waitingBell" class="bell" height="50rem"></button>`;
+                this.mainButtonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
+                document.getElementById("waitingBellButton").addEventListener("click", () => {
+                    waitingBellButton.classList.add("animateBell");
+                    document.getElementById("waitingBellButton").disabled = true;
+                    setTimeout(() => {
+                        document.getElementById("waitingBellButton").disabled = false;
+                        this.mainButtonsDiv.innerHTML = "";
+                        this.toggleLoader();
+                        UiService.sleep().then(() => {
+                            UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
+                            ButtonsService.getInfoButtons(DataService.cachedData); }
+                        );
+                    }, 2000)
+                });
+            }, 2000);
+        };
     },
 
     //Shows and hides the loader
@@ -135,15 +122,12 @@ const UiService = {
         view2.style.overflowX = "hidden";
     },
 
-    // Changes the quizzes/games icon
-    changeQuizzesGamesIconAndFunctionality: function (gameOrQuizFlag, item, viewPort) {
-        if (gameOrQuizFlag) {
+    // Changes the quizzes icon
+    changeQuizzesIconAndFunctionality: function (QuizFlag, item, viewPort) {
+        if (QuizFlag) {
             item.innerHTML = `<img src="./src/img-avatars/chatButton.svg" height="20rem">`;
             item.title = "Chat";
             if (item.id === "chatQuizzes") {
-                GamesService.areGamesOpen = false;
-                AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-                AnimationsService.chatGames.title = "Games";
                 item.title = "Chat";
             } else {
                 QuizzesService.areQuizzesOpen = false;
@@ -152,14 +136,9 @@ const UiService = {
                 item.title = "Chat";
             }
             this.toggleDisplayView(AnimationsService.chatWindow, viewPort);
-        } else {
-            if (item.id === "chatQuizzes") {
+        } else {    
                 item.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
                 item.title = "Quizzes";
-            } else {
-                item.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-                item.title = "Games";
-            };
             this.toggleDisplayView(viewPort, AnimationsService.chatWindow);
         };
     },
@@ -174,68 +153,60 @@ const UiService = {
 
     // Resets chat-window if called from another viewport
     resetChatWindow: function () {
-        this.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
+        this.toggleDisplayView(QuizzesService.QuizzesWindow, AnimationsService.chatWindow);
         AnimationsService.chatWindow.style.overflowX = "hidden";
-        AnimationsService.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-        GamesService.areGamesOpen = false;
         AnimationsService.chatQuizzes.innerHTML = `<img src="./src/img-avatars/quizzes.svg" height="25rem">`;
         QuizzesService.areQuizzesOpen = false;
     },
 
     // Stops user from clicking buttons too fast
-    disableGamesAndQuizzesButtons: function (flag) {
+    disableQuizzesButtons: function (flag) {
         if (flag) {
             AnimationsService.chatQuizzes.disabled = true;
-            AnimationsService.chatGames.disabled = true;
+            // AnimationsService.chatGames.disabled = true;
         }
         else {
             AnimationsService.chatQuizzes.disabled = false;
-            AnimationsService.chatGames.disabled = false;
+            // AnimationsService.chatGames.disabled = false;
         }
     },
 
     //Changes modal style to block and sets height and width
     displayModalWindow: function (flag) {
-        ApplyAndPriceService.myModal.style.display = "block";
+        ApplyService.myModal.style.display = "block";
 
         if (window.innerWidth < 821) {
             this.modalContent.style.height = "100%";
             this.modalContent.style.width = "100%";
             QuizzesService.popUpQuizzes.style.display = "none";
             QuizzesService.form.style.display = "none";
-            ApplyAndPriceService.popUp.style.display = "block";
+            ApplyService.popUp.style.display = "block";
             return;
         }
 
         QuizzesService.form.style.display = "none";
         QuizzesService.popUpQuizzes.style.display = "none";
-        ApplyAndPriceService.popUp.style.display = "block";
-        ApplyAndPriceService.popUp.style.overflowY = "hidden";
+        ApplyService.popUp.style.display = "block";
+        ApplyService.popUp.style.overflowY = "hidden";
 
         switch (flag) {
             case "games":
-                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                ApplyService.popUp.style.overflowY = "auto";
                 break;
             case "quizzes":
-                ApplyAndPriceService.popUp.style.display = "none";
+                ApplyService.popUp.style.display = "none";
                 QuizzesService.popUpQuizzes.style.display = "block";
                 QuizzesService.form.style.display = "block";
                 QuizzesService.form.scrollIntoView({ block: 'start', behavior: 'smooth' });
                 break;
             case "contact":
-                ApplyAndPriceService.popUp.style.overflowY = "auto";
+                ApplyService.popUp.style.overflowY = "auto";
                 break;
         }
-    },
-
-    //Prints contact button form
-    printContactButton: function () {
-        ButtonsService.mainButtonsDiv.innerHTML += `<button class="mainButtonsStyle contactUs" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
-        buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
     },
 
     //Enables/Disables HTML scroll depending on the case
     HTMLScrollCheck: function () {
         mainWindow.style.height === "100%" ? document.getElementsByTagName("html")[0].style.overflowY = "hidden" : document.getElementsByTagName("html")[0].style.overflowY = "auto";
     },
-};//PROPERTIES: Chat history div, Recommended slide div, Modal pop up wrapper div
+};

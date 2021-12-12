@@ -13,7 +13,12 @@ const LexiconService = {
         // Checks whether input string has a reference to "Overview" and if so adds the corresponding keyword to the modified input string
         if (
             inputString.toLowerCase().includes("what is") ||
-            inputString.toLowerCase().includes("about") ||
+            inputString.toLowerCase().includes("development") ||
+            inputString.toLowerCase().includes("developer") ||
+            inputString.toLowerCase().includes("developing") ||
+            inputString.toLowerCase().includes("coding") ||
+            inputString.toLowerCase().includes("web") ||
+            inputString.toLowerCase().includes("site") ||
             inputString.toLowerCase().includes("what's")
         )
             keywordModifiedString += "Overview";
@@ -28,13 +33,18 @@ const LexiconService = {
 
         // Checks whether input string has a reference to "Job Opportunities" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("qualifications") ||
-            inputString.toLowerCase().includes("qualification") ||
-            inputString.toLowerCase().includes("job") ||
-            inputString.toLowerCase().includes("employment") ||
-            inputString.toLowerCase().includes("work")
+            inputString.toLowerCase().includes("trainers") ||
+            inputString.toLowerCase().includes("trainer") ||
+            inputString.toLowerCase().includes("teacher") ||
+            inputString.toLowerCase().includes("teachers") ||
+            inputString.toLowerCase().includes("lecturers") ||
+            inputString.toLowerCase().includes("coach") ||
+            inputString.toLowerCase().includes("coaches") ||
+            inputString.toLowerCase().includes("teaching") ||
+            inputString.toLowerCase().includes("lecturing") ||
+            inputString.toLowerCase().includes("coaching")
         )
-            keywordModifiedString += "Job Opportunities";
+            keywordModifiedString += "Trainers";
 
         // Checks whether input string has a reference to "Apply" and if so adds the corresponding keyword to the modified input string
         if (
@@ -45,138 +55,10 @@ const LexiconService = {
         )
             keywordModifiedString += "Apply";
 
-        // Checks whether input string has a reference to "Test Centers" and if so adds the corresponding keyword to the modified input string
         if (
-            inputString.toLowerCase().includes("where") ||
-            inputString.toLowerCase().includes("place") ||
-            inputString.toLowerCase().includes("location")
+            keywordModifiedString.toLowerCase().includes("price")
         )
-            keywordModifiedString += "Test Centers";
-
-        // Checks whether input string has a reference to "Target Audience" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("who") ||
-            inputString.toLowerCase().includes("age") ||
-            inputString.toLowerCase().includes("for me") ||
-            inputString.toLowerCase().includes("audience")
-        )
-            keywordModifiedString += "Target Audience";
-
-        // Checks whether input string has a reference to "Programming" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("development") ||
-            inputString.toLowerCase().includes("developer") ||
-            inputString.toLowerCase().includes("developing") ||
-            inputString.toLowerCase().includes("coding") ||
-            inputString.toLowerCase().includes("web") ||
-            inputString.toLowerCase().includes("site")
-        )
-            keywordModifiedString += "Programming";
-
-        // Checks whether input string has a reference to "Computer Networks" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("network") ||
-            inputString.toLowerCase().includes("ops") ||
-            inputString.toLowerCase().includes("cloud") ||
-            inputString.toLowerCase().includes("security")
-        )
-            keywordModifiedString += "Computer Networks";
-
-        // Checks whether input string has a reference to "Design Academy" and if so adds the corresponding keyword to the modified input string
-        if (
-            // inputString.toLowerCase().includes("design") ||
-            inputString.toLowerCase().includes("graphic") ||
-            inputString.toLowerCase().includes("ui") ||
-            inputString.toLowerCase().includes("ux") ||
-            inputString.toLowerCase().includes("game")
-        )
-            keywordModifiedString += "Design Academy";
-
-        // Checks whether input string has a reference to "Software Testing" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("test")
-        )
-            keywordModifiedString += "Software Testing";
-
-        // Checks whether input string has a reference to "Data Science" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("data")
-        )
-            keywordModifiedString += "Data Science";
-
-        // Checks whether input string has a reference to "Digital Marketing" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("marketing") ||
-            inputString.toLowerCase().includes("advert") ||
-            inputString.toLowerCase().includes("seo") ||
-            inputString.toLowerCase().includes("search engine")
-        ) {
-            if (!inputString.toLowerCase().includes("digital marketing academy") &&
-                !inputString.toLowerCase().includes("digital marketing courses") &&
-                !inputString.toLowerCase().includes("digital marketing course")) {
-                keywordModifiedString += "Digital Marketing Academy";
-                keywordModifiedString += "Digital Marketing Courses";
-            }
-        }
-
-        // Checks whether input string has a reference to "iThink Academy" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("ithink") ||
-            inputString.toLowerCase().includes("i think") ||
-            inputString.toLowerCase().includes("child") ||
-            inputString.toLowerCase().includes("kid") ||
-            inputString.toLowerCase().includes("ithink")
-        )
-            keywordModifiedString += "iThink Academy";
-
-        // Checks whether input string has a reference to "Business Courses" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("business") ||
-            inputString.toLowerCase().includes("office") ||
-            inputString.toLowerCase().includes("excel") ||
-            inputString.toLowerCase().includes("word") ||
-            inputString.toLowerCase().includes("agile") ||
-            inputString.toLowerCase().includes("scrum") ||
-            inputString.toLowerCase().includes("analysis") ||
-            inputString.toLowerCase().includes("microsoft") ||
-            inputString.toLowerCase().includes("ms") ||
-            inputString.toLowerCase().includes("pmp") ||
-            inputString.toLowerCase().includes("management")
-        )
-            keywordModifiedString += "Business Courses";
-
-        // Checks whether input string has a reference to "HI-Tech" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("hack") ||
-            inputString.includes("IT") ||
-            inputString.toLowerCase().includes("python") ||
-            inputString.toLowerCase().includes("ccna") ||
-            inputString.toLowerCase().includes("incident") ||
-            inputString.toLowerCase().includes("handle")
-        )
-            keywordModifiedString += "HI-Tech";
-
-        // Checks whether input string has a reference to "Design Courses" and if so adds the corresponding keyword to the modified input string
-        if (
-            // inputString.toLowerCase().includes("design") ||
-            inputString.toLowerCase().includes("adobe") ||
-            inputString.toLowerCase().includes("illustrator") ||
-            inputString.toLowerCase().includes("photoshop") ||
-            inputString.toLowerCase().includes("graphic") ||
-            inputString.toLowerCase().includes("ui") ||
-            inputString.toLowerCase().includes("ux")
-        )
-            keywordModifiedString += "Design Courses";
-
-        // Checks whether input string has a reference to "Design Courses" and "Design Academies" as parents
-        if (
-            inputString.toLowerCase().includes("design") &&
-            !inputString.toLowerCase().includes("design courses") &&
-            !inputString.toLowerCase().includes("design academy")
-        ) {
-            keywordModifiedString += "Design Courses";
-            keywordModifiedString += "Design Academy";
-        }
+            keywordModifiedString = "Price";
 
         return keywordModifiedString;
     }

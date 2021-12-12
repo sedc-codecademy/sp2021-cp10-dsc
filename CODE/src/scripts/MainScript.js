@@ -62,29 +62,28 @@ chatMaximize.addEventListener("click", () => {
 });
 
 //Modal close on button
-ApplyAndPriceService.closeModalButton.addEventListener("click", () => {
-    ApplyAndPriceService.myModal.style.display = "none";
+ApplyService.closeModalButton.addEventListener("click", () => {
+    ApplyService.myModal.style.display = "none";
 });
 
 //Modal close on side
 window.addEventListener("click", (event) => {
-    if (event.target == ApplyAndPriceService.myModal) {
-        ApplyAndPriceService.closeModalButton.click();
+    if (event.target == ApplyService.myModal) {
+        ApplyService.closeModalButton.click();
     }
 });
 
 //Chat Window scroll into view on screen resize
 window.addEventListener("resize", () => {
-    AnimationsService.onResizeGamesAndQuizzes();
+    AnimationsService.onResizeQuizzes();
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
-    UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
     window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
     UiService.HTMLScrollCheck();
 
     if (window.innerWidth < 821) {
-        UiService.toggleDisplayView(QuizzesService.gamesAndQuizzesWindow, AnimationsService.chatWindow);
-        ApplyAndPriceService.closeModalButton.click();
+        UiService.toggleDisplayView(QuizzesService.QuizzesWindow, AnimationsService.chatWindow);
+        ApplyService.closeModalButton.click();
     }
 
     if (window.innerWidth < 821) {
@@ -127,12 +126,8 @@ window.addEventListener("load", chatMinimize.click());
 
 DataService.getDataAsync();
 
-DataService.fetchQuizzes();
-
 UiService.firstMessage();
 
 SearchInputService.getSearchInput();
 
 QuizzesService.printQuizzesMenu();
-
-GamesService.printGamesMenu();

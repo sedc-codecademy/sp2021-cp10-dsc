@@ -1,9 +1,9 @@
 const ContactUsForm = {
-    //Displays a SEDC contact email form
-    printContactUsForm: function () {
-        UiService.displayModalWindow("contact");
+  //Displays a SEDC contact email form
+  printContactUsForm: function () {
+    UiService.displayModalWindow("contact");
 
-        ApplyAndPriceService.popUp.innerHTML = `
+    ApplyService.popUp.innerHTML = `
         <div class="container" id="contactUsForm">
             <h1 class="formHeader">Contact us!</h1>
             <form action="https://formsubmit.co/insertEmailAdressHere" method="POST">
@@ -26,5 +26,7 @@ const ContactUsForm = {
                 <div>
             </form>
         </div>`;
-    }
-}//PROPERTIES:
+    UiService.sleep().then(() => {ButtonsService.isConversationDoneButtons(true);
+    });
+  },
+}; //PROPERTIES:

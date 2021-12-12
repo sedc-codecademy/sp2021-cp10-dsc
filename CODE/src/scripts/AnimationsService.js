@@ -1,17 +1,14 @@
 const AnimationsService = {
     avatarImgDiv: document.getElementById("imgLogo"),
-    chatGames: document.getElementById("chatGames"),
     chatQuizzes: document.getElementById("chatQuizzes"),
-    chatName : document.getElementById("chatName"),
-    recommendedSlide: document.getElementById("recommendedSlide"),
+    chatName: document.getElementById("chatName"),
     chatWindow: document.getElementById("chatWindow"),
     isChatInitialized: false,
-    chatBotBubbleName: "",
 
     //Animates the header - Image, Name, Icons
     headerAnimation: function () {
         this.isChatInitialized = true;
-        if(window.innerWidth < 821){
+        if (window.innerWidth < 821) {
             this.avatarImgDiv.classList.add("avatarAnimation");
 
             this.avatarImgDiv.style.marginTop = "0rem";
@@ -21,7 +18,7 @@ const AnimationsService = {
             this.chatName.addEventListener("animationend", () => {
                 this.chatName.style.opacity = "1";
             });
-        }else {
+        } else {
             this.avatarImgDiv.classList.add("avatarAnimation");
 
             this.avatarImgDiv.addEventListener("animationend", () => {
@@ -34,14 +31,7 @@ const AnimationsService = {
                 this.chatName.style.opacity = "1";
             });
 
-            this.chatGames.classList.add("games-quizzesAnimation");
-            this.chatGames.addEventListener("animationend", () => {
-                this.chatGames.classList.remove("chat-games");
-                this.chatGames.classList.add("chat-games-icon");
-                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
-            });
-
-            this.chatQuizzes.classList.add("games-quizzesAnimation");
+            this.chatQuizzes.classList.add("quizzesAnimation");
             this.chatQuizzes.addEventListener("animationend", () => {
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
@@ -50,97 +40,26 @@ const AnimationsService = {
         }
     },
 
-    //Animates the recommendations slide
-    recommendedBtnsAnimations: function () {
-        UiService.chatHistory.scrollIntoView({ block: 'end', behavior: 'smooth' });
-        ButtonsService.recommendationsButtons();
-
-        UiService.recommendedDiv.style.display = "block";
-        AnimationsService.recommendedSlide.classList.add("slider");
-
-        this.recommendedSlide.addEventListener("animationiteration", () => {
-            ButtonsService.recommendationsButtons();
-        });
-        UiService.recommendedDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
-    },
-
-    //Changes the bot personality depending on the chosen academy
-    changeImageHead: function(academy){
-        if(window.innerWidth < 821){
+    //Changes the bot image position when initialized
+    repositionImageHead: function () {
+        if (window.innerWidth < 821) {
             AnimationsService.chatName.style.marginTop = "0rem";
-        }else{
-            if(academy === 'haralampiye' || academy === 'dataScience' || academy === undefined){
-                AnimationsService.chatName.style.marginTop = "0.9rem";
-            }else{
-                AnimationsService.chatName.style.marginTop = "0.3rem";
-            }
+        } else {
+            AnimationsService.chatName.style.marginTop = "0.9rem";
         }
-        switch (academy) {
-            case 'programming':
-            case 'Web Development':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/CODE.png)";
-                AnimationsService.chatName.innerHTML = "Brian<br>Web Development";
-                AnimationsService.chatBotBubbleName = "Brian";
-                break;
-            case 'computerNetworks':
-            case 'CloudOps Network Engineer':
-            case 'Security Specialist':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/Networks.png)";
-                AnimationsService.chatName.innerHTML = "Jimmy<br>Computer Networks";
-                AnimationsService.chatBotBubbleName = "Jimmy";
-                break;
-            case 'design':
-            case 'Graphic Designer':
-            case 'Web Designer':
-            case 'Game Designer':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DESIGN.png)";
-                AnimationsService.chatName.innerHTML = "Michelangelo<br>Design Academy";
-                AnimationsService.chatBotBubbleName = "Michelangelo";
-                break;
-            case 'softwareTesting':
-            case 'Software Tester':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/QA.png)";
-                AnimationsService.chatName.innerHTML = "Jenny<br>Software Testing";
-                AnimationsService.chatBotBubbleName = "Jenny";
-                break;
-            case 'dataScience':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DATASCIENCE.png)";
-                AnimationsService.chatName.innerHTML = "Carol<br>Data Science";
-                AnimationsService.chatBotBubbleName = "Carol";
-                break;
-            case 'digitalMarketing':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/DIGITALMARKETING.png)";
-                AnimationsService.chatName.innerHTML = "Ginna<br>Digital Marketing";
-                AnimationsService.chatBotBubbleName = "Ginna";
-                break;
-            case 'iThink':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/ITHINK.png)";
-                AnimationsService.chatName.innerHTML = "Benji<br>iThink Academy";
-                AnimationsService.chatBotBubbleName = "Benji";
-                break;
-            case 'haralampiye':
-                AnimationsService.avatarImgDiv.style.backgroundImage = "url(./src/img-avatars/HARALAMPIYE.png)";
-                AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
-                AnimationsService.chatBotBubbleName = "Haralampiye";
-                break;
-        }
+
+        AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
     },
 
-    //Functionality for window resize games and quizzes feature
-    onResizeGamesAndQuizzes: function(){
-        if(this.isChatInitialized){
-            if(window.innerWidth < 821){
-                this.chatGames.style.display = "none";
+    //Functionality for window resize quizzes feature
+    onResizeQuizzes: function () {
+        if (this.isChatInitialized) {
+            if (window.innerWidth < 821) {
                 this.chatQuizzes.style.display = "none";
                 this.avatarImgDiv.style.marginTop = "0rem";
                 this.avatarImgDiv.style.marginLeft = "1.25rem";
-            }else{
-                this.chatGames.style.display = "block";
+            } else {
                 this.chatQuizzes.style.display = "block";
-
-                this.chatGames.classList.remove("chat-games");
-                this.chatGames.classList.add("chat-games-icon");
-                this.chatGames.innerHTML = `<img src="./src/img-avatars/games.svg" height="25rem">`;
 
                 this.chatQuizzes.classList.remove("chat-quizzes");
                 this.chatQuizzes.classList.add("chat-quizzes-icon");
@@ -151,4 +70,4 @@ const AnimationsService = {
             }
         }
     }
-};//PROPERTIES: The image div, Games button, Quizzes button, Name div, Recommended buttons slide, Chat div, Bool if the chat is initialized
+};

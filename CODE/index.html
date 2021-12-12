@@ -2,23 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media='screen and (min-width: 821px)' href='./src/styles/MainStyle.css' />
-    <link rel="stylesheet" media='screen and (max-width: 820px)' href='./src/styles/MobileStyle.css' />
-    <link href="http://fonts.cdnfonts.com/css/din-pro-cond" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" media="screen and (min-width: 821px)" href="./src/styles/MainStyle.css" />
+    <link rel="stylesheet" media="screen and (max-width: 820px)" href="./src/styles/MobileStyle.css" />
+    <link href="http://fonts.cdnfonts.com/css/din-pro-cond" rel="stylesheet" />
     <title>SEDC ChatBot App</title>
 </head>
 
 <body>
-
     <!-- MAIN CHAT WINDOW -->
     <div class="main-window" id="mainWindow">
-
         <!-- HEADER -->
         <div class="header">
-            <button class="chat-games" title="Games" id="chatGames">Games</button>
-            <button class="chat-quizzes" title="Quizzes" id="chatQuizzes">Quizzes</button>
+            <button class="chat-quizzes" title="Quizzes" id="chatQuizzes"> <img
+                    src="src/img-avatars/quizzes-initial.svg" height="40" alt="Quizzes"> </button>
             <div class="chat-Name" id="chatName"></div>
             <button class="chat-minimize" id="chatMinimize"></button>
             <div class="img-logo" id="imgLogo"></div>
@@ -27,7 +25,7 @@
         <!-- CHAT WINDOW -->
         <div class="chat-window">
             <!-- GAMES AND QUIZZES WRAPPER -->
-            <div class="chat" id="gamesAndQuizzesWindow" style="display: none;"></div>
+            <div class="chat" id="QuizzesWindow" style="display: none"></div>
 
             <!-- TEXT-CHAT WRAPPER -->
             <div class="chat" id="chatWindow">
@@ -45,14 +43,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- RECOMMENDED SLIDE -->
-                <div>
-                    <div class="chat-recommended-div" id="recommendedDiv">Recommendations:
-                        <div class="slideDiv" id="recommendedSlide"></div>
-                        <hr class="chat-hr">
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -61,12 +51,13 @@
             <div class="chat-searchInput-div" id="searchInput">
                 <input type="text" placeholder="Type something..." id="input">
                 <button class="chat-inputButton" id="inputButton"></button>
-                <div id="voiceRecognitionLoader"><img height="35px"
-                        src="./src/img-avatars/recordingAnimation.svg" alt="voiceRecognitionLoader">
+                <div id="voiceRecognitionLoader"><img height="35px" src="./src/img-avatars/recordingAnimation.svg"
+                        alt="voiceRecognitionLoader">
                 </div>
                 <button class="chat-inputButton voice-inputButton" id="voiceButton"></button>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- MAXIMIZE BUTTON -->
@@ -86,16 +77,18 @@
         </div>
     </div>
 
+    <script src="./src/scripts/RepliesService.js"></script>
     <script src="./src/scripts/ContactUsService.js"></script>
+    <script src="./src/scripts/QuizesService.js"></script>
     <script src="./src/scripts/DataService.js"></script>
     <script src="./src/scripts/ButtonsService.js"></script>
     <script src="./src/scripts/UiService.js"></script>
     <script src="./src/scripts/AnimationsService.js"></script>
     <script src="./src/scripts/SearchInputService.js"></script>
-    <script src="./src/scripts/ApplyAndPriceService.js"></script>
-    <script src="./src/scripts/QuizesService.js"></script>
-    <script src="./src/scripts/GamesService.js"></script>
+    <script src="./src/scripts/ApplyService.js"></script>
     <script src="./src/scripts/LexiconService.js"></script>
     <script src="./src/scripts/VoiceRecognitionService.js"></script>
     <script src="./src/scripts/MainScript.js"></script>
 </body>
+
+</html>
