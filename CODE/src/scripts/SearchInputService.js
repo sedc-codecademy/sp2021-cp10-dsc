@@ -26,6 +26,8 @@ const SearchInputService = {
 
   //Search for a suitable response on the input
   SearchInputLogic: function (voiceRecognitionString) {
+    UiService.mainButtonsDiv.innerHTML = "";
+
     if (AnimationsService.chatWindow.style.display === "none")
       UiService.resetChatWindow();
     AnimationsService.headerAnimation();
