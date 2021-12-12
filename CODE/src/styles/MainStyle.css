@@ -357,13 +357,8 @@ body {
   height: 2.188rem;
   background-color: var(--dark-blue);
   position: absolute;
-  margin: 1.25rem 0 0 16.25rem;
+  margin: 0.8rem 0 0 17rem;
   border: none;
-}
-
-.quizzesImg {
-  margin-left: 30%;
-  margin-top: -15%;
 }
 
 .chat-quizzes-icon {
