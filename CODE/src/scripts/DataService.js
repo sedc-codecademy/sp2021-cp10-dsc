@@ -6,11 +6,14 @@ const DataService = {
     //Fetch the data from JSON
     getDataAsync: async function () {
         try {
+            UiService.mainButtonsDiv.innerHTML += `<div class="lds-dual-ring"></div>`;
             let response = await fetch(`https://dev.sedc.mk/wp-json/wp/v2/pages/4167?fbclid=IwAR0GF8p_JPAi40bfL22FNQUiTcR3q7W8e_nbn99VZhCI0cYx7cGyAeyZNKk`);
             let data = DataService.serializeData(await response.json());
             DataService.cachedData = await data;
+            UiService.mainButtonsDiv.innerHTML = ``;
             ButtonsService.getInfoButtons(data);
         } catch (error) {
+            UiService.mainButtonsDiv.innerHTML = ``;
             AnimationsService.chatWindow.innerHTML =
                 `<div id="errorWrapper" class="errorWrapper"> <img src="./src/img-avatars/errorEmo.png" alt="Error Img">
                 <div class="errorText">"Oops, Something is wrong with my circuits I can't process the command"</br>Please try again later!</div>
