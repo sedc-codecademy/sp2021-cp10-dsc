@@ -3,7 +3,7 @@ let chatMinimize = document.getElementById("chatMinimize");
 let chatMaximize = document.getElementById("chatMaximize");
 let mainWindow = document.getElementById("mainWindow");
 let maximizeSpeechBox = document.getElementById("maximizeSpeechBox");
-let searchInputWraper = document.getElementById("searchInputWraper");
+let searchInputWrapper = document.getElementById("searchInputWrapper");
 let isChatBotOpened = true;
 let firstTimePageLoaded = true;
 
@@ -16,7 +16,7 @@ chatMinimize.addEventListener("click", () => {
         mainWindow.style.visibility = "hidden";
         chatMaximize.style.visibility = "visible";
         chatMaximize.style.transform = "translateY(0rem)";
-        searchInputWraper.style.opacity = 0;
+        searchInputWrapper.style.opacity = 0;
         chatMaximize.style.opacity = 1;
         isChatBotOpened = false;
         chatMaximize.classList.add("jello-horizontal");
@@ -41,7 +41,7 @@ chatMinimize.addEventListener("click", () => {
 //Maximize event
 chatMaximize.addEventListener("click", () => {
     if (!isChatBotOpened) {
-        this.mainWindow.style.display = "block";
+        mainWindow.style.display = "block";
         chatMaximize.classList.remove("jello-horizontal");
         maximizeSpeechBox.style.display = "none";
         setTimeout(() => {
@@ -52,7 +52,7 @@ chatMaximize.addEventListener("click", () => {
         }, 500);
         setTimeout(() => {
             chatMinimize.style.opacity = 1;
-            searchInputWraper.style.opacity = 1;
+            searchInputWrapper.style.opacity = 1;
         }, 1000);
         chatMaximize.style.transform = "translateY(-137.5rem)";
         chatMaximize.style.visibility = "hidden";
@@ -78,22 +78,16 @@ window.addEventListener("resize", () => {
     AnimationsService.onResizeQuizzes();
     ButtonsService.buttonsDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
 
-    window.innerWidth < 821 ? mainWindow.style.height = "100%" : mainWindow.style.height = "80%";
     UiService.HTMLScrollCheck();
 
     if (window.innerWidth < 821) {
+        mainWindow.style.height = "100%"
+        AnimationsService.chatName.style.marginTop = "0rem";
         UiService.toggleDisplayView(QuizzesService.QuizzesWindow, AnimationsService.chatWindow);
         ApplyService.closeModalButton.click();
-    }
-
-    if (window.innerWidth < 821) {
-        AnimationsService.chatName.style.marginTop = "0rem";
     } else {
-        if (AnimationsService.chatName.innerText.includes("Haralampiye")) {
-            AnimationsService.chatName.style.marginTop = "0.9rem";
-        } else {
-            AnimationsService.chatName.style.marginTop = "0.3rem";
-        }
+        mainWindow.style.height = "80%";
+        AnimationsService.chatName.style.marginTop = "0.9rem";
     }
 })
 
@@ -121,7 +115,7 @@ if (ua.indexOf('firefox') > -1) {
 //Quizzes form submit
 QuizzesService.form.addEventListener('submit', QuizzesService.checkRightAnswers);
 
-this.mainWindow.style.display = "none";
+mainWindow.style.display = "none";
 window.addEventListener("load", chatMinimize.click());
 
 DataService.getDataAsync();

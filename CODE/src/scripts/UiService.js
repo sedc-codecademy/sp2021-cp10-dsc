@@ -26,7 +26,7 @@ const UiService = {
             <div class="chatBubblesUser">${elementName}</div>
         </div>`;
         this.toggleLoader();
-        UiService.sleep().then(() => {
+        this.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
                 <span class="chatBotName">Haralampiye</span>
@@ -46,7 +46,7 @@ const UiService = {
             <div class="chatBubblesUser">${infoName}</div>
         </div>`
         this.toggleLoader();
-        UiService.sleep().then(() => {
+        this.sleep().then(() => {
             this.chatHistory.innerHTML += `
             <div>
                 <span class="chatBotName">Haralampiye</span>
@@ -62,12 +62,12 @@ const UiService = {
         let studyProgram = DataService.cachedData;
 
         if (studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")] !== undefined) {
-            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
-            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+            this.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, studyProgram[neededInfo.toLowerCase().replace(/\s/g, "")]);
+            this.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         } else if (neededInfo === "Apply") {
-            UiService.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
+            this.replyInfoMessage(searchInput === undefined ? neededInfo : searchInput, ["Thank you for your interest!"]);
             ApplyService.getApplyForm();
-            UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
+            this.sleep().then(() => { ButtonsService.isConversationDoneButtons(); });
         }
     },
 
@@ -75,7 +75,7 @@ const UiService = {
     printConversationDone: function (choice) {
         if (choice === "Yes") {
             this.replyInfoMessage(choice, ["What do you wanna to talk about next?"]);
-            UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+            this.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
         }
         else if (choice === "No") {
             this.replyInfoMessage(choice, ["Ok amigo, I'll be here if you need me! \nJust ring the bell!"]);
@@ -85,17 +85,17 @@ const UiService = {
 
     //Print Bell Button
     printBellButton: function () {
-        UiService.sleep().then(() => {
+        this.sleep().then(() => {
             this.helpersDiv.innerHTML += `<button id="waitingBellButton"><img src="./src/img-avatars/chatBotBell.png" title="Ring me!!!" id="waitingBell" class="bell" height="50rem"></button>`;
             this.helpersDiv.scrollIntoView({ block: 'end', behavior: 'smooth' });
             document.getElementById("waitingBellButton").addEventListener("click", () => {
                 waitingBellButton.classList.add("animateBell");
                 document.getElementById("waitingBellButton").disabled = true;
-                UiService.sleep().then(() => {
+                this.sleep().then(() => {
                     document.getElementById("waitingBellButton").disabled = false;
                     this.helpersDiv.innerHTML = "";
                     this.toggleLoader();
-                    UiService.sleep().then(() => {
+                    this.sleep().then(() => {
                         UiService.chatHistory.innerHTML += `<div class="chatBubblesBot">May I help you with something else?</div>`;
                         ButtonsService.getInfoButtons(DataService.cachedData);
                     });
@@ -109,9 +109,7 @@ const UiService = {
         let loader = document.getElementById("loader");
         loader.style.display = "block";
         loader.scrollIntoView({ block: 'end', behavior: 'smooth' });
-        setTimeout(() => {
-            loader.style.display = "none";
-        }, 2000)
+        setTimeout(() => { loader.style.display = "none"; }, 2000)
     },
 
     //Pauses everything for some time
@@ -149,10 +147,7 @@ const UiService = {
 
     // Changes flag value
     changeFlag: function (flag) {
-        if (flag) {
-            return false;
-        };
-        return true;
+        return !flag;
     },
 
     // Resets chat-window if called from another viewport

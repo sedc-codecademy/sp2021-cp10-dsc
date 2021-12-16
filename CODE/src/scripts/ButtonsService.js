@@ -2,11 +2,11 @@ const ButtonsService = {
   buttonsDiv: document.getElementById("buttonsDiv"),
 
   //Prints the buttons for Object info
-  getInfoButtons: function (element) {
+  getInfoButtons: function (academy) {
     this.buttonsDiv.innerHTML = "";
     AnimationsService.repositionImageHead();
 
-    for (const button of element.infoProperties) {
+    for (const button of academy.infoProperties) {
       this.buttonsDiv.innerHTML += `<button id="${button}" class="chatBotBtns" onclick="UiService.printAcademyInfo('${button}')">${button}</button>`;
     }
     this.buttonsDiv.innerHTML += `<button class="chatBotBtns" id="contactUs" onclick="ContactUsForm.printContactUsForm()"> Contact Us </button>`;
@@ -20,7 +20,7 @@ const ButtonsService = {
 
     let answers = ["Yes", "No"];
     for (const answer of answers) {
-      this.buttonsDiv.innerHTML += `<button id = "${answer}" class="chatBotBtns" onclick="UiService.printConversationDone('${answer}')">${answer}</button>`;
+      this.buttonsDiv.innerHTML += `<button id="${answer}" class="chatBotBtns" onclick="UiService.printConversationDone('${answer}')">${answer}</button>`;
     }
     buttonsDiv.scrollIntoView({ block: "end", behavior: "smooth" });
   }

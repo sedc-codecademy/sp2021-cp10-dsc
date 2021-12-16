@@ -34,17 +34,17 @@ const SearchInputService = {
 
     AnimationsService.headerAnimation();
 
-    if (SearchInputService.input.value === "" && voiceRecognitionString === undefined) return;
+    if (this.input.value === "" && voiceRecognitionString === undefined) return;
 
     voiceRecognitionString !== undefined
-      ? (SearchInputService.inputStringForUser = voiceRecognitionString)
-      : (SearchInputService.inputStringForUser = SearchInputService.input.value);
+      ? (this.inputStringForUser = voiceRecognitionString)
+      : (this.inputStringForUser = SearchInputService.input.value);
 
-    SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.inputStringForUser);
+    this.inputString = LexiconService.checkForKeywords(this.inputStringForUser);
     input.value = "";
 
     //Searches for a curse word and promotes looove
-    if (SearchInputService.searchForCurseWords() !== undefined) {
+    if (this.searchForCurseWords() !== undefined) {
       UiService.replyMessages("I love you!", ["I love you too!"]);
       UiService.sleep().then(() => {
         ButtonsService.getInfoButtons(DataService.cachedData);
@@ -53,27 +53,23 @@ const SearchInputService = {
     }
 
     //Searches for info
-    let found = SearchInputService.searchThroughInfoProperties(DataService.cachedData.infoProperties);
+    let found = this.searchThroughInfoProperties(DataService.cachedData.infoProperties);
     if (found.length !== 0) {
-      UiService.printAcademyInfo(found[0], SearchInputService.inputStringForUser);
+      UiService.printAcademyInfo(found[0], this.inputStringForUser);
     }
     else {
       // Checks if the user is asking to speak to a real person
-      found = SearchInputService.searchForContact();
-      if (found !== undefined) {
-        UiService.replyMessages(SearchInputService.inputStringForUser, [
-          "If you would like to talk to someone who isn't a bot, you can click on the button below and you can send our sales department an email so that they can contact you as soon as possible!",
-        ]);
-        UiService.sleep().then(() => {
-          ContactUsForm.printContactUsForm();
-        });
+      found = this.searchForContact();
+      if (found) {
+        UiService.replyMessages(this.inputStringForUser, ["Thank you for contacting us! \nMay I help you with something else?",]);
+        UiService.sleep().then(() => { ContactUsForm.printContactUsForm(true); });
       }
       else {
         //Checks if there is a greet word
-        found = SearchInputService.searchForGreeting();
-        if (found !== undefined) {
+        found = this.searchForGreeting();
+        if (found) {
           UiService.replyMessages(
-            SearchInputService.inputStringForUser,
+            this.inputStringForUser,
             DataService.cachedReplyMessages.ShortTalk.Hello.reply
           );
           UiService.sleep().then(() => {
@@ -82,63 +78,49 @@ const SearchInputService = {
         }
         else {
           //Checks if there is a goodbye word
-          found = SearchInputService.searchForBye();
-          if (found !== undefined) {
-            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+          found = this.searchForBye();
+          if (found) {
+            UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
             UiService.printBellButton();
           }
           else {
             //Checks if there is a how are you sentence
-            found = SearchInputService.searchForHowAreYou();
-            if (found !== undefined) {
-              UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
+            found = this.searchForHowAreYou();
+            if (found) {
+              UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
               UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
             }
             else {
               //Checks if there is a reference to who the bot is
-              found = SearchInputService.searchForWhoAreYou();
-              if (found !== undefined) {
-                UiService.replyMessages(
-                  SearchInputService.inputStringForUser,
-                  DataService.cachedReplyMessages.ShortTalk.WhoAreYou
-                    .reply
-                );
-                UiService.sleep().then(() => {
-                  ButtonsService.getInfoButtons(DataService.cachedData);
-                });
+              found = this.searchForWhoAreYou();
+              if (found) {
+                UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
+                UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
               }
               else {
                 //Checks if there is a reference to who the bot can do
-                found = SearchInputService.searchForWhatCanYouDo();
-                if (found !== undefined) {
-                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
-                  UiService.sleep().then(() => {
-                    ButtonsService.getInfoButtons(DataService.cachedData);
-                  });
+                found = this.searchForWhatCanYouDo();
+                if (found) {
+                  UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
+                  UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                 }
                 else {
                   //Checks if there is a goodbye word
-                  found = SearchInputService.searchForBye();
-                  if (found !== undefined) {
-                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-                    UiService.sleep().then(() => {
-                      ButtonsService.getInfoButtons(DataService.cachedData);
-                    });
+                  found = this.searchForBye();
+                  if (found) {
+                    UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+                    UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                   }
                   else {
                     //Checks if there is a how are you sentence
-                    found = SearchInputService.searchForHowAreYou();
-                    if (found !== undefined) {
-                      UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
-                      UiService.sleep().then(() => {
-                        ButtonsService.getInfoButtons(DataService.cachedData);
-                      });
+                    found = this.searchForHowAreYou();
+                    if (found) {
+                      UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
+                      UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                     }
                     else {
-                      UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
-                      UiService.sleep().then(() => {
-                        ButtonsService.getInfoButtons(DataService.cachedData);
-                      });
+                      UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
+                      UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
                     }
                   }
                 }
@@ -153,22 +135,9 @@ const SearchInputService = {
   //Looks for info property of the study program
   searchThroughInfoProperties: function (elementProperties) {
     let foundItems = [];
-    if (elementProperties === undefined) {
-      elementProperties = [
-        "Price",
-        "Overview",
-        "Timeline",
-        "Job Opportunities",
-        "Apply"
-      ];
-    }
 
     for (let property of elementProperties) {
-      if (
-        SearchInputService.inputString
-          .toLowerCase()
-          .includes(property.toLowerCase())
-      ) {
+      if (this.inputString.toLowerCase().includes(property.toLowerCase())) {
         foundItems.push(property);
       }
     }
@@ -177,18 +146,10 @@ const SearchInputService = {
 
   // Checks if the user is asking to speak to a real person
   searchForContact: function () {
-    let contactUs = [
-      "contact",
-      "contact you",
-      "talk with somebody",
-      "person",
-      "official",
-      "someone",
-      "somebody",
-    ];
+    let contactUs = ["contact", "contact you", "talk with somebody", "person", "official", "someone", "somebody"];
 
     for (let contact of contactUs) {
-      if (SearchInputService.inputString.toLowerCase().includes(contact)) {
+      if (this.inputString.toLowerCase().includes(contact)) {
         return contact;
       }
     }
@@ -198,11 +159,7 @@ const SearchInputService = {
   searchForGreeting: function () {
     let greetings = ["Hello", "Hi", "Good day", "Greetings", "Hey"];
     for (let greet of greetings) {
-      if (
-        SearchInputService.inputString
-          .toLowerCase()
-          .includes(greet.toLowerCase())
-      ) {
+      if (this.inputString.toLowerCase().includes(greet.toLowerCase())) {
         return greet;
       }
     }
@@ -210,22 +167,9 @@ const SearchInputService = {
 
   //Checks if there is a goodbye word
   searchForBye: function () {
-    let goodbyes = [
-      "Bye",
-      "Thank you",
-      "See you",
-      "Thanks",
-      "Goodbye",
-      "Farewell",
-      "Goodnight",
-      "Tnx",
-    ];
+    let goodbyes = ["Bye", "Thank you", "See you", "Thanks", "Goodbye", "Farewell", "Goodnight", "Tnx"];
     for (let goodbye of goodbyes) {
-      if (
-        SearchInputService.inputString
-          .toLowerCase()
-          .includes(goodbye.toLowerCase())
-      ) {
+      if (this.inputString.toLowerCase().includes(goodbye.toLowerCase())) {
         return goodbye;
       }
     }
@@ -233,72 +177,39 @@ const SearchInputService = {
 
   //Checks if there is a how are you sentence
   searchForHowAreYou: function () {
-    let howAreYous = [
-      "how are you",
-      "how are we",
-      "are you ok",
-      "are you well",
-      "how's it going",
-      "hows it going",
-      "what's up",
-      "whats up",
-      "wazzup",
-    ];
+    let howAreYous = ["how are you", "how are we", "are you ok", "are you well", "how's it going", "hows it going", "what's up", "whats up", "wazzup"];
     for (let howAreYou of howAreYous) {
-      if (
-        SearchInputService.inputString
-          .toLowerCase()
-          .includes(howAreYou.toLowerCase())
-      ) {
+      if (SearchInputService.inputString.toLowerCase().includes(howAreYou.toLowerCase())) {
         return howAreYou;
       }
     }
   },
 
   //Checks if there is a reference to who the bot can do
-  searchForWhatCanYouDo: function () { //check
-    let whatCanYouDo = "what can you do";
-    if (
-      SearchInputService.inputString.toLowerCase().includes("what") &&
-      SearchInputService.inputString.toLowerCase().includes("you") &&
-      SearchInputService.inputString.toLowerCase().includes("do")
-    ) {
-      return whatCanYouDo;
-    } else if (
-      SearchInputService.inputString.toLowerCase().includes("what") &&
-      SearchInputService.inputString.toLowerCase().includes("i") &&
-      SearchInputService.inputString.toLowerCase().includes("do")
-    ) {
-      return whatCanYouDo;
+  searchForWhatCanYouDo: function () {
+    let keywords1 = ["what", "you", "do"];
+    let keywords2 = ["what", "i", "do"];
+
+    if (keywords1.every((key) => this.inputString.toLowerCase().includes(key)) ||
+      keywords2.every((key) => this.inputString.toLowerCase().includes(key))) {
+      return "what can you do";
     }
   },
 
   //Checks if there is a reference to who the bot is
   searchForWhoAreYou: function () {
-    let whoAreYou = "who are you";
-    if (
-      SearchInputService.inputString.toLowerCase().includes("who") &&
-      SearchInputService.inputString.toLowerCase().includes("you")
-    ) {
-      return whoAreYou;
+    let keywords = ["who", "you"];
+    if (keywords.every((key) => this.inputString.toLowerCase().includes(key))) {
+      return "who are you";
     }
   },
 
   // Searches for a curse word and promotes looove
   searchForCurseWords: function () {
-    let curseWords = [
-      "idiot",
-      "fuck",
-      "suck",
-      "cock",
-      "love you",
-      "f***",
-      "stupid",
-      "dumb",
-    ];
+    let curseWords = ["idiot", "fuck", "suck", "cock", "love you", "f***", "stupid", "dumb"];
 
     for (let curseWord of curseWords) {
-      if (SearchInputService.inputString.toLowerCase().includes(curseWord)) {
+      if (this.inputString.toLowerCase().includes(curseWord)) {
         return curseWord;
       }
     }

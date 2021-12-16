@@ -4,62 +4,44 @@ const LexiconService = {
         let modifiedInput = inputString;
 
         // Checks whether input string has a reference to "Price" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("cost") ||
-            inputString.toLowerCase().includes("how much")
-        )
+        let priceKeywords = ["cost", "how much"];
+        if (this.doesContainKeyword(inputString, priceKeywords)) {
             modifiedInput += "Price";
+        }
 
         // Checks whether input string has a reference to "Overview" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("what is") ||
-            inputString.toLowerCase().includes("development") ||
-            inputString.toLowerCase().includes("developer") ||
-            inputString.toLowerCase().includes("developing") ||
-            inputString.toLowerCase().includes("coding") ||
-            inputString.toLowerCase().includes("web") ||
-            inputString.toLowerCase().includes("site") ||
-            inputString.toLowerCase().includes("what's")
-        )
+        let overviewKeywords = ["what is", "development", "developer", "developing", "coding", "web", "site", "what's"];
+        if (this.doesContainKeyword(inputString, overviewKeywords)) {
             modifiedInput += "Overview";
+        }
 
         // Checks whether input string has a reference to "Timeline" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("how long") ||
-            inputString.toLowerCase().includes("time") ||
-            inputString.toLowerCase().includes("when")
-        )
+        let timelineKeywords = ["how long", "time", "when"];
+        if (this.doesContainKeyword(inputString, timelineKeywords)) {
             modifiedInput += "Timeline";
+        }
 
-        // Checks whether input string has a reference to "Job Opportunities" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("trainers") ||
-            inputString.toLowerCase().includes("trainer") ||
-            inputString.toLowerCase().includes("teacher") ||
-            inputString.toLowerCase().includes("teachers") ||
-            inputString.toLowerCase().includes("lecturers") ||
-            inputString.toLowerCase().includes("coach") ||
-            inputString.toLowerCase().includes("coaches") ||
-            inputString.toLowerCase().includes("teaching") ||
-            inputString.toLowerCase().includes("lecturing") ||
-            inputString.toLowerCase().includes("coaching")
-        )
+        // Checks whether input string has a reference to "Trainers" and if so adds the corresponding keyword to the modified input string
+        let trainersKeywords = ["trainers", "trainer", "teacher", "teachers", "lecturers", "coach", "coaches", "teaching", "lecturing", "coaching"];
+        if (this.doesContainKeyword(inputString, trainersKeywords)) {
             modifiedInput += "Trainers";
+        }
 
         // Checks whether input string has a reference to "Apply" and if so adds the corresponding keyword to the modified input string
-        if (
-            inputString.toLowerCase().includes("application") ||
-            inputString.toLowerCase().includes("enroll") ||
-            inputString.toLowerCase().includes("sign up") ||
-            inputString.toLowerCase().includes("register")
-        )
+        let applyKeywords = ["application", "enroll", "sign up", "register"];
+        if (this.doesContainKeyword(inputString, applyKeywords)) {
             modifiedInput += "Apply";
+        }
 
-        if (
-            modifiedInput.toLowerCase().includes("price")
-        )
+        if (modifiedInput.toLowerCase().includes("price")) {
             modifiedInput = "Price";
+        }
 
         return modifiedInput;
+    },
+
+    doesContainKeyword: function (inputString, keywords) {
+        const keyword = (key) => inputString.toLowerCase().includes(key);
+        return keywords.some(keyword);
     }
 }

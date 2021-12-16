@@ -1,6 +1,6 @@
 const ContactUsForm = {
   //Displays a SEDC contact email form
-  printContactUsForm: function () {
+  printContactUsForm: function (searchService) {
     UiService.displayModalWindow("contact");
 
     ApplyService.popUp.innerHTML = `
@@ -26,8 +26,7 @@ const ContactUsForm = {
                 <div>
             </form>
         </div>`;
-    UiService.sleep().then(() => {
-      ButtonsService.isConversationDoneButtons(true);
-    });
+    !searchService && UiService.replyMessages("Contact", ["Thank you for contacting us! \nMay I help you with something else?",]);
+    UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(true); });
   },
 };

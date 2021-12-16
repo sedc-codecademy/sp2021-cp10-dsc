@@ -9,15 +9,15 @@ const QuizzesService = {
     printQuizzesMenu: function () {
         AnimationsService.chatQuizzes.addEventListener('click', function () {
             UiService.disableQuizzesButtons(true);
-            QuizzesService.areQuizzesOpen = UiService.changeFlag(QuizzesService.areQuizzesOpen);
+            this.areQuizzesOpen = UiService.changeFlag(this.areQuizzesOpen);
 
             if (!AnimationsService.isChatInitialized) {
                 AnimationsService.headerAnimation();
                 AnimationsService.chatQuizzes.addEventListener("animationend", function () {
-                    UiService.changeQuizzesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
+                    UiService.changeQuizzesIconAndFunctionality(this.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
                 });
             } else {
-                UiService.changeQuizzesIconAndFunctionality(QuizzesService.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
+                UiService.changeQuizzesIconAndFunctionality(this.areQuizzesOpen, AnimationsService.chatQuizzes, QuizzesService.QuizzesWindow);
             }
 
             let quizzesInnerHTML = `<p id="quizzesMessage">Take a Quiz</p> <hr class="chat-js-hr"> <div id="twoRowBtnDiv" class="twoRowBtnFlex">`;
@@ -41,11 +41,11 @@ const QuizzesService = {
 
         UiService.displayModalWindow("quizzes");
         if (data === undefined) {
-            QuizzesService.somethingWentWrong();
+            this.somethingWentWrong();
             return;
         }
 
-        QuizzesService.chooseRandomQuestions(data);
+        this.chooseRandomQuestions(data);
     },
 
     // Chooses 15 random questions from 30 questions for each quiz
@@ -62,13 +62,13 @@ const QuizzesService = {
             }
         }
 
-        QuizzesService.renderQuestions(randomQuestions);
+        this.renderQuestions(randomQuestions);
     },
 
     //Renders chosen random questions in pop-up window
     renderQuestions: function (questions) {
         this.displayedQuestions = questions;
-        QuizzesService.form.innerHTML = "";
+        this.form.innerHTML = "";
 
         let quizzesInnerHTML = '';
         for (let i = 0; i < questions.length; i++) {
@@ -95,7 +95,7 @@ const QuizzesService = {
             <hr class="quiz-hr">`;
         }
         quizzesInnerHTML += `<button type="submit" id="submitBtn">Submit</button>`;
-        QuizzesService.form.innerHTML = quizzesInnerHTML;
+        this.form.innerHTML = quizzesInnerHTML;
     },
 
     //Checks which question's answers are correct
@@ -125,7 +125,7 @@ const QuizzesService = {
     //Prints a message if something is wrong with the quiz
     somethingWentWrong: function () {
         UiService.displayModalWindow("quizzes");
-        QuizzesService.form.innerHTML = `<p class="somethingWentWrongMessage">Something went wrong! <br>Please try again later!</p>`
+        this.form.innerHTML = `<p class="somethingWentWrongMessage">Something went wrong! <br>Please try again later!</p>`
     },
 
     getQuizzesData: function () {

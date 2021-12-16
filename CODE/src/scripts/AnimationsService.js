@@ -8,6 +8,7 @@ const AnimationsService = {
     //Animates the header - Image, Name, Icons
     headerAnimation: function () {
         this.isChatInitialized = true;
+
         if (window.innerWidth < 821) {
             this.avatarImgDiv.classList.add("avatarAnimation");
 
@@ -43,12 +44,12 @@ const AnimationsService = {
     //Changes the bot image position when initialized
     repositionImageHead: function () {
         if (window.innerWidth < 821) {
-            AnimationsService.chatName.style.marginTop = "0rem";
+            this.chatName.style.marginTop = "0rem";
         } else {
-            AnimationsService.chatName.style.marginTop = "0.9rem";
+            this.chatName.style.marginTop = "0.9rem";
         }
 
-        AnimationsService.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
+        this.chatName.innerHTML = "Haralampiye<br>SEDC Chat Bot";
     },
 
     //Functionality for window resize quizzes feature
