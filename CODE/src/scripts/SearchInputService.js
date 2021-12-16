@@ -1,4 +1,13 @@
-const SearchInputService = {
+//import "regenerator-runtime/runtime";
+
+import { UiService } from "./UiService";
+import { AnimationsService } from "./AnimationsService";
+import { VoiceRecognitionService } from "./VoiceRecognitionService";
+import { DataService } from "./DataService";
+import { LexiconService } from "./LexiconService";
+import { ButtonsService } from "./ButtonsService";
+
+export const SearchInputService = {
   input: document.getElementById("input"),
   inputButton: document.getElementById("inputButton"),
   inputString: "",
@@ -34,13 +43,20 @@ const SearchInputService = {
 
     AnimationsService.headerAnimation();
 
-    if (SearchInputService.input.value === "" && voiceRecognitionString === undefined) return;
+    if (
+      SearchInputService.input.value === "" &&
+      voiceRecognitionString === undefined
+    )
+      return;
 
     voiceRecognitionString !== undefined
       ? (SearchInputService.inputStringForUser = voiceRecognitionString)
-      : (SearchInputService.inputStringForUser = SearchInputService.input.value);
+      : (SearchInputService.inputStringForUser =
+          SearchInputService.input.value);
 
-    SearchInputService.inputString = LexiconService.checkForKeywords(SearchInputService.inputStringForUser);
+    SearchInputService.inputString = LexiconService.checkForKeywords(
+      SearchInputService.inputStringForUser
+    );
     input.value = "";
 
     //Searches for a curse word and promotes looove
@@ -53,11 +69,15 @@ const SearchInputService = {
     }
 
     //Searches for info
-    let found = SearchInputService.searchThroughInfoProperties(DataService.cachedData.infoProperties);
+    let found = SearchInputService.searchThroughInfoProperties(
+      DataService.cachedData.infoProperties
+    );
     if (found.length !== 0) {
-      UiService.printAcademyInfo(found[0], SearchInputService.inputStringForUser);
-    }
-    else {
+      UiService.printAcademyInfo(
+        found[0],
+        SearchInputService.inputStringForUser
+      );
+    } else {
       // Checks if the user is asking to speak to a real person
       found = SearchInputService.searchForContact();
       if (found !== undefined) {
@@ -67,8 +87,7 @@ const SearchInputService = {
         UiService.sleep().then(() => {
           ContactUsForm.printContactUsForm();
         });
-      }
-      else {
+      } else {
         //Checks if there is a greet word
         found = SearchInputService.searchForGreeting();
         if (found !== undefined) {
@@ -79,63 +98,77 @@ const SearchInputService = {
           UiService.sleep().then(() => {
             ButtonsService.getInfoButtons(DataService.cachedData);
           });
-        }
-        else {
+        } else {
           //Checks if there is a goodbye word
           found = SearchInputService.searchForBye();
           if (found !== undefined) {
-            UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+            UiService.replyMessages(
+              SearchInputService.inputStringForUser,
+              DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
+            );
             UiService.printBellButton();
-          }
-          else {
+          } else {
             //Checks if there is a how are you sentence
             found = SearchInputService.searchForHowAreYou();
             if (found !== undefined) {
-              UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
-              UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-            }
-            else {
+              UiService.replyMessages(
+                SearchInputService.inputStringForUser,
+                DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply
+              );
+              UiService.sleep().then(() => {
+                ButtonsService.getInfoButtons(DataService.cachedData);
+              });
+            } else {
               //Checks if there is a reference to who the bot is
               found = SearchInputService.searchForWhoAreYou();
               if (found !== undefined) {
                 UiService.replyMessages(
                   SearchInputService.inputStringForUser,
-                  DataService.cachedReplyMessages.ShortTalk.WhoAreYou
-                    .reply
+                  DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply
                 );
                 UiService.sleep().then(() => {
                   ButtonsService.getInfoButtons(DataService.cachedData);
                 });
-              }
-              else {
+              } else {
                 //Checks if there is a reference to who the bot can do
                 found = SearchInputService.searchForWhatCanYouDo();
                 if (found !== undefined) {
-                  UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
+                  UiService.replyMessages(
+                    SearchInputService.inputStringForUser,
+                    DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply
+                  );
                   UiService.sleep().then(() => {
                     ButtonsService.getInfoButtons(DataService.cachedData);
                   });
-                }
-                else {
+                } else {
                   //Checks if there is a goodbye word
                   found = SearchInputService.searchForBye();
                   if (found !== undefined) {
-                    UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+                    UiService.replyMessages(
+                      SearchInputService.inputStringForUser,
+                      DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
+                    );
                     UiService.sleep().then(() => {
                       ButtonsService.getInfoButtons(DataService.cachedData);
                     });
-                  }
-                  else {
+                  } else {
                     //Checks if there is a how are you sentence
                     found = SearchInputService.searchForHowAreYou();
                     if (found !== undefined) {
-                      UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
+                      UiService.replyMessages(
+                        SearchInputService.inputStringForUser,
+                        DataService.cachedReplyMessages.ShortTalk.HowAreYou
+                          .reply
+                      );
                       UiService.sleep().then(() => {
                         ButtonsService.getInfoButtons(DataService.cachedData);
                       });
-                    }
-                    else {
-                      UiService.replyMessages(SearchInputService.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
+                    } else {
+                      UiService.replyMessages(
+                        SearchInputService.inputStringForUser,
+                        DataService.cachedReplyMessages.ShortTalk.NoComprende
+                          .reply
+                      );
                       UiService.sleep().then(() => {
                         ButtonsService.getInfoButtons(DataService.cachedData);
                       });
@@ -159,7 +192,7 @@ const SearchInputService = {
         "Overview",
         "Timeline",
         "Job Opportunities",
-        "Apply"
+        "Apply",
       ];
     }
 
@@ -256,7 +289,8 @@ const SearchInputService = {
   },
 
   //Checks if there is a reference to who the bot can do
-  searchForWhatCanYouDo: function () { //check
+  searchForWhatCanYouDo: function () {
+    //check
     let whatCanYouDo = "what can you do";
     if (
       SearchInputService.inputString.toLowerCase().includes("what") &&
@@ -302,5 +336,5 @@ const SearchInputService = {
         return curseWord;
       }
     }
-  }
+  },
 }; //PROPERTIES: Input field, Input button, Input value string, Input string that is shown to the user

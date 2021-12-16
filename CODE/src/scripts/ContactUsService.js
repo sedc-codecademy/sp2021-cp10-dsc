@@ -1,8 +1,14 @@
-const ContactUsForm = {
+//import "regenerator-runtime/runtime";
+
+import { UiService } from "./UiService";
+import { ApplyService } from "./ApplyService";
+import { ButtonsService } from "./ButtonsService";
+
+export const ContactUsForm = {
   //Displays a SEDC contact email form
   printContactUsForm: function () {
     UiService.displayModalWindow("contact");
-
+    console.log("test");
     ApplyService.popUp.innerHTML = `
         <div class="container" id="contactUsForm">
             <h1 class="formHeader">Contact us!</h1>
