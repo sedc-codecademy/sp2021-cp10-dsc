@@ -1,5 +1,10 @@
-const ContactUsForm = {
+import { UiService } from "./UiService";
+import { ApplyService } from "./ApplyService";
+import { ButtonsService } from "./ButtonsService";
+
+export const ContactUsForm = {
   //Displays a SEDC contact email form
+
   printContactUsForm: function (searchService) {
     UiService.displayModalWindow("contact");
 
@@ -26,7 +31,12 @@ const ContactUsForm = {
                 <div>
             </form>
         </div>`;
-    !searchService && UiService.replyMessages("Contact", ["Thank you for contacting us! \nMay I help you with something else?",]);
-    UiService.sleep().then(() => { ButtonsService.isConversationDoneButtons(true); });
+    !searchService &&
+      UiService.replyMessages("Contact", [
+        "Thank you for contacting us! \nMay I help you with something else?",
+      ]);
+    UiService.sleep().then(() => {
+      ButtonsService.isConversationDoneButtons(true);
+    });
   },
 };

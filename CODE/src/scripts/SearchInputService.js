@@ -1,4 +1,11 @@
-const SearchInputService = {
+import { UiService } from "./UiService";
+import { AnimationsService } from "./AnimationsService";
+import { DataService } from "./DataService";
+import { ButtonsService } from "./ButtonsService";
+import { VoiceRecognitionService } from "./VoiceRecognitionService";
+import { LexiconService } from "./LexiconService";
+
+export const SearchInputService = {
   input: document.getElementById("input"),
   inputButton: document.getElementById("inputButton"),
   inputString: "",
@@ -53,18 +60,22 @@ const SearchInputService = {
     }
 
     //Searches for info
-    let found = this.searchThroughInfoProperties(DataService.cachedData.infoProperties);
+    let found = this.searchThroughInfoProperties(
+      DataService.cachedData.infoProperties
+    );
     if (found.length !== 0) {
       UiService.printAcademyInfo(found[0], this.inputStringForUser);
-    }
-    else {
+    } else {
       // Checks if the user is asking to speak to a real person
       found = this.searchForContact();
       if (found) {
-        UiService.replyMessages(this.inputStringForUser, ["Thank you for contacting us! \nMay I help you with something else?",]);
-        UiService.sleep().then(() => { ContactUsForm.printContactUsForm(true); });
-      }
-      else {
+        UiService.replyMessages(this.inputStringForUser, [
+          "Thank you for contacting us! \nMay I help you with something else?",
+        ]);
+        UiService.sleep().then(() => {
+          ContactUsForm.printContactUsForm(true);
+        });
+      } else {
         //Checks if there is a greet word
         found = this.searchForGreeting();
         if (found) {
@@ -75,52 +86,80 @@ const SearchInputService = {
           UiService.sleep().then(() => {
             ButtonsService.getInfoButtons(DataService.cachedData);
           });
-        }
-        else {
+        } else {
           //Checks if there is a goodbye word
           found = this.searchForBye();
           if (found) {
-            UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
+            UiService.replyMessages(
+              this.inputStringForUser,
+              DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
+            );
             UiService.printBellButton();
-          }
-          else {
+          } else {
             //Checks if there is a how are you sentence
             found = this.searchForHowAreYou();
             if (found) {
-              UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
-              UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-            }
-            else {
+              UiService.replyMessages(
+                this.inputStringForUser,
+                DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply
+              );
+              UiService.sleep().then(() => {
+                ButtonsService.getInfoButtons(DataService.cachedData);
+              });
+            } else {
               //Checks if there is a reference to who the bot is
               found = this.searchForWhoAreYou();
               if (found) {
-                UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply);
-                UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-              }
-              else {
+                UiService.replyMessages(
+                  this.inputStringForUser,
+                  DataService.cachedReplyMessages.ShortTalk.WhoAreYou.reply
+                );
+                UiService.sleep().then(() => {
+                  ButtonsService.getInfoButtons(DataService.cachedData);
+                });
+              } else {
                 //Checks if there is a reference to who the bot can do
                 found = this.searchForWhatCanYouDo();
                 if (found) {
-                  UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply);
-                  UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-                }
-                else {
+                  UiService.replyMessages(
+                    this.inputStringForUser,
+                    DataService.cachedReplyMessages.ShortTalk.WhatCanYouDo.reply
+                  );
+                  UiService.sleep().then(() => {
+                    ButtonsService.getInfoButtons(DataService.cachedData);
+                  });
+                } else {
                   //Checks if there is a goodbye word
                   found = this.searchForBye();
                   if (found) {
-                    UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.Goodbye.reply);
-                    UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-                  }
-                  else {
+                    UiService.replyMessages(
+                      this.inputStringForUser,
+                      DataService.cachedReplyMessages.ShortTalk.Goodbye.reply
+                    );
+                    UiService.sleep().then(() => {
+                      ButtonsService.getInfoButtons(DataService.cachedData);
+                    });
+                  } else {
                     //Checks if there is a how are you sentence
                     found = this.searchForHowAreYou();
                     if (found) {
-                      UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.HowAreYou.reply);
-                      UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
-                    }
-                    else {
-                      UiService.replyMessages(this.inputStringForUser, DataService.cachedReplyMessages.ShortTalk.NoComprende.reply);
-                      UiService.sleep().then(() => { ButtonsService.getInfoButtons(DataService.cachedData); });
+                      UiService.replyMessages(
+                        this.inputStringForUser,
+                        DataService.cachedReplyMessages.ShortTalk.HowAreYou
+                          .reply
+                      );
+                      UiService.sleep().then(() => {
+                        ButtonsService.getInfoButtons(DataService.cachedData);
+                      });
+                    } else {
+                      UiService.replyMessages(
+                        this.inputStringForUser,
+                        DataService.cachedReplyMessages.ShortTalk.NoComprende
+                          .reply
+                      );
+                      UiService.sleep().then(() => {
+                        ButtonsService.getInfoButtons(DataService.cachedData);
+                      });
                     }
                   }
                 }
@@ -146,7 +185,15 @@ const SearchInputService = {
 
   // Checks if the user is asking to speak to a real person
   searchForContact: function () {
-    let contactUs = ["contact", "contact you", "talk with somebody", "person", "official", "someone", "somebody"];
+    let contactUs = [
+      "contact",
+      "contact you",
+      "talk with somebody",
+      "person",
+      "official",
+      "someone",
+      "somebody",
+    ];
 
     for (let contact of contactUs) {
       if (this.inputString.toLowerCase().includes(contact)) {
@@ -167,7 +214,16 @@ const SearchInputService = {
 
   //Checks if there is a goodbye word
   searchForBye: function () {
-    let goodbyes = ["Bye", "Thank you", "See you", "Thanks", "Goodbye", "Farewell", "Goodnight", "Tnx"];
+    let goodbyes = [
+      "Bye",
+      "Thank you",
+      "See you",
+      "Thanks",
+      "Goodbye",
+      "Farewell",
+      "Goodnight",
+      "Tnx",
+    ];
     for (let goodbye of goodbyes) {
       if (this.inputString.toLowerCase().includes(goodbye.toLowerCase())) {
         return goodbye;
@@ -177,9 +233,23 @@ const SearchInputService = {
 
   //Checks if there is a how are you sentence
   searchForHowAreYou: function () {
-    let howAreYous = ["how are you", "how are we", "are you ok", "are you well", "how's it going", "hows it going", "what's up", "whats up", "wazzup"];
+    let howAreYous = [
+      "how are you",
+      "how are we",
+      "are you ok",
+      "are you well",
+      "how's it going",
+      "hows it going",
+      "what's up",
+      "whats up",
+      "wazzup",
+    ];
     for (let howAreYou of howAreYous) {
-      if (SearchInputService.inputString.toLowerCase().includes(howAreYou.toLowerCase())) {
+      if (
+        SearchInputService.inputString
+          .toLowerCase()
+          .includes(howAreYou.toLowerCase())
+      ) {
         return howAreYou;
       }
     }
@@ -190,8 +260,10 @@ const SearchInputService = {
     let keywords1 = ["what", "you", "do"];
     let keywords2 = ["what", "i", "do"];
 
-    if (keywords1.every((key) => this.inputString.toLowerCase().includes(key)) ||
-      keywords2.every((key) => this.inputString.toLowerCase().includes(key))) {
+    if (
+      keywords1.every((key) => this.inputString.toLowerCase().includes(key)) ||
+      keywords2.every((key) => this.inputString.toLowerCase().includes(key))
+    ) {
       return "what can you do";
     }
   },
@@ -206,12 +278,21 @@ const SearchInputService = {
 
   // Searches for a curse word and promotes looove
   searchForCurseWords: function () {
-    let curseWords = ["idiot", "fuck", "suck", "cock", "love you", "f***", "stupid", "dumb"];
+    let curseWords = [
+      "idiot",
+      "fuck",
+      "suck",
+      "cock",
+      "love you",
+      "f***",
+      "stupid",
+      "dumb",
+    ];
 
     for (let curseWord of curseWords) {
       if (this.inputString.toLowerCase().includes(curseWord)) {
         return curseWord;
       }
     }
-  }
+  },
 }; //PROPERTIES: Input field, Input button, Input value string, Input string that is shown to the user
